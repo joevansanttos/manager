@@ -1,6 +1,7 @@
 <?php	
 	error_reporting(E_ALL ^ E_NOTICE);
 	require_once "cabecalho.php"; 
+	require_once "class/LeadDao.php";
 ?>
 	
 <div class="right_col" role="main">
@@ -36,21 +37,18 @@
 				  <tbody>
 
 				    <?php
-				    /*
-				    	$clienteDao = new ClienteDao($conexao);
-				    	$clientes = $clienteDao->listaClientes();
-				      foreach ($clientes as $cliente):  
-				      */                             
+				    	$leadDao = new LeadDao($conexao);
+				    	$leads = $leadDao->listaLeads();
+				      foreach ($leads as $lead):  
+				                                
 				    ?>
 				      <tr>
-				        <td></td>
-				        <td></td>
+				        <td><?=$lead->getNome()?></td>
+				        <td><a href="suspect-formulario.php?id=<?=$lead->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Contato" class="btn btn-info btn-xs"><i class="fa fa-plus"></i></button></a></td>
 				      </tr>
-				    <?php
-				    /*
+				    <?php				
 				      endforeach
-				      */
-				    ?>
+				     ?>
 				  </tbody>      
 				</table>
 				<div class="ln_solid"></div>
