@@ -48,7 +48,7 @@
 <script type="text/javascript">
   window.ParsleyValidator.setLocale('pt-br');
 </script>
-<script src="../../js/calcula.js"></script>
+<script src="../js/calcula.js"></script>
 <script type="text/javascript">
   function calcula(){
     var prob = document.getElementById('prob').value;
