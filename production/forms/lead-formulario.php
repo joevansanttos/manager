@@ -64,7 +64,7 @@
                 <div class="col-md-6 col-md-offset-3">
                   <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
                   <button id="send" type="submit" class="btn btn-success">Cadastrar</button>
-                  <input type="hidden" name="id" id="id" value="<?=$id?>" />
+                  <input type="hidden" name="id_market" id="id" value="<?=$id?>" />
                 </div>
               </div>                     
             </form>        

@@ -26,11 +26,11 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_content">
-            <form action="../adiciona/adiciona-suspect.php" method="post"  id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">              
+            <form action="adiciona-suspect.php" method="post"  id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">              
               <div class="item form-group">
                 <label for="contato" class="control-label col-md-3 col-sm-3 col-xs-12">Contato <span class="required">*</span></label>
                 <div class="col-sm-6 col-xs-12 col-md-3">
-                  <input id="contato" type="text" name="contato" data-validate-linked="contato" class="form-control col-md-2 col-xs-12" required="required">
+                  <input id="contato" type="text" name="nome" data-validate-linked="nome" class="form-control col-md-2 col-xs-12" required="required">
                  </div>
                 <label class="control-label col-md-1 col-sm-3 col-xs-12" for="date">Data <span class="required">*</span>
                 </label>
@@ -64,19 +64,11 @@
                 <div class="col-sm-6 col-xs-12 col-md-2">
                   <input type="time" id="hora" name="hora" class="form-control col-md-7 col-xs-12" required></select>                
                 </div>
-              </div>
-              <div class="item form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Histórico <span class="required">*</span>
-                </label>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                  <textarea rows="6" id="comentario" required name="comentario" class="form-control col-md-7 col-xs-12"></textarea>
-                </div>
-              </div>
+              </div>              
               <div class="col-md-6 col-md-offset-3">
                 <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
                 <button id="send" type="submit" class="btn btn-success">Cadastrar</button>
-                <input type="hidden" name="id" id="id" value="<?=$cliente['id_market']?>" />
-                <input type="hidden" name="id_consultor" id="id_consultor" value="<?=$usuario['id_usuario']?>" />
+                <input type="hidden" name="id" id="id" value="<?=$id?>" />
               </div>
             </form>  
           </div>

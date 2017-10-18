@@ -33,7 +33,6 @@
 		}
 
 		function buscaMarket($id) {
-
 			$query = "select * from market where id_market = {$id}";
 			$resultado = mysqli_query($this->conexao, $query);
 			$market_buscado = mysqli_fetch_assoc($resultado);

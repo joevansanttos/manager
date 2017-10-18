@@ -13,5 +13,4 @@
 	$leadDao = new LeadDao($conexao);	
 	$leadDao->insereLead($lead);
 	header("Location: leads.php");
-
 ?>

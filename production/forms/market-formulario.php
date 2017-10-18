@@ -32,7 +32,6 @@
               <input type="text" id="nome" name="nome" required="required" class="form-control col-md-7 col-xs-12">
             </div>
           </div>  
-
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="razao">Razão Social <span class="required">*</span>
             </label>
@@ -40,37 +39,32 @@
               <input id="razao" name="razao" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="razao" required="required" type="text">
             </div>
           </div>
-
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="preco">CNPJ<span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="text" id="cnpj" name="cnpj" data-inputmask="'mask' : '**.***.***/****-**'" required="required" class="form-control col-md-7 col-xs-12">
             </div>
-          </div>
-
-          
-
+          </div>    
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="preco">Site<span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="text" id="site" name="site" required="required" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
-
-          <div class="item form-group">
+          <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estado1">Estado <span class="required">*</span>
             </label>
-            <div class="col-sm-6 col-xs-12 col-md-2">
-              <select id="estado1" name="estado1" class="optional form-control col-md-7 col-xs-12"></select>
+            <div class="col-sm-6 col-xs-12 col-md-6">
+              <select id="estado" name="estado" class="optional form-control col-md-7 col-xs-12"></select>
             </div>
-            <label for="cidade1" class="control-label col-md-1 col-sm-3 col-xs-12">Cidade <span class="required">*</span>
-            </label>
-            <div class="col-sm-6 col-xs-12 col-md-3">
-              <select id="cidade1" name="cidade1" class="form-control col-md-7 col-xs-12" required></select>
-            </div>
-
           </div>
-
+          <div class="form-group">
+            <label for="cidade" class="control-label col-md-1 col-sm-3 col-xs-12">Cidade <span class="required">*</span>
+            </label>
+            <div class="col-sm-6 col-xs-12 col-md-2">
+              <select id="cidade" name="cidade" class="form-control col-md-6 col-xs-12" required></select>
+            </div>
+          </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="bairro">Bairro  <span class="required">*</span>
             </label>
@@ -78,7 +72,6 @@
               <input type="text" id="bairro" name="bairro" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
-
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="endereco">Endereço <span class="required">*</span>
             </label>
@@ -86,7 +79,6 @@
               <input type="text" id="endereco" name="endereco" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
-
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="segmento">Segmento<span class="required">*</span>
             </label>

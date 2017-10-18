@@ -9,7 +9,6 @@
 		}
 
 		function listaPortes() {
-
 			$portes = array();			
 			$resultado = mysqli_query($this->conexao, "select u.* from porte as u");
 			while($porte_array = mysqli_fetch_assoc($resultado)) {
@@ -19,12 +18,10 @@
 				$porte->setId($porte_id);
 				array_push($portes, $porte);
 			}
-
 			return $portes;
 		}
 
 		function buscaPorte($id) {
-
 			$query = "select * from porte where id_porte = {$id}";
 			$resultado = mysqli_query($this->conexao, $query);
 			$porte_buscado = mysqli_fetch_assoc($resultado);
@@ -33,10 +30,7 @@
 			$porte = $factory->criaPorte($porte_buscado);
 			$porte->setId($id_porte);
 			return $porte;
-		}
-
-		
+		}		
 	}
-	
 
 ?>

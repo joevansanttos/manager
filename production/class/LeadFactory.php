@@ -4,9 +4,8 @@
 
 	class LeadFactory {
 
-		public function criaLead($params) {	
-			$conexao = mysqli_connect("localhost", "root", "", "manager");		
-			$id_market = $params["id"];
+		public function criaLead($params) {						
+			$id_market = $params["id_market"];
 			$nome = $params["nome"];
 			$email = $params["email"];
 			$tel = $params["tel"];

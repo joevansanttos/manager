@@ -1,20 +1,21 @@
 <?php 
-
+	
 	require_once "Cliente.php";
 	require_once "Porte.php";
 	require_once "PorteDao.php";
 
+
 	class ClienteFactory {
 
-		public function criaCliente($params) {	
-			$conexao = mysqli_connect("127.0.0.1", "root", "", "manager");		
+		public function criaCliente($params) {
+			$conexao = mysqli_connect("127.0.0.1", "root", "", "manager");	
 			$razao = $params["razao"];
 			$nome = $params["nome"];
 			$cnpj = $params["cnpj"];
 			$site = $params["site"];
 			$endereco = $params["endereco"];
-			$estado = $params["estado1"];
-			$cidade = $params["cidade1"];
+			$estado = $params["estado"];
+			$cidade = $params["cidade"];
 			$segmento = $params["segmento"];
 			$tel = $params["tel"];
 			$bairro = $params["bairro"];

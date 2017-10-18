@@ -1,5 +1,5 @@
 <?php
-  require_once "conecta.php";
+  require_once "../conecta.php";
 ?>
 
 <!DOCTYPE html>
@@ -14,13 +14,19 @@
     <title>Projek | Gestão da Qualidade Total</title>
     <link rel="shortcut icon" type="image/x-icon" href="../../ico/favicon.ico"/>
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Custom styling plus plugins -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../../build/css/custom.min.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -48,13 +54,22 @@
                   </li>                  
                   <li><a><i class="fa fa-user"></i> Usuários<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="usuarios.php">Consultores</a></li>
+                      <li><a href="usuarios.php">Usuários</a></li>
+                      <li><a href="consultores.php">Consultores</a></li>
+                      <li><a href="partners.php">Partners</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-rocket"></i> Produtos<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="produtos.php">Produtos</a></li>
+                    </ul>
+                  </li>                  
                   <li><a><i class="fa fa-briefcase"></i> Negócios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="market.php">Market</a></li>
                       <li><a href="leads.php">Leads</a></li>
+                      <li><a href="suspects.php">Suspects</a></li>
+                      <li><a href="prospects.php">Prospects</a></li>
                     </ul>
                   </li>                  
                 </ul>
