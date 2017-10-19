@@ -1,5 +1,5 @@
 <?php	
-  require_once "cabecalho-form.php";
+  require_once "../includes/cabecalho-form.php";
 
   $id = $_GET['id'];
   
@@ -77,5 +77,5 @@
     </div>
   </div>
 </div>
-<?php require_once "script-form.php"; ?>
-<?php	require_once "rodape-form.php"; ?>
+<?php require_once "../includes/script-form.php"; ?>
+<?php	require_once "../includes/rodape-form.php"; ?>

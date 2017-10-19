@@ -1,5 +1,5 @@
 <?php	
-  require_once "cabecalho-form.php";
+  require_once "../includes/cabecalho-form.php";
   require '../dao/PorteDao.php';
 ?>
 
@@ -121,7 +121,7 @@
               <input type="tel" id="tel" name="tel" data-inputmask="'mask' : '(99) 9999[9]-9999'" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
             </div> 
           </div>                                   
-           <div class="item form-group">
+          <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_porte">Porte da Empresa<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -135,7 +135,7 @@
                 <?php  endforeach ?>  
               </select>
             </div>
-           </div>    
+          </div>    
           <div class="ln_solid"></div>
           <div class=" form-group">
             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -149,6 +149,6 @@
     </div>
 </div>
 
-<?php require_once "script-form.php"; ?>
+<?php require_once "../includes/script-form.php"; ?>
 
-<?php	require_once "rodape-form.php"; ?>
+<?php	require_once "../includes/rodape-form.php"; ?>

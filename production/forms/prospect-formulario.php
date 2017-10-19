@@ -1,5 +1,5 @@
 <?php	
-  require_once "cabecalho-form.php";
+  require_once "../includes/cabecalho-form.php";
   require_once "../dao/ProdutoDao.php";
   require_once "../dao/ClienteDao.php";  
   $produtoDao = new ProdutoDao($conexao);
@@ -97,7 +97,7 @@
     </div>
   </div>
 
-<?php require_once "script-form.php"; ?>
+<?php require_once "../includes/script-form.php"; ?>
 
   <script type="text/javascript">
     function calcula(){
@@ -130,7 +130,7 @@
     }
   </script>
 
-<?php	require_once "rodape-form.php"; ?>
+<?php	require_once "../includes/rodape-form.php"; ?>
 
 </body>
 </html>

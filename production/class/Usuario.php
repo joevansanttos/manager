@@ -9,9 +9,10 @@
 		private $estado;
 		private $cidade;
 		private $telefone;
+		private $profissao;
 		private $id;
 
-		function __construct($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone) {
+		function __construct($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone, $profissao) {
 			$this->email = $email;
 			$this->senha = $senha;
 			$this->nome = $nome;
@@ -20,6 +21,7 @@
 			$this->estado = $estado;
 			$this->cidade = $cidade;
 			$this->telefone = $telefone;
+			$this->profissao = $profissao;
 		}
 
 		public function getEmail() {
@@ -92,6 +94,14 @@
 
 		public function setId($id) {
 			$this->id = $id;
+		}
+
+		public function getProfissao() {
+			return $this->profissao;
+		}
+
+		public function setProfissao($profissao) {
+			$this->profissao = $profissao;
 		}
 
 

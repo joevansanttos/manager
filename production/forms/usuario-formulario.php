@@ -1,4 +1,7 @@
-<?php	require_once "cabecalho-form.php"; ?>
+<?php	
+  require_once "../includes/cabecalho-form.php"; 
+  require '../dao/ProfissaoDao.php';
+?>
 	
 <div class="right_col" role="main">
     <div class="">
@@ -49,6 +52,21 @@
                     <input type="password" id="senha" name="senha" required="required" class="form-control col-md-8 col-xs-12">
                   </div>
                 </div>
+                <div class="item form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="profissao">Profissão<span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select name="profissao" class="form-control col-md-7 col-xs-12">
+                      <?php
+                        $profissaoDao = new ProfissaoDao($conexao);
+                        $profissoes = $profissaoDao->listaProfissoes();
+                        foreach ($profissoes as $profissao):
+                      ?>       
+                      <option value="<?=$profissao->getId()?>"><?=$profissao->getDescricao()?></option>
+                      <?php  endforeach ?>  
+                    </select>
+                  </div>
+                </div>   
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estado">Estado <span class="required">*</span>
                   </label>
@@ -77,10 +95,9 @@
                     <select class="form-control col-md-3"  id="sexo" name="sexo" required="required" >
                       <option value="feminino">Feminino</option>
                       <option value="masculino">Masculino</option>
-                      <option value="nada">Não Opinar</option>
                     </select>  
                   </div>
-                </div>                              
+                </div>                                            
                 <div class="ln_solid"></div>
                 <div class=" form-group">
                   <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -96,5 +113,5 @@
      </div>
     </div>
 </div>
-<?php require_once "script-form.php"; ?>
-<?php	require_once "rodape-form.php"; ?>
+<?php require_once "../includes/script-form.php"; ?>
+<?php	require_once "../includes/rodape-form.php"; ?>

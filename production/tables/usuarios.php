@@ -1,6 +1,6 @@
 <?php	
-	require_once "cabecalho.php"; 
-	require_once "../dao/UsuarioDao.php"; 
+	require "../includes/cabecalho.php"; 
+	require "../dao/UsuarioDao.php"; 
 ?>
 	
 	<div class="right_col" role="main">
@@ -12,7 +12,7 @@
 				<div class="title_right">
 					<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search for...">
+							<input type="text" class="form-control" placeholder="Pesquise por...">
 							<span class="input-group-btn">
 								<button class="btn btn-default" type="button">Go!</button>
 							</span>
@@ -31,8 +31,9 @@
 			    		      <th>Nome</th>
 			    		      <th>Email</th>
 			    		      <th>Estado</th>
+			    		      <th>Cidade</th>
+			    		      <th>Profissao</th>
 			    		      <th>Telefone</th>
-			    		      <th class="col-md-2">Ações</th>
 			    		    </tr>
 			    		  </thead>
 			    		  <tbody>
@@ -44,11 +45,12 @@
 			    		      <tr>
 			    		        <td><?=$usuario->getNome() .' '.$usuario->getSobrenome()  ?></td>
 			    		        <td><?=$usuario->getEmail() ?></td>
-			    		        <td><?=$usuario->getEstado() ?></td>
-			    		        <td><?=$usuario->getTelefone() ?></td>
+			    		        <td><?=$usuario->getEstado() ?></td>			    		        
 			    		        <td>
-			    		        	
-			    		        </td>				       
+			    		        	<?=$usuario->getCidade() ?>
+			    		        </td>
+			    		        <td><?=$usuario->getProfissao()->getDescricao() ?></td>	
+			    		        <td><?=$usuario->getTelefone() ?></td>			       
 			    		      </tr>
 			    		    <?php
 			    		      endforeach
@@ -67,4 +69,4 @@
 
 
 
-<?php	require_once "rodape.php"; ?>
+<?php	require "../includes/rodape.php"; ?>

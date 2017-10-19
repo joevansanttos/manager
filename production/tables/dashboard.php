@@ -1,6 +1,5 @@
 <?php	
-	error_reporting(E_ALL ^ E_NOTICE);
-	require_once "cabecalho.php"; 
+	require "../includes/cabecalho.php"; 
 ?>
 	
 <div class="right_col" role="main">
@@ -34,4 +33,4 @@
 
 
 
-<?php	require_once "rodape.php"; ?>
+<?php	require "../includes/rodape.php"; ?>

@@ -1,19 +1,39 @@
 <?php	
-  require_once "cabecalho-form.php";
+  require_once "../includes/cabecalho-form.php";
   require_once "../dao/ProdutoDao.php";
-  require_once "../dao/ClienteDao.php";  
+  require_once "../dao/ClienteDao.php";
+  require_once "../dao/ContratoDao.php";
+  require_once "../dao/DepartamentoDao.php";   
   $produtoDao = new ProdutoDao($conexao);
+  $contratoDao = new ContratoDao($conexao);
+  $departamentoDao = new DepartamentoDao($conexao);
   $produtos = $produtoDao->listaProdutos();
+  $departamentos = $departamentoDao->listaDepartamentos();
   $id = $_GET['id'];
   $clienteDao = new ClienteDao($conexao);
-  $cliente = $clienteDao->buscaMarket($id); 
+  $cliente = $clienteDao->buscaMarket($id);
+  $contratos = $contratoDao->listaContratos();
+  if(!empty($contratos)){
+     $i = 1;
+     $j = 1;
+     while($i == $j){
+       foreach ($contratos as $contrato) {
+        $j = $contrato->getNumero();
+        $i++;
+      } 
+    }
+    $i = (string)$i; 
+  }else{
+    $i = 1;
+  }
+  
 ?>	
 
   <div class="right_col" role="main">
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Novo Prospect</h3>
+          <h3>Novo Contrato</h3>
         </div>
         <div class="title_right">
           <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -36,34 +56,34 @@
                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nº Contrato <span class="required">*</span>
                  </label>
                  <div class="col-md-6 col-sm-6 col-xs-12">
-                   <input type="text" readonly="readonly" value="<?=$i?>" id="n_contrato" name="n_contrato" required="required" class="form-control" >
+                   <input type="text" readonly="readonly" value="<?=$i?>" id="n_contrato" name="numero" required="required" class="form-control" >
                  </div>
                 </div>
                 <div class="item form-group">
                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Nome Fantasia<span class="required">*</span>
                  </label>
                  <div class="col-md-6 col-sm-6 col-xs-12">
-                   <input readonly="readonly" type="text" value="<?=$market['nome']?>" id="nome" name="nome" required="required" class="form-control col-md-7 col-xs-12">
+                   <input readonly="readonly" type="text" value="<?=$cliente->getNome()?>" id="nome" name="nome" required="required" class="form-control col-md-7 col-xs-12">
                  </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="razao">Razão Social <span class="required">*</span>
                  </label>
                  <div class="col-md-6 col-sm-6 col-xs-12">
-                   <input  readonly="readonly" id="razao" name="razao" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" value="<?=$market['razao']?>" name="razao" required="required" type="text">
+                   <input  readonly="readonly" id="razao" name="razao" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" value="<?=$cliente->getRazao()?>" name="razao" required="required" type="text">
                  </div>
                 </div>
                 <div class="item form-group">
                   <label for="cnpj" class="control-label col-md-3 col-sm-3 col-xs-12">CNPJ <span class="required">*</span></label>
                  <div class="col-sm-6 col-xs-12 col-md-6">
-                  <input readonly="readonly" id="cnpj" value="<?=$market['cnpj']?>" type="text" name="cnpj" data-validate-linked="cnpj" class="form-control col-md-2 col-xs-12" required="required">
+                  <input readonly="readonly" id="cnpj" value="<?=$cliente->getCnpj()?>" type="text" name="cnpj" data-validate-linked="cnpj" class="form-control col-md-2 col-xs-12" required="required">
                  </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="endereco">Sede <span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input readonly="readonly" type="text" id="sede" name="sede" value="<?=$market['endereco']?>" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                    <input readonly="readonly" type="text" id="sede" name="sede" value="<?=$cliente->getEndereco()?>" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
                  </div>
                 </div>
                 <div class="item form-group ">
@@ -97,11 +117,11 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_produto">Produto<span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <select name="id_produto" required="required" class="form-control col-md-7 col-xs-12">
+                    <select name="produto" required="required" class="form-control col-md-7 col-xs-12">
                      <?php
                      foreach ($produtos as $produto){                            
                        ?>
-                       <option value="<?=$produto['id_produto']?>"><?=$produto['nome']?></option>
+                       <option value="<?=$produto->getId()?>"><?=$produto->getNome()?></option>
                        <?php
                      }
                      ?>  
@@ -117,8 +137,8 @@
                   <?php
                     foreach ($departamentos as  $departamento) {
                   ?>
-                          <option value='<?=$departamento['id_departamento']?>'>
-                            <?=$departamento['descricao']?>                                
+                          <option value='<?=$departamento->getId()?>'>
+                            <?=$departamento->getDescricao()?>                                
                           </option>
                   <?php
                     }
@@ -130,11 +150,11 @@
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="data_inicio">Inicio<span class="required">*</span></label>
                   <div class="col-sm-2 col-xs-12 col-md-2">
-                    <input type="date" id="data_inicio" name="data_inicio" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                    <input type="date" id="data_inicio" name="inicio" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
                   </div>
                   <label class="control-label col-md-2 col-sm-3 col-xs-12" for="data_fim">Fim<span class="required">*</span></label>
                   <div class="col-sm-2 col-xs-12 col-md-2">
-                    <input type="date" id="data_fim" name="data_fim" required="required" data-validate-length-range="6,20" class="form-control col-md-7 col-xs-12">
+                    <input type="date" id="data_fim" name="fim" required="required" data-validate-length-range="6,20" class="form-control col-md-7 col-xs-12">
                    </div>
                 </div>
                 <div class="ln_solid"></div>
@@ -142,9 +162,7 @@
                   <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                     <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
                     <button type="submit" class="btn btn-success">Cadastrar</button>
-                    <input type="hidden" name="id_prospect" id="id_prospect" value="<?=$prospect['id_prospect']?>" />
-                    <input type="hidden" name="id_consultor" id="id_consultor" value="<?=$usuario['id_usuario']?>" />
-                    
+                    <input type="hidden" name="market" id="market" value="<?=$id?>" /> 
                   </div>
                 </div>  
               </form>
@@ -155,11 +173,11 @@
     </div>
   </div>
 
-<?php require_once "script-form.php"; ?>
+<?php require_once "../includes/script-form.php"; ?>
 
   
 
-<?php	require_once "rodape-form.php"; ?>
+<?php	require_once "../includes/rodape-form.php"; ?>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php	
 	error_reporting(E_ALL ^ E_NOTICE);
-	require_once "cabecalho.php"; 
+	require_once "../includes/cabecalho.php"; 
 	require_once "../dao/ProspectDao.php";
 	require_once "../dao/ClienteDao.php";
 ?>
@@ -67,5 +67,5 @@
 	<!-- page content -->
 
 <?php	
-	require_once "rodape.php"; 
+	require_once "../includes/rodape.php"; 
 ?>
