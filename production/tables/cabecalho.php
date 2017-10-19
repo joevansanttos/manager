@@ -1,5 +1,6 @@
 <?php
   require_once "../conecta.php";
+  
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +72,12 @@
                       <li><a href="suspects.php">Suspects</a></li>
                       <li><a href="prospects.php">Prospects</a></li>
                     </ul>
-                  </li>                  
+                  </li>
+                  <li><a><i class="fa fa-file" aria-hidden="true"></i> Contratos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="contratos.php">Contratos</a></li>                      
+                    </ul>
+                  </li>                   
                 </ul>
               </div>
             </div>

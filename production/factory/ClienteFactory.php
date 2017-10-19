@@ -1,14 +1,15 @@
-<?php 
-	
-	require_once "Cliente.php";
-	require_once "Porte.php";
-	require_once "PorteDao.php";
+<?php	
+	require_once "../class/Cliente.php";
+	require_once "../class/Porte.php";
+	require_once "../dao/PorteDao.php";
+	require_once '../conecta.php';
 
 
 	class ClienteFactory {
+		
 
 		public function criaCliente($params) {
-			$conexao = mysqli_connect("127.0.0.1", "root", "", "manager");	
+			$conexao = mysqli_connect("127.0.0.1", "root", "", "manager");			
 			$razao = $params["razao"];
 			$nome = $params["nome"];
 			$cnpj = $params["cnpj"];

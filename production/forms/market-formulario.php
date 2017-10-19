@@ -1,6 +1,6 @@
 <?php	
-  require_once "cabecalho-form.php"; 
-  require_once "class/PorteDao.php";
+  require_once "cabecalho-form.php";
+  require '../dao/PorteDao.php';
 ?>
 
 	
@@ -59,9 +59,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="cidade" class="control-label col-md-1 col-sm-3 col-xs-12">Cidade <span class="required">*</span>
+            <label for="cidade" class="control-label col-md-3 col-sm-3 col-xs-12">Cidade <span class="required">*</span>
             </label>
-            <div class="col-sm-6 col-xs-12 col-md-2">
+            <div class="col-sm-6 col-xs-12 col-md-6">
               <select id="cidade" name="cidade" class="form-control col-md-6 col-xs-12" required></select>
             </div>
           </div>
@@ -82,7 +82,7 @@
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="segmento">Segmento<span class="required">*</span>
             </label>
-            <div class="col-sm-8 col-xs-12 col-md-2">
+            <div class="col-sm-8 col-xs-12 col-md-3">
               <select id="sexo" name="segmento" required class="form-control col-md-8 col-xs-12">
                 <option value="Abatedouro">Abatedouro</option>
                 <option value="Alimentação">Alimentação</option>
@@ -149,6 +149,6 @@
     </div>
 </div>
 
-
+<?php require_once "script-form.php"; ?>
 
 <?php	require_once "rodape-form.php"; ?>

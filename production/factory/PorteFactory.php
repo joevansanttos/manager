@@ -1,6 +1,6 @@
 <?php 
 	
-	require_once "Porte.php";
+	require_once "../class/Porte.php";
 
 class PorteFactory {
 

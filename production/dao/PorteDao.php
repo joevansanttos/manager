@@ -1,5 +1,5 @@
 <?php
-	require_once "PorteFactory.php";
+	require_once "../factory/PorteFactory.php";
 
 	class PorteDao{
 		private $conexao;

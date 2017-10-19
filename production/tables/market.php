@@ -1,7 +1,7 @@
 <?php	
 	error_reporting(E_ALL ^ E_NOTICE);
 	require_once "cabecalho.php"; 
-	require_once "../class/ClienteDao.php"; 
+	require_once "../dao/ClienteDao.php"; 
 ?>
 	
 <div class="right_col" role="main">

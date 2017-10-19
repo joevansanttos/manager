@@ -74,5 +74,5 @@
     </div>
   </div>
 </div>
-
+<?php require_once "script-form.php"; ?>
 <?php	require_once "rodape-form.php"; ?>

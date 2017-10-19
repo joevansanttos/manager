@@ -1,5 +1,5 @@
 <?php
-	require_once "SuspectFactory.php";
+	require_once "../factory/SuspectFactory.php";
 	
 	class SuspectDao{
 		private $conexao;

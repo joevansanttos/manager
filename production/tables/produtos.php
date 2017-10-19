@@ -1,7 +1,7 @@
 <?php	
 	error_reporting(E_ALL ^ E_NOTICE);
 	require_once "cabecalho.php"; 
-	require_once "../class/ProdutoDao.php"; 
+	require_once "../dao/ProdutoDao.php"; 
 ?>
 	
 <div class="right_col" role="main">

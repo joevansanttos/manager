@@ -14,9 +14,8 @@
 		private $bairro;
 		private $porte;
 		private $consultor;
-		private $leads;
 
-		function __construct($razao, $nome, $cnpj, $site, $endereco, $estado, $cidade, $segmento, $tel, $bairro, Porte $porte) {
+		function __construct($razao, $nome, $cnpj, $site, $endereco, $estado, $cidade, $segmento, $tel, $bairro, Porte $porte){
 			$this->razao = $razao;
 			$this->nome = $nome;
 			$this->cnpj = $cnpj;
@@ -28,7 +27,6 @@
 			$this->tel = $tel;
 			$this->bairro = $bairro;
 			$this->porte = $porte;
-			$this->leads = array();
 		}
 
 		public function addLead (Lead $lead){

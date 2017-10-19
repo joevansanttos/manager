@@ -1,5 +1,6 @@
 <?php 
   require_once "../conecta.php";
+  define('ROOT_PATH', dirname(__FILE__));
 ?>
 <!DOCTYPE html>
 <html lang="en">

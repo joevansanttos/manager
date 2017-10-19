@@ -1,6 +1,6 @@
 <?php 
 
-	require_once "Suspect.php";
+	require_once "../class/Suspect.php";
 
 	class SuspectFactory {
 

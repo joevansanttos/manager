@@ -1,5 +1,5 @@
 <?php
-	require_once "LeadFactory.php";
+	require_once "../factory/LeadFactory.php";
 	
 	class LeadDao{
 		private $conexao;

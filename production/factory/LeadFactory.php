@@ -1,6 +1,6 @@
 <?php 
 
-	require_once "Lead.php";
+	require_once "../class/Lead.php";
 
 	class LeadFactory {
 

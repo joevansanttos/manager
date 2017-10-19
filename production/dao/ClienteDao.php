@@ -1,5 +1,5 @@
 <?php
-	require_once "ClienteFactory.php";
+	require_once "../factory/ClienteFactory.php";
 	
 	class ClienteDao{
 		private $conexao;

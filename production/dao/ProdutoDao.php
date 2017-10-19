@@ -1,5 +1,5 @@
 <?php
-	require_once "ProdutoFactory.php";
+	require_once "../factory/ProdutoFactory.php";
 	
 	class ProdutoDao{
 		private $conexao;
@@ -22,6 +22,17 @@
 
 			return $produtos;
 		}
+
+		function buscaProduto($id) {
+			$query = "select * from produtos where id_produto = {$id}";
+			$resultado = mysqli_query($this->conexao, $query);
+			$porte_buscado = mysqli_fetch_assoc($resultado);
+			$id_porte = $porte_buscado['id_produto'];
+			$factory = new ProdutoFactory();
+			$porte = $factory->criaProduto($porte_buscado);
+			$porte->setId($id_porte);
+			return $porte;
+		}		
 
 	}
 	
