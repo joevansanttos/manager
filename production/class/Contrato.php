@@ -9,6 +9,8 @@
 		private $cnpj;	
 		private $produto;
 		private $market;
+		private $socios;
+		private $departamentos;
 
 		function __construct($inicio, $fim, $numero, $sede, $razao, $cnpj, Produto $produto, Cliente $market) {
 			$this->market = $market;
@@ -18,8 +20,27 @@
 			$this->sede = $sede;
 			$this->razao = $razao;
 			$this->cnpj = $cnpj;	
-			$this->produto = $produto;					
+			$this->produto = $produto;
+			$this->socios = array();	
+			$this->departamentos = array();					
 			
+		}
+
+
+		public function getDepartamentos() {
+			return $this->departamentos;
+		}	
+
+		public function addDepartamento(Departamento $departamento) {
+			$this->departamentos[] = $departamento;
+		}
+
+		public function getSocios() {
+			return $this->socios;
+		}	
+
+		public function addSocio(Socio $socio) {
+			$this->socios[] = $socio;
 		}
 
 

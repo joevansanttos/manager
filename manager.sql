@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 19-Out-2017 às 20:40
+-- Generation Time: 20-Out-2017 às 21:06
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -6104,7 +6104,7 @@ ALTER TABLE `departamentos_contratos`
 -- AUTO_INCREMENT for table `historico`
 --
 ALTER TABLE `historico`
-  MODIFY `id_historico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_historico` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `leads`
 --
