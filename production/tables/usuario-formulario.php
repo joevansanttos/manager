@@ -1,31 +1,11 @@
 <?php	
-  require_once "../includes/cabecalho-form.php"; 
+  require_once "../includes/cabecalho.php"; 
   require '../dao/ProfissaoDao.php';
 ?>
 	
-<div class="right_col" role="main">
-    <div class="">
-      <div class="page-title">
-        <div class="title_left">
-          <h3>Novo Usuário</h3>
-        </div>
-        <div class="title_right">
-          <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Pesquise...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="clearfix"></div>
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="x_panel">
-            <div class="x_content">
-              <form id="form" action="../adiciona/adiciona-usuario.php" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<h3>Novo Usuário</h3>
+<?php require "../includes/body.php"; ?>       
+<form id="form" action="../adiciona/adiciona-usuario.php" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome <span class="required">*</span>
                   </label>
@@ -105,13 +85,7 @@
                     <button id="send" type="submit" name="enviar" class="btn btn-success">Cadastrar</button>
                   </div>
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
-    </div>
-</div>
-<?php require_once "../includes/script-form.php"; ?>
-<?php	require_once "../includes/rodape-form.php"; ?>
+</form>
+          
+<?php require_once "../includes/script.php"; ?>
+<?php	require_once "../includes/rodape.php"; ?>

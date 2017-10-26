@@ -4,52 +4,48 @@
 	require_once "../dao/ProdutoDao.php"; 
 ?>
 	
-<div class="right_col" role="main">
-	<div class="">
-		<div class="page-title">
-			<div class="title_left">
-				<h3>Produtos</h3>
-			</div>
-			<div class="title_right">
-				<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Pesquise por...">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button">Go!</button>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-		<div class="row">
-			<div class="col-md-12">
-				<table id="tabela" class="table">
-				  <thead>
-				    <tr>
-				      <th>Nome</th>	
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <?php
-				    	$produtoDao = new ProdutoDao($conexao);
-				    	$produtos = $produtoDao->listaProdutos();
-				      foreach ($produtos as $produto):                               
-				    ?>
-				      <tr>
-				        <td><?=$produto->getNome() ?></td>				        
-				      </tr>
-				    <?php
-				      endforeach
-				    ?>
-				  </tbody>      
-				</table>
-				<div class="ln_solid"></div>
-				  <a class="btn btn-default" style="" href="../forms/market-formulario.php?"><i class="fa fa-plus"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
+
+<h3>Produtos</h3>
+
+<?php require "../includes/body.php";	?>			
+
+<table id="tabela" class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Produto</th>
+			<th>Micro</th>
+			<th>Pequena</th>
+			<th>Média/Grande</th>
+			<th>Micro/Partner</th>                              
+			<th>Pequena/Partner</th>                              
+			<th>Média/Grande/Partner</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php
+		$produtoDao = new ProdutoDao($conexao);
+		$produtos = $produtoDao->listaProdutos();
+		foreach ($produtos as $produto):                               
+			?>
+			<tr>
+				<td><?=$produto->getNome() ?></td>
+				<td><?='R$ '.number_format($produto->getPreco(), 2, '.', '')?></td>
+				<td><?='R$ '.number_format($produto->getPreco() * 1.5, 2, '.', '')?></td>
+				<td><?='R$ '.number_format($produto->getPreco() * 2, 2, '.', '')?></td>
+				<td><?='R$ '.number_format($produto->getPreco() * 1.5, 2,'.','')?></td>
+				<td><?='R$ '.number_format($produto->getPreco() * 2, 2, '.', '')?></td>
+				<td><?='R$ '.number_format($produto->getPreco() * 2.5, 2, '.', '')?></td>       
+			</tr>
+			<?php
+		endforeach
+		?>
+	</tbody>      
+</table>
+<div class="ln_solid"></div>
+<a class="btn btn-default" style="" href="../tables/market-formulario.php?"><i class="fa fa-plus"></i></a>
 </div>
 
+			
+
+<?php	require_once "../includes/script.php"; ?>
 <?php	require_once "../includes/rodape.php"; ?>

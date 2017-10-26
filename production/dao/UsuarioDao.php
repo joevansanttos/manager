@@ -31,6 +31,22 @@
 				echo mysqli_error($this->conexao);
 			}
 		}
+
+		function buscaCidade($cidade){
+			$query = "select  * from cidade where CT_IBGE = '{$cidade}'";
+			$resultado = mysqli_query($this->conexao, $query);
+			$novaCidade = mysqli_fetch_assoc($resultado);
+			return $novaCidade['CT_NOME'];
+			
+		}
+
+		function buscaUsuarioLogar($email, $senha){
+		    $query = "select  * from usuarios where email = '{$email}' and senha= '{$senha}'";
+		    $resultado = mysqli_query($conexao, $query);
+		    $usuario = mysqli_fetch_assoc($resultado);
+		    return $usuario;
+
+		}
 	}
 	
 

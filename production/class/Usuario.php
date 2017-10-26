@@ -104,6 +104,7 @@
 			$this->profissao = $profissao;
 		}
 
+		
 
 	}
 

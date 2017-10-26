@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Projek | Gestão da Qualidade Total</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../../ico/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../ico/favicon.ico"/>
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -22,6 +22,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Custom styling plus plugins -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
+    <link href="../../vendors/lou-multi-select/css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -36,12 +37,16 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
+              <a href="dashboard.php" class="site_title"><i class="fa fa-rocket"></i><span> Projek Manager</span>
+              </a>
             </div>
             <div class="clearfix"></div>
             <div class="profile clearfix">
               <div class="profile_pic">
+                <img src="../images/user.png" alt="..." class="img-circle profile_img" >
               </div>
               <div class="profile_info">
+                <span>Bem Vindo,</span>
               </div>
             </div>
             <br />
@@ -146,4 +151,7 @@
         </div>
         <!-- /top navigation --> 
         <!-- page content -->
-        
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">

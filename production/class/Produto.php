@@ -8,11 +8,12 @@
 		private $entregas;
 		private $preco;
 
-		function __construct($nome, $descricao, $beneficios, $entregas) {
+		function __construct($nome, $descricao, $beneficios, $entregas, $preco) {
 			$this->nome = $nome;
 			$this->descricao = $descricao;
 			$this->beneficios = $beneficios;			
 			$this->entregas = $entregas;
+			$this->preco = $preco;
 		}
 
 		public function getNome() {

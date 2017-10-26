@@ -42,6 +42,14 @@
 			$cliente->setId($id_market);
 			return $cliente;
 		}
+
+		function buscaCidade($cidade){
+			$query = "select  * from cidade where CT_IBGE = '{$cidade}'";
+			$resultado = mysqli_query($this->conexao, $query);
+			$novaCidade = mysqli_fetch_assoc($resultado);
+			return $novaCidade['CT_NOME'];
+			
+		}
 	}
 	
 

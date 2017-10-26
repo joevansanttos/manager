@@ -1,6 +1,13 @@
-<?php header('Content-Type: text/html; charset=utf-8'); ?>
-<?php error_reporting(E_ALL ^ E_NOTICE); 
-header("Location: tables/dashboard.php");
+<?php 
+  header('Content-Type: text/html; charset=utf-8');
+  error_reporting(E_ALL ^ E_NOTICE);
+  ob_start();
+  session_start();
+  require_once "includes/logica.php";
+  if(usuarioEstaLogado()) {
+    header("Location: tables/dashboard.php");
+    $_SESSION["success"] = "Bem Vindo ao Projek Manager";
+  }
 ?>
 
 
@@ -26,7 +33,7 @@ header("Location: tables/dashboard.php");
           <div class="col-xs-12">
             <div class="form-wrap">
               <h1>Entre com seu email</h1>
-              <form role="form" action="login.php" method="post" id="login-form" autocomplete="off">
+              <form role="form" action="aut/login.php" method="post" id="login-form" autocomplete="off">
                 <div class="form-group">
                   <label for="email" class="sr-only">Email</label>
                   <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">

@@ -2,19 +2,21 @@
 	require_once "../class/DepartamentoContrato.php";
 	require_once "../class/Departamento.php";
 	require_once "../dao/DepartamentoDao.php";
+	require_once "../class/Contrato.php";
+	require_once "../dao/ContratoDao.php";
 
 
 	class DepartamentoContratoFactory {
 		
 
-		public function criaDepartamentoContrato($params) {
-			$conexao = mysqli_connect("localhost", "root", "", "manager");			
-			$id_departamento = $params["departamento"];
-			$id_contrato = $params["contrato"];
+		public function criaDepartamentoContrato($contrato, $departamento_id) {	
+			$contrato_id = $contrato->getNumero();
+			$conexao = mysqli_connect("localhost", "root", "", "manager");	
 			$contratoDao = new ContratoDao($conexao);
-			$contrato = $contratoDao->buscaContrato($id_contrato);
+			$contrato = $contratoDao->buscaContrato($contrato_id);
+
 			$departamentoDao = new DepartamentoDao($conexao);
-			$departamento = $departamentoDao->buscaDepartamento($id_departamento);
+			$departamento = $departamentoDao->buscaDepartamento($departamento_id);
 			return new DepartamentoContrato($contrato, $departamento);
 		}	
 

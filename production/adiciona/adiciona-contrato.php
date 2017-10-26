@@ -9,7 +9,7 @@
 	require_once "../dao/SocioDao.php";
 	require_once "../factory/SocioFactory.php";
 
-	$market = $_GET['market'];
+	$market = $_GET['market_id'];
 	$factory = new ContratoFactory();
 	$contrato = $factory->criaContrato($_GET, $market);
 	$contratoDao = new ContratoDao($conexao);	
@@ -23,6 +23,8 @@
 	$profissoes = $_GET['profissao'];
 	$civis = $_GET['civil'];
 	$i = 0;
+	
+	/*
 	$size = count($socios);
 	while ($i < $size) {
 	  $socio = $socios[$i];
@@ -36,6 +38,19 @@
 	  $socioDao->insereSocio($socio);	   
 	  $i++;
 	}	
-	
+	*/
+
+	$factory = new DepartamentoContratoFactory();
+	$departamentos = $_GET['my-select']; 
+	$i = 0;
+	$size = count($departamentos);
+	while ($i < $size) {
+	   $departamento_id = $departamentos[$i];
+	   $departamentoContrato = $factory->criaDepartamentoContrato($contrato, $departamento_id);
+	   $departamentoDao = new DepartamentoContratoDao($conexao);
+	   $departamentoDao->insere($departamentoContrato);  
+	   $i++;
+	}
+
 
 ?>

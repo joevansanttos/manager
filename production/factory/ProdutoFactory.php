@@ -9,7 +9,8 @@
 			$descricao = $params["descricao"];
 			$beneficios = $params["beneficios"];
 			$entregas = $params["entregas"];
-			return new Produto($nome, $descricao, $beneficios, $entregas	);
+			$preco = $params["preco"];
+			return new Produto($nome, $descricao, $beneficios, $entregas, $preco	);
 		}	
 
 	}

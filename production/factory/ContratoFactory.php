@@ -13,11 +13,11 @@
 			$market = $clienteDao->buscaMarket($market_id);
 			$inicio = $params["inicio"];
 			$fim = $params["fim"];			
-			$numero = $params["numero"];
+			$numero = $params["id"];
 			$sede= $params["sede"];
 			$razao = $params["razao"];
 			$cnpj = $params["cnpj"];
-			$produto_id= $params["produto"];
+			$produto_id= $params["produto_id"];
 			$produtoDao = new ProdutoDao($conexao);
 			$produto = $produtoDao->buscaProduto($produto_id);			
 			return new Contrato($inicio, $fim, $numero, $sede, $razao, $cnpj, $produto, $market);

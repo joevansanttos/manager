@@ -8,29 +8,18 @@
 			$this->conexao = $conexao;
 		}
 
-		function listaDepartamentosContrato() {
-			$departamentosContrato = array();			
-			$resultado = mysqli_query($this->conexao, "select u.* from departamentos_contrato as u");
-			while($departamento_c_array = mysqli_fetch_assoc($resultado)) {
-				$factory = new DepartamentoContratoFactory();
-				$departamento_c_id = $departamento_c_array['id_porte'];				
-				$departamentoContrato = $factory->criaDepartamentoContrato($departamento_c_array);
-				$departamentoContrato->setId($departamento_c_id);
-				array_push($departamentosContrato, $departamentoContrato);
-			}
-			return $departamentosContrato;
-		}
 
-		function buscaPorte($id) {
-			$query = "select * from porte where id_porte = {$id}";
-			$resultado = mysqli_query($this->conexao, $query);
-			$porte_buscado = mysqli_fetch_assoc($resultado);
-			$id_porte = $porte_buscado['id_porte'];
-			$factory = new PorteFactory();
-			$porte = $factory->criaPorte($porte_buscado);
-			$porte->setId($id_porte);
-			return $porte;
-		}		
+	function insere(DepartamentoContrato $departamentoContrato) {
+		$query = "insert into departamentos_contratos (departamento_id, contrato_id) values ('{$departamentoContrato->getDepartamento()->getId()}', '{$departamentoContrato->getContrato()->getNumero()}')";
+		if(mysqli_query($this->conexao, $query)){
+
+		}else{
+			echo mysqli_error($this->conexao);
+		}
 	}
+
+}
+
+	
 
 ?>
