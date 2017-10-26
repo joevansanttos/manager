@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 20-Out-2017 às 21:06
+-- Generation Time: 26-Out-2017 às 20:42
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -5646,25 +5646,24 @@ INSERT INTO `cidade` (`CT_ID`, `CT_NOME`, `CT_UF`, `CT_IBGE`) VALUES
 --
 
 CREATE TABLE `contratos` (
-  `market` int(11) DEFAULT NULL,
-  `produto` int(11) DEFAULT NULL,
-  `status` int(10) DEFAULT NULL,
+  `market_id` int(11) DEFAULT NULL,
+  `produto_id` int(11) DEFAULT NULL,
+  `status_id` int(10) DEFAULT NULL,
   `consultor` int(11) DEFAULT NULL,
   `inicio` varchar(20) DEFAULT NULL,
   `fim` varchar(20) DEFAULT NULL,
-  `numero` varchar(100) NOT NULL,
+  `id` varchar(100) NOT NULL,
   `sede` varchar(255) DEFAULT NULL,
   `razao` varchar(255) DEFAULT NULL,
-  `cnpj` varchar(50) DEFAULT NULL,
-  `prospect` int(11) DEFAULT NULL
+  `cnpj` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `contratos`
 --
 
-INSERT INTO `contratos` (`market`, `produto`, `status`, `consultor`, `inicio`, `fim`, `numero`, `sede`, `razao`, `cnpj`, `prospect`) VALUES
-(19, 5, NULL, NULL, '2323-01-01', '2013-01-01', '1', 'R. Osvaldo Sento Sé 126 Imbuí', 'Petrobras', '23.333.333/3333-33', NULL);
+INSERT INTO `contratos` (`market_id`, `produto_id`, `status_id`, `consultor`, `inicio`, `fim`, `id`, `sede`, `razao`, `cnpj`) VALUES
+(19, 5, NULL, NULL, '2011-01-01', '2012-01-01', '1', 'R. Osvaldo Sento Sé 126 Imbuí', 'Petrobras', '23.333.333/3333-33');
 
 -- --------------------------------------------------------
 
@@ -5673,7 +5672,7 @@ INSERT INTO `contratos` (`market`, `produto`, `status`, `consultor`, `inicio`, `
 --
 
 CREATE TABLE `departamentos` (
-  `id_departamento` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -5681,7 +5680,7 @@ CREATE TABLE `departamentos` (
 -- Extraindo dados da tabela `departamentos`
 --
 
-INSERT INTO `departamentos` (`id_departamento`, `descricao`) VALUES
+INSERT INTO `departamentos` (`id`, `descricao`) VALUES
 (1, 'SUPORTE'),
 (2, 'IMPLANTAÇÃO'),
 (3, 'COMERCIAL'),
@@ -5698,8 +5697,8 @@ INSERT INTO `departamentos` (`id_departamento`, `descricao`) VALUES
 --
 
 CREATE TABLE `departamentos_contratos` (
-  `departamento` int(11) DEFAULT NULL,
-  `numero` varchar(50) DEFAULT NULL,
+  `departamento_id` int(11) DEFAULT NULL,
+  `contrato_id` varchar(50) DEFAULT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -5707,11 +5706,8 @@ CREATE TABLE `departamentos_contratos` (
 -- Extraindo dados da tabela `departamentos_contratos`
 --
 
-INSERT INTO `departamentos_contratos` (`departamento`, `numero`, `id`) VALUES
-(1, '44444444', 1),
-(2, '44444444', 2),
-(3, '44444444', 3),
-(4, '44444444', 4);
+INSERT INTO `departamentos_contratos` (`departamento_id`, `contrato_id`, `id`) VALUES
+(1, '1', 1);
 
 -- --------------------------------------------------------
 
@@ -5934,13 +5930,6 @@ CREATE TABLE `socios` (
   `contrato` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `socios`
---
-
-INSERT INTO `socios` (`id_socio`, `nome`, `cpf`, `residencia`, `nacionalidade`, `profissao`, `civil`, `contrato`) VALUES
-(8, 'Lucas Carvalho', '222-222-222-22', 'Rua das Hortênsias, 5', 'Brasileiro', 'Administrador', 'Solteiro', '1');
-
 -- --------------------------------------------------------
 
 --
@@ -5991,7 +5980,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id_usuario`, `sobrenome`, `profissao`) VALUES
-('dsdsds', 'dsdsds', 'joevansantos@hotmail.com', 'feminino', 'PE', '2601607', '(71) 98444-4444', 4, 'dsdsds', 1);
+('teste', 'Joevan', 'joevansantos@hotmail.com', 'feminino', 'PE', '2601607', '(71) 98444-4444', 4, 'dsdsds', 1);
 
 --
 -- Indexes for dumped tables
@@ -6007,13 +5996,13 @@ ALTER TABLE `cidade`
 -- Indexes for table `contratos`
 --
 ALTER TABLE `contratos`
-  ADD PRIMARY KEY (`numero`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `departamentos`
 --
 ALTER TABLE `departamentos`
-  ADD PRIMARY KEY (`id_departamento`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `departamentos_contratos`
@@ -6094,12 +6083,12 @@ ALTER TABLE `cidade`
 -- AUTO_INCREMENT for table `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `departamentos_contratos`
 --
 ALTER TABLE `departamentos_contratos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `historico`
 --
@@ -6139,7 +6128,7 @@ ALTER TABLE `prospects`
 -- AUTO_INCREMENT for table `socios`
 --
 ALTER TABLE `socios`
-  MODIFY `id_socio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_socio` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `suspects`
 --
