@@ -42,7 +42,7 @@
 
 		function buscaUsuarioLogar($email, $senha){
 		    $query = "select  * from usuarios where email = '{$email}' and senha= '{$senha}'";
-		    $resultado = mysqli_query($conexao, $query);
+		    $resultado = mysqli_query($this->conexao, $query);
 		    $usuario = mysqli_fetch_assoc($resultado);
 		    return $usuario;
 
