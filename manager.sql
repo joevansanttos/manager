@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 26-Out-2017 às 20:42
+-- Generation Time: 27-Out-2017 às 21:45
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -5959,6 +5959,59 @@ INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `id_cons
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tarefas`
+--
+
+CREATE TABLE `tarefas` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tarefas`
+--
+
+INSERT INTO `tarefas` (`id`, `descricao`) VALUES
+(1, 'Levantar Dados'),
+(2, 'Escopo de Fluxograma'),
+(3, 'Produção de Fluxograma Horizontal'),
+(4, 'Produção de Escopo de PI'),
+(5, 'Produção de PI'),
+(6, 'Produção do Relatório de Melhoria'),
+(7, 'Validação de Relatório'),
+(8, 'Treinamento');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tarefas_contrato`
+--
+
+CREATE TABLE `tarefas_contrato` (
+  `id` int(11) NOT NULL,
+  `departamento_contrato_id` int(11) DEFAULT NULL,
+  `data_fim` varchar(20) DEFAULT NULL,
+  `tarefa_id` int(11) DEFAULT NULL,
+  `horas` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tarefas_contrato`
+--
+
+INSERT INTO `tarefas_contrato` (`id`, `departamento_contrato_id`, `data_fim`, `tarefa_id`, `horas`) VALUES
+(1, 1, NULL, 1, 45),
+(2, 1, NULL, 2, 100),
+(3, 1, NULL, 3, NULL),
+(4, 1, NULL, 4, NULL),
+(5, 1, NULL, 5, NULL),
+(6, 1, NULL, 6, NULL),
+(7, 1, NULL, 7, NULL),
+(8, 1, NULL, 8, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuarios`
 --
 
@@ -6065,6 +6118,18 @@ ALTER TABLE `suspects`
   ADD PRIMARY KEY (`id_suspect`);
 
 --
+-- Indexes for table `tarefas`
+--
+ALTER TABLE `tarefas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tarefas_contrato`
+--
+ALTER TABLE `tarefas_contrato`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -6134,6 +6199,16 @@ ALTER TABLE `socios`
 --
 ALTER TABLE `suspects`
   MODIFY `id_suspect` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tarefas`
+--
+ALTER TABLE `tarefas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `tarefas_contrato`
+--
+ALTER TABLE `tarefas_contrato`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
