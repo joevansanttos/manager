@@ -1,6 +1,6 @@
 <?php
-  include "conecta.php";
-  
+  require_once "../class/Conexao.php";
+  $conexao = new Conexao();
 ?>
 
 <!DOCTYPE html>

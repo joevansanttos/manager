@@ -5,7 +5,7 @@
 		private $conexao;
 
 		function __construct($conexao) {
-			$this->conexao = $conexao;
+			$this->conexao = $conexao->conecta();
 		}
 
 		function listaUsuarios() {
