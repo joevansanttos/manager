@@ -4,14 +4,14 @@
 	require_once "../dao/DepartamentoDao.php";
 	require_once "../class/Contrato.php";
 	require_once "../dao/ContratoDao.php";
-
+	require_once "../class/Conexao.php";
 
 	class DepartamentoContratoFactory {
 		
 
 		public function criaDepartamentoContrato($contrato, $departamento_id) {	
+			$conexao = new Conexao();
 			$contrato_id = $contrato->getNumero();
-			$conexao = mysqli_connect("localhost", "root", "", "manager");	
 			$contratoDao = new ContratoDao($conexao);
 			$contrato = $contratoDao->buscaContrato($contrato_id);
 

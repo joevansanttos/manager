@@ -1,10 +1,10 @@
 <?php
 	require_once "../class/Produto.php";
+	require_once "../class/Conexao.php";
 
 	class ProdutoFactory {
 
 		public function criaProduto($params) {
-			$conexao = mysqli_connect("127.0.0.1", "root", "", "manager");			
 			$nome = $params["nome"];
 			$descricao = $params["descricao"];
 			$beneficios = $params["beneficios"];

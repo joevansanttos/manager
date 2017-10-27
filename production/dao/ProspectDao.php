@@ -10,7 +10,7 @@
 
 		function listaProspects() {
 			$prospects = array();
-			$resultado = mysqli_query($this->conexao, "select u.* from prospects as u");
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from prospects as u");
 			while($prospect_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new ProspectFactory();
 				$prospect_id = $prospect_array['id_prospect'];				
@@ -25,10 +25,10 @@
 		
 		function insereProspect(Prospect $prospect) {
 			$query = "insert into prospects (id_market, prob, valor_op, valor_est, recebimento, fechamento, id_produto) values ('{$prospect->getIdCliente()}','{$prospect->getProb()}' ,'{$prospect->getValorOp()}' ,'{$prospect->getValorEs()}' , '{$prospect->getRecebimento()}', '{$prospect->getFechamento()}', '{$prospect->getProduto()->getId()}')";
-			if(mysqli_query($this->conexao, $query)){
+			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
-				echo mysqli_error($this->conexao);
+				echo mysqli_error($this->conexao->conecta());
 			}
 		}
 

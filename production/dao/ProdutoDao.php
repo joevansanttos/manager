@@ -11,7 +11,7 @@
 		function listaProdutos() {
 
 			$produtos = array();
-			$resultado = mysqli_query($this->conexao, "select u.* from produtos as u");
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from produtos as u");
 			while($produto_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new ProdutoFactory();
 				$produto_id = $produto_array['id_produto'];				
@@ -25,7 +25,7 @@
 
 		function buscaProduto($id) {
 			$query = "select * from produtos where id_produto = {$id}";
-			$resultado = mysqli_query($this->conexao, $query);
+			$resultado = mysqli_query($this->conexao->conecta(), $query);
 			$porte_buscado = mysqli_fetch_assoc($resultado);
 			$id_porte = $porte_buscado['id_produto'];
 			$factory = new ProdutoFactory();

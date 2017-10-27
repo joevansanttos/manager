@@ -1,33 +1,32 @@
 <?php	
 	error_reporting(E_ALL ^ E_NOTICE);
 	require_once "../includes/cabecalho.php"; 
-	require_once "../dao/SuspectDao.php";
-	require_once "../dao/ClienteDao.php";
+	require_once "../dao/AtividadeDao.php";
 ?>
 
-<h3>Suspects</h3>
+<h3>Tarefas</h3>
 
 <?php require "../includes/body.php";	?>
 
 <table id="tabela" class="table datatable table-bordered table-striped">
   <thead>
     <tr>
-    	<th>Empresa</th>
-      <th>Contato</th>
-      <th>Data</th>
-      <th>Hora</th>
-      <th class="col-md-2">Ações</th>				     
+    	<th>Nome</th>
+      <th>Inicio</th>
+      <th>Prazo</th>
+      <th>Status</th>
+      <th>Setor</th>
+      <th>Filial</th>
+      <th>Importância</th>			     
     </tr>
   </thead>
   <tbody>
 
     <?php
-    	$suspectDao = new SuspectDao($conexao);
-    	$suspects = $suspectDao->listaSuspects();
-      foreach ($suspects as $suspect): 
-      	$clienteDao = new ClienteDao($conexao);
-      	$idCliente = $suspect->getIdCliente();
-      	$cliente = $clienteDao->buscaMarket($idCliente);				                                
+    	$atividadeDao = new AtividadeDao($conexao);
+    	$atividades = $atividadeDao->listaAtividades();
+      foreach ($atividades as $atividade): 
+      	$atividadeDao = new AtividadeDao($conexao);                              
     ?>
       <tr>
       	<td><?=$cliente->getNome()?></td>

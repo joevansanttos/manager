@@ -65,9 +65,14 @@
                       <li><a href="partners.php">Partners</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-calendar"></i> Tarefas<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="tarefas.php">Tarefas</a></li>                      
+                    </ul>
+                  </li>
                   <li><a><i class="fa fa-rocket"></i> Produtos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="produtos.php">Produtos</a></li>
+                      <li><a href="produtos.php">Produtos Cadastrados</a></li>
                     </ul>
                   </li>                  
                   <li><a><i class="fa fa-briefcase"></i> Negócios <span class="fa fa-chevron-down"></span></a>
@@ -90,7 +95,7 @@
                   </li>
                   <li><a><i class="fa fa-table"></i> Consultoria <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../consultoria/projetos.php">Projetos</a></li>
+                      <li><a href="projetos.php">Projetos</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Financeiro <span class="fa fa-chevron-down"></span></a>

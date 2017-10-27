@@ -6,7 +6,7 @@
 
 <h3>Market</h3>
 <?php require "../includes/body.php";	?>
-<table id="tabela" class="table table-striped">
+<table id="tabela" class="table table-bordered table-striped ">
   <thead>
     <tr>
       <th>Nome</th>
@@ -15,7 +15,7 @@
       <th>Estado</th>
       <th>Bairro</th>
       <th>Segmento</th>	
-      <th class="col-md-2">Ações</th>			     
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -32,9 +32,12 @@
         <td><?=$cliente->getEstado() ?></td>
         <td><?=$cliente->getBairro() ?></td>
         <td><?=$cliente->getSegmento() ?></td>
-        <td>
-          <a href="../tables/lead-formulario.php?id=<?=$cliente->getId()?>"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+        <td align="center">
+          <a href="../tables/lead-formulario.php?id=<?=$cliente->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
+          <a href="../forms/form-lead.php"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+          <a href="../forms/form-lead.php"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
           
+          <a href="../tables/lead-formulario.php?id=<?=$cliente->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
         </td>
       </tr>
     <?php

@@ -2,13 +2,13 @@
 	require_once "../class/Cliente.php";
 	require_once "../class/Porte.php";
 	require_once "../dao/PorteDao.php";
-
+	require_once "../class/Conexao.php";
 
 	class ClienteFactory {
 		
 
 		public function criaCliente($params) {
-			$conexao = mysqli_connect("localhost", "root", "", "manager");			
+			$conexao = new Conexao();
 			$razao = $params["razao"];
 			$nome = $params["nome"];
 			$cnpj = $params["cnpj"];

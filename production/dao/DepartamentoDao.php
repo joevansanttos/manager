@@ -10,7 +10,7 @@
 
 		function listaDepartamentos() {
 			$departamentos = array();			
-			$resultado = mysqli_query($this->conexao, "select u.* from departamentos as u");
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from departamentos as u");
 			while($departamento_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new DepartamentoFactory();
 				$departamento_id = $departamento_array['id'];				
@@ -23,7 +23,7 @@
 
 		function buscaDepartamento($id) {
 			$query = "select * from departamentos where id = {$id}";
-			$resultado = mysqli_query($this->conexao, $query);
+			$resultado = mysqli_query($this->conexao->conecta(),$query);
 			$departamento_buscado = mysqli_fetch_assoc($resultado);
 			$departamento_id = $departamento_buscado['id'];
 			$factory = new DepartamentoFactory();

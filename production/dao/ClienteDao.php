@@ -11,7 +11,7 @@
 		function listaClientes() {
 
 			$clientes = array();
-			$resultado = mysqli_query($this->conexao, "select u.* from market as u");
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from market as u");
 			while($cliente_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new ClienteFactory();
 				$cliente_id = $cliente_array['id_market'];				
@@ -25,16 +25,16 @@
 
 		function insereMarket(Cliente $cliente) {
 			$query = "insert into market ( razao, nome, cnpj, site, endereco, estado, cidade, segmento, tel, bairro, id_porte) values ('{$cliente->getNome()}', '{$cliente->getRazao()}', '{$cliente->getCnpj()}', '{$cliente->getSite()}', '{$cliente->getEndereco()}', '{$cliente->getEstado()}', '{$cliente->getCidade()}', '{$cliente->getSegmento()}' , '{$cliente->getTel()}', '{$cliente->getBairro()}' , '{$cliente->getPorte()->getId()}')";
-			if(mysqli_query($this->conexao, $query)){
+			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
-				echo mysqli_error($this->conexao);
+				echo mysqli_error($this->conexao->conecta());
 			}
 		}
 
 		function buscaMarket($id) {
 			$query = "select * from market where id_market = {$id}";
-			$resultado = mysqli_query($this->conexao, $query);
+			$resultado = mysqli_query($this->conexao->conecta(), $query);
 			$market_buscado = mysqli_fetch_assoc($resultado);
 			$id_market = $market_buscado['id_market'];
 			$factory = new ClienteFactory();
@@ -45,7 +45,7 @@
 
 		function buscaCidade($cidade){
 			$query = "select  * from cidade where CT_IBGE = '{$cidade}'";
-			$resultado = mysqli_query($this->conexao, $query);
+			$resultado = mysqli_query($this->conexao->conecta(), $query);
 			$novaCidade = mysqli_fetch_assoc($resultado);
 			return $novaCidade['CT_NOME'];
 			

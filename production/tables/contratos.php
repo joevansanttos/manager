@@ -11,7 +11,7 @@
 	require_once "../includes/body.php"; 
 ?>
 
-<table id="tabela" class="table datatable table-striped">
+<table id="tabela" class="table datatable table-bordered table-striped">
   <thead>
     <tr>
     	<th>Empresa</th>
@@ -31,7 +31,11 @@
       <tr>
       	<td><?=$cliente->getNome()?></td>
         <td><?=$contrato->getNumero()?></td>			    		        
-        <td><a href="../forms/contrato-formulario.php?id=<?=$cliente->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Contato" class="btn btn-default btn-xs"><i class="fa fa-plus"></i></button></a></td>
+        <td align="center">
+          <a href="../adiciona/adiciona-tarefa.php?id=<?=$contrato->getNumero()?>"><button data-toggle="tooltip" data-placement="top" title="Finaliza Contrato"  class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>                       
+          <a href="imprime-contrato.php?n_contrato=?>"><button data-toggle="tooltip" data-placement="top" title="Imprime Contrato"  class="btn btn-success btn-xs"><i class="fa fa-print"></i></button></a>                                                          
+          <a data-toggle="tooltip" data-placement="top" title="Remover Contrato"  href="../remove/remove-contrato.php?n_contrato="><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+        </td>
       </tr>
     <?php				
       endforeach

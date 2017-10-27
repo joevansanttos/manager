@@ -16,7 +16,7 @@
 			$cidade = $params['cidade'];
 			$telefone = $params['telefone'];
 			$id_profissao = $params['profissao'];
-			$profissaoDao = new ProfissaoDao($conexao->conecta());
+			$profissaoDao = new ProfissaoDao($conexao);
 			$profissao = $profissaoDao->buscaProfissao($id_profissao);			
 			return new Usuario($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone, $profissao);
 		}	

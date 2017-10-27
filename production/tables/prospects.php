@@ -9,7 +9,7 @@
 
 <?php require "../includes/body.php";	?>
 
-<table id="tabela" class="table datatable table-striped">
+<table id="tabela" class="table datatable table-bordered table-striped">
   <thead>
     <tr>
     	<th>Empresa</th>
@@ -34,7 +34,14 @@
         <td><?=$prospect->getProb()?></td>
         <td><?=$prospect->getValorOp()?></td>
         <td><?=$prospect->getValorEs()?></td>			    		        
-        <td><a href="../tables/contrato-formulario.php?id=<?=$cliente->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Contato" class="btn btn-default btn-xs"><i class="fa fa-plus"></i></button></a></td>
+        <td align="center">
+          <a href="../tables/contrato-formulario.php?id=<?=$cliente->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Contato" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button>
+          </a>
+          <a href="../forms/form-lead.php"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+          <a href="../forms/form-lead.php"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
+          
+          <a href="../tables/lead-formulario.php?id=<?=$cliente->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+        </td>
       </tr>
     <?php				
       endforeach

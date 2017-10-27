@@ -2,12 +2,13 @@
 	require_once "../class/Prospect.php";
 	require_once "../class/Produto.php";
 	require_once "../dao/ProdutoDao.php";
+	require_once "../class/Conexao.php";
 
 	class ProspectFactory {
 		
 
-		public function criaProspect($params) {	
-			$conexao = mysqli_connect("127.0.0.1", "root", "", "manager");						
+		public function criaProspect($params) {
+			$conexao = new Conexao();	
 			$id_market = $params["id_market"];
 			$prob = $params["prob"];
 			$valorOp = $params["valor_op"];

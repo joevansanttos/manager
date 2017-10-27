@@ -4,11 +4,12 @@
 	require_once "../dao/ProdutoDao.php";
 	require_once "../class/Cliente.php";
 	require_once "../dao/ClienteDao.php";
+	require_once "../class/Conexao.php";
 
 	class ContratoFactory {
 
 		public function criaContrato($params, $market_id) {
-			$conexao = mysqli_connect("localhost", "root", "", "manager");						
+			$conexao = new Conexao();
 			$clienteDao = new ClienteDao($conexao);
 			$market = $clienteDao->buscaMarket($market_id);
 			$inicio = $params["inicio"];

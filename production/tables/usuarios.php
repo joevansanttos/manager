@@ -6,7 +6,7 @@
 <h3>Usuários</h3>
 <?php require "../includes/body.php";	?>
 			
-<table id="tabela" class="table table-striped">
+<table id="tabela" class="table table-bordered">
 	<thead>
 		<tr>
 			<th>Nome</th>
@@ -38,6 +38,7 @@
 	</tbody>      
 </table>
 <div class="ln_solid"></div>
+
 <a class="btn btn-default" style="" href="../tables/usuario-formulario.php?"><i class="fa fa-plus"></i></a>
 </div>
 			    	
