@@ -2,14 +2,16 @@
   require_once "../includes/cabecalho.php";
   require_once "../dao/ProdutoDao.php";
   require_once '../dao/MarketDao.php';
+  require_once '../dao/ProspectDao.php';
   $produtoDao = new ProdutoDao($conexao);
   $produtos = $produtoDao->listaProdutos();
   $id = $_GET['id'];
-  $marketDao = new MarketDao($conexao);
-  $market = $marketDao->buscaMarket($id);
+  $prospectDao = new ProspectDao($conexao);
+  $prospect = $prospectDao->buscaProspect($id);
+  $market = $prospect->getMarket();
 ?>	
 
-<h3>Novo Prospect</h3>
+<h3>Alterar Prospect</h3>
 
 <?php require "../includes/body.php"; ?>
 
@@ -30,10 +32,10 @@
     <label class="control-label col-md-2 col-sm-3 col-xs-12" for="prob">Probabilidade <span class="required">*</span>
     </label>
     <div class="col-sm-2 col-xs-12 col-md-1">
-      <select id="prob" name="prob" onblur="calcula()" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+      <select id="prob" onblur="calcula()" name="prob"  type="text"  required="required"  class="form-control col-md-7 col-xs-12">
         <option>%</option>
         <option value="0">0%</option>
-        <option value="25">25%</option>
+        <option  value="25">25%</option>
         <option value="50">50%</option>
         <option value="75">75%</option>
         <option value="100">100%</option>
@@ -65,7 +67,7 @@
   <div class="form-group">
     <div class="col-md-6 col-md-offset-3">
       <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
-      <button id="send" type="submit" class="btn btn-success">Cadastrar</button>
+      <button id="send" type="submit" class="btn btn-success">Alterar</button>
       <input type="hidden" name="market_id" id="id" value="<?=$id?>" />                    
     </div>
   </div>
@@ -104,5 +106,17 @@
   }
 </script>
 
+<script type="text/javascript">
+  document.getElementById('prod').value = '<?=$prospect->getProduto()->getId()?>';
+</script>
+<script type="text/javascript">
+  document.getElementById('prob').value =  '<?=round($prospect->getProb())?>';
+</script>
+<script type="text/javascript">
+  document.getElementById('valor_op').value =  '<?=number_format($prospect->getValorOp(), 2, '.', '')?>';
+</script>
+<script type="text/javascript">
+  document.getElementById('valor_est').value =  '<?=number_format($prospect->getValorEs(), 2, '.', '')?>';
+</script>
 <?php	require_once "../includes/rodape.php"; ?>
 

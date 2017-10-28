@@ -1,37 +1,41 @@
 <?php	
   require_once "../includes/cabecalho.php";
-  require '../dao/PorteDao.php';
+  require_once '../dao/PorteDao.php';
+  require_once '../dao/MarketDao.php';
+  $id = $_GET['id'];
+  $marketDao = new MarketDao($conexao);
+  $market = $marketDao->buscaMarket($id);
 ?>
 
-<h3>Novo Market</h3>
+<h3>Alterar Market</h3>
 
 <?php require "../includes/body.php"; ?>
 
-<form action="../adiciona/adiciona-market.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<form action="../altera/altera-market.php?id=<?=$id?>" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="nome" name="nome" required="required" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="nome" name="nome" value="<?=$market->getNome()?>" required="required" class="form-control col-md-7 col-xs-12">
     </div>
   </div>  
   <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="razao">Razão Social <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input id="razao" name="razao" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="razao" required="required" type="text">
+      <input id="razao" name="razao" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="razao" value="<?=$market->getRazao()?>" required="required" type="text">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="preco">CNPJ<span class="required">*</span></label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="cnpj" name="cnpj" data-inputmask="'mask' : '**.***.***/****-**'" required="required" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="cnpj" name="cnpj" data-inputmask="'mask' : '**.***.***/****-**'" required="required" class="form-control col-md-7" value="<?=$market->getCnpj()?>" col-xs-12">
     </div>
   </div>    
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="preco">Site</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="site" name="site" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="site" name="site" value="<?=$market->getSite()?>"  class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="form-group">
@@ -52,21 +56,21 @@
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="bairro">Bairro  <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="bairro" name="bairro" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="bairro" name="bairro" value="<?=$market->getBairro()?>" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="endereco">Endereço <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="endereco" name="endereco" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="endereco" name="endereco" value="<?=$market->getEndereco()?>" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="segmento">Segmento<span class="required">*</span>
     </label>
     <div class="col-sm-8 col-xs-12 col-md-3">
-      <select id="sexo" name="segmento" required class="form-control col-md-8 col-xs-12">
+      <select id="segmento" name="segmento" required class="form-control col-md-8 col-xs-12">
         <option value="Abatedouro">Abatedouro</option>
         <option value="Alimentação">Alimentação</option>
         <option value="Agricultura">Agricultura</option>
@@ -101,14 +105,14 @@
     <label class="control-label col-md-1 col-sm-3 col-xs-12" for="tel">Telefone <span class="required">*</span>
     </label>
     <div class="col-sm-6 col-xs-12 col-md-2">
-      <input type="tel" id="tel" name="tel" data-inputmask="'mask' : '(99) 9999[9]-9999'" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+      <input type="tel" id="tel" name="tel" data-inputmask="'mask' : '(99) 9999[9]-9999'" required="required" data-validate-length-range="8,20" value="<?=$market->getTel()?>" class="form-control col-md-7 col-xs-12">
     </div> 
   </div>                                   
   <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_porte">Porte da Empresa<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <select name="porte_id" class="form-control col-md-7 col-xs-12">
+      <select id="porte" name="porte_id" class="form-control col-md-7 col-xs-12">
         <?php
           $porteDao = new PorteDao($conexao);
           $portes = $porteDao->listaPortes();
@@ -123,7 +127,7 @@
   <div class=" form-group">
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
       <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
-      <button id="send" type="submit" name="enviar" class="btn btn-success">Cadastrar</button>
+      <button id="send" type="submit" name="enviar" class="btn btn-success">Alterar</button>
     </div>
   </div>
 </form>
@@ -131,5 +135,20 @@
 
 
 <?php require_once "../includes/script.php"; ?>
+<script language="JavaScript" type="text/javascript" charset="utf-8">
+  new dgCidadesEstados({
+    cidade: document.getElementById('cidade'),
+    estado: document.getElementById('estado'),
+    estadoVal: '<?=$market->getEstado()?>',
+    cidadeVal: '<?=$market->getCidade()?>'
+  })
+</script>
+<script type="text/javascript">
+  document.getElementById('segmento').value = '<?=$market->getSegmento()?>';
+</script>
+<script type="text/javascript">
+  document.getElementById('porte').value = '<?=$market->getPorte()?>';
+</script>
+  
 
 <?php	require_once "../includes/rodape.php"; ?>

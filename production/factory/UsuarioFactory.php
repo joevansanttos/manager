@@ -1,6 +1,6 @@
 <?php
-	require "../class/Usuario.php";
-	require "../dao/ProfissaoDao.php";
+	require_once "../class/Usuario.php";
+	require_once "../dao/ProfissaoDao.php";
 	require_once "../class/Conexao.php";
 
 	class UsuarioFactory {
@@ -15,9 +15,9 @@
 			$estado = $params['estado'];
 			$cidade = $params['cidade'];
 			$telefone = $params['telefone'];
-			$id_profissao = $params['profissao'];
+			$profissao_id = $params['profissao_id'];
 			$profissaoDao = new ProfissaoDao($conexao);
-			$profissao = $profissaoDao->buscaProfissao($id_profissao);			
+			$profissao = $profissaoDao->buscaProfissao($profissao_id);
 			return new Usuario($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone, $profissao);
 		}	
 

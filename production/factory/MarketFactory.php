@@ -1,13 +1,12 @@
 <?php	
-	require_once "../class/Cliente.php";
+	require_once "../class/Market.php";
 	require_once "../class/Porte.php";
 	require_once "../dao/PorteDao.php";
 	require_once "../class/Conexao.php";
 
-	class ClienteFactory {
-		
+	class MarketFactory {
 
-		public function criaCliente($params) {
+		public function criaMarket($params) {
 			$conexao = new Conexao();
 			$razao = $params["razao"];
 			$nome = $params["nome"];
@@ -19,10 +18,10 @@
 			$segmento = $params["segmento"];
 			$tel = $params["tel"];
 			$bairro = $params["bairro"];
-			$id_porte = $params["id_porte"];
+			$porte_id = $params["porte_id"];
 			$porteDao = new PorteDao($conexao);
-			$porte = $porteDao->buscaPorte($id_porte);
-			return new Cliente($razao, $nome, $cnpj, $site, $endereco , $estado, $cidade, $segmento, $tel, $bairro, $porte);
+			$porte = $porteDao->buscaPorte($porte_id);
+			return new Market($razao, $nome, $cnpj, $site, $endereco , $estado, $cidade, $segmento, $tel, $bairro, $porte);
 		}	
 
 	}

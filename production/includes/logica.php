@@ -1,4 +1,5 @@
 <?php
+	error_reporting(E_ALL ^ E_NOTICE);
 	ob_start();
 	session_start();
 	function usuarioEstaLogado(){
@@ -6,7 +7,6 @@
 	}
 	function verificaUsuario(){
 		if(!usuarioEstaLogado()) {
-	  	$_SESSION["danger"] = "Você não tem acesso a esta funcionalidade";
 	   	header("Location: ../index.php");
 	   	die();
 	 	}

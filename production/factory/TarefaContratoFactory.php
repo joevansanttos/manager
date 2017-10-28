@@ -9,10 +9,8 @@
 	class TarefaContratoFactory {
 		
 
-		public function criaTarefaContrato($tarefa, $departamentoContrato) {	
-			$conexao = new Conexao();
-			
-			return new TarefaContrato($tarefa, $departamentoContrato);
+		public function criaTarefaContrato($tarefa, $departamentoContrato, $horas, $fim) {				
+			return new TarefaContrato($tarefa, $departamentoContrato, $horas, $fim);
 		}	
 
 	}

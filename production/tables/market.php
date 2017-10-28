@@ -1,7 +1,7 @@
 <?php	
 	error_reporting(E_ALL ^ E_NOTICE);
 	require_once "../includes/cabecalho.php"; 
-	require_once "../dao/ClienteDao.php"; 
+	require_once "../dao/MarketDao.php"; 
 ?>	
 
 <h3>Market</h3>
@@ -15,29 +15,28 @@
       <th>Estado</th>
       <th>Bairro</th>
       <th>Segmento</th>	
+      <th>Porte</th> 
       <th>Ações</th>
     </tr>
   </thead>
   <tbody>
     <?php
-    	$clienteDao = new ClienteDao($conexao);
-    	$clientes = $clienteDao->listaClientes();
-      foreach ($clientes as $cliente): 
-        $cidade = $clienteDao->buscaCidade($cliente->getCidade() );                              
+    	$marketDao = new MarketDao($conexao);
+    	$markets = $marketDao->listaMarkets();
+      foreach ($markets as $market): 
+        $cidade = $marketDao->buscaCidade($market->getCidade() );                              
     ?>
       <tr>
-        <td><?=$cliente->getNome() ?></td>
-        <td><?=$cliente->getTel() ?></td>
+        <td><?=$market->getNome() ?></td>
+        <td><?=$market->getTel() ?></td>
         <td><?=$cidade ?></td>
-        <td><?=$cliente->getEstado() ?></td>
-        <td><?=$cliente->getBairro() ?></td>
-        <td><?=$cliente->getSegmento() ?></td>
+        <td><?=$market->getEstado() ?></td>
+        <td><?=$market->getBairro() ?></td>
+        <td><?=$market->getSegmento() ?></td>
+        <td><?=$market->getPorte()->getDescricao()?></td>
         <td align="center">
-          <a href="../tables/lead-formulario.php?id=<?=$cliente->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
-          <a href="../forms/form-lead.php"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-          <a href="../forms/form-lead.php"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
-          
-          <a href="../tables/lead-formulario.php?id=<?=$cliente->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+          <a href="../tables/lead-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
+          <a href="../tables/market-altera.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Market" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
         </td>
       </tr>
     <?php

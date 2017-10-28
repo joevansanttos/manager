@@ -1,6 +1,6 @@
 <?php
 	
-	class Cliente{
+	class Market{
 		private $id;
 		private $razao;
 		private $nome;

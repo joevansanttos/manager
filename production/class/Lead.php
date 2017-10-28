@@ -6,14 +6,14 @@
 		private $email;
 		private $cargo;
 		private $tel;
-		private $idCliente;
+		private $market;
 
-		function __construct($idCliente, $nome, $email, $tel, $cargo) {
+		function __construct($nome, $email, $tel, $cargo, Market $market) {
 			$this->nome = $nome;
 			$this->email = $email;
 			$this->cargo = $cargo;			
 			$this->tel = $tel;
-			$this->idCliente = $idCliente;
+			$this->market = $market;
 		}		
 
 		public function getNome() {
@@ -57,12 +57,12 @@
 			$this->id = $id;
 		}
 
-		public function getIdCliente() {
-			return $this->idCliente;
+		public function getMarket() {
+			return $this->market;
 		}
 
-		public function setIdCliente($idCliente) {
-			$this->idCliente = $idCliente;
+		public function setMarket($market) {
+			$this->market = $market;
 		}
 
 

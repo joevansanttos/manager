@@ -1,31 +1,35 @@
 <?php	
   require_once "../includes/cabecalho.php";
+  require_once "../dao/SuspectDao.php";
   $id = $_GET['id'];
+  $suspectDao = new SuspectDao($conexao);
+  $suspect = $suspectDao->buscaSuspect($id);
+  $market = $suspect->getMarket();  
 ?>
 
-<h3>Novo Suspect</h3>
+<h3>Alterar Suspect</h3>
 <?php require "../includes/body.php"; ?>
-<form action="../adiciona/adiciona-suspect.php" method="post"  id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">              
+<form action="../altera/altera-suspect.php?id=<?=$id?>" method="post"  id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">              
   <div class="item form-group">
     <label for="contato" class="control-label col-md-3 col-sm-3 col-xs-12">Contato <span class="required">*</span></label>
     <div class="col-sm-6 col-xs-12 col-md-3">
-      <input id="contato" type="text" name="nome" data-validate-linked="nome" class="form-control col-md-2 col-xs-12" required="required">
+      <input id="contato" type="text" name="nome" value="<?=$suspect->getNome()?>" data-validate-linked="nome" class="form-control col-md-2 col-xs-12" required="required">
      </div>
     <label class="control-label col-md-1 col-sm-3 col-xs-12" for="date">Data <span class="required">*</span>
     </label>
     <div class="col-sm-8 col-xs-12 col-md-2">
-     <input type="date" id="data" name="data" required="required" class="form-control col-md-8 col-xs-12">
+     <input type="date" id="data" name="data" required="required" value="<?=$suspect->getData()?>" class="form-control col-md-8 col-xs-12">
     </div>
   </div>
   <div class="item form-group">
     <label for="email" class="control-label col-md-3 col-sm-3 col-xs-12">Email <span class="required">*</span></label>
     <div class="col-sm-6 col-xs-12 col-md-3">
-      <input id="email" type="email" name="email" data-validate-linked="email" class="form-control col-md-2 col-xs-12" required="required">
+      <input id="email" type="email" name="email" data-validate-linked="email" value="<?=$suspect->getEmail()?>" class="form-control col-md-2 col-xs-12" required="required">
      </div>
     <label class="control-label col-md-1 col-sm-3 col-xs-12" for="tel">Tel <span class="required">*</span>
     </label>
     <div class="col-sm-8 col-xs-12 col-md-2">
-     <input type="text" id="tel" name="tel" required="required" data-inputmask="'mask' : '(99) 9999[9]-9999'" class="form-control col-md-8 col-xs-12">
+     <input type="text" id="tel" name="tel" required="required" value="<?=$suspect->getTel()?>" data-inputmask="'mask' : '(99) 9999[9]-9999'" class="form-control col-md-8 col-xs-12">
     </div>
   </div>             
   <div class="item form-group">
@@ -41,16 +45,19 @@
     <label for="hora" class="control-label col-md-1 col-sm-3 col-xs-12">Hora <span class="required">*</span>
     </label>
     <div class="col-sm-6 col-xs-12 col-md-2">
-      <input type="time" id="hora" name="hora" class="form-control col-md-7 col-xs-12" required></select>                
+      <input type="time" id="hora" name="hora" value="<?=$suspect->getHora()?>" class="form-control col-md-7 col-xs-12" required></select>                
     </div>
   </div>              
   <div class="col-md-6 col-md-offset-3">
     <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
-    <button id="send" type="submit" class="btn btn-success">Cadastrar</button>
-    <input type="hidden" name="market_id" id="id" value="<?=$id?>" />
+    <button id="send" type="submit" class="btn btn-success">Alterar</button>
+    <input type="hidden" name="market_id" id="id" value="<?=$market->getId()?>" />
   </div>
 </form> 
 
 
 <?php require_once "../includes/script.php"; ?>
+<script type="text/javascript">
+  document.getElementById('status').value = '<?=$suspect->getStatus()?>';
+</script>
 <?php	require_once "../includes/rodape.php"; ?>

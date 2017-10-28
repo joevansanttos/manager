@@ -8,10 +8,10 @@
 		private $hora;
 		private $email;	
 		private $tel;
-		private $idCliente;
+		private $market;
 
-		function __construct($id_market, $nome, $email ,$tel, $status, $data, $hora) {
-			$this->idCliente = $id_market;
+		function __construct($nome, $email ,$tel, $status, $data, $hora, Market $market) {
+			$this->market = $market;
 			$this->nome = $nome;
 			$this->email = $email;				
 			$this->tel = $tel;
@@ -78,12 +78,12 @@
 			$this->id = $id;
 		}
 
-		public function getIdCliente() {
-			return $this->idCliente;
+		public function getMarket() {
+			return $this->market;
 		}
 
-		public function setIdCliente($idCliente) {
-			$this->idCliente = $idCliente;
+		public function setMarket($market) {
+			$this->market = $market;
 		}
 
 

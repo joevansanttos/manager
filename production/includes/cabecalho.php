@@ -1,5 +1,10 @@
 <?php
+  require_once "logica.php";
   require_once "../class/Conexao.php";
+  error_reporting(E_ALL ^ E_NOTICE);
+  ob_start();
+  session_start();
+  verificaUsuario();
   $conexao = new Conexao();
 ?>
 
@@ -22,6 +27,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Custom styling plus plugins -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
     <link href="../../vendors/lou-multi-select/css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -29,6 +35,7 @@
     <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -137,7 +144,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="../profiles/usuario-profile.php?id=<?=$usuario['id_usuario']?>"> Perfil</a></li>
+                    <li><a href="usuario-perfil.php"> Perfil</a></li>
                     <li>
                       <a href="javascript:;">
                         <span>Configurações</span>

@@ -34,8 +34,10 @@
 			$tarefa_id = $t_contrato_array['tarefa_id'];
 			$tarefaDao = new TarefaDao($this->conexao);
 			$tarefa = $tarefaDao->buscaTarefa($tarefa_id);
-			$factory = new TarefaContratoFactory();		
-			$tarefaContrato = $factory->criaTarefaContrato($tarefa, $departamentoContrato);
+			$factory = new TarefaContratoFactory();	
+			$horas = $t_contrato_array['horas'];
+			$fim = $t_contrato_array['data_fim'];
+			$tarefaContrato = $factory->criaTarefaContrato($tarefa, $departamentoContrato, $horas, $fim);
 			$tarefaContrato->setId($t_contrato_id);
 			array_push($tarefasContratos, $tarefaContrato);
 		}

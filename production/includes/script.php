@@ -34,6 +34,7 @@
 <script src="../../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
 <!-- Parsley -->
 <script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>
+<script src="../../vendors/parsleyjs/dist/i18n/pt-br.js"></script>
 <!-- Autosize -->
 <script src="../../vendors/autosize/dist/autosize.min.js"></script>
 <!-- jQuery autocomplete -->

@@ -1,29 +1,33 @@
 <?php	
   require_once "../includes/cabecalho.php";
-  $id = $_GET['id'];  
+  require_once "../dao/LeadDao.php";
+  $id = $_GET['id'];
+  $leadDao = new LeadDao($conexao);
+  $lead = $leadDao->buscaLead($id);
+  $market = $lead->getMarket();
 ?>
 
-<h3>Novo Lead</h3>
+<h3>Alterar Lead</h3>
 <?php require "../includes/body.php"; ?>
 
-<form action="../adiciona/adiciona-lead.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">         
+<form action="../altera/altera-lead.php?id=<?=$id?>" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">         
   <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nome do Contato <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="nome" name="nome" required="required" class="form-control col-md-7 col-xs-12" value="">
+      <input type="text" id="nome" name="nome" value="<?=$lead->getNome()?>" required="required" class="form-control col-md-7 col-xs-12" value="">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="senha">Email<span class="required">*</span></label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="email" id="email" name="email" required="required" class="form-control col-md-8 col-xs-12">
+      <input type="email" id="email" name="email" value="<?=$lead->getEmail()?>" required="required" class="form-control col-md-8 col-xs-12">
     </div>
   </div>
   <div class="item form-group">
     <label for="tel" class="control-label col-md-3 col-sm-3 col-xs-12">Telefone <span class="required">*</span></label>
     <div class="col-sm-6 col-xs-12 col-md-2">
-      <input id="tel" data-inputmask="'mask' : '(99) 9999[9]-9999'" type="text" name="tel" data-validate-linked="tel" class="form-control col-md-2 col-xs-12" required="required">
+      <input id="tel" data-inputmask="'mask' : '(99) 9999[9]-9999'" value="<?=$lead->getTel()?>" type="text" name="tel" data-validate-linked="tel" class="form-control col-md-2 col-xs-12" required="required">
     </div>
     <label class="control-label col-md-1 col-sm-3 col-xs-12" for="mail">Cargo <span class="required">*</span>
     </label>
@@ -43,11 +47,14 @@
   <div class="form-group">
     <div class="col-md-6 col-md-offset-3">
       <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
-      <button id="send" type="submit" class="btn btn-success">Cadastrar</button>
-      <input type="hidden" name="market_id" id="id" value="<?=$id?>" />
+      <button id="send" type="submit" class="btn btn-success">Alterar</button>
+      <input type="hidden" name="market_id" id="id" value="<?=$market->getId()?>" />
     </div>
   </div>                     
 </form>     	
 
 <?php require_once "../includes/script.php"; ?>
+<script type="text/javascript">
+  document.getElementById('cargo').value = '<?=$lead->getCargo()?>';
+</script>
 <?php	require_once "../includes/rodape.php"; ?>

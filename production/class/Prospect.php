@@ -8,17 +8,16 @@
 		private $recebimento;
 		private $fechamento;	
 		private $produto;
-		private $idCliente;
+		private $market;
 
-		function __construct($id_market, $prob, $valorOp, $valorEs, $recebimento, $fechamento, Produto $produto) {
-			$this->idCliente = $id_market;
+		function __construct($prob, $valorOp, $valorEs, $recebimento, $fechamento, Produto $produto, Market $market) {
 			$this->prob = $prob;
 			$this->valorOp = $valorOp;				
 			$this->valorEs = $valorEs;
 			$this->recebimento = $recebimento;
 			$this->fechamento = $fechamento;	
-			$this->produto = $produto;					
-			
+			$this->produto = $produto;
+			$this->market = $market;					
 		}		
 
 		public function getProb() {
@@ -78,12 +77,12 @@
 			$this->id = $id;
 		}
 
-		public function getIdCliente() {
-			return $this->idCliente;
+		public function getMarket() {
+			return $this->market;
 		}
 
-		public function setIdCliente($idCliente) {
-			$this->idCliente = $idCliente;
+		public function setMarket($market) {
+			$this->market = $market;
 		}
 
 

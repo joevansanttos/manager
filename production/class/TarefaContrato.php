@@ -7,9 +7,11 @@ class TarefaContrato{
 	private $tarefa;
 	private $departamentoContrato;
 
-	function __construct(Tarefa $tarefa, DepartamentoContrato $departamentoContrato){
+	function __construct(Tarefa $tarefa, DepartamentoContrato $departamentoContrato, $horas, $fim){
 		$this->tarefa = $tarefa;
 		$this->departamentoContrato = $departamentoContrato;
+		$this->horas = $horas;
+		$this->fim = $fim;
 	}
 
 	public function getId() {

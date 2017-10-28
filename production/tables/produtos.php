@@ -41,8 +41,6 @@
 		?>
 	</tbody>      
 </table>
-<div class="ln_solid"></div>
-<a class="btn btn-default" style="" href="../tables/market-formulario.php?"><i class="fa fa-plus"></i></a>
 </div>
 
 			

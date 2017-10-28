@@ -12,7 +12,7 @@
 		private $profissao;
 		private $id;
 
-		function __construct($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone, $profissao) {
+		function __construct($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone, Profissao $profissao) {
 			$this->email = $email;
 			$this->senha = $senha;
 			$this->nome = $nome;

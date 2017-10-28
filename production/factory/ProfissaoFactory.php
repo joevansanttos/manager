@@ -5,7 +5,7 @@
 	class ProfissaoFactory {
 
 		public function criaProfissao($params) {
-			$descricao = $params['descricao'];		
+			$descricao = $params['descricao'];
 			return new Profissao($descricao);
 		}	
 

@@ -1,9 +1,10 @@
 <?php	
-	require "../includes/cabecalho.php"; 
-	require "../dao/UsuarioDao.php"; 
+	require_once "../includes/cabecalho.php"; 
+	require_once "../dao/UsuarioDao.php"; 
 ?>	
 	
 <h3>Usuários</h3>
+
 <?php require "../includes/body.php";	?>
 			
 <table id="tabela" class="table table-bordered">
@@ -13,6 +14,7 @@
 			<th>Email</th>
 			<th>Estado</th>
 			<th>Cidade</th>
+			<th>Sexo</th>
 			<th>Profissao</th>
 			<th>Telefone</th>
 		</tr>
@@ -29,6 +31,7 @@
 				<td><?=$usuario->getEmail() ?></td>
 				<td><?=$usuario->getEstado() ?></td>			    		        
 				<td><?=$cidade?></td>
+				<td><?=$usuario->getSexo() ?></td>
 				<td><?=$usuario->getProfissao()->getDescricao() ?></td>	
 				<td><?=$usuario->getTelefone() ?></td>			       
 			</tr>
@@ -40,9 +43,8 @@
 <div class="ln_solid"></div>
 
 <a class="btn btn-default" style="" href="../tables/usuario-formulario.php?"><i class="fa fa-plus"></i></a>
-</div>
-			    	
+</div>		    	
 
 
-<?php	require "../includes/script.php"; ?>
-<?php	require "../includes/rodape.php"; ?>
+<?php	require_once "../includes/script.php"; ?>
+<?php	require_once "../includes/rodape.php"; ?>
