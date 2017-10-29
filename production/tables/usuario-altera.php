@@ -112,9 +112,15 @@ $usuario = $usuarioDao->buscaUsuario($id);
   })
 </script>
 
-<script type="text/javascript">
-  document.getElementById('profissao').value = '<?=$usuario->getProfissao()?>';
+
+<script>
   document.getElementById('sexo').value = '<?=$usuario->getSexo()?>';
 </script>
+
+<script>
+  document.getElementById('profissao').value = '<?=$usuario->getProfissao()?>';  
+</script>
+
+
 
 <?php	require_once "../includes/rodape.php"; ?>

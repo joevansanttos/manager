@@ -2,7 +2,6 @@
   error_reporting(E_ALL ^ E_NOTICE);
   require_once "../includes/cabecalho.php"; 
   require_once "../dao/ContratoDao.php";
-  require_once "../dao/ClienteDao.php";
   require_once "../dao/DepartamentoContratoDao.php";
   require_once "../dao/TarefaContratoDao.php";
 ?>

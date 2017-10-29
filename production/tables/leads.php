@@ -42,8 +42,7 @@
      ?>
   </tbody>      
 </table>
-<div class="ln_solid"></div>
-</div>
+
 	
 
 <?php	

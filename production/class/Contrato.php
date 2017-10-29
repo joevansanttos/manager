@@ -8,11 +8,12 @@
 		private $razao;	
 		private $cnpj;	
 		private $produto;
+		private $statusContrato;
 		private $market;
 		private $socios;
 		private $departamentos;
 
-		function __construct($inicio, $fim, $numero, $sede, $razao, $cnpj, Produto $produto, Cliente $market) {
+		function __construct($inicio, $fim, $numero, $sede, $razao, $cnpj, Produto $produto, Market $market, StatusContrato $statusContrato) {
 			$this->market = $market;
 			$this->inicio = $inicio;
 			$this->fim = $fim;				
@@ -21,6 +22,7 @@
 			$this->razao = $razao;
 			$this->cnpj = $cnpj;	
 			$this->produto = $produto;
+			$this->statusContrato = $statusContrato;
 			$this->socios = array();	
 			$this->departamentos = array();					
 			
@@ -107,6 +109,14 @@
 
 		public function setMarket($market) {
 			$this->market = $market;
+		}
+
+		public function getStatusContrato() {
+			return $this->statusContrato;
+		}
+
+		public function setStatusContrato($statusContrato) {
+			$this->statusContrato = $statusContrato;
 		}
 
 

@@ -2,7 +2,6 @@
   error_reporting(E_ALL ^ E_NOTICE);
   require_once "../includes/cabecalho.php"; 
   require_once "../dao/ContratoDao.php";
-  require_once "../dao/ClienteDao.php";
 ?>
 
 <h3>Projetos</h3>
@@ -26,13 +25,12 @@
       $contratoDao = new ContratoDao($conexao);
       $contratos = $contratoDao->listaContratos();
        foreach ($contratos as $contrato){
-        $clienteDao = new ClienteDao($conexao);
-        $cliente = $contrato->getMarket();
+        $market = $contrato->getMarket();
      ?>
      <tr>
        <td>#</td>
        <td>
-         <a><?=$cliente->getNome()?></a>
+         <a><?=$market->getNome()?></a>
          <br />
          <small>Criado em</small>
        </td>

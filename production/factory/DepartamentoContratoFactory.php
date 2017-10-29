@@ -14,7 +14,6 @@
 			$contrato_id = $contrato->getNumero();
 			$contratoDao = new ContratoDao($conexao);
 			$contrato = $contratoDao->buscaContrato($contrato_id);
-
 			$departamentoDao = new DepartamentoDao($conexao);
 			$departamento = $departamentoDao->buscaDepartamento($departamento_id);
 			return new DepartamentoContrato($contrato, $departamento);

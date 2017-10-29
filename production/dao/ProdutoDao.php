@@ -9,7 +9,6 @@
 		}
 
 		function listaProdutos() {
-
 			$produtos = array();
 			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from produtos as u");
 			while($produto_array = mysqli_fetch_assoc($resultado)) {

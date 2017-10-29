@@ -1,17 +1,15 @@
 <?php	
   require_once "../includes/cabecalho.php";
   require_once "../dao/ProdutoDao.php";
-  require_once "../dao/ClienteDao.php";
   require_once "../dao/ContratoDao.php";
+  require_once "../dao/MarketDao.php";
   require_once "../dao/DepartamentoDao.php";   
   $produtoDao = new ProdutoDao($conexao);
   $contratoDao = new ContratoDao($conexao);
   $departamentoDao = new DepartamentoDao($conexao);
+  $marketDao = new MarketDao($conexao);
   $produtos = $produtoDao->listaProdutos();
   $departamentos = $departamentoDao->listaDepartamentos();
-  $id = $_GET['id'];
-  $clienteDao = new ClienteDao($conexao);
-  $cliente = $clienteDao->buscaMarket($id);
   $contratos = $contratoDao->listaContratos();
   if(!empty($contratos)){
      $i = 1;
@@ -26,7 +24,8 @@
   }else{
     $i = 1;
   }
-  
+  $id = $_GET['id'];
+  $market = $marketDao->buscaMarket($id); 
 ?>
 
 <h3>Novo Contrato</h3>
@@ -34,7 +33,7 @@
 <?php require "../includes/body.php"; ?>
 
 
-<form action="../adiciona/adiciona-contrato.php" method="get" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">                  
+<form action="../adiciona/adiciona-contrato.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">                  
   <div class="item form-group">
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nº Contrato <span class="required">*</span>
    </label>
@@ -46,32 +45,32 @@
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Nome Fantasia<span class="required">*</span>
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
-     <input readonly="readonly" type="text" value="<?=$cliente->getNome()?>" id="nome" name="nome" required="required" class="form-control col-md-7 col-xs-12">
+     <input readonly="readonly" type="text" value="<?=$market->getNome()?>" id="nome" name="nome" required="required" class="form-control col-md-7 col-xs-12">
    </div>
   </div>
   <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="razao">Razão Social <span class="required">*</span>
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
-     <input  readonly="readonly" id="razao" name="razao" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" value="<?=$cliente->getRazao()?>" name="razao" required="required" type="text">
+     <input  readonly="readonly" id="razao" name="razao" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" value="<?=$market->getRazao()?>" name="razao" required="required" type="text">
    </div>
   </div>
   <div class="item form-group">
     <label for="cnpj" class="control-label col-md-3 col-sm-3 col-xs-12">CNPJ <span class="required">*</span></label>
    <div class="col-sm-6 col-xs-12 col-md-6">
-    <input readonly="readonly" id="cnpj" value="<?=$cliente->getCnpj()?>" type="text" name="cnpj" data-validate-linked="cnpj" class="form-control col-md-2 col-xs-12" required="required">
+    <input readonly="readonly" id="cnpj" value="<?=$market->getCnpj()?>" type="text" name="cnpj" data-validate-linked="cnpj" class="form-control col-md-2 col-xs-12" required="required">
    </div>
   </div>
   <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="endereco">Sede <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input readonly="readonly" type="text" id="sede" name="sede" value="<?=$cliente->getEndereco()?>" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+      <input readonly="readonly" type="text" id="sede" name="sede" value="<?=$market->getEndereco()?>" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
    </div>
   </div>
   <div class="item form-group ">
     <div class="form-group">
-      <label for="socio" class="control-label col-md-3 col-sm-3 col-xs-12">Sócio <span class="required">*</span></label>                      
+      <label for="socio" class="control-label col-md-3 col-sm-3 col-xs-12">Sócio <span class="required">*</span></label>      
       <div class=" col-sm-6 col-xs-12 col-md-6">
         <div class="form-group">
           <input type="text" placeholder="Nome" required="required" name="multiple[]" class="form-control">
@@ -101,13 +100,13 @@
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
       <select name="produto_id" required="required" class="form-control col-md-7 col-xs-12">
-       <?php
+      <?php
        foreach ($produtos as $produto){                            
-         ?>
+      ?>
          <option value="<?=$produto->getId()?>"><?=$produto->getNome()?></option>
-         <?php
+      <?php
        }
-       ?>  
+      ?>  
       </select>
     </div>
   </div>
@@ -146,6 +145,7 @@
       <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
       <button type="submit" class="btn btn-success">Cadastrar</button>
       <input type="hidden" name="market_id" id="market" value="<?=$id?>" /> 
+      <input type="hidden" name="status_contrato_id" id="market" value="1" /> 
     </div>
   </div>  
 </form>	

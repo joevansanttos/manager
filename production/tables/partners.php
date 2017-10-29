@@ -1,6 +1,6 @@
 <?php	
-	require "../includes/cabecalho.php"; 
-	require "../dao/UsuarioDao.php"; 
+	require_once "../includes/cabecalho.php"; 
+	require_once "../dao/UsuarioDao.php"; 
 ?>	
 	
 <h3>Partners</h3>

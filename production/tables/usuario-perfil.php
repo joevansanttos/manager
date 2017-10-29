@@ -15,7 +15,7 @@
 <h3>Perfil do Usuário</h3>
 	
 <?php require "../includes/body.php";	?>
-<a data-toggle="tooltip" data-placement="top" title="Novo Usuário"  class="btn btn-default" href="usuario-altera.php?id=<?=$usuario->getId()?>"><i class="fa fa-pencil"></i></a>			
+<a data-toggle="tooltip" data-placement="top" title="Editar Perfil"  class="btn btn-warning" href="usuario-altera.php?id=<?=$usuario->getId()?>"><i class="fa fa-pencil"></i></a>			
 <div class="profile_img">
 	<div id="crop-avatar">
 		<div class="profile-userpic ">

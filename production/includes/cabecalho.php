@@ -1,11 +1,16 @@
 <?php
   require_once "logica.php";
   require_once "../class/Conexao.php";
+  require_once "../dao/UsuarioDao.php"; 
   error_reporting(E_ALL ^ E_NOTICE);
   ob_start();
   session_start();
   verificaUsuario();
   $conexao = new Conexao();
+  $email = $_SESSION["usuario_logado"];
+  $usuarioDao = new UsuarioDao($conexao);
+  $usuario = $usuarioDao->buscaUsuarioEmail($email);
+  $usuario_id = $usuario->getId();
 ?>
 
 <!DOCTYPE html>
@@ -50,10 +55,24 @@
             <div class="clearfix"></div>
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="../images/user.png" alt="..." class="img-circle profile_img" >
+                <?php                  
+                  $sql = "SELECT * FROM profileimg WHERE usuario_id = $usuario_id";
+                  $sth = $conexao->conecta()->query($sql);
+                  $result=mysqli_fetch_array($sth);
+                  if($result != null){
+                    echo '<img class="img-responsive img-circle profile_img" src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>';
+                  }else{
+                ?>
+                <img class="img-responsive img-circle profile_img" src="../images/user.png">
+                <?php    
+                  }                            
+                  
+                ?>
+                  
               </div>
               <div class="profile_info">
                 <span>Bem Vindo,</span>
+                <h2><?=$usuario->getNome()?></h2>
               </div>
             </div>
             <br />
@@ -74,7 +93,7 @@
                   </li>
                   <li><a><i class="fa fa-calendar"></i> Tarefas<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="tarefas.php">Tarefas</a></li>                      
+                      <li><a href="atividades.php">Tarefas</a></li>                      
                     </ul>
                   </li>
                   <li><a><i class="fa fa-rocket"></i> Produtos<span class="fa fa-chevron-down"></span></a>
@@ -141,6 +160,16 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <?php
+                      if($result != null){
+                        echo '<img alt="" src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>';
+                      }else{
+                    ?>
+                    <img src="../images/user.png" alt="">
+                    <?php    
+                      }                            
+                    ?>              
+                    <?=$usuario->getNome()?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -151,7 +180,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Ajuda</a></li>
-                    <li><a href="../../logout.php"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
+                    <li><a href="../aut/logout.php"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
                   </ul>
                 </li>
                 <li role="presentation" class="dropdown">

@@ -1,7 +1,7 @@
 <?php 
 	require_once "../class/Conexao.php";
-	require "../dao/UsuarioDao.php";
-	require ("../includes/logica.php");
+	require_once "../dao/UsuarioDao.php";
+	require_once "../includes/logica.php";
 	$conexao = new Conexao();
 	ob_start();
 	session_start();

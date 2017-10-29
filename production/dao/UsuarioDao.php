@@ -25,7 +25,7 @@
 		    $resultado = mysqli_query($this->conexao->conecta(), $query);
 		    $usuario = mysqli_fetch_assoc($resultado);
 		    $factory = new UsuarioFactory();
-		    $usuario_id = $usuario['id_usuario'];
+		    $usuario_id = $usuario['id'];
 		    $usuario = $factory->criaUsuario($usuario);
 		    $usuario->setId($usuario_id);
 		    return $usuario;
@@ -89,6 +89,11 @@
 		    	return null;
 		    }	
 		    
+		}
+
+		function adicionaImagem($imgContent, $usuario){
+		  $query = "insert into profileimg (image, usuario_id) VALUES ('$imgContent', {$usuario->getId()})";
+		  mysqli_query($this->conexao->conecta(), $query);
 		}
 
 
