@@ -1,5 +1,6 @@
 <?php
 	require_once "../factory/SuspectFactory.php";
+	require_once "../dao/MarketDao.php";
 	
 	class SuspectDao{
 		private $conexao;
@@ -10,14 +11,20 @@
 
 		function listaSuspects($usuario_id) {
 			$suspects = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from suspects as u");
-			while($suspect_array = mysqli_fetch_assoc($resultado)) {
-				$factory = new SuspectFactory();
-				$suspect_id = $suspect_array['id'];				
-				$suspect = $factory->criaSuspect($suspect_array);
-				$suspect->setId($suspect_id);
-				array_push($suspects, $suspect);
+			$marketDao = new MarketDao($this->conexao);
+			$markets = $marketDao->listaMarkets($usuario_id);
+			foreach ($markets as $market) {
+				$market_id = $market->getId();
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from suspects as u where market_id = {$market_id}");
+				while($suspect_array = mysqli_fetch_assoc($resultado)) {
+					$factory = new SuspectFactory();
+					$suspect_id = $suspect_array['id'];				
+					$suspect = $factory->criaSuspect($suspect_array);
+					$suspect->setId($suspect_id);
+					array_push($suspects, $suspect);
+				}
 			}
+			
 
 			return $suspects;
 		}

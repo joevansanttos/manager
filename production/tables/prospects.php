@@ -24,7 +24,7 @@
 
     <?php
     	$prospectDao = new ProspectDao($conexao);
-    	$prospects = $prospectDao->listaProspects();
+    	$prospects = $prospectDao->listaProspects($usuario_id);
       foreach ($prospects as $prospect): 
       	$market = $prospect->getMarket();
         $novoRecebimento = date("d-m-Y", strtotime($prospect->getRecebimento()));

@@ -1,5 +1,6 @@
 <?php
 	require_once "../factory/ProspectFactory.php";
+	require_once "../dao/MarketDao.php";
 	
 	class ProspectDao{
 		private $conexao;
@@ -8,16 +9,22 @@
 			$this->conexao = $conexao;
 		}
 
-		function listaProspects() {
+		function listaProspects($usuario_id) {
 			$prospects = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from prospects as u");
-			while($prospect_array = mysqli_fetch_assoc($resultado)) {
-				$factory = new ProspectFactory();
-				$prospect_id = $prospect_array['id'];				
-				$prospect = $factory->criaProspect($prospect_array);
-				$prospect->setId($prospect_id);
-				array_push($prospects, $prospect);
+			$marketDao = new MarketDao($this->conexao);
+			$markets = $marketDao->listaMarkets($usuario_id);
+			foreach ($markets as $market) {
+				$market_id = $market->getId();
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from prospects as u where market_id = {$market_id}");
+				while($prospect_array = mysqli_fetch_assoc($resultado)) {
+					$factory = new ProspectFactory();
+					$prospect_id = $prospect_array['id'];				
+					$prospect = $factory->criaProspect($prospect_array);
+					$prospect->setId($prospect_id);
+					array_push($prospects, $prospect);
+				}
 			}
+			
 
 			return $prospects;
 		}

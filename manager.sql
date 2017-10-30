@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Out-2017 às 13:13
+-- Generation Time: 30-Out-2017 às 15:01
 -- Versão do servidor: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.1.8
 
@@ -36,7 +36,7 @@ CREATE TABLE `atividades` (
   `setor` varchar(50) DEFAULT NULL,
   `filial` varchar(50) DEFAULT NULL,
   `importancia` varchar(100) DEFAULT NULL,
-  `usuario_id` int(11) DEFAULT NULL,
+  `usuario_id` int(11) NOT NULL,
   `descricao` varchar(200) DEFAULT NULL,
   `resultados` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -5672,7 +5672,7 @@ INSERT INTO `cidade` (`CT_ID`, `CT_NOME`, `CT_UF`, `CT_IBGE`) VALUES
 --
 
 CREATE TABLE `contratos` (
-  `market_id` int(11) DEFAULT NULL,
+  `market_id` int(11) NOT NULL,
   `produto_id` int(11) DEFAULT NULL,
   `status_contrato_id` int(10) DEFAULT NULL,
   `consultor` int(11) DEFAULT NULL,
@@ -5787,12 +5787,18 @@ INSERT INTO `estados` (`cod_estados`, `sigla`, `nome`) VALUES
 --
 
 CREATE TABLE `historico` (
-  `id_market` int(11) DEFAULT NULL,
-  `comentario` varchar(1000) DEFAULT NULL,
-  `id_consultor` int(11) DEFAULT NULL,
-  `id_historico` int(11) NOT NULL,
+  `market_id` int(11) NOT NULL,
+  `descricao` varchar(1000) DEFAULT NULL,
+  `id` int(11) NOT NULL,
   `data` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `historico`
+--
+
+INSERT INTO `historico` (`market_id`, `descricao`, `id`, `data`) VALUES
+(26, 'Ok adicionando historico', 2, '30.10.17');
 
 -- --------------------------------------------------------
 
@@ -5806,7 +5812,7 @@ CREATE TABLE `leads` (
   `tel` varchar(15) DEFAULT NULL,
   `cargo` varchar(50) DEFAULT NULL,
   `id` int(11) NOT NULL,
-  `market_id` int(11) DEFAULT NULL
+  `market_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5837,7 +5843,7 @@ CREATE TABLE `market` (
   `segmento` varchar(255) DEFAULT NULL,
   `bairro` varchar(200) DEFAULT NULL,
   `porte_id` int(11) DEFAULT NULL,
-  `usuario_id` int(11) DEFAULT NULL
+  `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5946,13 +5952,13 @@ INSERT INTO `profissao` (`id`, `descricao`) VALUES
 
 CREATE TABLE `prospects` (
   `id` int(11) NOT NULL,
-  `market_id` int(11) DEFAULT NULL,
+  `market_id` int(11) NOT NULL,
   `prob` decimal(9,2) DEFAULT NULL,
   `valor_op` decimal(9,2) DEFAULT NULL,
   `valor_est` decimal(9,2) DEFAULT NULL,
   `recebimento` varchar(20) DEFAULT NULL,
   `fechamento` varchar(20) DEFAULT NULL,
-  `produto_id` int(11) DEFAULT NULL,
+  `produto_id` int(11) NOT NULL,
   `consultor_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5962,7 +5968,8 @@ CREATE TABLE `prospects` (
 
 INSERT INTO `prospects` (`id`, `market_id`, `prob`, `valor_op`, `valor_est`, `recebimento`, `fechamento`, `produto_id`, `consultor_id`) VALUES
 (11, 19, '25.00', '1874.00', '468.50', '2010-01-01', '2011-01-01', 5, NULL),
-(13, 24, '25.00', '1405.00', '351.25', '2010-10-01', '2012-01-01', 6, NULL);
+(13, 24, '25.00', '1405.00', '351.25', '2010-10-01', '2012-01-01', 6, NULL),
+(14, 26, '25.00', '937.00', '234.25', '2017-01-01', '2017-10-01', 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -6044,7 +6051,7 @@ CREATE TABLE `suspects` (
   `comentario` varchar(255) DEFAULT NULL,
   `consultor_id` int(10) DEFAULT NULL,
   `id` int(11) NOT NULL,
-  `market_id` int(11) DEFAULT NULL,
+  `market_id` int(11) NOT NULL,
   `tel` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -6055,7 +6062,8 @@ CREATE TABLE `suspects` (
 
 INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consultor_id`, `id`, `market_id`, `tel`, `email`) VALUES
 ('Celular', '2017-01-01', 'Agendado', '01:01', NULL, NULL, 1, 19, '(71) 98344-4444', 'joaobb@gmail.com'),
-('José Braskem', '20120-01-01', 'Agendado', '01:01', NULL, NULL, 3, 24, '(71) 98344-4444', 'josebb@gmail.com');
+('José Braskem', '20120-01-01', 'Agendado', '01:01', NULL, NULL, 3, 24, '(71) 98344-4444', 'josebb@gmail.com'),
+('Tiago Marques', '2017-01-01', 'Agendado', '01:01', NULL, NULL, 4, 26, '(71) 98333-2333', 'tiago@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -6191,7 +6199,7 @@ ALTER TABLE `departamentos_contratos`
 -- Indexes for table `historico`
 --
 ALTER TABLE `historico`
-  ADD PRIMARY KEY (`id_historico`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `leads`
@@ -6305,7 +6313,7 @@ ALTER TABLE `departamentos_contratos`
 -- AUTO_INCREMENT for table `historico`
 --
 ALTER TABLE `historico`
-  MODIFY `id_historico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `leads`
 --
@@ -6340,7 +6348,7 @@ ALTER TABLE `profissao`
 -- AUTO_INCREMENT for table `prospects`
 --
 ALTER TABLE `prospects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `socios`
 --
@@ -6360,7 +6368,7 @@ ALTER TABLE `status_contrato`
 -- AUTO_INCREMENT for table `suspects`
 --
 ALTER TABLE `suspects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tarefas`
 --

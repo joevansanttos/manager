@@ -1,5 +1,9 @@
 <?php
 	require_once "../factory/MarketFactory.php";
+	require_once "../factory/ProspectFactory.php";
+	require_once "../factory/SuspectFactory.php";
+	require_once "../factory/LeadFactory.php";
+	require_once "../factory/HistoricoFactory.php";
 	
 	class MarketDao{
 		private $conexao;
@@ -58,7 +62,59 @@
 			return $novaCidade['CT_NOME'];
 			
 		}
-	}
 	
 
+		function listaLeadsMarket($market_id) {
+			$leads = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from leads as u where market_id = {$market_id}");
+			while($lead_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new LeadFactory();
+				$lead_id = $lead_array['id'];				
+				$lead = $factory->criaLead($lead_array);
+				$lead->setId($lead_id);
+				array_push($leads, $lead);
+			}		
+			return $leads;
+		}
+
+		function listaSuspectsMarket($market_id) {
+			$suspects = array();		
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from suspects as u where market_id = {$market_id}");
+			while($suspect_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new SuspectFactory();
+				$suspect_id = $suspect_array['id'];				
+				$suspect = $factory->criaSuspect($suspect_array);
+				$suspect->setId($suspect_id);
+				array_push($suspects, $suspect);
+			}
+			return $suspects;
+		}
+		
+		function listaProspectsMarket($market_id) {
+			$prospects = array();	
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from prospects as u where market_id = {$market_id}");
+			while($prospect_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new ProspectFactory();
+				$prospect_id = $prospect_array['id'];				
+				$prospect = $factory->criaProspect($prospect_array);
+				$prospect->setId($prospect_id);
+				array_push($prospects, $prospect);
+			}				
+			return $prospects;
+		}
+
+		function listaHistoricosMarket($market_id) {
+			$historicos = array();	
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from historico as u where market_id = {$market_id}");
+			while($historico_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new HistoricoFactory();
+				$historico_id = $historico_array['id'];				
+				$historico = $factory->criaHistorico($historico_array);
+				$historico->setId($historico_id);
+				array_push($historicos, $historico);
+			}				
+			return $historicos;
+		}
+
+	}	
 ?>
