@@ -84,7 +84,7 @@
                       <li><a href="dashboard.php">Dashboard</a></li>
                     </ul>
                   </li>                  
-                  <li><a><i class="fa fa-user"></i> Usuários<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-users"></i> Usuários<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="usuarios.php">Usuários</a></li>
                       <li><a href="consultores.php">Consultores</a></li>
@@ -96,7 +96,7 @@
                       <li><a href="atividades.php">Tarefas</a></li>                      
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-rocket"></i> Produtos<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-cart-plus"></i> Produtos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="produtos.php">Produtos Cadastrados</a></li>
                     </ul>
@@ -124,7 +124,7 @@
                       <li><a href="projetos.php">Projetos</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-money"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="../financeiro/transacoes.php">Transações</a></li>
                     </ul>

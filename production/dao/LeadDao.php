@@ -1,5 +1,6 @@
 <?php
 	require_once "../factory/LeadFactory.php";
+	require_once "../dao/MarketDao.php";
 	
 	class LeadDao{
 		private $conexao;
@@ -8,16 +9,22 @@
 			$this->conexao = $conexao;
 		}
 
-		function listaLeads() {
+		function listaLeads($usuario_id) {
 			$leads = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from leads as u");
-			while($lead_array = mysqli_fetch_assoc($resultado)) {
-				$factory = new LeadFactory();
-				$lead_id = $lead_array['id'];				
-				$lead = $factory->criaLead($lead_array);
-				$lead->setId($lead_id);
-				array_push($leads, $lead);
-			}
+			$marketDao = new MarketDao($this->conexao);
+			$markets = $marketDao->listaMarkets($usuario_id);
+			foreach ($markets as $market) {
+				$market_id = $market->getId();
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from leads as u where market_id = {$market_id}");
+				while($lead_array = mysqli_fetch_assoc($resultado)) {
+					$factory = new LeadFactory();
+					$lead_id = $lead_array['id'];				
+					$lead = $factory->criaLead($lead_array);
+					$lead->setId($lead_id);
+					array_push($leads, $lead);
+				}
+			}		
+			
 			return $leads;
 		}
 

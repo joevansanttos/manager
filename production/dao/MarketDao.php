@@ -8,9 +8,9 @@
 			$this->conexao = $conexao;
 		}
 
-		function listaMarkets() {
+		function listaMarkets($usuario_id) {
 			$markets = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from market as u");
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from market as u where usuario_id = {$usuario_id}");
 			while($market_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new MarketFactory();
 				$id = $market_array['id'];				
@@ -23,7 +23,7 @@
 		}
 
 		function insereMarket(Market $market) {
-			$query = "insert into market ( razao, nome, cnpj, site, endereco, estado, cidade, segmento, tel, bairro, porte_id) values ('{$market->getNome()}', '{$market->getRazao()}', '{$market->getCnpj()}', '{$market->getSite()}', '{$market->getEndereco()}', '{$market->getEstado()}', '{$market->getCidade()}', '{$market->getSegmento()}' , '{$market->getTel()}', '{$market->getBairro()}' , '{$market->getPorte()->getId()}')";
+			$query = "insert into market ( razao, nome, cnpj, site, endereco, estado, cidade, segmento, tel, bairro, porte_id, usuario_id) values ('{$market->getNome()}', '{$market->getRazao()}', '{$market->getCnpj()}', '{$market->getSite()}', '{$market->getEndereco()}', '{$market->getEstado()}', '{$market->getCidade()}', '{$market->getSegmento()}' , '{$market->getTel()}', '{$market->getBairro()}' , '{$market->getPorte()->getId()}', '{$market->getUsuario()->getId()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{

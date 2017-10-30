@@ -26,13 +26,15 @@
     	$prospectDao = new ProspectDao($conexao);
     	$prospects = $prospectDao->listaProspects();
       foreach ($prospects as $prospect): 
-      	$market = $prospect->getMarket();                           
+      	$market = $prospect->getMarket();
+        $novoRecebimento = date("d-m-Y", strtotime($prospect->getRecebimento()));
+        $novoFechamento = date("d-m-Y", strtotime($prospect->getFechamento()));                           
     ?>
       <tr>
       	<td><?=$market->getNome()?></td>
         <td><?=$prospect->getProb()?></td>
-        <td><?=$prospect->getRecebimento()?></td>
-        <td><?=$prospect->getFechamento()?></td>
+        <td><?=$novoRecebimento?></td>
+        <td><?=$novoFechamento?></td>
         <td><?=$prospect->getValorOp()?></td>
         <td><?=$prospect->getValorEs()?></td>			    		        
         <td align="center">

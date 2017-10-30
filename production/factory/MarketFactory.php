@@ -2,6 +2,7 @@
 	require_once "../class/Market.php";
 	require_once "../class/Porte.php";
 	require_once "../dao/PorteDao.php";
+	require_once "../dao/UsuarioDao.php";
 	require_once "../class/Conexao.php";
 
 	class MarketFactory {
@@ -19,9 +20,12 @@
 			$tel = $params["tel"];
 			$bairro = $params["bairro"];
 			$porte_id = $params["porte_id"];
+			$usuario_id = $params["usuario_id"];
+			$usuarioDao = new UsuarioDao($conexao);
+			$usuario = $usuarioDao->buscaUsuario($usuario_id);
 			$porteDao = new PorteDao($conexao);
 			$porte = $porteDao->buscaPorte($porte_id);
-			return new Market($razao, $nome, $cnpj, $site, $endereco , $estado, $cidade, $segmento, $tel, $bairro, $porte);
+			return new Market($razao, $nome, $cnpj, $site, $endereco , $estado, $cidade, $segmento, $tel, $bairro, $porte, $usuario);
 		}	
 
 	}

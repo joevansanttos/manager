@@ -22,7 +22,7 @@
 
     <?php
     	$leadDao = new LeadDao($conexao);
-    	$leads = $leadDao->listaLeads();
+    	$leads = $leadDao->listaLeads($usuario_id);
       foreach ($leads as $lead): 
       	$market = $lead->getMarket();
     ?>

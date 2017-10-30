@@ -23,14 +23,15 @@
 
     <?php
     	$suspectDao = new SuspectDao($conexao);
-    	$suspects = $suspectDao->listaSuspects();
+    	$suspects = $suspectDao->listaSuspects($usuario_id);
       foreach ($suspects as $suspect): 
       	$market = $suspect->getMarket();
+        $novaData = date("d-m-Y", strtotime($suspect->getData()));
     ?>
       <tr>
       	<td><?=$market->getNome()?></td>
         <td><?=$suspect->getNome()?></td>
-        <td><?=$suspect->getData()?></td>
+        <td><?=$novaData?></td>
         <td><?=$suspect->getHora()?></td>
         <td><?=$suspect->getStatus()?></td>
         <td align="center">

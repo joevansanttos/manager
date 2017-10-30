@@ -13,9 +13,9 @@
 		private $tel;
 		private $bairro;
 		private $porte;
-		private $consultor;
+		private $usuario;
 
-		function __construct($razao, $nome, $cnpj, $site, $endereco, $estado, $cidade, $segmento, $tel, $bairro, Porte $porte){
+		function __construct($razao, $nome, $cnpj, $site, $endereco, $estado, $cidade, $segmento, $tel, $bairro, Porte $porte, Usuario $usuario){
 			$this->razao = $razao;
 			$this->nome = $nome;
 			$this->cnpj = $cnpj;
@@ -27,6 +27,7 @@
 			$this->tel = $tel;
 			$this->bairro = $bairro;
 			$this->porte = $porte;
+			$this->usuario = $usuario;
 		}
 
 		public function addLead (Lead $lead){
@@ -125,12 +126,12 @@
 			$this->porte = $porte;
 		}
 
-		public function getConsultor() {
-			return $this->consultor;
+		public function getUsuario() {
+			return $this->usuario;
 		}
 
-		public function setConsultor($consultor) {
-			$this->consultor = $consultor;
+		public function setUsuario($usuario) {
+			$this->usuario = $usuario;
 		}
 
 		public function getId() {

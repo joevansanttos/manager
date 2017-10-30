@@ -22,7 +22,7 @@
   <tbody>
     <?php
     	$marketDao = new MarketDao($conexao);
-    	$markets = $marketDao->listaMarkets();
+    	$markets = $marketDao->listaMarkets($usuario_id);
       foreach ($markets as $market): 
         $cidade = $marketDao->buscaCidade($market->getCidade() );                              
     ?>

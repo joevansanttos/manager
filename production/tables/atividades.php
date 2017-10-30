@@ -26,13 +26,15 @@
     <?php
     	$atividadeDao = new AtividadeDao($conexao);
     	$atividades = $atividadeDao->listaAtividades();
-      foreach ($atividades as $atividade): 
+      foreach ($atividades as $atividade):
+        $novoInicio = date("d-m-Y", strtotime($atividade->getInicio()));
+        $novoPrazo = date("d-m-Y", strtotime($atividade->getPrazo())); 
     ?>
       <tr>
       	<td><?=$atividade->getDescricao() ?></td>
         <td><?=$atividade->getUsuario()->getNome() .' '. $atividade->getUsuario()->getSobrenome() ?></td>
-        <td><?=$atividade->getInicio() ?></td>
-        <td><?=$atividade->getPrazo() ?></td>
+        <td><?=$novoInicio ?></td>
+        <td><?=$novoPrazo ?></td>
         <td><?=$atividade->getStatusAtividade()->getDescricao()?></td>
         <td><?=$atividade->getSetor() ?></td>
         <td><?=$atividade->getFilial() ?></td>

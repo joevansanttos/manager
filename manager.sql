@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Out-2017 às 04:20
+-- Generation Time: 30-Out-2017 às 13:13
 -- Versão do servidor: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.1.8
 
@@ -5815,7 +5815,8 @@ CREATE TABLE `leads` (
 
 INSERT INTO `leads` (`nome`, `email`, `tel`, `cargo`, `id`, `market_id`) VALUES
 ('João Petrobras', 'joao@petrobras.com', '(71) 98344-4444', 'Coordenador', 1, 19),
-('Catharina Ramos Silva', 'cat@hotmail.com', '(71) 98444-4444', 'Gerente', 3, 24);
+('Catharina Ramos Silva', 'cat@hotmail.com', '(71) 98444-4444', 'Gerente', 3, 24),
+('José da Caixa', 'jose@caixa.com', '(71) 98444-4444', 'Diretor', 4, 26);
 
 -- --------------------------------------------------------
 
@@ -5836,17 +5837,18 @@ CREATE TABLE `market` (
   `segmento` varchar(255) DEFAULT NULL,
   `bairro` varchar(200) DEFAULT NULL,
   `porte_id` int(11) DEFAULT NULL,
-  `consultor_id` int(11) DEFAULT NULL
+  `usuario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `market`
 --
 
-INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado`, `cidade`, `tel`, `segmento`, `bairro`, `porte_id`, `consultor_id`) VALUES
-(19, 'Petrobras', 'Petrobras SA', '23.333.333/3333-33', 'petrobras.com', 'R. Osvaldo Sento Sé 126 Imbuí', 'GO', '5200555', '(71) 98333-3333', 'Frigorífico', 'Cazajeiras', 1, NULL),
-(20, 'Projek', 'Projek sa', '12.222.222/2222-22', 'projek.com.br', 'R. Osvaldo Sento Sé 126 Imbuí', 'GO', '5200506', '(71) 9844-4343', 'Gráfica', 'Imbuí', 2, NULL),
-(24, 'BRASKEM', 'BRASKEM S.A.', '22.222.222/2222-22', 'dsdsdsds', 'R General Venâncio Flores, 481 - lj-c, Leblon - Rio de Janeiro, RJ', 'AP', '1600055', '(71) 98344-4444', 'Gráfica', 'Lote', 2, NULL);
+INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado`, `cidade`, `tel`, `segmento`, `bairro`, `porte_id`, `usuario_id`) VALUES
+(19, 'Petrobras', 'Petrobras SA', '23.333.333/3333-33', 'petrobras.com', 'R. Osvaldo Sento Sé 126 Imbuí', 'GO', '5200555', '(71) 98333-3333', 'Frigorífico', 'Cazajeiras', 1, 4),
+(20, 'Projek', 'Projek sa', '12.222.222/2222-22', 'projek.com.br', 'R. Osvaldo Sento Sé 126 Imbuí', 'GO', '5200506', '(71) 9844-4343', 'Gráfica', 'Imbuí', 2, 4),
+(24, 'BRASKEM', 'BRASKEM S.A.', '22.222.222/2222-22', 'dsdsdsds', 'R General Venâncio Flores, 481 - lj-c, Leblon - Rio de Janeiro, RJ', 'AP', '1600055', '(71) 98344-4444', 'Gráfica', 'Lote', 2, 4),
+(26, 'Caixa', 'Caixa Sa', '22.222.222/2222-22', 'caixa.com.br', 'R General Venâncio Flores, 481 - lj-c, Leblon - Rio de Janeiro, RJ', 'AL', '2701407', '(71) 98444-4444', 'Mobiliário', 'Caixa Bairro', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -6308,12 +6310,12 @@ ALTER TABLE `historico`
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `market`
 --
 ALTER TABLE `market`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `porte`
 --

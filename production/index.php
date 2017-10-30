@@ -32,7 +32,7 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="form-wrap">
-              <h1>Entre com seu email</h1>
+              <h1>Projek Manager</h1>
               <form role="form" action="aut/login.php" method="post" id="login-form" autocomplete="off">
                 <div class="form-group">
                   <label for="email" class="sr-only">Email</label>

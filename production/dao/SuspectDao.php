@@ -8,7 +8,7 @@
 			$this->conexao = $conexao;
 		}
 
-		function listaSuspects() {
+		function listaSuspects($usuario_id) {
 			$suspects = array();
 			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from suspects as u");
 			while($suspect_array = mysqli_fetch_assoc($resultado)) {
