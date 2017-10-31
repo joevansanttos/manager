@@ -83,7 +83,10 @@
                     <ul class="nav child_menu">
                       <li><a href="dashboard.php">Dashboard</a></li>
                     </ul>
-                  </li>                  
+                  </li>
+                <?php
+                  if($usuario->getProfissao()->getId() != 4){
+                ?>                  
                   <li><a><i class="fa fa-users"></i> Usuários<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="usuarios.php">Usuários</a></li>
@@ -96,6 +99,9 @@
                       <li><a href="atividades.php">Tarefas</a></li>                      
                     </ul>
                   </li>
+                <?php
+                  }
+                ?>
                   <li><a><i class="fa fa-cart-plus"></i> Produtos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="produtos.php">Produtos Cadastrados</a></li>
@@ -114,6 +120,9 @@
                       <li><a href="contratos.php">Contratos</a></li>                      
                     </ul>
                   </li>
+                <?php
+                  if($usuario->getProfissao()->getId() != 4){
+                ?> 
                   <li><a><i class="fa fa-comments" aria-hidden="true"></i> Pós-Venda <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="pos-venda.php">Pós-Venda</a></li>                      
@@ -126,9 +135,14 @@
                   </li>
                   <li><a><i class="fa fa-money"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../financeiro/transacoes.php">Transações</a></li>
+                      <li><a href="contratos_pendentes.php">Contratos Pendentes</a></li>
+                      <li><a href="contratos_aprovados.php">Contratos Aprovados</a></li>
+                      <li><a href="transacoes.php">Transações</a></li>
                     </ul>
-                  </li>                     
+                  </li>
+                <?php
+                  }
+                ?>                     
                 </ul>
               </div>
             </div>

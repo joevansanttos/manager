@@ -50,6 +50,15 @@
 			return $prospect;
 		}
 
+		function remove(Prospect $prospect){
+			$query = "delete from prospects where id = {$prospect->getId()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
 		
 	}
 	

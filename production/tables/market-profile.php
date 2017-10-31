@@ -63,7 +63,7 @@
         <?php
           foreach ($historicos as $historico) {
         ?>
-            <table class="table">
+            <table class="table table-bordered table-striped">
               <thead>
                 <th class="col-md-1">Data</th>
                 <th>Histórico</th>
@@ -73,6 +73,7 @@
                 <td><?=$historico->getData()?></td>
                 <td><?=$historico->getDescricao()?></td>
                 <td>
+                  <a href="../tables/historico-altera.php?id=<?=$historico->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Histórico" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
                 </td>
               </tbody>
             </table>
@@ -91,7 +92,7 @@
         <?php
         	foreach ($leads as $lead){
         ?>
-            <table class="table">
+            <table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Nome</th>
@@ -107,8 +108,9 @@
                   <td><?=$lead->getEmail()?></td>
                   <td><?=$lead->getTel()?></td>
                   <td><?=$lead->getCargo()?></td>
-                  <td>                                                
-                   
+                  <td align="center">                                                
+                    <a href="../tables/lead-altera.php?id=<?=$lead->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Lead" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                    <a  href="../remove/remove-lead.php?id=<?=$lead->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Lead"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                   </td>
                 </tr>
               </tbody>
@@ -128,7 +130,7 @@
         <?php
           foreach ($suspects as $suspect){
         ?>
-            <table class="table">
+            <table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Contato</th>
@@ -144,8 +146,9 @@
                   <td><?=$suspect->getData()?></td>
                   <td><?=$suspect->getStatus()?></td>
                   <td><?=$suspect->getHora()?></td>
-                  <td>                                                
-                    
+                  <td align="center">                                                
+                    <a href="../tables/suspect-altera.php?id=<?=$suspect->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Alterar Lead" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                    <a  href="../remove/remove-suspect.php?id=<?=$suspect->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Suspect"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
                   </td>
                 </tr>
               </tbody>
@@ -165,7 +168,7 @@
           <?php
             foreach ($prospects as $prospect){
           ?>
-              <table class="table table-bordered">
+              <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Valor</th>
@@ -175,11 +178,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr align="center">
                     <td><?=$prospect->getValorEs()?></td>
                     <td><?=$prospect->getRecebimento()?></td>
                     <td><?=$prospect->getFechamento()?></td>                                          
-                    <td>                   
+                    <td>
+                      <a href="../tables/prospect-altera.php?id=<?=$prospect->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Prospect" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                      <a  href="../remove/remove-prospect.php?id=<?=$prospect->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Prospect"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>                   
                     </td>
                   </tr>
                 </tbody>

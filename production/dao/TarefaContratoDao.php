@@ -22,6 +22,15 @@
 		}
 	}
 
+	function remove(TarefaContrato $tarefaContrato) {
+		$query = "delete from tarefas_contrato where id = {$tarefaContrato->getId()}";
+		if(mysqli_query($this->conexao->conecta(), $query)){
+
+		}else{
+			echo mysqli_error($this->conexao->conecta());
+		}
+	}
+
 	function listaTarefasContratos($departamentoContrato) {
 		$tarefasContratos = array();			
 		$resultado = mysqli_query($this->conexao->conecta(), "select * from tarefas_contrato  where departamento_contrato_id = '{$departamentoContrato->getId()}'");

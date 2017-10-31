@@ -19,6 +19,7 @@
 			<th>Micro/Partner</th>                              
 			<th>Pequena/Partner</th>                              
 			<th>Média/Grande/Partner</th>
+			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,13 +35,17 @@
 				<td><?='R$ '.number_format($produto->getPreco() * 2, 2, '.', '')?></td>
 				<td><?='R$ '.number_format($produto->getPreco() * 1.5, 2,'.','')?></td>
 				<td><?='R$ '.number_format($produto->getPreco() * 2, 2, '.', '')?></td>
-				<td><?='R$ '.number_format($produto->getPreco() * 2.5, 2, '.', '')?></td>       
+				<td><?='R$ '.number_format($produto->getPreco() * 2.5, 2, '.', '')?></td>
+				<td align="center"><a href="../tables/produto-altera.php?id=<?=$produto->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Produto" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>       
 			</tr>
 			<?php
 		endforeach
 		?>
 	</tbody>      
 </table>
+<div class="ln_solid"></div>
+
+<a class="btn btn-default" style="" href="../tables/produto-formulario.php?"><i class="fa fa-plus"></i></a>
 </div>
 
 			

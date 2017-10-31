@@ -18,7 +18,6 @@
     	<th>Número do Contrato</th>
       <th>Inicio</th>
       <th>Fim</th>
-      <th>Status do Contrato</th>				    		     
       <th class="col-md-2">Ações</th>				     
     </tr>
   </thead>
@@ -26,7 +25,7 @@
 
     <?php
     	$contratoDao = new ContratoDao($conexao);
-    	$contratos = $contratoDao->listaContratos($usuario_id);
+    	$contratos = $contratoDao->listaContratosPendentes();
       foreach ($contratos as $contrato): 
       	$market = $contrato->getMarket();
         $novoInicio = date("d-m-Y", strtotime($contrato->getInicio()));
@@ -38,11 +37,22 @@
         <td><?=str_pad($contrato->getNumero(), 3, '0', STR_PAD_LEFT).'.2017'?></td>
         <td><?=$novoInicio?></td>
         <td><?=$novoFim?></td>
-        <td><?=$contrato->getStatusContrato()->getDescricao()?></td>			    		        
         <td align="center">
-                     
-          <a href="/imprime/imprime-contrato.php?n_contrato=?>"><button data-toggle="tooltip" data-placement="top" title="Imprime Contrato"  class="btn btn-success btn-xs"><i class="fa fa-print"></i></button></a>                                                          
-          <a  href="../remove/remove-contrato.php?id=<?=$contrato->getNumero()?>" data-toggle="tooltip" data-placement="top" title="Remover Contrato"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+          <?php
+            if($contrato->getStatusContrato()->getId() == 1){
+          ?>
+          <a href="../adiciona/adiciona-tarefa.php?id=<?=$contrato->getNumero()?>"><button data-toggle="tooltip" data-placement="top" title="Contrato Aprovado"  class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a> 
+
+          <?php
+            }else{
+          ?>
+          <a href=""><button data-toggle="tooltip" data-placement="top" title="Contrato Aprovado"  class="btn btn-info btn-xs"><i class="fa fa-file"></i></button></a> 
+
+          <?php
+            }
+          ?>                      
+          <a href="imprime-contrato.php?n_contrato=?>"><button data-toggle="tooltip" data-placement="top" title="Imprime Contrato"  class="btn btn-success btn-xs"><i class="fa fa-print"></i></button></a>                                                          
+          <a data-toggle="tooltip" data-placement="top" title="Remover Contrato"  href="../remove/remove-contrato.php?n_contrato="><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
         </td>
       </tr>
     <?php				

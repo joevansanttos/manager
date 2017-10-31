@@ -31,7 +31,26 @@
 			$produto = $factory->criaProduto($produto);
 			$produto->setId($produto_id);
 			return $produto;
-		}		
+		}
+
+
+		function insereProduto(Produto $produto) {
+			$query = "insert into produtos ( nome, descricao, beneficios, entregas, preco) values ('{$produto->getNome()}', '{$produto->getDescricao()}', '{$produto->getBeneficios()}', '{$produto->getEntregas()}', '{$produto->getPreco()}')";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
+		function atualizaProduto(Produto $produto) {
+			$query = "update produtos set  nome = '{$produto->getNome()}', descricao = '{$produto->getDescricao()}', beneficios = '{$produto->getBeneficios()}', entregas = '{$produto->getEntregas()}', preco = '{$produto->getPreco()}' where id= '{$produto->getId()}'";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}				
 
 	}
 	

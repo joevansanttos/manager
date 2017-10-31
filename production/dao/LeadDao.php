@@ -58,6 +58,16 @@
 
 		}
 
+
+		function remove(Lead $lead){
+			$query = "delete from leads where id = {$lead->getId()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
 		
 	}
 	

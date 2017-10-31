@@ -2,9 +2,9 @@
 -- version 4.7.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 30-Out-2017 às 15:01
--- Versão do servidor: 10.0.31-MariaDB-0ubuntu0.16.04.2
+-- Host: localhost
+-- Generation Time: 31-Out-2017 às 21:08
+-- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -5681,14 +5681,6 @@ CREATE TABLE `contratos` (
   `id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Extraindo dados da tabela `contratos`
---
-
-INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `consultor`, `inicio`, `fim`, `id`) VALUES
-(19, 5, 1, NULL, '2011-01-01', '2012-01-01', '1'),
-(24, 6, 2, NULL, '2016-01-01', '2017-01-01', '2');
-
 -- --------------------------------------------------------
 
 --
@@ -5725,15 +5717,6 @@ CREATE TABLE `departamentos_contratos` (
   `contrato_id` varchar(50) DEFAULT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `departamentos_contratos`
---
-
-INSERT INTO `departamentos_contratos` (`departamento_id`, `contrato_id`, `id`) VALUES
-(1, '1', 1),
-(1, '2', 6),
-(3, '2', 7);
 
 -- --------------------------------------------------------
 
@@ -5820,7 +5803,6 @@ CREATE TABLE `leads` (
 --
 
 INSERT INTO `leads` (`nome`, `email`, `tel`, `cargo`, `id`, `market_id`) VALUES
-('João Petrobras', 'joao@petrobras.com', '(71) 98344-4444', 'Coordenador', 1, 19),
 ('Catharina Ramos Silva', 'cat@hotmail.com', '(71) 98444-4444', 'Gerente', 3, 24),
 ('José da Caixa', 'jose@caixa.com', '(71) 98444-4444', 'Diretor', 4, 26);
 
@@ -5888,20 +5870,17 @@ CREATE TABLE `produtos` (
   `beneficios` varchar(255) DEFAULT NULL,
   `entregas` varchar(255) DEFAULT NULL,
   `preco` decimal(9,2) DEFAULT NULL,
-  `id` int(11) NOT NULL,
-  `preco_micro` decimal(9,2) DEFAULT NULL,
-  `preco_pequena` decimal(9,2) DEFAULT NULL,
-  `preco_media` decimal(9,2) DEFAULT NULL
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`nome`, `descricao`, `beneficios`, `entregas`, `preco`, `id`, `preco_micro`, `preco_pequena`, `preco_media`) VALUES
-('Mapeamento de Processos ', 'A metodologia BPM identifica os processos do cliente e define prioridades de abordagem. Para cada processo estudado são identificados gargalos, indicadores e apontadas melhorias. As normas e procedimentos da organização são também revisados e adequados ao', 'A metodologia BPM identifica os processos do cliente e define prioridades de abordagem. Para cada processo estudado são identificados gargalos, indicadores e apontadas melhorias. As normas e procedimentos da organização são também revisados e adequados ao', 'A metodologia BPM identifica os processos do cliente e define prioridades de abordagem. Para cada processo estudado são identificados gargalos, indicadores e apontadas melhorias. As normas e procedimentos da organização são também revisados e adequados ao', '937.00', 5, NULL, NULL, NULL),
-('Auditoria de Processos', 'A metodologia de auditoria é um instrumento gerencial utilizado para avaliar as ações da\r\nqualidade. É um processo de auxílio à prevenção de problemas, um exame sistemático e independente para determinar se as atividades da qualidade cumprem as providênci', 'Assegurar que todos os controles estão sendo executados, Apurar as responsabilidades por\r\neventuais omissões na realização das transações da empresa', 'Relatórios de auditoria, Análise de riscos, Checklist de processos,Relatório de não conformidades, Relatórios de ações preventivas/corretivas', '937.00', 6, NULL, NULL, NULL),
-('Gestão do Conhecimento', 'Através de uma plataforma de estudo online, realizamos toda a Gestão do Conhecimento para promover as necessidades de aprendizado de cada empresa de forma eficiente e bem estruturada.', 'Ensino online, Abordagens inovadoras, Economia de tempo,Colaboradores treinados em larga escala, Acessível e adaptável, Estímulo a auto-aprendizagem', 'Cursos online personalizados, Exercícios de fixação,Avaliação com diferentes tipos de questões, Certificação automatizada', '937.00', 7, NULL, NULL, NULL);
+INSERT INTO `produtos` (`nome`, `descricao`, `beneficios`, `entregas`, `preco`, `id`) VALUES
+('Mapeamento de Processos ', 'A metodologia BPM identifica os processos do cliente e define prioridades de abordagem. Para cada processo estudado são identificados gargalos, indicadores e apontadas melhorias. As normas e procedimentos da organização são também revisados e adequados ao', 'A metodologia BPM identifica os processos do cliente e define prioridades de abordagem. Para cada processo estudado são identificados gargalos, indicadores e apontadas melhorias. As normas e procedimentos da organização são também revisados e adequados ao', 'A metodologia BPM identifica os processos do cliente e define prioridades de abordagem. Para cada processo estudado são identificados gargalos, indicadores e apontadas melhorias. As normas e procedimentos da organização são também revisados e adequados ao', '937.00', 5),
+('Auditoria de Processos', 'A metodologia de auditoria é um instrumento gerencial utilizado para avaliar as ações da\r\nqualidade. É um processo de auxílio à prevenção de problemas, um exame sistemático e independente para determinar se as atividades da qualidade cumprem as providênci', 'Assegurar que todos os controles estão sendo executados, Apurar as responsabilidades por\r\neventuais omissões na realização das transações da empresa', 'Relatórios de auditoria, Análise de riscos, Checklist de processos,Relatório de não conformidades, Relatórios de ações preventivas/corretivas', '937.00', 6),
+('Gestão do Conhecimento', 'Através de uma plataforma de estudo online, realizamos toda a Gestão do Conhecimento para promover as necessidades de aprendizado de cada empresa de forma eficiente e bem estruturada.', 'Ensino online, Abordagens inovadoras, Economia de tempo,Colaboradores treinados em larga escala, Acessível e adaptável, Estímulo a auto-aprendizagem', 'Cursos online personalizados, Exercícios de fixação,Avaliação com diferentes tipos de questões, Certificação automatizada', '937.00', 7);
 
 -- --------------------------------------------------------
 
@@ -5967,7 +5946,6 @@ CREATE TABLE `prospects` (
 --
 
 INSERT INTO `prospects` (`id`, `market_id`, `prob`, `valor_op`, `valor_est`, `recebimento`, `fechamento`, `produto_id`, `consultor_id`) VALUES
-(11, 19, '25.00', '1874.00', '468.50', '2010-01-01', '2011-01-01', 5, NULL),
 (13, 24, '25.00', '1405.00', '351.25', '2010-10-01', '2012-01-01', 6, NULL),
 (14, 26, '25.00', '937.00', '234.25', '2017-01-01', '2017-10-01', 5, NULL);
 
@@ -6061,7 +6039,6 @@ CREATE TABLE `suspects` (
 --
 
 INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consultor_id`, `id`, `market_id`, `tel`, `email`) VALUES
-('Celular', '2017-01-01', 'Agendado', '01:01', NULL, NULL, 1, 19, '(71) 98344-4444', 'joaobb@gmail.com'),
 ('José Braskem', '20120-01-01', 'Agendado', '01:01', NULL, NULL, 3, 24, '(71) 98344-4444', 'josebb@gmail.com'),
 ('Tiago Marques', '2017-01-01', 'Agendado', '01:01', NULL, NULL, 4, 26, '(71) 98333-2333', 'tiago@hotmail.com');
 
@@ -6104,36 +6081,6 @@ CREATE TABLE `tarefas_contrato` (
   `horas` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `tarefas_contrato`
---
-
-INSERT INTO `tarefas_contrato` (`id`, `departamento_contrato_id`, `data_fim`, `tarefa_id`, `horas`) VALUES
-(1, 1, NULL, 1, 200),
-(2, 1, NULL, 2, 100),
-(3, 1, NULL, 3, NULL),
-(4, 1, NULL, 4, NULL),
-(5, 1, NULL, 5, NULL),
-(6, 1, NULL, 6, NULL),
-(7, 1, NULL, 7, NULL),
-(8, 1, NULL, 8, NULL),
-(9, 6, NULL, 1, NULL),
-(10, 6, NULL, 2, NULL),
-(11, 6, NULL, 3, NULL),
-(12, 6, NULL, 4, NULL),
-(13, 6, NULL, 5, NULL),
-(14, 6, NULL, 6, NULL),
-(15, 6, NULL, 7, NULL),
-(16, 6, NULL, 8, NULL),
-(17, 7, NULL, 1, NULL),
-(18, 7, NULL, 2, NULL),
-(19, 7, NULL, 3, NULL),
-(20, 7, NULL, 4, NULL),
-(21, 7, NULL, 5, NULL),
-(22, 7, NULL, 6, NULL),
-(23, 7, NULL, 7, NULL),
-(24, 7, NULL, 8, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -6159,7 +6106,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `profissao_id`) VALUES
 ('projek', 'Joevan ', 'joevansantos@hotmail.com', 'masculino', 'PB', '2501351', '(71) 83333-3333', 4, 'Santos de Oliveira', 1),
-('projek', 'Fábio', 'fabio@projek.com', 'masculino', 'PI', '2201150', '(71) 98333-3334', 7, 'Projek', 1);
+('projek', 'Fábio', 'fabio@projek.com', 'masculino', 'PI', '2201150', '(71) 98333-3334', 7, 'Projek', 1),
+('projek', 'José ', 'jose@partner.com', 'masculino', 'PR', '4101507', '(71) 98333-3333', 8, 'Partner', 4);
 
 --
 -- Indexes for dumped tables
@@ -6383,7 +6331,7 @@ ALTER TABLE `tarefas_contrato`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

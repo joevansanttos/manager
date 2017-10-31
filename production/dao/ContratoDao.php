@@ -4,6 +4,7 @@
 	require_once "../factory/SocioFactory.php";
 	require_once "../factory/DepartamentoContratoFactory.php";
 	require_once "../dao/DepartamentoContratoDao.php";
+	require_once "../dao/TarefaContratoDao.php";
 
 	
 	class ContratoDao{
@@ -13,9 +14,37 @@
 			$this->conexao = $conexao;
 		}
 
-		function listaContratos() {
+		function listaContratos($usuario_id) {
 			$contratos = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u");
+			$marketDao = new MarketDao($this->conexao);
+			$markets = $marketDao->listaMarkets($usuario_id);
+			foreach ($markets as $market) {
+				$market_id = $market->getId();
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where market_id = {$market_id}");
+				while($contrato_array = mysqli_fetch_assoc($resultado)) {
+					$factory = new ContratoFactory();
+					$contrato = $factory->criaContrato($contrato_array);
+					array_push($contratos, $contrato);
+				}
+			}
+			
+			return $contratos;
+		}
+
+		function listaContratosPendentes() {
+			$contratos = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where status_contrato_id = 1");
+			while($contrato_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new ContratoFactory();
+				$contrato = $factory->criaContrato($contrato_array);
+				array_push($contratos, $contrato);
+			}
+			return $contratos;
+		}
+
+		function listaContratosAprovados() {
+			$contratos = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where status_contrato_id = 2");
 			while($contrato_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new ContratoFactory();
 				$contrato = $factory->criaContrato($contrato_array);
@@ -90,8 +119,41 @@
 				echo (mysqli_error($this->conexao->conecta()));
 			}
 
-
 		}
+
+		function removeProjeto(Contrato $contrato){
+			$departamentoContratoDao = new DepartamentoContratoDao($this->conexao);
+			$departamentosContratos = $departamentoContratoDao->listaDepartamentosContratos($contrato);
+
+			foreach($departamentosContratos as $departamentoContrato){
+				$tarefaContratoDao = new TarefaContratoDao($this->conexao);
+				$tarefasContratos = $tarefaContratoDao->listaTarefasContratos($departamentoContrato);
+				foreach ($tarefasContratos as $tarefaContrato) {
+					$tarefaContratoDao->remove($tarefaContrato);
+				}
+				$departamentoContratoDao->remove($departamentoContrato);
+			}
+
+			$contrato->setStatusContrato(1);
+		}
+
+
+		function remove(Contrato $contrato){
+			$socioDao = new SocioDao($this->conexao);
+			$socios = $socioDao->listaSocios($contrato);
+			foreach ($socios as $socio) {
+				$socioDao->remove($socio);
+			}
+			$query = "delete from contratos where id = {$contrato->getNumero()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
+
+
 
 		
 	}

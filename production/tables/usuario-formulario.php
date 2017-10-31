@@ -1,6 +1,6 @@
 <?php	
 require_once "../includes/cabecalho.php"; 
-require '../dao/ProfissaoDao.php';
+require_once '../dao/ProfissaoDao.php';
 ?>
 
 <h3>Novo Usuário</h3>

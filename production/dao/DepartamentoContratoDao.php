@@ -49,6 +49,15 @@
 		return $departamentoContrato;
 	}
 
+	function remove(DepartamentoContrato $departamentoContrato) {
+		$query = "delete from departamentos_contratos where id = {$departamentoContrato->getId()}";
+		if(mysqli_query($this->conexao->conecta(), $query)){
+
+		}else{
+			echo mysqli_error($this->conexao->conecta());
+		}
+	}
+
 }
 
 	
