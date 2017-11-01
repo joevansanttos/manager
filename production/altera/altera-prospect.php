@@ -6,6 +6,7 @@
 	$factory = new ProspectFactory();
 	$prospect = $factory->criaProspect($_POST);
 	$prospect->setId($id);
+	var_dump($prospect);
 	$prospectDao = new ProspectDao($conexao);
 	$prospectDao->atualizaProspect($prospect);
 	header("Location: ../tables/prospects.php");

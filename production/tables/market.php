@@ -19,6 +19,16 @@
       <th>Ações</th>
     </tr>
   </thead>
+  <tfoot>
+    <th>Nome</th>
+    <th>Telefone</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+    <th>Bairro</th>
+    <th>Segmento</th> 
+    <th>Porte</th> 
+    <th></th>
+  </tfoot>
   <tbody>
     <?php
     	$marketDao = new MarketDao($conexao);
@@ -52,4 +62,6 @@
 
 			
 <?php	require_once "../includes/script.php"; ?>
+
+<script type="text/javascript" src="../js/datatable-filters.js"></script>
 <?php	require_once "../includes/rodape.php"; ?>

@@ -18,6 +18,14 @@
       <th class="col-md-2">Ações</th>				     
     </tr>
   </thead>
+  <tfoot>
+    <th>Empresa</th>  
+    <th>Contato</th>
+    <th>Email</th>
+    <th>Telefone</th>
+    <th>Cargo</th>
+    <th ></th> 
+  </tfoot>
   <tbody>
 
     <?php
@@ -50,5 +58,10 @@
 
 <?php	
 require_once "../includes/script.php";
+?>
+
+<script type="text/javascript" src="../js/datatable-filters.js"></script>
+
+<?php
 	require_once "../includes/rodape.php"; 
 ?>

@@ -13,11 +13,12 @@
 			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from categorias as u");
 			while($categoria_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new CategoriaFactory();
-				$categoria_id = $categoria_array['id'];				
-				$categoria = $factory->criaPorte($categoria_array);
+				$categoria_id = $categoria_array['id'];
+				$categoria = $factory->criaCategoria($categoria_array);				
 				$categoria->setId($categoria_id);
 				array_push($categorias, $categoria);
 			}
+
 			return $categorias;
 		}
 

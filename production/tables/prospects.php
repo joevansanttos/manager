@@ -20,6 +20,15 @@
       <th class="col-md-2">Ações</th>				     
     </tr>
   </thead>
+  <tfoot>
+      <th>Empresa</th>
+      <th>Probabilidade</th>
+      <th>Recebimento</th>
+      <th>Fechamento</th>
+      <th>Valor Oportunidade</th>
+      <th>Valor Estimado</th>                    
+      <th></th>       
+  </tfoot>
   <tbody>
 
     <?php
@@ -55,5 +64,10 @@
 
 <?php	
 	require_once "../includes/script.php"; 
+?>
+
+<script type="text/javascript" src="../js/datatable-filters.js"></script>
+
+<?php
 	require_once "../includes/rodape.php"; 
 ?>

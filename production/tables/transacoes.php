@@ -37,12 +37,12 @@
               
           ?>
           <tr>
-            <td><?=$recebimento['data']?></td>
-            <td><?=$recebimento['descricao']?></td>
+            <td><?=$recebimento->getData()?></td>
+            <td><?=$recebimento->getDescricao()?></td>
             <td><?=$cliente['nome']?></td>
-            <td><?=$recebimento['valor']?></td>
-            <td><?=$categoria['descricao']?></td>
-            <td><?=$pagamento['descricao']?></td>
+            <td><?=$recebimento->getValor()?></td>
+            <td><?=$categoria->getDescricao()?></td>
+            <td><?=$pagamento->getDescricao()?></td>
             <td>
              <input id="pago" type="checkbox" class="" /> Pago
             </td>
@@ -51,7 +51,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary  btn-round  btn-block "  href="../forms/recebimento-formulario.php?">+ Adicionar recebimento</a>
+        <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary  btn-round  btn-block "  href="../tables/recebimento-formulario.php?">+ Adicionar recebimento</a>
       </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">

@@ -2,6 +2,9 @@
 	require_once "../dao/MarketDao.php";
 	require_once "../class/Conexao.php";
 	require_once "../class/Recebimento.php";
+	require_once "../dao/CategoriaDao.php";
+	require_once "../dao/PagamentoDao.php";
+	require_once "../dao/PagoDao.php";
 
 class RecebimentoFactory {
 

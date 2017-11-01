@@ -4,7 +4,8 @@
 	require_once "../factory/DepartamentoContratoFactory.php";
 	require_once "../dao/DepartamentoContratoDao.php";
 	require_once "../dao/TarefaDao.php";
-
+	require_once "../dao/UsuarioDao.php";
+	
 	class TarefaContratoDao{
 		private $conexao;
 
@@ -46,7 +47,17 @@
 			$factory = new TarefaContratoFactory();	
 			$horas = $t_contrato_array['horas'];
 			$fim = $t_contrato_array['data_fim'];
-			$tarefaContrato = $factory->criaTarefaContrato($tarefa, $departamentoContrato, $horas, $fim);
+			$status_atividade_id = $t_contrato_array['status_atividade_id'];
+			$usuario_id = $t_contrato_array['usuario_id'];
+			$tarefaContrato = $factory->criaTarefaContrato($tarefa, $departamentoContrato, $horas, $fim, $status_atividade_id);
+			$usuarioDao = new UsuarioDao($this->conexao);
+			if($usuario_id != null){
+				$usuario = $usuarioDao->buscaUsuario($usuario_id);
+			}else{
+				$usuario = null;
+			}
+			
+			$tarefaContrato->setUsuario($usuario);
 			$tarefaContrato->setId($t_contrato_id);
 			array_push($tarefasContratos, $tarefaContrato);
 		}

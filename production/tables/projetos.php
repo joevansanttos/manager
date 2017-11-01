@@ -23,7 +23,7 @@
    <tbody>
      <?php
       $contratoDao = new ContratoDao($conexao);
-      $contratos = $contratoDao->listaContratos();
+      $contratos = $contratoDao->listaTodosContratos();
        foreach ($contratos as $contrato){
         $market = $contrato->getMarket();
      ?>
@@ -59,7 +59,6 @@
        </td>
        <td>                                
          <a href="detalhes-projeto.php?id=<?=$contrato->getNumero()?>" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
-         <a href="" class="btn btn-info btn-xs"><i class="fa fa-edit"></i></a>
          <a href="../forms/form-consultores-projeto.php?id_projeto=" class="btn btn-warning btn-xs"><i class="fa fa-users"></i></a>
          <a href="../remove/remove-projeto.php?id=<?=$contrato->getNumero()?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
        </td>

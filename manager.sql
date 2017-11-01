@@ -2,9 +2,9 @@
 -- version 4.7.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 01, 2017 at 11:46 AM
--- Server version: 10.0.31-MariaDB-0ubuntu0.16.04.2
+-- Host: localhost
+-- Generation Time: 01-Nov-2017 às 18:14
+-- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `atividades`
+-- Estrutura da tabela `atividades`
 --
 
 CREATE TABLE `atividades` (
@@ -42,16 +42,36 @@ CREATE TABLE `atividades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `atividades`
+-- Extraindo dados da tabela `atividades`
 --
 
 INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `filial`, `importancia`, `usuario_id`, `descricao`, `resultados`) VALUES
-(5, '2018-01-01', '2018-01-01', 1, 'TI', 'Salvador', 'Alta', 4, 'Desenvolver Sistema', 'esperamos que seja dese');
+(5, '2018-01-01', '2018-01-01', 1, 'TI', 'Salvador', 'Alta', 4, 'Desenvolver Sistema', 'esperamos que seja dese'),
+(6, '2017-01-01', '1312-01-01', 1, 'Teste', 'Salvador', 'Alta', 7, 'Procedimento Interno', 'Desenvolder');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cidade`
+-- Estrutura da tabela `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `descricao`) VALUES
+(1, 'Vendas'),
+(2, 'Mensalidade');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cidade`
 --
 
 CREATE TABLE `cidade` (
@@ -62,7 +82,7 @@ CREATE TABLE `cidade` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Municipios das Unidades Federativas';
 
 --
--- Dumping data for table `cidade`
+-- Extraindo dados da tabela `cidade`
 --
 
 INSERT INTO `cidade` (`CT_ID`, `CT_NOME`, `CT_UF`, `CT_IBGE`) VALUES
@@ -5668,7 +5688,7 @@ INSERT INTO `cidade` (`CT_ID`, `CT_NOME`, `CT_UF`, `CT_IBGE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contratos`
+-- Estrutura da tabela `contratos`
 --
 
 CREATE TABLE `contratos` (
@@ -5682,7 +5702,7 @@ CREATE TABLE `contratos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `contratos`
+-- Extraindo dados da tabela `contratos`
 --
 
 INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `consultor`, `inicio`, `fim`, `id`) VALUES
@@ -5692,7 +5712,7 @@ INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `consu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departamentos`
+-- Estrutura da tabela `departamentos`
 --
 
 CREATE TABLE `departamentos` (
@@ -5701,7 +5721,7 @@ CREATE TABLE `departamentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `departamentos`
+-- Extraindo dados da tabela `departamentos`
 --
 
 INSERT INTO `departamentos` (`id`, `descricao`) VALUES
@@ -5717,7 +5737,7 @@ INSERT INTO `departamentos` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departamentos_contratos`
+-- Estrutura da tabela `departamentos_contratos`
 --
 
 CREATE TABLE `departamentos_contratos` (
@@ -5727,7 +5747,7 @@ CREATE TABLE `departamentos_contratos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `departamentos_contratos`
+-- Extraindo dados da tabela `departamentos_contratos`
 --
 
 INSERT INTO `departamentos_contratos` (`departamento_id`, `contrato_id`, `id`) VALUES
@@ -5738,7 +5758,7 @@ INSERT INTO `departamentos_contratos` (`departamento_id`, `contrato_id`, `id`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `despesas`
+-- Estrutura da tabela `despesas`
 --
 
 CREATE TABLE `despesas` (
@@ -5755,7 +5775,7 @@ CREATE TABLE `despesas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estados`
+-- Estrutura da tabela `estados`
 --
 
 CREATE TABLE `estados` (
@@ -5765,7 +5785,7 @@ CREATE TABLE `estados` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `estados`
+-- Extraindo dados da tabela `estados`
 --
 
 INSERT INTO `estados` (`cod_estados`, `sigla`, `nome`) VALUES
@@ -5800,7 +5820,7 @@ INSERT INTO `estados` (`cod_estados`, `sigla`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `historico`
+-- Estrutura da tabela `historico`
 --
 
 CREATE TABLE `historico` (
@@ -5811,7 +5831,7 @@ CREATE TABLE `historico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `historico`
+-- Extraindo dados da tabela `historico`
 --
 
 INSERT INTO `historico` (`market_id`, `descricao`, `id`, `data`) VALUES
@@ -5820,7 +5840,7 @@ INSERT INTO `historico` (`market_id`, `descricao`, `id`, `data`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `leads`
+-- Estrutura da tabela `leads`
 --
 
 CREATE TABLE `leads` (
@@ -5833,18 +5853,19 @@ CREATE TABLE `leads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `leads`
+-- Extraindo dados da tabela `leads`
 --
 
 INSERT INTO `leads` (`nome`, `email`, `tel`, `cargo`, `id`, `market_id`) VALUES
 ('João Petrobras', 'joao@petrobras.com', '(71) 98344-4444', 'Coordenador', 1, 19),
 ('Catharina Ramos Silva', 'cat@hotmail.com', '(71) 98444-4444', 'Gerente', 3, 24),
-('José da Caixa', 'jose@caixa.com', '(71) 98444-4444', 'Diretor', 4, 26);
+('José da Caixa', 'jose@caixa.com', '(71) 98444-4444', 'Diretor', 4, 26),
+('José Bradesco', 'jose@bradesco.com', '(71) 98333-3333', 'Coordenador', 5, 28);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `market`
+-- Estrutura da tabela `market`
 --
 
 CREATE TABLE `market` (
@@ -5864,19 +5885,20 @@ CREATE TABLE `market` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `market`
+-- Extraindo dados da tabela `market`
 --
 
 INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado`, `cidade`, `tel`, `segmento`, `bairro`, `porte_id`, `usuario_id`) VALUES
 (19, 'Petrobras', 'Petrobras SA', '23.333.333/3333-33', 'petrobras.com', 'R. Osvaldo Sento Sé 126 Imbuí', 'GO', '5200555', '(71) 98333-3333', 'Frigorífico', 'Cazajeiras', 1, 4),
 (20, 'Projek', 'Projek sa', '12.222.222/2222-22', 'projek.com.br', 'R. Osvaldo Sento Sé 126 Imbuí', 'GO', '5200506', '(71) 9844-4343', 'Gráfica', 'Imbuí', 2, 4),
 (24, 'BRASKEM', 'BRASKEM S.A.', '22.222.222/2222-22', 'dsdsdsds', 'R General Venâncio Flores, 481 - lj-c, Leblon - Rio de Janeiro, RJ', 'AP', '1600055', '(71) 98344-4444', 'Gráfica', 'Lote', 2, 4),
-(26, 'Caixa', 'Caixa Sa', '22.222.222/2222-22', 'caixa.com.br', 'R General Venâncio Flores, 481 - lj-c, Leblon - Rio de Janeiro, RJ', 'AL', '2701407', '(71) 98444-4444', 'Mobiliário', 'Caixa Bairro', 1, 7);
+(26, 'Caixa', 'Caixa Sa', '22.222.222/2222-22', 'caixa.com.br', 'R General Venâncio Flores, 481 - lj-c, Leblon - Rio de Janeiro, RJ', 'AL', '2701407', '(71) 98444-4444', 'Mobiliário', 'Caixa Bairro', 1, 7),
+(28, 'Bradesco', 'Bradesco Sa', '', '', 'Avenida Joana Angélica, 79, 40050-001', 'PB', '2501351', '(71) 98333-3333', 'Abatedouro', 'Bairro do Piauí', 1, 7);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pagamentos`
+-- Estrutura da tabela `pagamentos`
 --
 
 CREATE TABLE `pagamentos` (
@@ -5885,7 +5907,7 @@ CREATE TABLE `pagamentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pagamentos`
+-- Extraindo dados da tabela `pagamentos`
 --
 
 INSERT INTO `pagamentos` (`id`, `descricao`) VALUES
@@ -5895,7 +5917,7 @@ INSERT INTO `pagamentos` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pago`
+-- Estrutura da tabela `pago`
 --
 
 CREATE TABLE `pago` (
@@ -5904,7 +5926,7 @@ CREATE TABLE `pago` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pago`
+-- Extraindo dados da tabela `pago`
 --
 
 INSERT INTO `pago` (`id`, `descricao`) VALUES
@@ -5914,7 +5936,7 @@ INSERT INTO `pago` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `porte`
+-- Estrutura da tabela `porte`
 --
 
 CREATE TABLE `porte` (
@@ -5923,7 +5945,7 @@ CREATE TABLE `porte` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `porte`
+-- Extraindo dados da tabela `porte`
 --
 
 INSERT INTO `porte` (`id`, `descricao`) VALUES
@@ -5934,7 +5956,7 @@ INSERT INTO `porte` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produtos`
+-- Estrutura da tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -5950,7 +5972,7 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `produtos`
+-- Extraindo dados da tabela `produtos`
 --
 
 INSERT INTO `produtos` (`nome`, `descricao`, `beneficios`, `entregas`, `preco`, `id`, `preco_micro`, `preco_pequena`, `preco_media`) VALUES
@@ -5961,7 +5983,7 @@ INSERT INTO `produtos` (`nome`, `descricao`, `beneficios`, `entregas`, `preco`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profileimg`
+-- Estrutura da tabela `profileimg`
 --
 
 CREATE TABLE `profileimg` (
@@ -5971,7 +5993,7 @@ CREATE TABLE `profileimg` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `profileimg`
+-- Extraindo dados da tabela `profileimg`
 --
 
 INSERT INTO `profileimg` (`id`, `usuario_id`, `image`) VALUES
@@ -5980,7 +6002,7 @@ INSERT INTO `profileimg` (`id`, `usuario_id`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profissao`
+-- Estrutura da tabela `profissao`
 --
 
 CREATE TABLE `profissao` (
@@ -5989,7 +6011,7 @@ CREATE TABLE `profissao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `profissao`
+-- Extraindo dados da tabela `profissao`
 --
 
 INSERT INTO `profissao` (`id`, `descricao`) VALUES
@@ -6002,7 +6024,7 @@ INSERT INTO `profissao` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prospects`
+-- Estrutura da tabela `prospects`
 --
 
 CREATE TABLE `prospects` (
@@ -6018,18 +6040,19 @@ CREATE TABLE `prospects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `prospects`
+-- Extraindo dados da tabela `prospects`
 --
 
 INSERT INTO `prospects` (`id`, `market_id`, `prob`, `valor_op`, `valor_est`, `recebimento`, `fechamento`, `produto_id`, `consultor_id`) VALUES
-(11, 19, '25.00', '1874.00', '468.50', '2010-01-01', '2011-01-01', 5, NULL),
-(13, 24, '25.00', '1405.00', '351.25', '2010-10-01', '2012-01-01', 6, NULL),
-(14, 26, '25.00', '937.00', '234.25', '2017-01-01', '2017-10-01', 5, NULL);
+(11, 19, '75.00', '1405.00', '1053.75', '2017-01-01', '2018-01-01', 6, NULL),
+(13, 24, '75.00', '1405.00', '1053.75', '2017-01-01', '2018-01-01', 6, NULL),
+(14, 26, '75.00', '1405.00', '1053.75', '2017-01-01', '2018-01-01', 6, NULL),
+(15, 28, '75.00', '1405.00', '1053.75', '2017-01-01', '2018-01-01', 6, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recebimentos`
+-- Estrutura da tabela `recebimentos`
 --
 
 CREATE TABLE `recebimentos` (
@@ -6046,7 +6069,18 @@ CREATE TABLE `recebimentos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `socios`
+-- Estrutura da tabela `relatorios`
+--
+
+CREATE TABLE `relatorios` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(2000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `socios`
 --
 
 CREATE TABLE `socios` (
@@ -6061,7 +6095,7 @@ CREATE TABLE `socios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `socios`
+-- Extraindo dados da tabela `socios`
 --
 
 INSERT INTO `socios` (`id`, `nome`, `cpf`, `residencia`, `nacionalidade`, `profissao`, `civil`, `contrato_id`) VALUES
@@ -6070,7 +6104,7 @@ INSERT INTO `socios` (`id`, `nome`, `cpf`, `residencia`, `nacionalidade`, `profi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status_atividade`
+-- Estrutura da tabela `status_atividade`
 --
 
 CREATE TABLE `status_atividade` (
@@ -6080,19 +6114,19 @@ CREATE TABLE `status_atividade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `status_atividade`
+-- Extraindo dados da tabela `status_atividade`
 --
 
 INSERT INTO `status_atividade` (`id`, `descricao`, `porcentagem`) VALUES
 (1, 'Não Iniciada', 0),
-(2, 'Em andamento', 25),
+(2, 'Em Andamento', 25),
 (3, 'Em Conclusão', 75),
 (4, 'Concluída', 100);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status_contrato`
+-- Estrutura da tabela `status_contrato`
 --
 
 CREATE TABLE `status_contrato` (
@@ -6101,7 +6135,7 @@ CREATE TABLE `status_contrato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `status_contrato`
+-- Extraindo dados da tabela `status_contrato`
 --
 
 INSERT INTO `status_contrato` (`id`, `descricao`) VALUES
@@ -6112,7 +6146,7 @@ INSERT INTO `status_contrato` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `suspects`
+-- Estrutura da tabela `suspects`
 --
 
 CREATE TABLE `suspects` (
@@ -6129,18 +6163,19 @@ CREATE TABLE `suspects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `suspects`
+-- Extraindo dados da tabela `suspects`
 --
 
 INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consultor_id`, `id`, `market_id`, `tel`, `email`) VALUES
 ('Celular', '2017-01-01', 'Agendado', '01:01', NULL, NULL, 1, 19, '(71) 98344-4444', 'joaobb@gmail.com'),
 ('José Braskem', '20120-01-01', 'Agendado', '01:01', NULL, NULL, 3, 24, '(71) 98344-4444', 'josebb@gmail.com'),
-('Tiago Marques', '2017-01-01', 'Agendado', '01:01', NULL, NULL, 4, 26, '(71) 98333-2333', 'tiago@hotmail.com');
+('Tiago Marques', '2017-01-01', 'Agendado', '01:01', NULL, NULL, 4, 26, '(71) 98333-2333', 'tiago@hotmail.com'),
+('João Bradesco', '2018-01-01', 'Realizado', '01:10', NULL, NULL, 5, 28, '(71) 98333-3333', 'joao@bradesco.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tarefas`
+-- Estrutura da tabela `tarefas`
 --
 
 CREATE TABLE `tarefas` (
@@ -6149,7 +6184,7 @@ CREATE TABLE `tarefas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tarefas`
+-- Extraindo dados da tabela `tarefas`
 --
 
 INSERT INTO `tarefas` (`id`, `descricao`) VALUES
@@ -6165,7 +6200,7 @@ INSERT INTO `tarefas` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tarefas_contrato`
+-- Estrutura da tabela `tarefas_contrato`
 --
 
 CREATE TABLE `tarefas_contrato` (
@@ -6173,43 +6208,45 @@ CREATE TABLE `tarefas_contrato` (
   `departamento_contrato_id` int(11) DEFAULT NULL,
   `data_fim` varchar(20) DEFAULT NULL,
   `tarefa_id` int(11) DEFAULT NULL,
-  `horas` int(11) DEFAULT NULL
+  `horas` int(11) DEFAULT NULL,
+  `status_atividade_id` int(11) DEFAULT NULL,
+  `usuario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tarefas_contrato`
+-- Extraindo dados da tabela `tarefas_contrato`
 --
 
-INSERT INTO `tarefas_contrato` (`id`, `departamento_contrato_id`, `data_fim`, `tarefa_id`, `horas`) VALUES
-(1, 1, NULL, 1, 200),
-(2, 1, NULL, 2, 100),
-(3, 1, NULL, 3, NULL),
-(4, 1, NULL, 4, NULL),
-(5, 1, NULL, 5, NULL),
-(6, 1, NULL, 6, NULL),
-(7, 1, NULL, 7, NULL),
-(8, 1, NULL, 8, NULL),
-(9, 6, NULL, 1, NULL),
-(10, 6, NULL, 2, NULL),
-(11, 6, NULL, 3, NULL),
-(12, 6, NULL, 4, NULL),
-(13, 6, NULL, 5, NULL),
-(14, 6, NULL, 6, NULL),
-(15, 6, NULL, 7, NULL),
-(16, 6, NULL, 8, NULL),
-(17, 7, NULL, 1, NULL),
-(18, 7, NULL, 2, NULL),
-(19, 7, NULL, 3, NULL),
-(20, 7, NULL, 4, NULL),
-(21, 7, NULL, 5, NULL),
-(22, 7, NULL, 6, NULL),
-(23, 7, NULL, 7, NULL),
-(24, 7, NULL, 8, NULL);
+INSERT INTO `tarefas_contrato` (`id`, `departamento_contrato_id`, `data_fim`, `tarefa_id`, `horas`, `status_atividade_id`, `usuario_id`) VALUES
+(1, 1, NULL, 1, 400, 1, NULL),
+(2, 1, NULL, 2, 100, 3, NULL),
+(3, 1, NULL, 3, NULL, 1, NULL),
+(4, 1, NULL, 4, NULL, 1, NULL),
+(5, 1, NULL, 5, NULL, 1, NULL),
+(6, 1, NULL, 6, NULL, 1, NULL),
+(7, 1, NULL, 7, NULL, 1, NULL),
+(8, 1, NULL, 8, NULL, 1, NULL),
+(9, 6, NULL, 1, NULL, 1, NULL),
+(10, 6, NULL, 2, NULL, 1, NULL),
+(11, 6, NULL, 3, NULL, 1, NULL),
+(12, 6, NULL, 4, NULL, 1, NULL),
+(13, 6, NULL, 5, NULL, 1, NULL),
+(14, 6, NULL, 6, NULL, 1, NULL),
+(15, 6, NULL, 7, NULL, 1, NULL),
+(16, 6, NULL, 8, NULL, 1, NULL),
+(17, 7, NULL, 1, NULL, 1, NULL),
+(18, 7, NULL, 2, NULL, 1, NULL),
+(19, 7, NULL, 3, NULL, 1, NULL),
+(20, 7, NULL, 4, NULL, 1, NULL),
+(21, 7, NULL, 5, NULL, 1, NULL),
+(22, 7, NULL, 6, NULL, 1, NULL),
+(23, 7, NULL, 7, NULL, 1, NULL),
+(24, 7, NULL, 8, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -6226,7 +6263,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `profissao_id`) VALUES
@@ -6241,6 +6278,12 @@ INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `t
 -- Indexes for table `atividades`
 --
 ALTER TABLE `atividades`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categorias`
+--
+ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6340,6 +6383,12 @@ ALTER TABLE `recebimentos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `relatorios`
+--
+ALTER TABLE `relatorios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `socios`
 --
 ALTER TABLE `socios`
@@ -6389,7 +6438,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `atividades`
 --
 ALTER TABLE `atividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `cidade`
 --
@@ -6419,12 +6473,12 @@ ALTER TABLE `historico`
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `market`
 --
 ALTER TABLE `market`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `pagamentos`
 --
@@ -6459,12 +6513,17 @@ ALTER TABLE `profissao`
 -- AUTO_INCREMENT for table `prospects`
 --
 ALTER TABLE `prospects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `recebimentos`
 --
 ALTER TABLE `recebimentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `relatorios`
+--
+ALTER TABLE `relatorios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `socios`
 --
@@ -6484,7 +6543,7 @@ ALTER TABLE `status_contrato`
 -- AUTO_INCREMENT for table `suspects`
 --
 ALTER TABLE `suspects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tarefas`
 --

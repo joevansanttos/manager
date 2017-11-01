@@ -31,6 +31,18 @@
 			return $contratos;
 		}
 
+		function listaTodosContratos() {
+			$contratos = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u ");
+			while($contrato_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new ContratoFactory();
+				$contrato = $factory->criaContrato($contrato_array);
+				array_push($contratos, $contrato);
+			}
+			
+			return $contratos;
+		}
+
 		function listaContratosPendentes() {
 			$contratos = array();
 			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where status_contrato_id = 1");
