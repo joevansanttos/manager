@@ -1,7 +1,7 @@
 <?php	
 	error_reporting(E_ALL ^ E_NOTICE);
 	require_once "../includes/cabecalho.php"; 
-	require_once "../dao/ProspectDao.php";
+	require_once "../dao/RecebimentoDao.php";
 ?>
 
 <h3>Transações</h3>
@@ -31,10 +31,10 @@
         </thead>
         <tbody>
           <?php 
+            $recebimentoDao = new RecebimentoDao($conexao);
+            $recebimentos = $recebimentoDao->listaRecebimentos();
             foreach ($recebimentos as $recebimento): 
-              $cliente = buscaMarket($conexao, $recebimento['id_cliente']);
-              $categoria = buscaCategoria($conexao, $recebimento['id_categoria']);
-              $pagamento = buscaPagamento($conexao, $recebimento['id_pagamento']);
+              
           ?>
           <tr>
             <td><?=$recebimento['data']?></td>
