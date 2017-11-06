@@ -14,8 +14,8 @@
 	function usuarioLogado(){
 		return $_SESSION["usuario_logado"];
 	}
-	function logaUsuario($email){
-		$_SESSION["usuario_logado"] = $email;
+	function logaUsuario($usuario){
+		$_SESSION["usuario_logado"] = $usuario->getId();
 	}
 	function logout(){
 		session_destroy();

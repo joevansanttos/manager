@@ -6,7 +6,7 @@
 
 <h3>Market</h3>
 <?php require "../includes/body.php";	?>
-<table id="tabela" class="table table-bordered table-striped ">
+<table id="tabela" class="table table-striped table-bordered ">
   <thead>
     <tr>
       <th>Nome</th>

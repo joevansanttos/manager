@@ -7,7 +7,7 @@ require_once '../dao/UsuarioDao.php';
 <?php require "../includes/body.php"; ?>       
 <form id="form" action="../adiciona/adiciona-atividade.php" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <div class="item form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="profissao_id">Funcionário<span class="required">*</span>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="profissao_id">Colaborador<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
       <select name="usuario_id" class="form-control col-md-7 col-xs-12">

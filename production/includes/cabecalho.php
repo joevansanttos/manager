@@ -7,10 +7,9 @@
   session_start();
   verificaUsuario();
   $conexao = new Conexao();
-  $email = $_SESSION["usuario_logado"];
+  $usuario_id = $_SESSION["usuario_logado"];
   $usuarioDao = new UsuarioDao($conexao);
-  $usuario = $usuarioDao->buscaUsuarioEmail($email);
-  $usuario_id = $usuario->getId();
+  $usuario = $usuarioDao->buscaUsuario($usuario_id);
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +39,14 @@
     <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-
+    <link href="../../vendors/alertifyjs/css/alertify.css" rel="stylesheet">
+    <style type="text/css">
+      tfoot input {
+              width: 100%;
+              padding: 3px;
+              box-sizing: border-box;
+          }
+    </style>
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -48,27 +54,35 @@
         <!-- Sidebar-->      
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
+            
             <div class="navbar nav_title" style="border: 0;">
-              <a href="dashboard.php" class="site_title"><i class="fa fa-rocket"></i><span> Projek Manager</span>
-              </a>
+              <a href="dashboard.php" class="site_title"><i class="fa fa-rocket"></i><span> Projek Manager!</span></a>
             </div>
             <div class="clearfix"></div>
             <div class="profile clearfix">
               <div class="profile_pic">
-                <?php                  
-                  $sql = "SELECT * FROM profileimg WHERE usuario_id = $usuario_id";
-                  $sth = $conexao->conecta()->query($sql);
-                  $result=mysqli_fetch_array($sth);
-                  if($result != null){
-                    echo '<img class="img-responsive img-circle profile_img" src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>';
+                <?php
+                  if($usuario->getImage() != null){
+                    if (getimagesize($usuario->getImage()) !== false) {
+
+                ?>
+                      <img class="img-responsive img-circle profile_img" src="<?=$usuario->getImage()?>">
+                <?php
+                    }else{
+
+                ?>
+                      <img class="img-responsive img-circle profile_img" src="../images/user.png">
+                <?php
+                    } 
                   }else{
                 ?>
-                <img class="img-responsive img-circle profile_img" src="../images/user.png">
-                <?php    
-                  }                            
+                  <img class="img-responsive img-circle profile_img" src="../images/user.png">
+                <?php
+                  }
                   
                 ?>
-                  
+                
+                
               </div>
               <div class="profile_info">
                 <span>Bem Vindo,</span>
@@ -174,15 +188,24 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <?php
-                      if($result != null){
-                        echo '<img alt="" src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>';
-                      }else{
-                    ?>
-                    <img src="../images/user.png" alt="">
-                    <?php    
-                      }                            
-                    ?>              
+                   <?php
+                     if($usuario->getImage() != null){
+                       if (getimagesize($usuario->getImage()) !== false) {
+                   ?>
+                         <img  src="<?=$usuario->getImage()?>">
+                   <?php
+                       }else{
+                   ?>
+                         <img src="../images/user.png" alt="">  
+                   <?php
+                       } 
+                     }else{
+                   ?>
+                     <img src="../images/user.png" alt="">  
+                   <?php
+                     }
+                   ?>
+
                     <?=$usuario->getNome()?>
                     <span class=" fa fa-angle-down"></span>
                   </a>

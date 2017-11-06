@@ -39,13 +39,6 @@
   <?php
     foreach ($tarefasContrato as $tarefaContrato){      
       $statusAtividade = $tarefaContrato->getStatusAtividade();
-      $usuarioDao = new UsuarioDao($conexao);
-      if($tarefaContrato->getUsuario() != null){
-        $usuario = $usuarioDao->buscaUsuario($tarefaContrato->getUsuario());
-      }else{
-        $usuario = null;
-      }
-      
   ?>                  
       <tr>
        <td class="hide"> <?=$tarefaContrato->getId()?></td>
@@ -53,17 +46,20 @@
        <td><?=$tarefaContrato->getHoras()?></td>
        <td><?=$tarefaContrato->getFim()?></td>
        <td><?=$statusAtividade->getDescricao()?></td>
-
-       <td>
-        <?php
-          if($usuario != null){
-            $usuario->getNome();
-          }
-        ?>
-        
-      </td>      
+      <?php
+        if($tarefaContrato->getUsuario() != null){
+      ?>
+        <td><?=$tarefaContrato->getUsuario()->getNome() . $tarefaContrato->getUsuario()->getSobrenome()?></td>
+      <?php
+         }else{
+      ?>
+        <td></td>
+      <?php
+         }
+       ?>
+            
        <td align="center">
-        <a href="detalhes-projeto.php?id=<?=$contrato->getNumero()?>" class="btn btn-primary btn-xs"><i class="fa fa-file"></i></a>
+        <a href="../tables/relatorio-formulario.php?id=<?=$tarefaContrato->getId()?>" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></a>
         <a href="detalhes-projeto.php?id=<?=$contrato->getNumero()?>" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
       </td>
 

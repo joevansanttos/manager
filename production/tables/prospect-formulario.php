@@ -77,14 +77,14 @@
   function calcula(){
     var prob = document.getElementById('prob').value;
     var divide = prob/100;
-    var id_profissao = 1;
+    var profissao_id = <?=$usuario->getProfissao()->getId()?>;
     var porte = <?=$market->getPorte()->getId()?>;
-    if(id_profissao == 4){          
+
+    if(profissao_id == 4){          
       if(porte == 1){
         var valor_op = 1405;
       }else if(porte == 2){
         var valor_op = 1874;
-
       }else{
         var valor_op = 2342;
       }        
@@ -97,7 +97,9 @@
         var valor_op = 1874;
       }
     }
+
     document.getElementById('valor_op').value = parseFloat(Math.round(valor_op)).toFixed(2);
+    
     var result=  parseFloat(divide)*parseFloat(valor_op);
 
     document.getElementById('valor_est').value = parseFloat(Math.round(result * 100) / 100).toFixed(2);

@@ -15,7 +15,6 @@
 			<th>Estado</th>
 			<th>Cidade</th>
 			<th>Sexo</th>
-			<th>Profissao</th>
 			<th>Telefone</th>
 		</tr>
 	</thead>
@@ -32,7 +31,6 @@
 				<td><?=$usuario->getEstado() ?></td>			    		        
 				<td><?=$cidade?></td>
 				<td><?=$usuario->getSexo() ?></td>
-				<td><?=$usuario->getProfissao()->getDescricao() ?></td>	
 				<td><?=$usuario->getTelefone() ?></td>			       
 			</tr>
 			<?php

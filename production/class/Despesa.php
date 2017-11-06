@@ -1,19 +1,19 @@
 <?php
 
-	class Recebimento{
+	class Despesa{
 		private $data;
 		private $descricao;
-		private $market;
+		private $fornecedor;
 		private $valor;
 		private $categoria;
 		private $pagamento;
 		private $pago;
 		private $id;
 
-		function __construct($data, $descricao,  $valor, Categoria $categoria,Pagamento $pagamento, Pago $pago, Market $market) {
+		function __construct($data, $descricao,  $valor, Categoria $categoria,Pagamento $pagamento, Pago $pago, $fornecedor) {
 			$this->data = $data;
 			$this->descricao = $descricao;
-			$this->market = $market;
+			$this->fornecedor = $fornecedor;
 			$this->valor = $valor;
 			$this->categoria = $categoria;
 			$this->pagamento = $pagamento;
@@ -34,11 +34,11 @@
 			$this->descricao = $descricao;
 		}
 
-		public function getMarket() {
-			return $this->market;
+		public function getFornecedor() {
+			return $this->fornecedor;
 		}
-		public function setMarket($market) {
-			$this->market = $market;
+		public function setFornecedor($fornecedor) {
+			$this->fornecedor = $fornecedor;
 		}
 
 		public function getValor() {

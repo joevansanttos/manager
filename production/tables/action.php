@@ -7,7 +7,7 @@
 
   if(($status= mysqli_real_escape_string($conexao->conecta(), $input["status"])) != NULL){
      if($input["action"] === 'edit'){
-     $query = "  UPDATE tarefas_contrato  SET status_atividade_id = '".$status."' WHERE id = '".$input["id"]."' ";      
+     $query = "  UPDATE tarefas_contrato  SET status_atividade_id = '".$status."' , usuario_id = '".$usuario_id."' WHERE id = '".$input["id"]."' ";      
       mysqli_query($conexao->conecta(), $query);
       mysqli_close($conexao);
      }
@@ -15,7 +15,7 @@
 
   if(($horas= mysqli_real_escape_string($conexao->conecta(), $input["horas"])) != NULL){
      if($input["action"] === 'edit'){
-      $query = "  UPDATE tarefas_contrato  SET horas = '".$horas."' WHERE id = '".$input["id"]."' ";
+      $query = "  UPDATE tarefas_contrato  SET horas = '".$horas."' , usuario_id = '".$usuario_id."' WHERE id = '".$input["id"]."' ";
       mysqli_query($conexao->conecta(), $query);
       mysqli_close($conexao);
      }

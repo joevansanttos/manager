@@ -47,7 +47,7 @@
           <a href="../tables/market-profile.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
           <a href="../tables/suspect-altera.php?id=<?=$suspect->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Alterar Lead" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
           <a href="../tables/historico-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Adicionar Histórico" class="btn btn-info btn-xs"><i class="fa fa-history"></i></button></a>
-          <a  href="../remove/remove-suspect.php?id=<?=$suspect->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Suspect"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+          <a  href="../remove/remove-suspect.php?id=<?=$suspect->getId()?>" class="delete" data-toggle="tooltip" data-placement="top" title="Remover Suspect"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
         </td>
       </tr>
     <?php				

@@ -50,34 +50,38 @@ require_once '../dao/ProfissaoDao.php';
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estado">Estado <span class="required">*</span>
     </label>
-    <div class="col-sm-6 col-xs-12 col-md-5">
+    <div class="col-sm-6 col-xs-12 col-md-6">
       <select id="estado" name="estado" class="optional form-control col-md-8 col-xs-12"></select>
     </div>
   </div>
   <div class="form-group">
     <label for="cidade" class="control-label col-md-3 col-sm-3 col-xs-12">Cidade <span class="required">*</span>
     </label>
-    <div class="col-sm-6 col-xs-12 col-md-5">
+    <div class="col-sm-6 col-xs-12 col-md-6">
       <select id="cidade" name="cidade" class="form-control col-md-7 col-xs-12" required>
       </select>
     </div>
   </div>                 
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="telefone">Telefone<span class="required">*</span></label>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <input class="form-control col-md-8" type="text" id="telefone" data-inputmask="'mask' : '(99) 99999-9999'" name="telefone" required="required"> 
+    <div class="col-md-2 col-sm-6 col-xs-12">
+      <input class="form-control col-md-3" type="text" id="telefone" data-inputmask="'mask' : '(99) 99999-9999'" name="telefone" required="required"> 
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sexo">Sexo<span class="required">*</span>
+    <label class="control-label col-md-1 col-sm-3 col-xs-12" for="sexo">Sexo<span class="required">*</span>
     </label>
     <div class="col-md-3 col-sm-6 col-xs-12">
-      <select class="form-control col-md-3"  id="sexo" name="sexo" required="required" >
+      <select class="form-control col-md-2"  id="sexo" name="sexo" required="required" >
         <option value="feminino">Feminino</option>
         <option value="masculino">Masculino</option>
       </select>  
     </div>
-  </div>                                            
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="image">Imagem</label>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <input type="file" name="image">
+    </div>
+  </div>                                              
   <div class="ln_solid"></div>
   <div class=" form-group">
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

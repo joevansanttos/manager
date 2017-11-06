@@ -6,5 +6,5 @@
 	$recebimento = $factory->criaRecebimento($_POST);
 	$recebimentoDao = new RecebimentoDao($conexao);
 	$recebimento = $recebimentoDao->insereRecebimento($recebimento);
-	//header("Location: ../tables/transacoes.php");
+	header("Location: ../tables/transacoes.php");
 ?>

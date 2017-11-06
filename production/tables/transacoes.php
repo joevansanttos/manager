@@ -2,6 +2,7 @@
 	error_reporting(E_ALL ^ E_NOTICE);
 	require_once "../includes/cabecalho.php"; 
 	require_once "../dao/RecebimentoDao.php";
+  require_once "../dao/DespesaDao.php";
 ?>
 
 <h3>Transações</h3>
@@ -39,10 +40,10 @@
           <tr>
             <td><?=$recebimento->getData()?></td>
             <td><?=$recebimento->getDescricao()?></td>
-            <td><?=$cliente['nome']?></td>
+            <td><?=$recebimento->getMarket()->getNome()?></td>
             <td><?=$recebimento->getValor()?></td>
-            <td><?=$categoria->getDescricao()?></td>
-            <td><?=$pagamento->getDescricao()?></td>
+            <td><?=$recebimento->getCategoria()->getDescricao()?></td>
+            <td><?=$recebimento->getPagamento()->getDescricao()?></td>
             <td>
              <input id="pago" type="checkbox" class="" /> Pago
             </td>
@@ -69,27 +70,28 @@
         </thead>
         <tbody>
           <?php 
-            foreach ($recebimentos as $recebimento): 
-              $cliente = buscaMarket($conexao, $recebimento['id_cliente']);
-              $categoria = buscaCategoria($conexao, $recebimento['id_categoria']);
-              $pagamento = buscaPagamento($conexao, $recebimento['id_pagamento']);
+            $despesaDao = new DespesaDao($conexao);
+            $despesas = $despesaDao->listaDespesas();
+            foreach ($despesas as $despesa):
           ?>
           <tr>
-            <td><?=$recebimento['data']?></td>
-            <td><?=$recebimento['descricao']?></td>
-            <td><?=$cliente['nome']?></td>
-            <td><?=$recebimento['valor']?></td>
-            <td><?=$categoria['descricao']?></td>
-            <td><?=$pagamento['descricao']?></td>
+            <td><?=$despesa->getData()?></td>
+            <td><?=$despesa->getDescricao()?></td>
+            <td><?=$despesa->getFornecedor()?></td>
+            <td><?=$despesa->getValor()?></td>
+            <td><?=$despesa->getCategoria()->getDescricao()?></td>
+            <td><?=$despesa->getPagamento()->getDescricao()?></td>
             <td>
              <input id="pago" type="checkbox" class="" /> Pago
             </td>
           </tr>
-        <?php endforeach ?>
+          <?php
+            endforeach
+          ?>
         </tbody>
       </table>
       <div class="text-center">
-        <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-danger  btn-round  btn-block "  href="../forms/despesa-formulario.php?">+ Adicionar despesa</a>
+        <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-danger  btn-round  btn-block "  href="../tables/despesa-formulario.php?">+ Adicionar despesa</a>
       </div>
     </div>                           
   </div>

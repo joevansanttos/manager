@@ -64,6 +64,23 @@
 		return $tarefasContratos;
 	}
 
+	function buscaTarefaContrato($id) {
+		$query = "select * from tarefas_contrato where id = {$id}";
+		$resultado = mysqli_query($this->conexao->conecta(), $query);
+		$tarefa_contrato = mysqli_fetch_assoc($resultado);
+		$tarefa_contrato_id = $tarefa_contrato['id'];
+		$tarefaDao = new TarefaDao($this->conexao);
+		$tarefa = $tarefaDao->buscaTarefa($tarefa_contrato['tarefa_id']);
+		$departamentoContratoDao = new DepartamentoContratoDao($this->conexao);	
+		$departamentoContrato = $departamentoContratoDao->buscaDepartamentoContrato($tarefa_contrato['departamento_contrato_id']);
+		$status_atividade_id = $tarefa_contrato['status_atividade_id'];
+		$horas = $tarefa_contrato['horas'];
+		$fim = $tarefa_contrato['fim'];
+		$factory = new TarefaContratoFactory();
+		$tarefaContrato = $factory->criaTarefaContrato($tarefa, $departamentoContrato, $horas, $fim, $status_atividade_id );
+		$tarefaContrato->setId($tarefa_contrato_id);
+		return $tarefaContrato;
+	}
 
 	
 

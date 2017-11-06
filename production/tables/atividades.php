@@ -12,16 +12,16 @@
 <table class="table table-striped projects">
   <thead>
     <tr>
-      <th style="width: 40%">Atividade</th>
-      <th>Funcionário</th>
-      <th>Progresso do Projeto</th>
+      <th class="col-md-4">Atividade</th>
+      <th>Colaborador</th>
+      <th>Progresso da Atividade</th>
       <th>Status</th>
-      <th style="width: 10%">#Editar</th>
+      <th class="col-md-1">Ações</th>
     </tr>
     <tbody>
       <?php
           $atividadeDao = new AtividadeDao($conexao);
-          $atividades = $atividadeDao->listaAtividades();
+          $atividades = $atividadeDao->listaAtividades($usuario_id);
           foreach ($atividades as $atividade):
             $novoInicio = date("d-m-Y", strtotime($atividade->getInicio()));
             $novoPrazo = date("d-m-Y", strtotime($atividade->getPrazo()));
@@ -51,11 +51,34 @@
           <small></small>
         </td>
         <td>
-          <button type="button" class="btn btn-success btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+          <?php
+            if($statusAtividade->getPorcentagem() == 0){
+          ?>
+            <button type="button" class="btn btn-danger btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+          <?php    
+            }elseif($statusAtividade->getPorcentagem() == 25){
+          ?>
+            <button type="button" class="btn btn-warning btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+          <?php
+            }elseif($statusAtividade->getPorcentagem() == 50){
+          ?>
+            <button type="button" class="btn btn-primary btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+          <?php    
+            }elseif($statusAtividade->getPorcentagem() == 75){
+          ?>
+            <button type="button" class="btn btn-info btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+          <?php
+            }else{
+          ?>
+            <button type="button" class="btn btn-success btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+          <?php
+            }
+          ?>
+          
         </td>
-        <td>                                
-          <a href="../tables/atividade-altera.php?id=<?=$atividade->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Prospect" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-          <a  href="../remove/remove-atividade.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Prospect"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+        <td align="center">
+          <a href="../tables/atividade-altera.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Editar Atividade"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+          <a href="../remove/remove-atividade.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Atividade"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>           
         </td>
       </tr>
       <?php

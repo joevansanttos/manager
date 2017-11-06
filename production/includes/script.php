@@ -26,6 +26,7 @@
 <!-- bootstrap-daterangepicker -->
 <script src="../../vendors/moment/min/moment.min.js"></script>
 <script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="../../vendors/alertifyjs/alertify.js"></script>
 <!-- bootstrap-wysiwyg -->
 <script src="../../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
 <script src="../../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
@@ -40,8 +41,7 @@
 <!-- jQuery autocomplete -->
 <script src="../../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
 <script src="../../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-<!-- Custom Theme Scripts -->
-<script src="../../build/js/custom.min.js"></script>
+
 <!-- Cidades e Estados -->
 <script src="../js/cidades-estados-utf8.js"></script>
 <script language="JavaScript" type="text/javascript" charset="utf-8">
@@ -69,3 +69,17 @@
 <script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
 <script src="../js/datatable.js"></script> 
+<script language="JavaScript" type="text/javascript">
+$(document).ready(function(){
+    $("a.delete").click(function(e){
+      
+        if(!confirm('Tem certeza que deseja excluir?')){
+            e.preventDefault();
+            return false;
+        }
+        return true;
+    });
+});
+</script>
+<!-- Custom Theme Scripts -->
+<script src="../../build/js/custom.min.js"></script>

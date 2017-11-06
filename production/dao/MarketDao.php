@@ -14,7 +14,12 @@
 
 		function listaMarkets($usuario_id) {
 			$markets = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from market as u where usuario_id = {$usuario_id}");
+			if($usuario_id == 1){
+				$resultado = mysqli_query($this->conexao->conecta(), "select * from market");
+			}else{
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from market as u where usuario_id = {$usuario_id}");
+			}
+			
 			while($market_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new MarketFactory();
 				$id = $market_array['id'];				

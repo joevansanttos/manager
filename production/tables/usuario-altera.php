@@ -40,7 +40,7 @@ $usuario = $usuarioDao->buscaUsuario($id);
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="profissao">Profissão<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <select name="profissao_id" class="form-control col-md-7 col-xs-12">
+      <select name="profissao_id" id="profissao_id" class="form-control col-md-7 col-xs-12">
       <?php
         $profissaoDao = new ProfissaoDao($conexao);
         $profissoes = $profissaoDao->listaProfissoes();
@@ -56,26 +56,24 @@ $usuario = $usuarioDao->buscaUsuario($id);
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estado">Estado <span class="required">*</span>
     </label>
-    <div class="col-sm-6 col-xs-12 col-md-5">
+    <div class="col-sm-6 col-xs-12 col-md-6">
       <select id="estado" name="estado" class="optional form-control col-md-8 col-xs-12"></select>
     </div>
   </div>
   <div class="form-group">
     <label for="cidade" class="control-label col-md-3 col-sm-3 col-xs-12">Cidade <span class="required">*</span>
     </label>
-    <div class="col-sm-6 col-xs-12 col-md-5">
+    <div class="col-sm-6 col-xs-12 col-md-6">
       <select id="cidade" name="cidade" class="form-control col-md-7 col-xs-12" required>
       </select>
     </div>
   </div>                 
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="telefone">Telefone<span class="required">*</span></label>
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="col-md-2 col-sm-6 col-xs-12">
       <input class="form-control col-md-8" type="text" value="<?=$usuario->getTelefone()?>" id="telefone" data-inputmask="'mask' : '(99) 99999-9999'" name="telefone" required="required"> 
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sexo">Sexo<span class="required">*</span>
+    <label class="control-label col-md-1 col-sm-3 col-xs-12" for="sexo">Sexo<span class="required">*</span>
     </label>
     <div class="col-md-3 col-sm-6 col-xs-12">
       <select class="form-control col-md-3"  id="sexo" name="sexo" required="required" >
@@ -102,6 +100,9 @@ $usuario = $usuarioDao->buscaUsuario($id);
 
 <?php require_once "../includes/script.php"; ?>
 
+<script>
+  document.getElementById('profissao_id').value = '<?=$usuario->getProfissao()->getId()?>';  
+</script>
 
 <script language="JavaScript" type="text/javascript" charset="utf-8">
   new dgCidadesEstados({
@@ -117,9 +118,7 @@ $usuario = $usuarioDao->buscaUsuario($id);
   document.getElementById('sexo').value = '<?=$usuario->getSexo()?>';
 </script>
 
-<script>
-  document.getElementById('profissao').value = '<?=$usuario->getProfissao()?>';  
-</script>
+
 
 
 

@@ -1,5 +1,6 @@
 <?php
 	require_once "../factory/RecebimentoFactory.php";
+	require_once "../factory/AtividadeFactory.php";
 
 	class RecebimentoDao{
 		private $conexao;
@@ -12,9 +13,9 @@
 			$recebimentos = array();			
 			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from recebimentos as u");
 			while($recebimento_array = mysqli_fetch_assoc($resultado)) {
-				$factory = new AtividadeFactory();
+				$factory = new RecebimentoFactory();
 				$recebimento_id = $recebimento_array['id'];				
-				$recebimento = $factory->criaAtividade($recebimento_array);
+				$recebimento = $factory->criaRecebimento($recebimento_array);
 				$recebimento->setId($recebimento_id);
 				array_push($recebimentos, $recebimento);
 			}

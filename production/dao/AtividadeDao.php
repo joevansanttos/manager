@@ -8,9 +8,14 @@
 			$this->conexao = $conexao;
 		}
 
-		function listaAtividades() {
-			$atividades = array();			
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u");
+		function listaAtividades($usuario_id) {
+			$atividades = array();
+			if($usuario_id == 1){
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u");
+			}else{
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u where usuario_id = $usuario_id");
+
+			}			
 			while($atividade_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new AtividadeFactory();
 				$atividade_id = $atividade_array['id'];				
@@ -29,6 +34,37 @@
 				echo mysqli_error($this->conexao->conecta());
 			}
 		}
+
+		function buscaAtividade($id) {
+			$query = "select * from atividades where id = {$id}";
+			$resultado = mysqli_query($this->conexao->conecta(), $query);
+			$atividade_buscada = mysqli_fetch_assoc($resultado);
+			$atividade_id = $atividade_buscada['id'];
+			$factory = new AtividadeFactory();
+			$atividade = $factory->criaAtividade($atividade_buscada);
+			$atividade->setId($atividade_id);
+			return $atividade;
+		}
+
+		function atualizaAtividade(Atividade $atividade) {
+			$query = "update atividades set descricao = '{$atividade->getDescricao()}', inicio = '{$atividade->getInicio()}', prazo = '{$atividade->getPrazo()}' , setor = '{$atividade->getSetor()}', filial = '{$atividade->getFilial()}', resultados = '{$atividade->getResultados()}', importancia = '{$atividade->getImportancia()}', status_atividade_id = '{$atividade->getStatusAtividade()->getId()}' where id = '{$atividade->getId()}'";
+
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
+		function remove(Atividade $atividade){
+			$query = "delete from atividades where id = {$atividade->getId()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}		
+
 	}
 
 ?>

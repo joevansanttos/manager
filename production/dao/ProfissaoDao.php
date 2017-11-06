@@ -11,7 +11,7 @@
 
 		function listaProfissoes() {
 			$profissoes = array();			
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from profissao as u");
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from profissao as u order by descricao");
 			while($profissao_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new ProfissaoFactory();
 				$id = $profissao_array['id'];				

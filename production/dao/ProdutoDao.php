@@ -50,7 +50,16 @@
 			}else{
 				echo mysqli_error($this->conexao->conecta());
 			}
-		}				
+		}
+
+		function remove(Produto $produto){
+			$query = "delete from produtos where id = {$produto->getId()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}						
 
 	}
 	

@@ -8,6 +8,11 @@
 		public function criaUsuario($params) {
 			$conexao = new Conexao();	
 			$nome = $params['nome'];
+			if($params['image'] != null){
+				$image = $params['image'];
+			}else{
+				$image = null;
+			}
 			$email = $params['email'];		
 			$senha = $params['senha'];
 			$sobrenome = $params['sobrenome'];
@@ -17,8 +22,8 @@
 			$telefone = $params['telefone'];
 			$profissao_id = $params['profissao_id'];
 			$profissaoDao = new ProfissaoDao($conexao);
-			$profissao = $profissaoDao->buscaProfissao($profissao_id);
-			return new Usuario($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone, $profissao);
+			$profissao = $profissaoDao->buscaProfissao($profissao_id);			
+			return new Usuario($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone, $profissao, $image);
 		}	
 
 	}

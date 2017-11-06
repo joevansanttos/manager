@@ -51,4 +51,8 @@
 
 <?php require_once "../includes/script.php"; ?>
 
+<script type="text/javascript">
+  document.getElementById('preco').value = parseFloat(Math.round(preco)).toFixed(2);
+</script>
+
 <?php	require_once "../includes/rodape.php"; ?>

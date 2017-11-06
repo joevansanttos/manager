@@ -11,8 +11,9 @@
 		private $telefone;
 		private $profissao;
 		private $id;
+		private $image;
 
-		function __construct($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone, Profissao $profissao) {
+		function __construct($nome ,$email, $senha, $sobrenome, $sexo, $estado, $cidade, $telefone, Profissao $profissao, $image) {
 			$this->email = $email;
 			$this->senha = $senha;
 			$this->nome = $nome;
@@ -22,6 +23,7 @@
 			$this->cidade = $cidade;
 			$this->telefone = $telefone;
 			$this->profissao = $profissao;
+			$this->image = $image;
 		}
 
 		public function getEmail() {
@@ -104,6 +106,13 @@
 			$this->profissao = $profissao;
 		}
 
+		public function getImage() {
+			return $this->image;
+		}
+
+		public function setImage($image) {
+			$this->image = $image;
+		}
 		
 
 	}

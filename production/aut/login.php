@@ -10,7 +10,7 @@
 	if($usuario == null){
 		header("Location: ../index.php");
 	}else{
-		logaUsuario($usuario['email']);
+		logaUsuario($usuario);
    	header("Location: ../index.php");
 	}
 ?>

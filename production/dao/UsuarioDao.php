@@ -47,7 +47,7 @@
 		}
 
 		function insereUsuario(Usuario $usuario) {
-			$query = "insert into usuarios (nome, email, senha, sobrenome, sexo, estado, cidade, telefone, profissao_id) values ('{$usuario->getNome()}', '{$usuario->getEmail()}', '{$usuario->getSenha()}', '{$usuario->getSobrenome()}', '{$usuario->getSexo()}', '{$usuario->getEstado()}', '{$usuario->getCidade()}', '{$usuario->getTelefone()}', '{$usuario->getProfissao()->getId()}'  )";
+			$query = "insert into usuarios (nome, email, senha, sobrenome, sexo, estado, cidade, telefone, profissao_id, image) values ('{$usuario->getNome()}', '{$usuario->getEmail()}', '{$usuario->getSenha()}', '{$usuario->getSobrenome()}', '{$usuario->getSexo()}', '{$usuario->getEstado()}', '{$usuario->getCidade()}', '{$usuario->getTelefone()}', '{$usuario->getProfissao()->getId()}', '{$usuario->getImage()}'  )";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
@@ -56,7 +56,7 @@
 		}
 
 		function atualizaUsuario(Usuario $usuario) {
-			$query = "update usuarios set nome = '{$usuario->getNome()}', email = '{$usuario->getEmail()}' , senha = '{$usuario->getSenha()}', sobrenome = '{$usuario->getSobrenome()}', sexo = '{$usuario->getSexo()}' , estado = '{$usuario->getEstado()}' , cidade = '{$usuario->getCidade()}' , telefone = '{$usuario->getTelefone()}', profissao_id = '{$usuario->getProfissao()->getId()}' where id = {$usuario->getId()}";
+			$query = "update usuarios set nome = '{$usuario->getNome()}', email = '{$usuario->getEmail()}' , senha = '{$usuario->getSenha()}', sobrenome = '{$usuario->getSobrenome()}', sexo = '{$usuario->getSexo()}' , estado = '{$usuario->getEstado()}' , cidade = '{$usuario->getCidade()}' , telefone = '{$usuario->getTelefone()}', profissao_id = '{$usuario->getProfissao()->getId()}', image = '{$usuario->getImage()}' where id = {$usuario->getId()}";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
@@ -76,6 +76,10 @@
 		    $query = "select  * from usuarios where email = '{$email}' and senha= '{$senha}'";
 		    $resultado = mysqli_query($this->conexao->conecta(), $query);
 		    $usuario = mysqli_fetch_assoc($resultado);
+		    $factory = new UsuarioFactory();
+		    $usuario_id = $usuario['id'];
+		    $usuario = $factory->criaUsuario($usuario);
+		    $usuario->setId($usuario_id);
 		    return $usuario;
 
 		}
