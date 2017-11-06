@@ -1,5 +1,6 @@
 <?php
 	require_once "../factory/UsuarioFactory.php";
+	require_once "../class/Bcrypt.php";
 	
 	class UsuarioDao{
 		private $conexao;
@@ -47,6 +48,7 @@
 		}
 
 		function insereUsuario(Usuario $usuario) {
+			
 			$query = "insert into usuarios (nome, email, senha, sobrenome, sexo, estado, cidade, telefone, profissao_id, image) values ('{$usuario->getNome()}', '{$usuario->getEmail()}', '{$usuario->getSenha()}', '{$usuario->getSobrenome()}', '{$usuario->getSexo()}', '{$usuario->getEstado()}', '{$usuario->getCidade()}', '{$usuario->getTelefone()}', '{$usuario->getProfissao()->getId()}', '{$usuario->getImage()}'  )";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
@@ -73,15 +75,19 @@
 		}
 
 		function buscaUsuarioLogar($email, $senha){
-		    $query = "select  * from usuarios where email = '{$email}' and senha= '{$senha}'";
+		    $query = "select  * from usuarios where email = '{$email}'";
 		    $resultado = mysqli_query($this->conexao->conecta(), $query);
 		    $usuario = mysqli_fetch_assoc($resultado);
-		    $factory = new UsuarioFactory();
-		    $usuario_id = $usuario['id'];
-		    $usuario = $factory->criaUsuario($usuario);
-		    $usuario->setId($usuario_id);
-		    return $usuario;
-
+		    $hash = $usuario['senha'];
+		    if(Bcrypt::check($senha, $hash)){
+		    	$factory = new UsuarioFactory();
+		    	$usuario_id = $usuario['id'];
+		    	$usuario = $factory->criaUsuario($usuario);
+		    	$usuario->setId($usuario_id);
+		    	return $usuario;
+		    }else{
+		    	return null;
+		    }
 		}
 
 		function buscaImagem($usuario_id){

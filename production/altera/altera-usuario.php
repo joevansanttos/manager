@@ -19,6 +19,13 @@
 	}else{
 		$_POST['image'] = $usuario->getImage();
 	}
+
+	if($usuario->getSenha() == $_POST['senha'] ){
+
+	}else{
+		$hash = Bcrypt::hash($_POST['senha']);
+		$_POST['senha'] = $hash;
+	}
 	
 	
 	$factory = new UsuarioFactory();
