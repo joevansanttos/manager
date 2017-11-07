@@ -143,7 +143,6 @@
 				foreach ($tarefasContratos as $tarefaContrato) {
 					$tarefaContratoDao->remove($tarefaContrato);
 				}
-				$departamentoContratoDao->remove($departamentoContrato);
 			}
 
 			$contrato->setStatusContrato(1);
@@ -151,11 +150,20 @@
 
 
 		function remove(Contrato $contrato){
-			$socioDao = new SocioDao($this->conexao);
-			$socios = $socioDao->listaSocios($contrato);
-			foreach ($socios as $socio) {
-				$socioDao->remove($socio);
+			$query = "delete from socios where contrato_id = {$contrato->getNumero()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
 			}
+
+			$query = "delete from departamentos_contratos where contrato_id = {$contrato->getNumero()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+			
 			$query = "delete from contratos where id = {$contrato->getNumero()}";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
@@ -164,7 +172,21 @@
 			}
 		}
 
+		function listaSocios($id) {
+			$socios = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from socios as u where contrato_id = $id ");
+			$contratoDao = new ContratoDao($this->conexao);
+			$contrato = $contratoDao->buscaContrato($id);
+			while($socio_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new SocioFactory();
+				$socio = $factory->criaSocio($socio_array['nome'], $socio_array['cpf'], $socio_array['residencia'], $socio_array['nacionalidade'], $socio_array['profissao'], $socio_array['civil'], $contrato);
+				array_push($socios, $socio);
+			}
+			
+			return $socios;
+		}
 
+		
 
 
 		

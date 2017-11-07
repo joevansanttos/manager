@@ -10,7 +10,7 @@
   $marketDao = new MarketDao($conexao);
   $produtos = $produtoDao->listaProdutos();
   $departamentos = $departamentoDao->listaDepartamentos();
-  $contratos = $contratoDao->listaContratos();
+  $contratos = $contratoDao->listaTodosContratos();
   if(!empty($contratos)){
      $i = 1;
      $j = 1;
@@ -73,22 +73,22 @@
       <label for="socio" class="control-label col-md-3 col-sm-3 col-xs-12">Sócio <span class="required">*</span></label>      
       <div class=" col-sm-6 col-xs-12 col-md-6">
         <div class="form-group">
-          <input type="text" placeholder="Nome" required="required" name="multiple[]" class="form-control">
+          <input type="text" placeholder="Nome"  name="multiple[]" class="form-control">
         </div>
         <div class="form-group">
-          <input id="cpf" placeholder="CPF" type="text" name="cpf[]" data-validate-linked="cpf" data-inputmask="'mask' : '***-***-***-**'" required="required"  class="form-control col-md-6 col-xs-12" required="required">
+          <input id="cpf" placeholder="CPF" type="text" name="cpf[]" data-validate-linked="cpf" data-inputmask="'mask' : '***-***-***-**'"   class="form-control col-md-6 col-xs-12">
         </div>
         <div class="form-group">
-          <input type="text" placeholder="Endereço" id="residencia" name="residencia[]" required="required" class="form-control col-md-7 col-xs-12">
+          <input type="text" placeholder="Endereço" id="residencia" name="residencia[]"  class="form-control col-md-7 col-xs-12">
         </div>
         <div class="form-group">
-          <input type="text" placeholder="Nacionalidade" id="nacionalidade" name="nacionalidade[]" required="required" class="form-control col-md-7 col-xs-12">
+          <input type="text" placeholder="Nacionalidade" id="nacionalidade" name="nacionalidade[]"  class="form-control col-md-7 col-xs-12">
         </div>
         <div class="form-group">
-          <input type="text" placeholder="Profissão" id="profissao" name="profissao[]" required="required" class="form-control col-md-7 col-xs-12">
+          <input type="text" placeholder="Profissão" id="profissao" name="profissao[]"  class="form-control col-md-7 col-xs-12">
         </div>
         <div class="form-group">
-          <input type="text" placeholder="Estado Civil" id="civil" name="civil[]" required="required" class="form-control col-md-7 col-xs-12">
+          <input type="text" placeholder="Estado Civil" id="civil" name="civil[]"  class="form-control col-md-7 col-xs-12">
         </div>    
         <span class="input-group-btn "><button type="button" class=" btn btn-default btn-add">+
         </button></span>                       
@@ -156,6 +156,51 @@
 </script>
 <script type="text/javascript">
     $('#my-select').multiSelect();
+</script>
+<script type="text/javascript">
+  $(function () {
+    var addFormGroup = function (event) {
+      event.preventDefault();
+
+      var $formGroup = $(this).closest('.form-group');
+      var $multipleFormGroup = $formGroup.closest('.multiple-form-group');
+      var $formGroupClone = $formGroup.clone();
+
+      $(this)
+      .toggleClass('btn-default btn-add btn-danger btn-remove')
+      .html('–');
+
+      $formGroupClone.find('input').val('');
+      $formGroupClone.insertAfter($formGroup);
+
+      var $lastFormGroupLast = $multipleFormGroup.find('.form-group:last');
+      if ($multipleFormGroup.data('max') <= countFormGroup($multipleFormGroup)) {
+        $lastFormGroupLast.find('.btn-add').attr('disabled', true);
+      }
+    };
+
+    var removeFormGroup = function (event) {
+      event.preventDefault();
+
+      var $formGroup = $(this).closest('.form-group');
+      var $multipleFormGroup = $formGroup.closest('.multiple-form-group');
+
+      var $lastFormGroupLast = $multipleFormGroup.find('.form-group:last');
+      if ($multipleFormGroup.data('max') >= countFormGroup($multipleFormGroup)) {
+        $lastFormGroupLast.find('.btn-add').attr('disabled', false);
+      }
+
+      $formGroup.remove();
+    };
+
+    var countFormGroup = function ($form) {
+      return $form.find('.form-group').length;
+    };
+
+    $(document).on('click', '.btn-add', addFormGroup);
+    $(document).on('click', '.btn-remove', removeFormGroup);
+
+  });
 </script>
   
 

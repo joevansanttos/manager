@@ -15,7 +15,7 @@
 
 
 	function insere(TarefaContrato $tarefaContrato) {
-		$query = "insert into tarefas_contrato (departamento_contrato_id, tarefa_id) values ('{$tarefaContrato->getDepartamentoContrato()->getId()}', '{$tarefaContrato->getTarefa()->getId()}')";
+		$query = "insert into tarefas_contrato (departamento_contrato_id, tarefa_id, status_atividade_id) values ('{$tarefaContrato->getDepartamentoContrato()->getId()}', '{$tarefaContrato->getTarefa()->getId()}', '{$tarefaContrato->getStatusAtividade()->getId()}' )";
 		if(mysqli_query($this->conexao->conecta(), $query)){
 
 		}else{

@@ -6,7 +6,7 @@
 	
 	$factory = new ContratoFactory();
 	$contrato = $factory->criaContrato($_POST);
-	$contratoDao = new ContratoDao($conexao);	
+	$contratoDao = new ContratoDao($conexao);
 	$contratoDao->insereContrato($contrato);
 	$contratoDao->insereSocios($contrato, $_POST);
 	$contratoDao->insereDepartamentos($contrato, $_POST);

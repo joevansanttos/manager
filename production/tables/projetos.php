@@ -23,7 +23,7 @@
    <tbody>
      <?php
       $contratoDao = new ContratoDao($conexao);
-      $contratos = $contratoDao->listaTodosContratos();
+      $contratos = $contratoDao->listaContratosAprovados();
        foreach ($contratos as $contrato){
         $market = $contrato->getMarket();
      ?>

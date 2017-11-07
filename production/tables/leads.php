@@ -15,7 +15,7 @@
       <th>Email</th>
       <th>Telefone</th>
       <th>Cargo</th>
-      <th class="col-md-2">Ações</th>				     
+      <th class="col-md-3">Ações</th>				     
     </tr>
   </thead>
   <tfoot>
@@ -40,8 +40,9 @@
         <td><?=$lead->getEmail()?></td>
         <td><?=$lead->getTel()?></td>
         <td><?=$lead->getCargo()?></td>
-        <td align="center">
+        <td align="center" >
           <a href="../tables/suspect-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Suspect" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
+          <a href="../tables/lead-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-info btn-xs"><i class="fa fa-plus"></i></button></a>
           <a href="../tables/market-profile.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
           <a href="../tables/lead-altera.php?id=<?=$lead->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Lead" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
           <a href="../tables/historico-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Adicionar Histórico" class="btn btn-info btn-xs"><i class="fa fa-history"></i></button></a>

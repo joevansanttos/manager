@@ -19,14 +19,14 @@
       <th>Inicio</th>
       <th>Fim</th>
       <th>Status do Contrato</th>				    		     
-      <th class="col-md-2">Ações</th>				     
+      <th class="col-md-1">Ações</th>				     
     </tr>
   </thead>
   <tbody>
 
     <?php
     	$contratoDao = new ContratoDao($conexao);
-    	$contratos = $contratoDao->listaContratos($usuario_id);
+    	$contratos = $contratoDao->listaTodosContratos();
       foreach ($contratos as $contrato): 
       	$market = $contrato->getMarket();
         $novoInicio = date("d-m-Y", strtotime($contrato->getInicio()));

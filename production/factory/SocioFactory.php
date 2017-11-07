@@ -7,10 +7,7 @@ require_once "../class/Conexao.php";
 class SocioFactory {
 
 	public function criaSocio($socio, $cpf, $residencia, $nacionalidade, $profissao, $civil, $contrato) {
-		$conexao = new Conexao();
-		$contrato_id = $contrato->getNumero();
-		$contratoDao = new ContratoDao($conexao);
-		$contrato = $contratoDao->buscaContrato($contrato_id);
+		$conexao = new Conexao();		
 		return new Socio($socio, $cpf, $residencia, $nacionalidade, $profissao, $civil, $contrato);
 	}	
 

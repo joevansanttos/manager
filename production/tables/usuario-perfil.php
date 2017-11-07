@@ -7,7 +7,15 @@
 <h3>Perfil do Usuário</h3>
 	
 <?php require "../includes/body.php";	?>
-<a data-toggle="tooltip" data-placement="top" title="Editar Perfil"  class="btn btn-warning" href="usuario-altera.php?id=<?=$usuario->getId()?>"><i class="fa fa-pencil"></i></a>			
+<?php
+ if($usuario->getProfissao()->getId() != 4){
+?>
+<a data-toggle="tooltip" data-placement="top" title="Editar Perfil"  class="btn btn-warning" href="usuario-altera.php?id=<?=$usuario->getId()?>"><i class="fa fa-pencil"></i></a>	
+<?php
+ 			
+ }
+?>
+
 <div class="profile_img">
 	<div id="crop-avatar">
 		<div class="profile-userpic ">

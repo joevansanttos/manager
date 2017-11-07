@@ -41,7 +41,7 @@
           <?php
             if($contrato->getStatusContrato()->getId() == 1){
           ?>
-          <a href="../adiciona/adiciona-tarefa.php?id=<?=$contrato->getNumero()?>"><button data-toggle="tooltip" data-placement="top" title="Contrato Aprovado"  class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a> 
+          <a href="../adiciona/adiciona-tarefa.php?id=<?=$contrato->getNumero()?>"><button data-toggle="tooltip" data-placement="top" title="Aprovar Contrato"  class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a> 
 
           <?php
             }else{
@@ -51,7 +51,7 @@
           <?php
             }
           ?>                      
-          <a href="imprime-contrato.php?n_contrato=?>"><button data-toggle="tooltip" data-placement="top" title="Imprime Contrato"  class="btn btn-success btn-xs"><i class="fa fa-print"></i></button></a>                                                          
+          <a href=""><button data-toggle="tooltip" data-placement="top" title="Imprime Contrato"  class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>                                                          
           <a data-toggle="tooltip" data-placement="top" title="Remover Contrato"  href="../remove/remove-contrato.php?n_contrato="><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
         </td>
       </tr>

@@ -147,7 +147,7 @@
   document.getElementById('segmento').value = '<?=$market->getSegmento()?>';
 </script>
 <script type="text/javascript">
-  document.getElementById('porte').value = '<?=$market->getPorte()?>';
+  document.getElementById('porte').value = '<?=$market->getPorte()->getId()?>';
 </script>
   
 

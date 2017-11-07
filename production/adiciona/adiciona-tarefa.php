@@ -17,7 +17,7 @@
 	foreach($departamentosContratos as $departamentoContrato){
 		foreach ($tarefas as $tarefa) {
 			$factory = new TarefaContratoFactory();
-			$tarefaContrato = $factory->criaTarefaContrato($tarefa, $departamentoContrato, null, null);
+			$tarefaContrato = $factory->criaTarefaContrato($tarefa, $departamentoContrato, null, null, 1);
 			$tarefaContratoDao = new TarefaContratoDao($conexao);
 			$tarefaContratoDao->insere($tarefaContrato);
 		}
@@ -26,5 +26,5 @@
 	$contrato->setStatusContrato(2);
 	$contratoDao->atualizaStatusContrato($contrato);
 
-	header("Location: ../tables/contratos.php");
+	header("Location: ../tables/projetos.php");
 ?>
