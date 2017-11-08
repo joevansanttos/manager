@@ -9,14 +9,15 @@
 
 <?php require "../includes/body.php";	?>
 
-<table class="table table-striped projects">
+<table id="tabela" class="table table-striped projects">
   <thead>
     <tr>
-      <th class="col-md-4">Atividade</th>
+      <th class="col-md-3">Atividade</th>
+      <th>Delegante</th>
       <th>Colaborador</th>
       <th>Progresso da Atividade</th>
       <th>Status</th>
-      <th class="col-md-1">Ações</th>
+      <th class="col-md-2">Ações</th>
     </tr>
     <tbody>
       <?php
@@ -40,10 +41,19 @@
           <ul class="list-inline">
             <li>
               <img src="../images/user.png"  class="avatar" alt="Avatar">
-              <?= $atividade->getUsuario()->getNome() .' '. $atividade->getUsuario()->getSobrenome()?>
+              <?= $atividade->getDelegante()->getNome() .' '. $atividade->getDelegante()->getSobrenome()?>
             </li>
           </ul>
         </td>
+        <td>
+          <ul class="list-inline">
+            <li>
+              <img src="../images/user.png"  class="avatar" alt="Avatar">
+              <?= $atividade->getDelegado()->getNome() .' '. $atividade->getDelegado()->getSobrenome()?>
+            </li>
+          </ul>
+        </td>
+
         <td class="project_progress">
           <div class="progress progress_sm">
             <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?=$statusAtividade->getPorcentagem()?>"></div>
@@ -77,6 +87,7 @@
           
         </td>
         <td align="center">
+          <a href="../tables/atividade-detalhes.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Ver Atividade"><button class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
           <a href="../tables/atividade-altera.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Editar Atividade"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
           <a href="../remove/remove-atividade.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Atividade"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>           
         </td>

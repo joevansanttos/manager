@@ -9,9 +9,12 @@
 		private $setor;
 		private $filial;
 		private $resultados;
-		private $usuario;
+		private $observacao;
+		private $objetivo;
+		private $delegante;
+		private $delegado;
 
-		function __construct($descricao, $inicio, $prazo, $setor, $filial, $resultados, $importancia, StatusAtividade $statusAtividade, Usuario $usuario) {
+		function __construct($descricao, $inicio, $prazo, $setor, $filial, $resultados, $importancia, $observacao, $objetivo, StatusAtividade $statusAtividade, Usuario $delegante, Usuario $delegado) {
 			$this->descricao = $descricao;
 			$this->inicio = $inicio;
 			$this->prazo = $prazo;			
@@ -20,7 +23,10 @@
 			$this->resultados = $resultados;
 			$this->importancia = $importancia;
 			$this->statusAtividade = $statusAtividade;
-			$this->usuario = $usuario;
+			$this->observacao = $observacao;
+			$this->objetivo = $objetivo;
+			$this->delegante = $delegante;
+			$this->delegado = $delegado;
 		}		
 
 		
@@ -88,12 +94,20 @@
 			$this->statusAtividade = $statusAtividade;
 		}
 
-		public function getUsuario() {
-			return $this->usuario;
+		public function getDelegante() {
+			return $this->delegante;
 		}
 
-		public function setUsuario($usuario) {
-			$this->usuario = $usuario;
+		public function setDelegante($delegante) {
+			$this->delegante = $delegante;
+		}
+
+		public function getDelegado() {
+			return $this->delegado;
+		}
+
+		public function setDelegado($delegado) {
+			$this->delegado = $delegado;
 		}
 
 		public function getImportancia() {
@@ -104,6 +118,21 @@
 			$this->importancia = $importancia;
 		}
 
+		public function getObjetivo() {
+			return $this->objetivo;
+		}
+
+		public function setObjetivo($objetivo) {
+			$this->objetivo = $objetivo;
+		}
+
+		public function getObservacao() {
+			return $this->observacao;
+		}
+
+		public function setObservacao($observacao) {
+			$this->observacao = $observacao;
+		}
 		
 
 	}

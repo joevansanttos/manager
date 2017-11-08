@@ -10,7 +10,7 @@ require_once '../dao/UsuarioDao.php';
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="profissao_id">Colaborador<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <select name="usuario_id" class="form-control col-md-7 col-xs-12">
+      <select name="delegado_id" class="form-control col-md-7 col-xs-12">
         <?php
         $usuarioDao = new UsuarioDao($conexao);
         $usuarios = $usuarioDao->listaUsuarios();
@@ -60,6 +60,13 @@ require_once '../dao/UsuarioDao.php';
     </div>
   </div>
   <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Objetivo Estratégico<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input type="text" id="nome" name="objetivo"  required="required" class="form-control col-md-7 col-xs-12">
+    </div>
+  </div>
+  <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Resultados Esperados<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -72,6 +79,8 @@ require_once '../dao/UsuarioDao.php';
       <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
       <button id="send" type="submit" name="enviar" class="btn btn-success">Cadastrar</button>
       <input type="hidden" name="status_atividade_id" id="id" value="1" />
+      <input type="hidden" name="delegante_id" id="id" value="<?=$usuario_id?>" />
+      <input type="hidden" name="observacao" id="id" value="" />
     </div>
   </div>
 </form>

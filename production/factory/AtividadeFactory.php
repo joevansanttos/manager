@@ -8,9 +8,11 @@ class AtividadeFactory {
 
 	public function criaAtividade($params) {
 		$conexao = new Conexao();						
-		$usuario_id = $params["usuario_id"];
+		$delegado_id = $params["delegado_id"];
 		$usuarioDao = new UsuarioDao($conexao);
-		$usuario = $usuarioDao->buscaUsuario($usuario_id);
+		$delegado = $usuarioDao->buscaUsuario($delegado_id);
+		$delegante_id = $params["delegante_id"];
+		$delegante = $usuarioDao->buscaUsuario($delegante_id);
 		$status_atividade_id = $params["status_atividade_id"];
 		$statusAtividadeDao = new StatusAtividadeDao($conexao);
 		$statusAtividade = $statusAtividadeDao->buscaStatusAtividade($status_atividade_id);
@@ -20,8 +22,10 @@ class AtividadeFactory {
 		$setor = $params["setor"];
 		$filial = $params["filial"];
 		$importancia = $params["importancia"];
+		$observacao = $params["observacao"];
+		$objetivo = $params["objetivo"];
 		$resultados = $params["resultados"];
-		return new Atividade($descricao, $inicio, $prazo, $setor, $filial, $resultados, $importancia, $statusAtividade, $usuario);
+		return new Atividade($descricao, $inicio, $prazo, $setor, $filial, $resultados, $importancia, $observacao, $objetivo, $statusAtividade, $delegado, $delegante);
 	}	
 
 }

@@ -6,5 +6,6 @@
 	$atividade = $factory->criaAtividade($_POST);
 	$atividadeDao = new AtividadeDao($conexao);
 	$atividade = $atividadeDao->insereAtividade($atividade);
+	$atividadeDao->enviaEmail($_POST);
 	header("Location: ../tables/atividades.php");
 ?>
