@@ -110,7 +110,9 @@
                   </li>
                   <li><a><i class="fa fa-calendar"></i> Tarefas<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="atividades.php">Tarefas</a></li>                      
+                      <li><a href="atividades.php">Todas Tarefas</a></li>
+                      <li><a href="atividades-andamento.php">Tarefas em Andamento</a></li>
+                      <li><a href="atividades-concluidas.php">Tarefas Concluídas</a></li>                      
                     </ul>
                   </li>
                 <?php
@@ -131,26 +133,28 @@
                   </li>
                   <li><a><i class="fa fa-file" aria-hidden="true"></i> Contratos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="contratos.php">Contratos</a></li>                      
+                      <li><a href="contratos.php">Todos Contratos</a></li>
+                      <li><a href="contratos_pendentes.php">Contratos Pendentes</a></li>
+                      <li><a href="contratos_aprovados.php">Contratos Aprovados</a></li>                      
                     </ul>
                   </li>
                 <?php
                   if($usuario->getProfissao()->getId() != 4){
                 ?> 
+                  
+                  <li><a><i class="fa fa-line-chart"></i> Consultoria <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="projetos.php">Projetos</a></li>
+                    </ul>
+                  </li>
                   <li><a><i class="fa fa-comments" aria-hidden="true"></i> Pós-Venda <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="pos-venda.php">Pós-Venda</a></li>                      
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-table"></i> Consultoria <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="projetos.php">Projetos</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-money"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="contratos_pendentes.php">Contratos Pendentes</a></li>
-                      <li><a href="contratos_aprovados.php">Contratos Aprovados</a></li>
+                  <li><a><i class="fa fa-calculator"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">                      
+                      <li><a href="fornecedores.php">Fornecedores</a></li>
                       <li><a href="transacoes.php">Transações</a></li>
                     </ul>
                   </li>

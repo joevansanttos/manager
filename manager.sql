@@ -2,9 +2,9 @@
 -- version 4.7.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 06-Nov-2017 às 15:04
--- Versão do servidor: 10.0.31-MariaDB-0ubuntu0.16.04.2
+-- Host: localhost
+-- Generation Time: 09-Nov-2017 às 19:43
+-- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -36,10 +36,21 @@ CREATE TABLE `atividades` (
   `setor` varchar(50) DEFAULT NULL,
   `filial` varchar(50) DEFAULT NULL,
   `importancia` varchar(100) DEFAULT NULL,
-  `usuario_id` int(11) NOT NULL,
+  `delegado_id` int(11) NOT NULL,
   `descricao` varchar(200) DEFAULT NULL,
-  `resultados` varchar(200) DEFAULT NULL
+  `resultados` varchar(200) DEFAULT NULL,
+  `delegante_id` int(11) DEFAULT NULL,
+  `observacao` varchar(1000) DEFAULT NULL,
+  `objetivo` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `atividades`
+--
+
+INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `filial`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`) VALUES
+(3, '2017-01-01', '2018-01-01', 3, 'Teste', 'Salvador', 'Alta', 1, 'Procedimento Interno', 'sasasa', 8, 'Deu muito trabalho começar essa atividade de novo', 'Objetivdar'),
+(4, '2017-11-08', '2017-11-12', 1, 'Consultoria', 'Salvador', 'Alta', 1, 'Testar Sistema', 'Testes mais rápidos possíveis para executar o sistema', 9, '', 'Desenvolver');
 
 -- --------------------------------------------------------
 
@@ -5693,6 +5704,13 @@ CREATE TABLE `contratos` (
   `id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `contratos`
+--
+
+INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `consultor`, `inicio`, `fim`, `id`) VALUES
+(1, 5, 1, NULL, '2017-01-01', '2018-01-01', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -5730,6 +5748,14 @@ CREATE TABLE `departamentos_contratos` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `departamentos_contratos`
+--
+
+INSERT INTO `departamentos_contratos` (`departamento_id`, `contrato_id`, `id`) VALUES
+(1, '1', 9),
+(2, '1', 10);
+
 -- --------------------------------------------------------
 
 --
@@ -5738,14 +5764,22 @@ CREATE TABLE `departamentos_contratos` (
 
 CREATE TABLE `despesas` (
   `id` int(11) NOT NULL,
-  `fornecedor` varchar(100) DEFAULT NULL,
+  `fornecedor_id` int(100) NOT NULL,
   `data` varchar(50) DEFAULT NULL,
   `descricao` varchar(200) DEFAULT NULL,
   `valor` decimal(10,0) DEFAULT NULL,
   `categoria_id` int(11) DEFAULT NULL,
   `pagamento_id` int(11) DEFAULT NULL,
-  `pago_id` int(11) DEFAULT NULL
+  `pago_id` int(11) DEFAULT NULL,
+  `doc` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `despesas`
+--
+
+INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`) VALUES
+(3, 58, '2017-01-01', 'Conta de Luz', '1200', 1, 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -5795,6 +5829,31 @@ INSERT INTO `estados` (`cod_estados`, `sigla`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `fornecedores`
+--
+
+CREATE TABLE `fornecedores` (
+  `id` int(11) NOT NULL,
+  `razao` varchar(255) DEFAULT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `cnpj` varchar(20) DEFAULT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `estado` varchar(20) DEFAULT NULL,
+  `cidade` varchar(20) DEFAULT NULL,
+  `tel` varchar(20) DEFAULT NULL,
+  `segmento` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `fornecedores`
+--
+
+INSERT INTO `fornecedores` (`id`, `razao`, `nome`, `cnpj`, `endereco`, `estado`, `cidade`, `tel`, `segmento`) VALUES
+(58, 'Coelba Sa', 'Coelba', '22.222.222/2222-22', 'Avenida Joana Angélica, 79, 40050-001', 'BA', '2927408', '(71) 98333-3333', 'Serviços');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `historico`
 --
 
@@ -5804,6 +5863,15 @@ CREATE TABLE `historico` (
   `id` int(11) NOT NULL,
   `data` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `historico`
+--
+
+INSERT INTO `historico` (`market_id`, `descricao`, `id`, `data`) VALUES
+(1, 'fdfdfd', 1, '06.11.17'),
+(1, 'Histórico 2', 3, ''),
+(1, 'ssqwqwq', 4, '06.11.17');
 
 -- --------------------------------------------------------
 
@@ -5819,6 +5887,15 @@ CREATE TABLE `leads` (
   `id` int(11) NOT NULL,
   `market_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `leads`
+--
+
+INSERT INTO `leads` (`nome`, `email`, `tel`, `cargo`, `id`, `market_id`) VALUES
+('José Gevan', 'jose@gevan.com', '(71) 98333-3333', 'Coordenador', 1, 1),
+('José Gevan 2', 'jose2@gevan.com', '(71) 98333-3333', 'Diretor', 2, 1),
+('Manoel Gevan', 'manoel@gevan.com.br', '(71) 98333-3333', 'Coordenador', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -5841,6 +5918,13 @@ CREATE TABLE `market` (
   `porte_id` int(11) DEFAULT NULL,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `market`
+--
+
+INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado`, `cidade`, `tel`, `segmento`, `bairro`, `porte_id`, `usuario_id`) VALUES
+(1, 'Gevan', 'Gevan SA', '11.111.111/1111-11', '', 'Avenida Joana Angélica, 79, 40050-001', 'BA', '2901502', '(71) 98333-3333', 'Abatedouro', 'Bairro do Piauí', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -5979,6 +6063,13 @@ CREATE TABLE `prospects` (
   `consultor_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `prospects`
+--
+
+INSERT INTO `prospects` (`id`, `market_id`, `prob`, `valor_op`, `valor_est`, `recebimento`, `fechamento`, `produto_id`, `consultor_id`) VALUES
+(1, 1, '25.00', '1405.00', '351.25', '2017-01-01', '2017-01-02', 5, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -6026,6 +6117,13 @@ CREATE TABLE `socios` (
   `civil` varchar(255) DEFAULT NULL,
   `contrato_id` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `socios`
+--
+
+INSERT INTO `socios` (`id`, `nome`, `cpf`, `residencia`, `nacionalidade`, `profissao`, `civil`, `contrato_id`) VALUES
+(7, 'Lucas Carvalho', '111-111-111-11', 'Rua das Hortênsias, 5', 'Brasileiro', 'Administrador', 'Solteiro', '1');
 
 -- --------------------------------------------------------
 
@@ -6088,6 +6186,13 @@ CREATE TABLE `suspects` (
   `tel` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `suspects`
+--
+
+INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consultor_id`, `id`, `market_id`, `tel`, `email`) VALUES
+('José Gevan', '2016-01-01', 'Agendado', '01:01', NULL, NULL, 1, 1, '(71) 98333-3333', 'joevansantos@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -6155,7 +6260,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `profissao_id`, `image`) VALUES
-('$2a$08$NzA5MjQ5NjYyNWEwMDZhZOjpmK7Rh5xqIkATOfYOc1hMkLmpMyOb.', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'PI', '2201150', '(71) 98333-3334', 1, 'Martins', 1, '');
+('$2a$08$NzA5MjQ5NjYyNWEwMDZhZOjpmK7Rh5xqIkATOfYOc1hMkLmpMyOb.', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'PI', '2201150', '(71) 98333-3334', 1, 'Martins', 1, ''),
+('$2a$08$MTMyNTA5MzQ0OTVhMDA5YOSFW/96AlGOSFhdsHCQ5pUn.qYwtRivW', 'Marcos', 'marcos@partner.com', 'masculino', 'RJ', '3300902', '(71) 98333-3333', 8, 'Hide', 4, ''),
+('$2a$08$MTQyOTUzNDUzMzVhMDM1M.mE/dCesQ6tj4PAoonCxQvTX8SQMvSmK', 'Juliana', 'julianamenezes.projek@gmail.com', 'feminino', 'BA', '2927408', '(71) 98333-3333', 9, 'Menezes', 1, '');
 
 --
 -- Indexes for dumped tables
@@ -6201,6 +6308,12 @@ ALTER TABLE `departamentos_contratos`
 -- Indexes for table `despesas`
 --
 ALTER TABLE `despesas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `fornecedores`
+--
+ALTER TABLE `fornecedores`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6325,7 +6438,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `atividades`
 --
 ALTER TABLE `atividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `categorias`
 --
@@ -6345,27 +6458,32 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT for table `departamentos_contratos`
 --
 ALTER TABLE `departamentos_contratos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `despesas`
 --
 ALTER TABLE `despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `fornecedores`
+--
+ALTER TABLE `fornecedores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `historico`
 --
 ALTER TABLE `historico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `market`
 --
 ALTER TABLE `market`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `pagamentos`
 --
@@ -6400,7 +6518,7 @@ ALTER TABLE `profissao`
 -- AUTO_INCREMENT for table `prospects`
 --
 ALTER TABLE `prospects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `recebimentos`
 --
@@ -6415,7 +6533,7 @@ ALTER TABLE `relatorios`
 -- AUTO_INCREMENT for table `socios`
 --
 ALTER TABLE `socios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `status_atividade`
 --
@@ -6430,7 +6548,7 @@ ALTER TABLE `status_contrato`
 -- AUTO_INCREMENT for table `suspects`
 --
 ALTER TABLE `suspects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tarefas`
 --
@@ -6445,7 +6563,7 @@ ALTER TABLE `tarefas_contrato`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

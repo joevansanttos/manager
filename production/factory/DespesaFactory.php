@@ -5,6 +5,7 @@
 	require_once "../dao/CategoriaDao.php";
 	require_once "../dao/PagamentoDao.php";
 	require_once "../dao/PagoDao.php";
+	require_once "../dao/FornecedorDao.php";
 
 class DespesaFactory {
 
@@ -16,7 +17,9 @@ class DespesaFactory {
 		$categoria = $categoriaDao->buscaCategoria($categoria_id);		
 		$data = $params["data"];
 		$valor = $params["valor"];
-		$fornecedor = $params["fornecedor"];
+		$fornecedor_id = $params["fornecedor_id"];
+		$fornecedorDao = new FornecedorDao($conexao);
+		$fornecedor = $fornecedorDao->buscaFornecedor($fornecedor_id);
 		$pagamento_id = $params["pagamento_id"];
 		$pagamentoDao = new PagamentoDao($conexao);
 		$pagamento = $pagamentoDao->buscaPagamento($pagamento_id);

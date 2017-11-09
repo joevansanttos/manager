@@ -3,6 +3,7 @@
   require_once "../dao/ContratoDao.php";
   require_once "../dao/CategoriaDao.php";
   require_once "../dao/PagamentoDao.php";
+  require_once "../dao/FornecedorDao.php";
 ?>
 
 <h3>Nova Despesa</h3>
@@ -19,15 +20,25 @@
   <div class="item form-group">
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Pago a<span class="required">*</span>
    </label>
-   <div class="col-sm-2 col-xs-12 col-md-6">
-     <input type="text" id="valor" name="fornecedor" required="required"  class="form-control col-md-7 col-xs-12">
-   </div>  
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <select name="fornecedor_id" class="form-control col-md-7 col-xs-12">
+     <?php
+      $fornecedorDao = new FornecedorDao($conexao);
+      $fornecedores = $fornecedorDao->listaFornecedores();                           
+      foreach ($fornecedores as $fornecedor): 
+     ?>       
+      <option value="<?=$fornecedor->getId()?>"><?=$fornecedor->getNome()?></option>
+      <?php
+      endforeach
+      ?>  
+    </select>
+   </div>
   </div> 
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="valor">Valor<span class="required">*</span>
     </label>
     <div class="col-sm-2 col-xs-12 col-md-6">
-      <input type="text" id="valor" name="valor" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+      <input type="number" id="valor" name="valor"  required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
     </div>        
   </div>
   <div class="item form-group">
@@ -71,7 +82,13 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
     <input type="date" id="data" name="data" required="required" data-validate-length-range="8,20" class=" date-picker form-control col-md-8 col-xs-12">
     </div>    
-  </div> 
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="image">Arquivo</label>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <input type="file" name="doc" id="doc">
+    </div>
+  </div>    
   <div class="ln_solid"></div>
   <div class=" form-group">
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -84,4 +101,14 @@
    	
 
 <?php require_once "../includes/script.php"; ?>
+
+<script>
+
+  function converte(){
+    var valor = document.getElementById('valor').value;
+    novoValor = valor.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+    document.getElementById('valor').value = novoValor ;
+  }
+</script>
+
 <?php	require_once "../includes/rodape.php"; ?>

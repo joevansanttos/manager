@@ -1,5 +1,4 @@
 <?php	
-	error_reporting(E_ALL ^ E_NOTICE);
 	require_once "../includes/cabecalho.php"; 
 	require_once "../dao/RecebimentoDao.php";
   require_once "../dao/DespesaDao.php";
@@ -28,6 +27,7 @@
             <th>CATEGORIA</th>
             <th>PAGAMENTO</th>
             <th>PAGO?</th>
+            <th>AÇÕES</th>
           </tr>                                  
         </thead>
         <tbody>
@@ -46,6 +46,10 @@
             <td><?=$recebimento->getPagamento()->getDescricao()?></td>
             <td>
              <input id="pago" type="checkbox" class="" /> Pago
+            </td>
+            <td>
+              <a href="../tables/market-profile.php?id=<?=$recebimento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
+              <a href="../tables/market-altera.php?id=<?=$recebimento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Market" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
             </td>
           </tr>
         <?php endforeach ?>
@@ -66,6 +70,7 @@
             <th>CATEGORIA</th>
             <th>PAGAMENTO</th>
             <th>PAGO?</th>
+            <th>AÇÕES</th>
           </tr>                                  
         </thead>
         <tbody>
@@ -77,12 +82,17 @@
           <tr>
             <td><?=$despesa->getData()?></td>
             <td><?=$despesa->getDescricao()?></td>
-            <td><?=$despesa->getFornecedor()?></td>
+            <td><?=$despesa->getFornecedor()->getNome()?></td>
             <td><?=$despesa->getValor()?></td>
             <td><?=$despesa->getCategoria()->getDescricao()?></td>
             <td><?=$despesa->getPagamento()->getDescricao()?></td>
             <td>
              <input id="pago" type="checkbox" class="" /> Pago
+            </td>
+            <td>
+              <a href="../tables/market-profile.php?id=<?=$despesa->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
+              <a href="../tables/market-altera.php?id=<?=$despesa->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Market" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+              <a  href="../remove/remove-lead.php?id=<?=$despesa->getId()?>" class="delete" data-toggle="tooltip" data-placement="top" title="Remover Lead"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
             </td>
           </tr>
           <?php

@@ -10,7 +10,7 @@
 		private $pago;
 		private $id;
 
-		function __construct($data, $descricao,  $valor, Categoria $categoria,Pagamento $pagamento, Pago $pago, $fornecedor) {
+		function __construct($data, $descricao,  $valor, Categoria $categoria,Pagamento $pagamento, Pago $pago, Fornecedor $fornecedor) {
 			$this->data = $data;
 			$this->descricao = $descricao;
 			$this->fornecedor = $fornecedor;
