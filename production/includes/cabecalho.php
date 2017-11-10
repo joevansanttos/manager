@@ -161,7 +161,8 @@
                     </ul>
                   </li>
                   <li><a><i class="fa fa-calculator"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">                      
+                    <ul class="nav child_menu">
+                      <li><a href="clientes.php">Clientes</a></li>                      
                       <li><a href="fornecedores.php">Fornecedores</a></li>
                       <li><a href="transacoes.php">Transações</a></li>
                     </ul>

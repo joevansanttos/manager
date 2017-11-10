@@ -9,7 +9,7 @@
 <h3>Nova Despesa</h3>
 <?php require "../includes/body.php"; ?>
 
-<form action="../adiciona/adiciona-despesa.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">                      
+<form action="../adiciona/adiciona-despesa.php" method="post" id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">                      
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Descrição<span class="required">*</span>
     </label>
@@ -86,7 +86,7 @@
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="image">Arquivo</label>
     <div class="col-md-3 col-sm-6 col-xs-12">
-      <input type="file" name="doc" id="doc">
+      <input type="file" name="image">
     </div>
   </div>    
   <div class="ln_solid"></div>

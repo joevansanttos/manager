@@ -16,22 +16,27 @@
 			<th>Cidade</th>
 			<th>Sexo</th>
 			<th>Telefone</th>
+			<th>Ações</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php
 		$usuarioDao = new UsuarioDao($conexao);
 		$usuarios = $usuarioDao->listaUsuarios();
-		foreach ($usuarios as $usuario):
-			$cidade = $usuarioDao->buscaCidade($usuario->getCidade() );                               
+		foreach ($usuarios as $u):
+			$cidade = $usuarioDao->buscaCidade($u->getCidade() );                               
 			?>
 			<tr>
-				<td><?=$usuario->getNome() .' '.$usuario->getSobrenome()  ?></td>
-				<td><?=$usuario->getEmail() ?></td>
-				<td><?=$usuario->getEstado() ?></td>			    		        
+				<td><?=$u->getNome() .' '.$u->getSobrenome()  ?></td>
+				<td><?=$u->getEmail() ?></td>
+				<td><?=$u->getEstado() ?></td>			    		        
 				<td><?=$cidade?></td>
-				<td><?=$usuario->getSexo() ?></td>
-				<td><?=$usuario->getTelefone() ?></td>			       
+				<td><?=$u->getSexo() ?></td>
+				<td><?=$u->getTelefone() ?></td>
+				<td align="center">
+					<a href="../tables/market-profile.php?id=<?=$u->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
+					<a href="../tables/mensagem-formulario.php?id=<?=$u->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Prospect" class="btn btn-primary btn-xs"><i class="fa fa-envelope-o"></i></button></a>
+				</td>			       
 			</tr>
 			<?php
 		endforeach

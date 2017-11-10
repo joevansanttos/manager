@@ -23,13 +23,25 @@
 		}
 
 		function insereDespesa(Despesa $despesa) {
-			$query = "insert into despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, pago_id) values ('{$despesa->getFornecedor()->getId()}', '{$despesa->getData()}', '{$despesa->getDescricao()}', '{$despesa->getValor()}', '{$despesa->getCategoria()->getId()}', '{$despesa->getPagamento()->getId()}', '{$despesa->getPago()->getId()}')";
+			$query = "insert into despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, image) values ('{$despesa->getFornecedor()->getId()}', '{$despesa->getData()}', '{$despesa->getDescricao()}', '{$despesa->getValor()}', '{$despesa->getCategoria()->getId()}', '{$despesa->getPagamento()->getId()}', '{$despesa->getPago()->getId()}', '{$despesa->getImage()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
 				echo mysqli_error($this->conexao->conecta());
 			}
 		}
+
+		function buscaDespesa($id) {
+			$query = "select * from despesas where id = {$id}";
+			$resultado = mysqli_query($this->conexao->conecta(), $query);
+			$despesa_array = mysqli_fetch_assoc($resultado);
+			$id = $despesa_array['id'];
+			$factory = new DespesaFactory();
+			$despesa = $factory->criaDespesa($despesa_array);
+			$despesa->setId($id);
+			return $despesa;
+		}
+
 	}
 
 ?>
