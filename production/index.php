@@ -1,4 +1,4 @@
-<?php 
+<?php
   header('Content-Type: text/html; charset=utf-8');
   error_reporting(E_ALL ^ E_NOTICE);
   ob_start();
@@ -13,54 +13,57 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="ico/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
 
-    <title>Projek | Gestão da Qualidade Total</title>
+    <title>Projek | Gestão da Qualidade Total </title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="ico/favicon.ico"/>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
-  <body>
-    <section id="login">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="form-wrap">
+
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form action="aut/login.php" method="post" autocomplete="off">
               <h1>Projek Manager</h1>
-              <form role="form" action="aut/login.php" method="post" id="login-form" autocomplete="off">
-                <div class="form-group">
-                  <label for="email" class="sr-only">Email</label>
-                  <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
-                </div>
-                <div class="form-group">
-                  <label for="key" class="sr-only">Senha</label>
-                  <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
-                </div>                          
-                <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Entrar">
-              </form>
-              <hr>
-            </div>
-          </div> 
-        </div> 
-      </div>
-    </section>
-  </body>
-  <footer id="footer">
-      <div class="container">
-          <div class="row">
-              <div class="col-xs-12">
-                  <p><img src="images/botao.png" width="40" right="40" ><span>PROJEK</span></p>
+              <div>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email">
               </div>
-          </div>
+              <div>
+                <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
+              </div>
+              <div>
+                
+                <input type="submit" class="btn btn-default submit login" value="Login">
+              </div>
+
+              <div class="clearfix"></div>
+            </form>
+          </section>
+        </div>
       </div>
-  </footer>
+    </div>
+  </body>
 </html>
-
-
-

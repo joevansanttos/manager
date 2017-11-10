@@ -22,23 +22,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Projek | Gestão da Qualidade Total</title>
+
     <link rel="shortcut icon" type="image/x-icon" href="../ico/favicon.ico"/>
+
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
     <!-- NProgress -->
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+
     <!-- Custom styling plus plugins -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <link href="../../vendors/lou-multi-select/css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+
     <link href="../../vendors/alertifyjs/css/alertify.css" rel="stylesheet">
     <style type="text/css">
       tfoot input {
@@ -225,7 +233,32 @@
                   </ul>
                 </li>
                 <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false"></a>
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </nav>
