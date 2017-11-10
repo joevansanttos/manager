@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 09-Nov-2017 às 19:43
+-- Generation Time: 10-Nov-2017 às 20:31
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -50,7 +50,8 @@ CREATE TABLE `atividades` (
 
 INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `filial`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`) VALUES
 (3, '2017-01-01', '2018-01-01', 3, 'Teste', 'Salvador', 'Alta', 1, 'Procedimento Interno', 'sasasa', 8, 'Deu muito trabalho começar essa atividade de novo', 'Objetivdar'),
-(4, '2017-11-08', '2017-11-12', 1, 'Consultoria', 'Salvador', 'Alta', 1, 'Testar Sistema', 'Testes mais rápidos possíveis para executar o sistema', 9, '', 'Desenvolver');
+(4, '2017-11-08', '2017-11-12', 1, 'Consultoria', 'Salvador', 'Alta', 1, 'Testar Sistema', 'Testes mais rápidos possíveis para executar o sistema', 9, '', 'Desenvolver'),
+(5, '2017-11-10', '2017-11-10', 1, 'Consultoria', 'Salvador', 'Altíssima', 1, 'Convidar Pesssoas Hangout', 'Desejo que as pessoas relacionadas sejam convidadas a participar da reunião', 10, '', 'Alinhar Desejos da Projek');
 
 -- --------------------------------------------------------
 
@@ -5771,15 +5772,17 @@ CREATE TABLE `despesas` (
   `categoria_id` int(11) DEFAULT NULL,
   `pagamento_id` int(11) DEFAULT NULL,
   `pago_id` int(11) DEFAULT NULL,
-  `doc` varchar(1000) DEFAULT NULL
+  `image` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `despesas`
 --
 
-INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`) VALUES
-(3, 58, '2017-01-01', 'Conta de Luz', '1200', 1, 1, 1, NULL);
+INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `image`) VALUES
+(3, 58, '2017-01-01', 'Conta de Luz', '1200', 1, 1, 1, NULL),
+(5, 58, '2017-01-01', 'Conta de Luz', '100', 1, 1, 1, '../upload/Comprovante de Deposito.jpg'),
+(6, 58, '2017-09-10', 'Bradesco', '1230', 1, 1, 1, '../upload/Comprovante de Deposito 3.jpg');
 
 -- --------------------------------------------------------
 
@@ -5925,6 +5928,20 @@ CREATE TABLE `market` (
 
 INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado`, `cidade`, `tel`, `segmento`, `bairro`, `porte_id`, `usuario_id`) VALUES
 (1, 'Gevan', 'Gevan SA', '11.111.111/1111-11', '', 'Avenida Joana Angélica, 79, 40050-001', 'BA', '2901502', '(71) 98333-3333', 'Abatedouro', 'Bairro do Piauí', 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `mensagens`
+--
+
+CREATE TABLE `mensagens` (
+  `id` int(11) NOT NULL,
+  `emissor_id` int(11) DEFAULT NULL,
+  `receptor_id` int(11) DEFAULT NULL,
+  `mensagem` varchar(1000) DEFAULT NULL,
+  `status_mensagem_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -6171,6 +6188,25 @@ INSERT INTO `status_contrato` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `status_mensagem`
+--
+
+CREATE TABLE `status_mensagem` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `status_mensagem`
+--
+
+INSERT INTO `status_mensagem` (`id`, `descricao`) VALUES
+(1, 'Não Lida'),
+(2, 'Lida');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `suspects`
 --
 
@@ -6262,7 +6298,8 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `profissao_id`, `image`) VALUES
 ('$2a$08$NzA5MjQ5NjYyNWEwMDZhZOjpmK7Rh5xqIkATOfYOc1hMkLmpMyOb.', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'PI', '2201150', '(71) 98333-3334', 1, 'Martins', 1, ''),
 ('$2a$08$MTMyNTA5MzQ0OTVhMDA5YOSFW/96AlGOSFhdsHCQ5pUn.qYwtRivW', 'Marcos', 'marcos@partner.com', 'masculino', 'RJ', '3300902', '(71) 98333-3333', 8, 'Hide', 4, ''),
-('$2a$08$MTQyOTUzNDUzMzVhMDM1M.mE/dCesQ6tj4PAoonCxQvTX8SQMvSmK', 'Juliana', 'julianamenezes.projek@gmail.com', 'feminino', 'BA', '2927408', '(71) 98333-3333', 9, 'Menezes', 1, '');
+('$2a$08$MTQyOTUzNDUzMzVhMDM1M.mE/dCesQ6tj4PAoonCxQvTX8SQMvSmK', 'Juliana', 'julianamenezes.projek@gmail.com', 'feminino', 'BA', '2927408', '(71) 98333-3333', 9, 'Menezes', 1, ''),
+('$2a$08$MTk4MjQ1OTUzODVhMDVlNeSghFR8Mt53d5l9ht.phGvm4JjCKXc7a', 'Catharina', 'catharinaramos.projek@gmail.com', 'feminino', 'BA', '2927408', '(71) 98333-3333', 10, 'Ramos', 1, '');
 
 --
 -- Indexes for dumped tables
@@ -6332,6 +6369,12 @@ ALTER TABLE `leads`
 -- Indexes for table `market`
 --
 ALTER TABLE `market`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mensagens`
+--
+ALTER TABLE `mensagens`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6407,6 +6450,12 @@ ALTER TABLE `status_contrato`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `status_mensagem`
+--
+ALTER TABLE `status_mensagem`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `suspects`
 --
 ALTER TABLE `suspects`
@@ -6438,7 +6487,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `atividades`
 --
 ALTER TABLE `atividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `categorias`
 --
@@ -6463,7 +6512,7 @@ ALTER TABLE `departamentos_contratos`
 -- AUTO_INCREMENT for table `despesas`
 --
 ALTER TABLE `despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `fornecedores`
 --
@@ -6484,6 +6533,11 @@ ALTER TABLE `leads`
 --
 ALTER TABLE `market`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mensagens`
+--
+ALTER TABLE `mensagens`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pagamentos`
 --
@@ -6545,6 +6599,11 @@ ALTER TABLE `status_atividade`
 ALTER TABLE `status_contrato`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `status_mensagem`
+--
+ALTER TABLE `status_mensagem`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `suspects`
 --
 ALTER TABLE `suspects`
@@ -6563,7 +6622,7 @@ ALTER TABLE `tarefas_contrato`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
