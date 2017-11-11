@@ -1,6 +1,6 @@
 <?php 
 	require_once "../class/Conexao.php";
-	require_once "../includes/logica.php";
+	require_once "logica.php";
 ?>
 
 <?php

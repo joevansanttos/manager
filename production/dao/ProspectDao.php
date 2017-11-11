@@ -60,7 +60,7 @@
 		}
 
 		function atualizaProspect(Prospect $prospect) {
-			$query = "update prospects set  prob = '{$prospect->getProb()}', valor_op = '{$prospect->getValorOp()}', valor_est = '{$prospect->getValorEs()}', recebimento = '{$prospect->getRecebimento()}', fechamento = '{$prospect->getFechamento()}', produto_id = '{$prospect->getProduto()->getId()}'";
+			$query = "update prospects set  prob = '{$prospect->getProb()}', valor_op = '{$prospect->getValorOp()}', valor_est = '{$prospect->getValorEs()}', recebimento = '{$prospect->getRecebimento()}', fechamento = '{$prospect->getFechamento()}', produto_id = '{$prospect->getProduto()->getId()}' where id = '{$prospect->getId()}' ";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 			}else{
 				echo (mysqli_error($this->conexao->conecta()));

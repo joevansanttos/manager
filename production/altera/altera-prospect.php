@@ -1,7 +1,8 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/ProspectFactory.php";
 	require_once "../dao/ProspectDao.php";
+
 	$id = $_GET['id'];
 	$factory = new ProspectFactory();
 	$prospect = $factory->criaProspect($_POST);
@@ -9,5 +10,6 @@
 	var_dump($prospect);
 	$prospectDao = new ProspectDao($conexao);
 	$prospectDao->atualizaProspect($prospect);
-	header("Location: ../tables/prospects.php");
+	
+	header("Location: ../views/prospects.php");
 ?>

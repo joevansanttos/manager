@@ -1,5 +1,5 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/ContratoFactory.php";
 	require_once "../dao/ContratoDao.php";
 	
@@ -10,5 +10,5 @@
 	$contratoDao->insereContrato($contrato);
 	$contratoDao->insereSocios($contrato, $_POST);
 	$contratoDao->insereDepartamentos($contrato, $_POST);
-	header("Location: ../tables/contratos.php");
+	header("Location: ../views/contratos.php");
 ?>

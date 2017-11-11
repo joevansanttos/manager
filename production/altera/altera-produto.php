@@ -1,5 +1,5 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/ProdutoFactory.php";
 	require_once "../dao/ProdutoDao.php";
 	$id = $_GET['id'];
@@ -8,7 +8,7 @@
 	$produto->setId($id);
 	$produtoDao = new ProdutoDao($conexao);
 	$produtoDao->atualizaProduto($produto);
-	header("Location: ../tables/produtos.php");  	
+	header("Location: ../views/produtos.php");  	
 
 
 ?>

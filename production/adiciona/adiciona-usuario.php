@@ -1,5 +1,5 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/UsuarioFactory.php";
 	require_once "../dao/UsuarioDao.php";
 	require_once "../class/Bcrypt.php";
@@ -21,5 +21,5 @@
 	$usuario = $factory->criaUsuario($_POST);
 	$usuarioDao = new UsuarioDao($conexao);
 	$usuarioDao->insereUsuario($usuario);
-	header("Location: ../tables/usuarios.php");
+	header("Location: ../views/usuarios.php");
 ?>

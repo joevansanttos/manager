@@ -32,7 +32,7 @@
 		}
 
 		function insereMarket(Market $market) {
-			$query = "insert into market ( razao, nome, cnpj, site, endereco, estado, cidade, segmento, tel, bairro, porte_id, usuario_id) values ('{$market->getNome()}', '{$market->getRazao()}', '{$market->getCnpj()}', '{$market->getSite()}', '{$market->getEndereco()}', '{$market->getEstado()}', '{$market->getCidade()}', '{$market->getSegmento()}' , '{$market->getTel()}', '{$market->getBairro()}' , '{$market->getPorte()->getId()}', '{$market->getUsuario()->getId()}')";
+			$query = "insert into market (nome, razao, cnpj, site, endereco, estado, cidade, segmento, tel, bairro, porte_id, usuario_id) values ('{$market->getNome()}', '{$market->getRazao()}', '{$market->getCnpj()}', '{$market->getSite()}', '{$market->getEndereco()}', '{$market->getEstado()}', '{$market->getCidade()}', '{$market->getSegmento()}' , '{$market->getTel()}', '{$market->getBairro()}' , '{$market->getPorte()->getId()}', '{$market->getUsuario()->getId()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{

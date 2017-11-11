@@ -1,5 +1,5 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/SuspectFactory.php";
 	require_once "../dao/SuspectDao.php";
 	$id = $_GET['id'];
@@ -8,5 +8,5 @@
 	$suspect->setId($id);
 	$suspectDao = new SuspectDao($conexao);
 	$suspectDao->atualizaSuspect($suspect);
-	header("Location: ../tables/suspects.php");
+	header("Location: ../views/suspects.php");
 ?>

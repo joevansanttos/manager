@@ -1,11 +1,11 @@
 <?php
+  require_once "aut/logica.php";
   header('Content-Type: text/html; charset=utf-8');
   error_reporting(E_ALL ^ E_NOTICE);
   ob_start();
   session_start();
-  require_once "includes/logica.php";
   if(usuarioEstaLogado()) {
-    header("Location: tables/dashboard.php");
+    header("Location: views/dashboard.php");
     $_SESSION["success"] = "Bem Vindo ao Projek Manager";
   }
 ?>
@@ -55,10 +55,8 @@
                 <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
               </div>
               <div>
-                
-                <input type="submit" class="btn btn-default submit login" value="Login">
+                <button type="submit" class="btn btn btn-success">Entre</button>
               </div>
-
               <div class="clearfix"></div>
             </form>
           </section>

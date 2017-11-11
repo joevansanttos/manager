@@ -1,5 +1,5 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/LeadFactory.php";
 	require_once "../dao/LeadDao.php";
 	require_once "../factory/HistoricoFactory.php";
@@ -17,5 +17,5 @@
 		$historicoDao = new HistoricoDao($conexao);
 		$historico = $historicoDao->insereHistorico($historico);
 	}
-	header("Location: ../tables/leads.php");
+	header("Location: ../views/leads.php");
 ?>

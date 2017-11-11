@@ -1,5 +1,5 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/ContratoFactory.php";
 	require_once "../dao/ContratoDao.php";
 	require_once "../dao/DepartamentoContratoDao.php";
@@ -26,5 +26,5 @@
 	$contrato->setStatusContrato(2);
 	$contratoDao->atualizaStatusContrato($contrato);
 
-	header("Location: ../tables/projetos.php");
+	header("Location: ../views/projetos.php");
 ?>
