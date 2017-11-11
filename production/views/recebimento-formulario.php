@@ -1,12 +1,15 @@
 <?php	
-  require_once "../includes/cabecalho.php";
+  require_once "cabecalho.php";
   require_once "../dao/ContratoDao.php";
   require_once "../dao/CategoriaDao.php";
   require_once "../dao/PagamentoDao.php";
 ?>
 
+<?php require_once "css.php"; ?> 
+
 <h3>Novo Recebimento</h3>
-<?php require "../includes/body.php"; ?>
+
+<?php require_once "body.php"; ?>
 
 <form action="../adiciona/adiciona-recebimento.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">                      
   <div class="form-group">
@@ -93,5 +96,7 @@
 </form>
    	
 
-<?php require_once "../includes/script.php"; ?>
-<?php	require_once "../includes/rodape.php"; ?>
+<?php require_once "script.php"; ?>
+
+
+<?php	require_once "rodape.php"; ?>

@@ -9,8 +9,7 @@ $(document).ready(function() {
     } );
  
     // DataTable
-    var table = $('#tabela').DataTable();
- 
+   
     // Apply the search
     table.columns().every( function () {
         var that = this;

@@ -1,13 +1,15 @@
 <?php	
-	error_reporting(E_ALL ^ E_NOTICE);
-	require_once "../includes/cabecalho.php"; 
+	require_once "cabecalho.php"; 
 	require_once "../dao/AtividadeDao.php";
   require_once "../dao/StatusAtividadeDao.php";
 ?>
 
-<h3>Tarefas</h3>
+<?php require_once "css.php"; ?> 
 
-<?php require "../includes/body.php";	?>
+
+<h3>Tarefas em Andamento</h3>
+
+<?php require_once "body.php";	?>
 
 <table id="tabela" class="table table-striped projects">
   <thead>
@@ -103,10 +105,10 @@
   </tbody>      
 </table>
 <div class="ln_solid"></div>
-<a class="btn btn-default" style="" href="../tables/atividade-formulario.php?"><i class="fa fa-plus"></i></a>
+<a class="btn btn-default" style="" href="atividade-formulario.php?"><i class="fa fa-plus"></i></a>
 </div>
 
 <?php	
-	require_once "../includes/script.php";
-	require_once "../includes/rodape.php"; 
+	require_once "script.php";
+	require_once "rodape.php"; 
 ?>

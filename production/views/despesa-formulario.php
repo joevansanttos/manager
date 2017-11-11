@@ -37,13 +37,6 @@
     </select>
    </div>
   </div> 
-  <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="valor">Valor<span class="required">*</span>
-    </label>
-    <div class="col-sm-2 col-xs-12 col-md-6">
-      <input type="number" id="valor" name="valor"  required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
-    </div>        
-  </div>
   <div class="item form-group">
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Categoria<span class="required">*</span>
    </label>
@@ -82,9 +75,14 @@
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="date">Data <span class="required">*</span>
     </label>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-    <input type="date" id="data" name="data" required="required" data-validate-length-range="8,20" class=" date-picker form-control col-md-8 col-xs-12">
-    </div>    
+    <div class="col-md-2 col-sm-3 col-xs-4">
+      <input type="date" id="data" name="data" required="required"  data-validate-length-range="8,20" class=" date-picker form-control col-md-8 col-xs-12">
+    </div> 
+    <label class="control-label col-md-1 col-sm-1" for="valor">Valor<span class="required">*</span>
+    </label>
+    <div class="col-sm-2 col-xs-12 col-md-3">
+      <input type="text" id="valor" name="valor" onblur="convert()" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+    </div>      
   </div>
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="image">Arquivo</label>
@@ -107,9 +105,9 @@
 
 <script>
 
-  function converte(){
-    var valor = document.getElementById('valor').value;
-    novoValor = valor.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+  function convert(){
+    var num = document.getElementById('valor').value;
+    novoValor =parseFloat(num).toFixed(2);
     document.getElementById('valor').value = novoValor ;
   }
 </script>

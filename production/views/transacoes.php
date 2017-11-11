@@ -86,7 +86,7 @@
             <td><?=$novaData?></td>
             <td><?=$despesa->getDescricao()?></td>
             <td><?=$despesa->getFornecedor()->getNome()?></td>
-            <td><?=$despesa->getValor()?></td>
+            <td><?='R$' . $despesa->getValor()?></td>
             <td><?=$despesa->getCategoria()->getDescricao()?></td>
             <td><?=$despesa->getPagamento()->getDescricao()?></td>
             <td>
