@@ -62,6 +62,7 @@
                 <li><a><i class="fa fa-calendar"></i> Tarefas<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="atividades.php">Todas Tarefas</a></li>
+                    <li><a href="atividades-delegadas.php">Tarefas Delegadas</a></li>
                     <li><a href="atividades-andamento.php">Tarefas em Andamento</a></li>
                     <li><a href="atividades-concluidas.php">Tarefas Concluídas</a></li>                      
                   </ul>

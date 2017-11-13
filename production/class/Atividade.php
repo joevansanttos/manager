@@ -4,6 +4,7 @@
 		private $id;
 		private $descricao;
 		private $inicio;
+		private $fim;
 		private $prazo;
 		private $statusAtividade;
 		private $setor;
@@ -14,9 +15,10 @@
 		private $delegante;
 		private $delegado;
 
-		function __construct($descricao, $inicio, $prazo, $setor, $filial, $resultados, $importancia, $observacao, $objetivo, StatusAtividade $statusAtividade, Usuario $delegante, Usuario $delegado) {
+		function __construct($descricao, $inicio, $fim, $prazo, $setor, $filial, $resultados, $importancia, $observacao, $objetivo, StatusAtividade $statusAtividade, Usuario $delegante, Usuario $delegado) {
 			$this->descricao = $descricao;
 			$this->inicio = $inicio;
+			$this->fim = $fim;
 			$this->prazo = $prazo;			
 			$this->setor = $setor;
 			$this->filial = $filial;
@@ -52,6 +54,14 @@
 
 		public function setInicio($inicio) {
 			$this->inicio = $inicio;
+		}
+
+		public function getFim() {
+			return $this->fim;
+		}
+
+		public function setFim($fim) {
+			$this->fim = $fim;
 		}
 
 		public function getPrazo() {

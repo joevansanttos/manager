@@ -18,8 +18,7 @@
       <th class="col-md-3">Atividade</th>
       <th>Delegante</th>
       <th>Colaborador</th>
-      <th>Progresso da Atividade</th>
-      <th>Status</th>
+      <th>Concluída em</th>
       <th class="col-md-2">Ações</th>
     </tr>
     <tbody>
@@ -32,7 +31,8 @@
               $novoPrazo = date("d-m-Y", strtotime($atividade->getPrazo()));
               $status_atividade_id = $atividade->getStatusAtividade()->getId();
               $statusAtividadeDao = new StatusAtividadeDao($conexao);
-              $statusAtividade = $statusAtividadeDao->buscaStatusAtividade($status_atividade_id); 
+              $statusAtividade = $statusAtividadeDao->buscaStatusAtividade($status_atividade_id);
+              $novoFim = date("d-m-Y H:i:s", strtotime($atividade->getFim())); 
       ?>
 
             <tr>
@@ -59,37 +59,8 @@
                 </ul>
               </td>
 
-              <td class="project_progress">
-                <div class="progress progress_sm">
-                  <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?=$statusAtividade->getPorcentagem()?>"></div>
-                </div>
-                <small></small>
-              </td>
               <td>
-                <?php
-                  if($statusAtividade->getPorcentagem() == 0){
-                ?>
-                  <button type="button" class="btn btn-danger btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-                <?php    
-                  }elseif($statusAtividade->getPorcentagem() == 25){
-                ?>
-                  <button type="button" class="btn btn-warning btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-                <?php
-                  }elseif($statusAtividade->getPorcentagem() == 50){
-                ?>
-                  <button type="button" class="btn btn-primary btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-                <?php    
-                  }elseif($statusAtividade->getPorcentagem() == 75){
-                ?>
-                  <button type="button" class="btn btn-info btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-                <?php
-                  }else{
-                ?>
-                  <button type="button" class="btn btn-success btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-                <?php
-                  }
-                ?>
-                
+                <?=$novoFim ?>
               </td>
               <td align="center">
                 <a href="../views/atividade-detalhes.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Ver Atividade"><button class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>

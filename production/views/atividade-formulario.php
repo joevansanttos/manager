@@ -85,6 +85,7 @@ require_once '../dao/UsuarioDao.php';
       <input type="hidden" name="status_atividade_id" id="id" value="1" />
       <input type="hidden" name="delegante_id" id="id" value="<?=$usuario_id?>" />
       <input type="hidden" name="observacao" id="id" value="" />
+      <input type="hidden" name="fim" id="id" value="" />
     </div>
   </div>
 </form>

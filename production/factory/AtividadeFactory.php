@@ -18,6 +18,7 @@ class AtividadeFactory {
 		$statusAtividade = $statusAtividadeDao->buscaStatusAtividade($status_atividade_id);
 		$descricao = $params["descricao"];
 		$inicio = $params["inicio"];
+		$fim = $params["fim"];
 		$prazo = $params["prazo"];
 		$setor = $params["setor"];
 		$filial = $params["filial"];
@@ -25,7 +26,7 @@ class AtividadeFactory {
 		$observacao = $params["observacao"];
 		$objetivo = $params["objetivo"];
 		$resultados = $params["resultados"];
-		return new Atividade($descricao, $inicio, $prazo, $setor, $filial, $resultados, $importancia, $observacao, $objetivo, $statusAtividade, $delegado, $delegante);
+		return new Atividade($descricao, $inicio, $fim, $prazo, $setor, $filial, $resultados, $importancia, $observacao, $objetivo, $statusAtividade, $delegante, $delegado);
 	}	
 
 }

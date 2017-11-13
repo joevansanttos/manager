@@ -2,9 +2,9 @@
 -- version 4.7.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 10-Nov-2017 às 20:31
--- Versão do servidor: 10.1.26-MariaDB
+-- Host: 127.0.0.1
+-- Generation Time: 13-Nov-2017 às 16:03
+-- Versão do servidor: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -35,23 +35,23 @@ CREATE TABLE `atividades` (
   `status_atividade_id` int(11) DEFAULT NULL,
   `setor` varchar(50) DEFAULT NULL,
   `filial` varchar(50) DEFAULT NULL,
-  `importancia` varchar(100) DEFAULT NULL,
+  `importancia` varchar(1000) DEFAULT NULL,
   `delegado_id` int(11) NOT NULL,
   `descricao` varchar(200) DEFAULT NULL,
   `resultados` varchar(200) DEFAULT NULL,
   `delegante_id` int(11) DEFAULT NULL,
   `observacao` varchar(1000) DEFAULT NULL,
-  `objetivo` varchar(1000) DEFAULT NULL
+  `objetivo` varchar(1000) DEFAULT NULL,
+  `fim` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `atividades`
 --
 
-INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `filial`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`) VALUES
-(3, '2017-01-01', '2018-01-01', 3, 'Teste', 'Salvador', 'Alta', 1, 'Procedimento Interno', 'sasasa', 8, 'Deu muito trabalho começar essa atividade de novo', 'Objetivdar'),
-(4, '2017-11-08', '2017-11-12', 1, 'Consultoria', 'Salvador', 'Alta', 1, 'Testar Sistema', 'Testes mais rápidos possíveis para executar o sistema', 9, '', 'Desenvolver'),
-(5, '2017-11-10', '2017-11-10', 1, 'Consultoria', 'Salvador', 'Altíssima', 1, 'Convidar Pesssoas Hangout', 'Desejo que as pessoas relacionadas sejam convidadas a participar da reunião', 10, '', 'Alinhar Desejos da Projek');
+INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `filial`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`, `fim`) VALUES
+(1, '2017-11-08', '2017-11-24', 5, 'PROJETOS', 'SALVADOR', 'Alimentar o Quality de informações para demonstrar aos clientes os benefócios de uso da solução da P', 9, 'Captar um estagiário temporário para cadastramento das bases de dados dos projetos', 'Adquirir novos contratos e criar cases a serem utilizados pelo marketing', 1, 'Concluída de novo', 'ok', '2017-11-13 07:20:49'),
+(4, '2017-11-08', '2017-11-14', 3, 'PROJETOS', 'Salvador', 'Concluir o cadastramento do partner para que ele inicie suas vendas', 9, 'Apoiar a conclusão do cadastramento do MARKET do partner VERTICAL CONSULTORIA', 'Obter novos negócios', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -5775,15 +5775,6 @@ CREATE TABLE `despesas` (
   `image` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `despesas`
---
-
-INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `image`) VALUES
-(3, 58, '2017-01-01', 'Conta de Luz', '1200', 1, 1, 1, NULL),
-(5, 58, '2017-01-01', 'Conta de Luz', '100', 1, 1, 1, '../upload/Comprovante de Deposito.jpg'),
-(6, 58, '2017-09-10', 'Bradesco', '1230', 1, 1, 1, '../upload/Comprovante de Deposito 3.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -5940,8 +5931,19 @@ CREATE TABLE `mensagens` (
   `emissor_id` int(11) DEFAULT NULL,
   `receptor_id` int(11) DEFAULT NULL,
   `mensagem` varchar(1000) DEFAULT NULL,
-  `status_mensagem_id` int(11) DEFAULT NULL
+  `status_mensagem_id` int(11) DEFAULT NULL,
+  `data` varchar(25) DEFAULT NULL,
+  `titulo` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `mensagens`
+--
+
+INSERT INTO `mensagens` (`id`, `emissor_id`, `receptor_id`, `mensagem`, `status_mensagem_id`, `data`, `titulo`) VALUES
+(2, 1, 10, 'Desejo que esteja tudo pronto', 1, '12.11.17', NULL),
+(3, 9, 10, 'Catharina Preciso uregentemente que a consultoria seja feita', 1, '12.11.17', NULL),
+(4, 10, 9, 'Começará a partir do dia 13/11 tarbalho home office sassssssssssssssssssssssssssssssssssss', 1, '12.11.17', 'Trabalho Home O');
 
 -- --------------------------------------------------------
 
@@ -6098,10 +6100,11 @@ CREATE TABLE `recebimentos` (
   `market_id` int(11) DEFAULT NULL,
   `data` varchar(20) DEFAULT NULL,
   `descricao` varchar(100) DEFAULT NULL,
-  `valor` decimal(10,0) DEFAULT NULL,
+  `valor` decimal(9,2) DEFAULT NULL,
   `categoria_id` int(11) DEFAULT NULL,
   `pagamento_id` int(11) DEFAULT NULL,
-  `pago_id` int(11) DEFAULT NULL
+  `pago_id` int(11) DEFAULT NULL,
+  `image` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -6296,10 +6299,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `profissao_id`, `image`) VALUES
-('$2a$08$NzA5MjQ5NjYyNWEwMDZhZOjpmK7Rh5xqIkATOfYOc1hMkLmpMyOb.', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'PI', '2201150', '(71) 98333-3334', 1, 'Martins', 1, ''),
+('$2a$08$NzA5MjQ5NjYyNWEwMDZhZOjpmK7Rh5xqIkATOfYOc1hMkLmpMyOb.', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'PI', '2201150', '(71) 98333-3334', 1, 'Martins', 1, 'upload/Fábio_Bordignon_Rio2016_cr.jpg'),
 ('$2a$08$MTMyNTA5MzQ0OTVhMDA5YOSFW/96AlGOSFhdsHCQ5pUn.qYwtRivW', 'Marcos', 'marcos@partner.com', 'masculino', 'RJ', '3300902', '(71) 98333-3333', 8, 'Hide', 4, ''),
 ('$2a$08$MTQyOTUzNDUzMzVhMDM1M.mE/dCesQ6tj4PAoonCxQvTX8SQMvSmK', 'Juliana', 'julianamenezes.projek@gmail.com', 'feminino', 'BA', '2927408', '(71) 98333-3333', 9, 'Menezes', 1, ''),
-('$2a$08$MTk4MjQ1OTUzODVhMDVlNeSghFR8Mt53d5l9ht.phGvm4JjCKXc7a', 'Catharina', 'catharinaramos.projek@gmail.com', 'feminino', 'BA', '2927408', '(71) 98333-3333', 10, 'Ramos', 1, '');
+('$2a$08$MTk4MjQ1OTUzODVhMDVlNeSghFR8Mt53d5l9ht.phGvm4JjCKXc7a', 'Catharina', 'catharinaramos.projek@gmail.com', 'feminino', 'BA', '2927408', '(71) 98333-3333', 10, 'Ramos', 1, 'upload/S54vF-9R.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -6487,7 +6490,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `atividades`
 --
 ALTER TABLE `atividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `categorias`
 --
@@ -6512,7 +6515,7 @@ ALTER TABLE `departamentos_contratos`
 -- AUTO_INCREMENT for table `despesas`
 --
 ALTER TABLE `despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `fornecedores`
 --
@@ -6537,7 +6540,7 @@ ALTER TABLE `market`
 -- AUTO_INCREMENT for table `mensagens`
 --
 ALTER TABLE `mensagens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pagamentos`
 --
