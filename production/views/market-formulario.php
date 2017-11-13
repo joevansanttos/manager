@@ -68,6 +68,7 @@
     <div class="col-sm-8 col-xs-12 col-md-3">
       <select id="sexo" name="segmento" required class="form-control col-md-8 col-xs-12">
         <option value="Abatedouro">Abatedouro</option>
+        <option value="Advocacia">Advocacia</option>
         <option value="Alimentação">Alimentação</option>
         <option value="Agricultura">Agricultura</option>
         <option value="Atacado">Atacado</option>
@@ -78,6 +79,7 @@
         <option value="Confecção">Confecção</option>
         <option value="Couros">Couros</option>
         <option value="Educação">Educação</option>
+        <option value="Equipamentos">Equipamentos</option>
         <option value="Extração">Extração</option>
         <option value="Ferragens">Ferragens</option>
         <option value="Frigorífico">Frigorífico</option>
@@ -92,6 +94,7 @@
         <option value="Serviços">Serviços</option>
         <option value="Supermercado">Supermercado</option>
         <option value="Tecidos">Tecidos</option>
+        <option value="Tecnologia">Tecnologia</option>
         <option value="Transporte">Transporte</option>
         <option value="Turismo">Turismo</option>
         <option value="Varejo">Varejo</option>
@@ -132,5 +135,30 @@
 
 
 <?php require_once "../includes/script.php"; ?>
+
+<script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+<!-- Parsley -->
+<script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>
+<script src="../../vendors/parsleyjs/dist/i18n/pt-br.js"></script>
+
+<!-- Cidades e Estados -->
+<script src="../js/cidades-estados-utf8.js"></script>
+<script language="JavaScript" type="text/javascript" charset="utf-8">
+  new dgCidadesEstados({
+    cidade: document.getElementById('cidade'),
+    estado: document.getElementById('estado')
+  })
+</script>
+<script>
+  $('#form').parsley();
+</script>
+<script type="text/javascript">
+  window.ParsleyValidator.setLocale('pt-br');
+</script>
+
+<script src="../../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+<script src="../../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 
 <?php	require_once "../includes/rodape.php"; ?>

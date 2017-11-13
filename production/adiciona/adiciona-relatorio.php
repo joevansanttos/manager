@@ -1,5 +1,5 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/RelatorioFactory.php";
 	require_once "../dao/RelatorioDao.php";
 	require_once "../dao/TarefaContratoDao.php";
@@ -11,5 +11,5 @@
 	$tarefaContrato = $tarefaContratoDao->buscaTarefaContrato($id);
 	$id = $tarefaContrato->getDepartamentoContrato()->getContrato()->getNumero();
 	$relatorio = $relatorioDao->insereRelatorio($relatorio);
-	header("Location: ../tables/detalhes-projeto.php?id=$id");
+	header("Location: ../views/detalhes-projeto.php?id=$id");
 ?>

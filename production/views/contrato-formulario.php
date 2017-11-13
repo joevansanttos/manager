@@ -28,7 +28,11 @@
   $market = $marketDao->buscaMarket($id); 
 ?>
 
+<link href="../../vendors/lou-multi-select/css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+
+
 <?php require_once "css.php"; ?> 
+
 
 <h3>Novo Contrato</h3>
 

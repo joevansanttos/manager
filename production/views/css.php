@@ -14,10 +14,10 @@
             <div class="profile_pic">
               <?php
                 if($usuario->getImage() != null){
-                  if (getimagesize($usuario->getImage()) !== false) {
+                  if (getimagesize('../' . $usuario->getImage()) !== false) {
 
               ?>
-                    <img class="img-responsive img-circle profile_img" src="<?=$usuario->getImage()?>">
+                    <img class="img-responsive img-circle profile_img" src="<?= '../' . $usuario->getImage()?>">
               <?php
                   }else{
 
@@ -146,9 +146,9 @@
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                  <?php
                    if($usuario->getImage() != null){
-                     if (getimagesize($usuario->getImage()) !== false) {
+                     if (getimagesize('../' . $usuario->getImage()) !== false) {
                  ?>
-                       <img  src="<?=$usuario->getImage()?>">
+                       <img  src="<?='../' . $usuario->getImage()?>">
                  <?php
                      }else{
                  ?>
@@ -166,7 +166,7 @@
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <li><a href="usuario-perfil.php"> Perfil</a></li>
+                  <li><a href="usuario-perfil.php?id=<?=$usuario_id?>"> Perfil</a></li>
                   <li>
                     <a href="javascript:;">
                       <span>Configurações</span>
@@ -179,26 +179,37 @@
               <li role="presentation" class="dropdown">
                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                   <i class="fa fa-envelope-o"></i>
-                  <span class="badge bg-green">6</span>
+                  <span class="badge bg-green"><?=count($mensagens)?></span>
                 </a>
                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                  <li>
-                    <a>
-                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                      <span>
-                        <span>John Smith</span>
-                        <span class="time">3 mins ago</span>
-                      </span>
-                      <span class="message">
-                        Film festivals used to be do-or-die moments for movie makers. They were where...
-                      </span>
-                    </a>
-                  </li>
+                  <?php
+                    foreach ($mensagens as $mensagem) {
+                      if($mensagem->getStatusMensagem()->getId() == 1){
+                  ?>
+
+                      <li>
+                        <a>
+                          <span class="image"><img src="../images/user.png" alt="Profile Image" /></span>
+                          <span>
+                            <span><?=$mensagem->getEmissor()->getNome()?></span>
+                            <span class="time"><?=$mensagem->getData()?></span>
+                          </span>
+                          <span class="message">
+                            <?=$mensagem->getTitulo()?>
+                          </span>
+                        </a>
+                      </li>
+
+                  <?php                      
+                      }
+                    }
+                  ?>
+                 
                   <li>
                     <div class="text-center">
-                      <a>
-                        <strong>See All Alerts</strong>
-                        <i class="fa fa-angle-right"></i>
+                      <a href="inbox.php">
+                        <strong>Ver Todas Mensagens</strong>
+                        <i  class="fa fa-angle-right"></i>
                       </a>
                     </div>
                   </li>

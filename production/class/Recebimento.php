@@ -7,10 +7,11 @@
 		private $valor;
 		private $categoria;
 		private $pagamento;
+		private $image;
 		private $pago;
 		private $id;
 
-		function __construct($data, $descricao,  $valor, Categoria $categoria,Pagamento $pagamento, Pago $pago, Market $market) {
+		function __construct($data, $descricao,  $valor, Categoria $categoria,Pagamento $pagamento, Pago $pago, Market $market, $image) {
 			$this->data = $data;
 			$this->descricao = $descricao;
 			$this->market = $market;
@@ -18,6 +19,7 @@
 			$this->categoria = $categoria;
 			$this->pagamento = $pagamento;
 			$this->pago = $pago;
+			$this->image = $image;
 		}
 
 		public function getData() {
@@ -75,6 +77,15 @@
 		public function setId($id) {
 			$this->id = $id;
 		}
+
+		public function getImage() {
+			return $this->image;
+		}
+
+		public function setImage($image) {
+			$this->image = $image;
+		}
+		
 
 	}
 

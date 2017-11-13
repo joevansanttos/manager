@@ -1,5 +1,5 @@
 <?php	
-require_once "../includes/cabecalho.php"; 
+require_once "cabecalho.php"; 
 require_once '../dao/ProfissaoDao.php';
 require_once '../dao/UsuarioDao.php';
 $id = $_GET['id'];
@@ -7,8 +7,12 @@ $usuarioDao = new UsuarioDao($conexao);
 $usuario = $usuarioDao->buscaUsuario($id);
 ?>
 
+<?php require_once "css.php"; ?>
+
 <h3>Alterar Usuário</h3>
-<?php require "../includes/body.php"; ?>       
+
+<?php require_once "body.php"; ?>  
+
 <form id="form" action="../altera/altera-usuario.php" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome <span class="required">*</span>
@@ -98,7 +102,7 @@ $usuario = $usuarioDao->buscaUsuario($id);
   </div>
 </form>
 
-<?php require_once "../includes/script.php"; ?>
+<?php require_once "script.php"; ?>
 
 <script>
   document.getElementById('profissao_id').value = '<?=$usuario->getProfissao()->getId()?>';  
@@ -122,4 +126,4 @@ $usuario = $usuarioDao->buscaUsuario($id);
 
 
 
-<?php	require_once "../includes/rodape.php"; ?>
+<?php	require_once "rodape.php"; ?>

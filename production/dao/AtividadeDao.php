@@ -15,7 +15,7 @@
 			if($usuario_id == 1){
 				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u");
 			}else{
-				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u where usuario_id = $usuario_id");
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u where delegado_id = $usuario_id");
 
 			}			
 			while($atividade_array = mysqli_fetch_assoc($resultado)) {

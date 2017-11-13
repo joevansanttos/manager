@@ -4,6 +4,8 @@
   require_once "../dao/StatusAtividadeDao.php";
 ?>
 
+
+
 <?php require_once "css.php"; ?>
 
 <h3>Tarefas</h3>
@@ -109,5 +111,11 @@
 
 <?php	
 	require_once "script.php";
+?>
+
+<script src="../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+
+<?php
 	require_once "rodape.php"; 
 ?>

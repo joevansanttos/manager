@@ -1,5 +1,5 @@
 <?php	
-require_once "../includes/cabecalho.php"; 
+require_once "cabecalho.php"; 
 require_once '../dao/UsuarioDao.php';
 $id = $_GET['id'];
 $usuarioDao = new UsuarioDao($conexao);
@@ -7,8 +7,12 @@ $receptor = $usuarioDao->buscaUsuario($id);
 $today = date("d.m.y");
 ?>
 
+
+<?php require_once "css.php"; ?>
+
 <h3>Nova Mensagem</h3>
-<?php require "../includes/body.php"; ?>       
+
+<?php require "body.php"; ?>       
 
 <form action="../adiciona/adiciona-mensagem.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
@@ -16,6 +20,13 @@ $today = date("d.m.y");
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
       <input type="text" id="nome" name="usuario" value="<?=$receptor->getNome() . ' ' . $receptor->getSobrenome()?>" readonly="readonly" required="required" class="form-control col-md-7 col-xs-12">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Título da Mensagem<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input type="text" id="titulo" name="titulo"  required="required" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="item form-group">
@@ -39,5 +50,5 @@ $today = date("d.m.y");
   </div>                     
 </form>
 
-<?php require_once "../includes/script.php"; ?>
-<?php	require_once "../includes/rodape.php"; ?>
+<?php require_once "script.php"; ?>
+<?php	require_once "rodape.php"; ?>

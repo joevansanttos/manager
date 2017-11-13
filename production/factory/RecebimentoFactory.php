@@ -24,8 +24,9 @@ class RecebimentoFactory {
 		$pagamento = $pagamentoDao->buscaPagamento($pagamento_id);
 		$pago_id = $params["pago_id"];
 		$pagoDao = new PagoDao($conexao);
-		$pago = $pagoDao->buscaPago($pago_id);	
-		return new Recebimento($data, $descricao,  $valor, $categoria, $pagamento, $pago, $market);
+		$pago = $pagoDao->buscaPago($pago_id);
+		$image = $params["image"];	
+		return new Recebimento($data, $descricao,  $valor, $categoria, $pagamento, $pago, $market, $image);
 	}	
 
 }

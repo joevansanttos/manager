@@ -1,5 +1,5 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/HistoricoFactory.php";
 	require_once "../dao/HistoricoDao.php";
 	$id = $_GET['id'];
@@ -9,6 +9,6 @@
 	$market_id = $historico->getMarket()->getId();
 	$historicoDao = new HistoricoDao($conexao);
 	$historicoDao->atualizaHistorico($historico);
-	header("Location: ../tables/market-profile.php?id=$market_id"); 	
+	header("Location: ../views/market-profile.php?id=$market_id"); 	
 
 ?>

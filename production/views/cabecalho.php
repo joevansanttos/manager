@@ -27,7 +27,11 @@
     <!-- Custom styling plus plugins -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
-    <link href="../../vendors/lou-multi-select/css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+    
+    <link href="../../vendors/alertifyjs/css/alertify.css" rel="stylesheet">
+    
+    
+    <link href="../../vendors/pnotify/dist/pnotify.js" media="all" rel="stylesheet" type="text/css" />
 
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -35,8 +39,4 @@
     <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-
-
-    <link href="../../vendors/alertifyjs/css/alertify.css" rel="stylesheet">
-    
   

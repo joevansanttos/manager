@@ -1,5 +1,5 @@
 <?php
-	require_once "../includes/cabecalho.php";
+	require_once "../views/conexao.php";
 	require_once "../factory/ContratoFactory.php";
 	require_once "../dao/ContratoDao.php";
 
@@ -8,5 +8,5 @@
 	$contrato = $contratoDao->buscaContrato($contrato_id);
 	$contratoDao->removeProjeto($contrato);
 	$contratoDao->remove($contrato);
-	header("Location: ../tables/contratos.php");
+	header("Location: ../views/contratos.php");
 ?>

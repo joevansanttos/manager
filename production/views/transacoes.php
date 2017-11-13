@@ -37,21 +37,22 @@
             $recebimentoDao = new RecebimentoDao($conexao);
             $recebimentos = $recebimentoDao->listaRecebimentos();
             foreach ($recebimentos as $recebimento): 
-              
+              $novaData = date("d-m-Y", strtotime($recebimento->getData()));
           ?>
           <tr>
-            <td><?=$recebimento->getData()?></td>
+            <td><?=$novaData?></td>
             <td><?=$recebimento->getDescricao()?></td>
             <td><?=$recebimento->getMarket()->getNome()?></td>
             <td><?=$recebimento->getValor()?></td>
             <td><?=$recebimento->getCategoria()->getDescricao()?></td>
             <td><?=$recebimento->getPagamento()->getDescricao()?></td>
             <td>
-             <input id="pago" type="checkbox" class="" /> Pago
+             <?=$recebimento->getPago()->getDescricao()?>
             </td>
             <td>
-              <a href="../views/market-profile.php?id=<?=$recebimento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
-              <a href="../views/market-altera.php?id=<?=$recebimento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Market" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+              <a href="../views/recebimento-detalhes.php?id=<?=$recebimento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Recebimento" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
+              <a href="../views/recebimento-altera.php?id=<?=$recebimento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Alterar Recebimento" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+              <a  href="../remove/remove-recebimento.php?id=<?=$recebimento->getId()?>" class="delete" data-toggle="tooltip" data-placement="top" title="Remover Recebimento"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
             </td>
           </tr>
         <?php endforeach ?>
@@ -95,7 +96,7 @@
             <td>
               <a href="../views/despesa-detalhes.php?id=<?=$despesa->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Despesa" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
               <a href="../views/despesa-altera.php?id=<?=$despesa->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Alterar Despesa" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-              <a  href="../remove/remove-lead.php?id=<?=$despesa->getId()?>" class="delete" data-toggle="tooltip" data-placement="top" title="Remover Despesa"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+              <a  href="../remove/remove-despesa.php?id=<?=$despesa->getId()?>" class="delete" data-toggle="tooltip" data-placement="top" title="Remover Despesa"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
             </td>
           </tr>
           <?php

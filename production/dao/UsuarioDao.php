@@ -106,6 +106,8 @@
 		  mysqli_query($this->conexao->conecta(), $query);
 		}
 
+		
+
 
 	}
 	

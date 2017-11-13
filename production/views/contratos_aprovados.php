@@ -1,13 +1,23 @@
 <?php	
-	error_reporting(E_ALL ^ E_NOTICE);
-	require_once "../includes/cabecalho.php"; 
+	require_once "cabecalho.php"; 
 	require_once "../dao/ContratoDao.php";
+?>
+
+<!-- Datatables -->
+<link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+<?php 
+  require_once "css.php"; 
 ?>
 
 <h3>Contratos</h3>
 
 <?php	
-	require_once "../includes/body.php"; 
+	require_once "body.php"; 
 ?>
 
 <table id="tabela" class="table datatable table-bordered table-striped">
@@ -64,10 +74,10 @@
 </div>
 
 <?php	
-	require_once "../includes/script.php"; 
+	require_once "script.php"; 
 ?>
 	
 
 <?php	
-	require_once "../includes/rodape.php"; 
+	require_once "rodape.php"; 
 ?>

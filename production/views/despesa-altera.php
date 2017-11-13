@@ -99,7 +99,6 @@
 <?php require_once "script.php"; ?>
 
 <script>
-
   function converte(){
     var valor = document.getElementById('valor').value;
     novoValor = valor.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');

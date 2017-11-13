@@ -16,7 +16,7 @@
   <div class="preview col-md-8">
     <div class="preview-pic tab-content">
       <div class="tab-pane active" id="pic-1">
-        <img class="col-md-12" src="<?=$despesa->getImage()?>"/>
+        <img class="col-md-12" src="<?='../' .$despesa->getImage()?>"/>
       </div>
     </div>
   </div>

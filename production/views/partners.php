@@ -5,9 +5,9 @@
 
 <?php	require_once "css.php"; ?>	
 
-<h3>Consultores</h3>
+<h3>Partners</h3>
 
-<?php require "body.php";	?>
+<?php require_once "body.php";	?>
 			
 <table id="tabela" class="table table-bordered">
 	<thead>
@@ -27,7 +27,7 @@
 		$usuarios = $usuarioDao->listaUsuarios();
 		foreach ($usuarios as $u):
 			$cidade = $usuarioDao->buscaCidade($u->getCidade() );
-			if($u->getProfissao()->getId() == 1){
+			if($u->getProfissao()->getId() == 4){
 		?>
 			<tr>
 				<td><?=$u->getNome() .' '.$u->getSobrenome()  ?></td>
@@ -37,8 +37,8 @@
 				<td><?=$u->getSexo() ?></td>
 				<td><?=$u->getTelefone() ?></td>
 				<td align="center">
-					<a href="../views/market-profile.php?id=<?=$u->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
-					<a href="../views/mensagem-formulario.php?id=<?=$u->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Prospect" class="btn btn-primary btn-xs"><i class="fa fa-envelope-o"></i></button></a>
+					<a href="usuario-perfil.php?id=<?=$u->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Usuário" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
+					<a href="mensagem-formulario.php?id=<?=$u->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Enviar Mensagem" class="btn btn-primary btn-xs"><i class="fa fa-envelope-o"></i></button></a>
 				</td>					       
 			</tr>
 		<?php
@@ -54,4 +54,6 @@
 
 
 <?php	require "script.php"; ?>
+
+
 <?php	require "rodape.php"; ?>

@@ -74,6 +74,7 @@
     <div class="col-sm-8 col-xs-12 col-md-3">
       <select id="segmento" name="segmento" required class="form-control col-md-8 col-xs-12">
         <option value="Abatedouro">Abatedouro</option>
+        <option value="Advocacia">Advocacia</option>
         <option value="Alimentação">Alimentação</option>
         <option value="Agricultura">Agricultura</option>
         <option value="Atacado">Atacado</option>
@@ -84,6 +85,7 @@
         <option value="Confecção">Confecção</option>
         <option value="Couros">Couros</option>
         <option value="Educação">Educação</option>
+        <option value="Equipamentos">Equipamentos</option>
         <option value="Extração">Extração</option>
         <option value="Ferragens">Ferragens</option>
         <option value="Frigorífico">Frigorífico</option>
@@ -98,10 +100,11 @@
         <option value="Serviços">Serviços</option>
         <option value="Supermercado">Supermercado</option>
         <option value="Tecidos">Tecidos</option>
+        <option value="Tecnologia">Tecnologia</option>
         <option value="Transporte">Transporte</option>
         <option value="Turismo">Turismo</option>
         <option value="Varejo">Varejo</option>
-        <option value="Vestuário">Vestuário</option>                                         
+        <option value="Vestuário">Vestuário</option>                                      
       </select>
     </div>
     <label class="control-label col-md-1 col-sm-3 col-xs-12" for="tel">Telefone <span class="required">*</span>

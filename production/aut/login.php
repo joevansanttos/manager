@@ -9,7 +9,7 @@
 	$usuarioDao = new UsuarioDao($conexao);	
 	$usuario = $usuarioDao->buscaUsuarioLogar($_POST["email"], $_POST["senha"]);
 	if($usuario == null){
-		header("Location: ../index.php");
+		//header("Location: ../index.php");
 	}else{
 		logaUsuario($usuario);
    	header("Location: ../index.php");

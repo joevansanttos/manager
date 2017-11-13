@@ -1,13 +1,13 @@
 <?php	
-  require_once "../views/cabecalho.php"; 
+  require_once "cabecalho.php"; 
   require_once '../dao/ProfissaoDao.php';
 ?>
 
-<?php require_once "../views/css.php"; ?>
+<?php require_once "css.php"; ?>
 
 <h3>Novo Usuário</h3>
 
-<?php require "../views/body.php"; ?> 
+<?php require_once "body.php"; ?> 
       
 <form id="form" action="../adiciona/adiciona-usuario.php" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
@@ -95,5 +95,31 @@
   </div>
 </form>
 
-<?php require_once "../views/script.php"; ?>
-<?php	require_once "../views/rodape.php"; ?>
+<?php require_once "script.php"; ?>
+
+<script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
+<!-- Parsley -->
+<script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>
+<script src="../../vendors/parsleyjs/dist/i18n/pt-br.js"></script>
+
+<!-- Cidades e Estados -->
+<script src="../js/cidades-estados-utf8.js"></script>
+<script language="JavaScript" type="text/javascript" charset="utf-8">
+  new dgCidadesEstados({
+    cidade: document.getElementById('cidade'),
+    estado: document.getElementById('estado')
+  })
+</script>
+<script>
+  $('#form').parsley();
+</script>
+<script type="text/javascript">
+  window.ParsleyValidator.setLocale('pt-br');
+</script>
+
+<script src="../../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+<script src="../../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+
+<?php	require_once "rodape.php"; ?>

@@ -10,6 +10,7 @@ class MensagemFactory {
 		$conexao = new Conexao();						
 		$mensagem = $params["mensagem"];
 		$data = $params["data"];
+		$titulo = $params["titulo"];
 
 		$status_mensagem_id = $params["status_mensagem_id"];
 		$statusMensagemDao = new StatusMensagemDao($conexao);
@@ -23,7 +24,7 @@ class MensagemFactory {
 		$usuarioDao = new UsuarioDao($conexao);
 		$receptor = $usuarioDao->buscaUsuario($receptor_id);
 
-		return new Mensagem($mensagem, $data, $statusMensagem, $emissor, $receptor);
+		return new Mensagem($mensagem, $data, $titulo, $statusMensagem, $emissor, $receptor);
 	}	
 
 }
