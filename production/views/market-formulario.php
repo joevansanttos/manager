@@ -1,11 +1,13 @@
 <?php	
-  require_once "../includes/cabecalho.php";
-  require '../dao/PorteDao.php';
+  require_once "cabecalho.php";
+  require_once '../dao/PorteDao.php';
 ?>
+
+<?php require_once "css.php"; ?>
 
 <h3>Novo Market</h3>
 
-<?php require "../includes/body.php"; ?>
+<?php require_once "body.php"; ?>
 
 <form action="../adiciona/adiciona-market.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
@@ -134,7 +136,7 @@
 	
 
 
-<?php require_once "../includes/script.php"; ?>
+<?php require_once "script.php"; ?>
 
 <script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
@@ -151,14 +153,8 @@
     estado: document.getElementById('estado')
   })
 </script>
-<script>
-  $('#form').parsley();
-</script>
-<script type="text/javascript">
-  window.ParsleyValidator.setLocale('pt-br');
-</script>
 
 <script src="../../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
 <script src="../../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 
-<?php	require_once "../includes/rodape.php"; ?>
+<?php	require_once "rodape.php"; ?>

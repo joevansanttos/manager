@@ -98,8 +98,6 @@
 <?php require_once "script.php"; ?>
 
 <script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-
 <!-- Parsley -->
 <script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>
 <script src="../../vendors/parsleyjs/dist/i18n/pt-br.js"></script>
@@ -112,6 +110,7 @@
     estado: document.getElementById('estado')
   })
 </script>
+
 <script>
   $('#form').parsley();
 </script>
@@ -119,7 +118,6 @@
   window.ParsleyValidator.setLocale('pt-br');
 </script>
 
-<script src="../../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
 <script src="../../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 
 <?php	require_once "rodape.php"; ?>

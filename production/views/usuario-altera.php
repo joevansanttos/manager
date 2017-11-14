@@ -104,10 +104,11 @@ $usuario = $usuarioDao->buscaUsuario($id);
 
 <?php require_once "script.php"; ?>
 
-<script>
-  document.getElementById('profissao_id').value = '<?=$usuario->getProfissao()->getId()?>';  
-</script>
-
+<!-- Parsley -->
+<script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>
+<script src="../../vendors/parsleyjs/dist/i18n/pt-br.js"></script>
+<!-- Cidades e Estados -->
+<script src="../js/cidades-estados-utf8.js"></script>
 <script language="JavaScript" type="text/javascript" charset="utf-8">
   new dgCidadesEstados({
     cidade: document.getElementById('cidade'),
@@ -116,14 +117,13 @@ $usuario = $usuarioDao->buscaUsuario($id);
     cidadeVal: '<?=$usuario->getCidade()?>'
   })
 </script>
-
+<script src="../../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+<script>
+  document.getElementById('profissao_id').value = '<?=$usuario->getProfissao()->getId()?>';  
+</script>
 
 <script>
   document.getElementById('sexo').value = '<?=$usuario->getSexo()?>';
 </script>
-
-
-
-
 
 <?php	require_once "rodape.php"; ?>

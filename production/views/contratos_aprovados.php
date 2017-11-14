@@ -14,7 +14,7 @@
   require_once "css.php"; 
 ?>
 
-<h3>Contratos</h3>
+<h3>Contratos Aprovados</h3>
 
 <?php	
 	require_once "body.php"; 
@@ -56,7 +56,7 @@
           <?php
             }else{
           ?>
-          <a href=""><button data-toggle="tooltip" data-placement="top" title="Contrato Aprovado"  class="btn btn-info btn-xs"><i class="fa fa-file"></i></button></a> 
+          <a><button data-toggle="tooltip" data-placement="top" title="Projeto Criado" class="btn btn-warning btn-xs"><i class="fa fa-thumbs-up"></i></button></a>
 
           <?php
             }
@@ -76,7 +76,21 @@
 <?php	
 	require_once "script.php"; 
 ?>
-	
+
+
+<!-- Datatables -->
+<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="../js/datatable.js"></script> 	
 
 <?php	
 	require_once "rodape.php"; 

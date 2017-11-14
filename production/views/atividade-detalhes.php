@@ -42,4 +42,6 @@
 
 
 <?php	require_once "script.php"; ?>
+
+
 <?php	require_once "rodape.php"; ?>

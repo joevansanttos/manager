@@ -51,7 +51,8 @@
     <div class="col-sm-6 col-xs-12 col-md-2">
       <input type="time" id="hora" name="hora" value="<?=$suspect->getHora()?>" class="form-control col-md-7 col-xs-12" required></select>                
     </div>
-  </div>              
+  </div>
+  <div class="ln_solid"></div>                       
   <div class="col-md-6 col-md-offset-3">
     <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
     <button id="send" type="submit" class="btn btn-success">Alterar</button>
@@ -61,6 +62,11 @@
 
 <?php require_once "script.php"; ?>
 
+<!-- Parsley -->
+<script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>
+<script src="../../vendors/parsleyjs/dist/i18n/pt-br.js"></script>
+<!-- InputMask -->
+<script src="../../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 <script type="text/javascript">
   document.getElementById('status').value = '<?=$suspect->getStatus()?>';
 </script>

@@ -68,6 +68,19 @@
 			}
 		}
 
+		function listaLeadsMarket($market_id) {
+			$leads = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from leads as u where market_id = {$market_id}");
+			while($lead_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new LeadFactory();
+				$lead_id = $lead_array['id'];				
+				$lead = $factory->criaLead($lead_array);
+				$lead->setId($lead_id);
+				array_push($leads, $lead);
+			}
+			return $leads;
+		}
+
 		
 	}
 	

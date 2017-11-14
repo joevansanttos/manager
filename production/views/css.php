@@ -86,7 +86,13 @@
                 <li><a><i class="fa fa-file" aria-hidden="true"></i> Contratos <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="contratos.php">Todos Contratos</a></li>
+              <?php
+                if($usuario->getProfissao()->getId() != 4){
+              ?>  
                     <li><a href="contratos_pendentes.php">Contratos Pendentes</a></li>
+              <?php
+                }
+              ?>
                     <li><a href="contratos_aprovados.php">Contratos Aprovados</a></li>                      
                   </ul>
                 </li>

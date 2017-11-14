@@ -141,7 +141,11 @@
 
 <?php require_once "script.php"; ?>
 
-
+<!-- Parsley -->
+<script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>
+<script src="../../vendors/parsleyjs/dist/i18n/pt-br.js"></script>
+<!-- Cidades e Estados -->
+<script src="../js/cidades-estados-utf8.js"></script>
 <script language="JavaScript" type="text/javascript" charset="utf-8">
   new dgCidadesEstados({
     cidade: document.getElementById('cidade'),
@@ -150,6 +154,7 @@
     cidadeVal: '<?=$market->getCidade()?>'
   })
 </script>
+<script src="../../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 <script type="text/javascript">
   document.getElementById('segmento').value = '<?=$market->getSegmento()?>';
 </script>

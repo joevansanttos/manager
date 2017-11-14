@@ -17,26 +17,12 @@
 
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Font Awesome -->
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-
     <!-- NProgress -->
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
-
     <!-- Custom styling plus plugins -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     
-    <link href="../../vendors/alertifyjs/css/alertify.css" rel="stylesheet">
-    
-    
-    <link href="../../vendors/pnotify/dist/pnotify.js" media="all" rel="stylesheet" type="text/css" />
-
-    <!-- Datatables -->
-    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-  
+   

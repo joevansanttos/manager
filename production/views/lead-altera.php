@@ -59,6 +59,11 @@
 
 <?php require_once "script.php"; ?>
 
+<!-- Parsley -->
+<script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>
+<script src="../../vendors/parsleyjs/dist/i18n/pt-br.js"></script>
+<!-- InputMask -->
+<script src="../../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 <script type="text/javascript">
   document.getElementById('cargo').value = '<?=$lead->getCargo()?>';
 </script>
