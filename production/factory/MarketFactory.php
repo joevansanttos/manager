@@ -20,12 +20,13 @@
 			$tel = $params["tel"];
 			$bairro = $params["bairro"];
 			$porte_id = $params["porte_id"];
+			$image = $params["image"];
 			$usuario_id = $params["usuario_id"];
 			$usuarioDao = new UsuarioDao($conexao);
 			$usuario = $usuarioDao->buscaUsuario($usuario_id);
 			$porteDao = new PorteDao($conexao);
 			$porte = $porteDao->buscaPorte($porte_id);
-			return new Market($razao, $nome, $cnpj, $site, $endereco , $estado, $cidade, $segmento, $tel, $bairro, $porte, $usuario);
+			return new Market($razao, $nome, $cnpj, $site, $endereco , $estado, $cidade, $segmento, $tel, $bairro, $porte, $usuario, $image);
 		}	
 
 	}

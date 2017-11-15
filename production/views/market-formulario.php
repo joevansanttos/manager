@@ -9,7 +9,7 @@
 
 <?php require_once "body.php"; ?>
 
-<form action="../adiciona/adiciona-market.php" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<form action="../adiciona/adiciona-market.php" method="post" id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome<span class="required">*</span>
     </label>
@@ -80,6 +80,7 @@
         <option value="Combustíveis">Combustíveis</option>
         <option value="Confecção">Confecção</option>
         <option value="Couros">Couros</option>
+        <option value="Distribuidor">Distribuidor</option>
         <option value="Educação">Educação</option>
         <option value="Equipamentos">Equipamentos</option>
         <option value="Extração">Extração</option>

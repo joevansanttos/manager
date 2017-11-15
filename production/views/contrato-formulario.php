@@ -11,19 +11,20 @@
   $produtos = $produtoDao->listaProdutos();
   $departamentos = $departamentoDao->listaDepartamentos();
   $contratos = $contratoDao->listaTodosContratos();
+
   if(!empty($contratos)){
-     $i = 1;
-     $j = 1;
-     while($i == $j){
-       foreach ($contratos as $contrato) {
-        $j = $contrato->getNumero();
+    $i = 1;
+    foreach ($contratos as $contrato) {
+      $j = $contrato->getNumero();
+      if($i == $j){
         $i++;
-      } 
-    }
+      }
+    } 
     $i = (string)$i; 
   }else{
     $i = 1;
   }
+  
   $id = $_GET['id'];
   $market = $marketDao->buscaMarket($id); 
 ?>

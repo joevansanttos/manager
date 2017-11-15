@@ -14,7 +14,7 @@
             <div class="profile_pic">
               <?php
                 if($usuario->getImage() != null){
-                  if (getimagesize('../' . $usuario->getImage()) !== false) {
+                  if (file_exists('../' . $usuario->getImage()) !== false) {
 
               ?>
                     <img class="img-responsive img-circle profile_img" src="<?= '../' . $usuario->getImage()?>">
@@ -153,7 +153,7 @@
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                  <?php
                    if($usuario->getImage() != null){
-                     if (getimagesize('../' . $usuario->getImage()) !== false) {
+                     if (file_exists('../' . $usuario->getImage()) !== false) {
                  ?>
                        <img  src="<?='../' . $usuario->getImage()?>">
                  <?php

@@ -33,7 +33,7 @@
 
 		function listaTodosContratos() {
 			$contratos = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u ");
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u order by id ");
 			while($contrato_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new ContratoFactory();
 				$contrato = $factory->criaContrato($contrato_array);

@@ -1,5 +1,5 @@
 <?php	
-require_once "../includes/cabecalho.php"; 
+require_once "cabecalho.php"; 
 require_once '../dao/HistoricoDao.php';
 $id = $_GET['id'];
 $historicoDao = new HistoricoDao($conexao);
@@ -8,8 +8,11 @@ $market = $historico->getMarket();
 $data = $historico->getData();
 ?>
 
+<?php require_once "css.php"; ?> 
+
 <h3>Alterar Histórico</h3>
-<?php require "../includes/body.php"; ?>       
+
+<?php require_once "body.php"; ?>       
 
 <form action="../altera/altera-historico.php?id=<?=$id?>" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <div class="item form-group">
@@ -31,5 +34,6 @@ $data = $historico->getData();
   </div>                     
 </form>
 
-<?php require_once "../includes/script.php"; ?>
-<?php	require_once "../includes/rodape.php"; ?>
+<?php require_once "script.php"; ?>
+
+<?php	require_once "rodape.php"; ?>

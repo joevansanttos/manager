@@ -41,7 +41,7 @@
 		}
 
 		function atualizaMarket(Market $market) {
-			$query = "update market set razao = '{$market->getRazao()}', nome = '{$market->getNome()}' , cnpj = '{$market->getCnpj()}' , site = '{$market->getSite()}' , endereco = '{$market->getEndereco()}', estado = '{$market->getEstado()}', cidade = '{$market->getCidade()}', segmento = '{$market->getSegmento()}', tel = '{$market->getTel()}', bairro = '{$market->getBairro()}', porte_id = '{$market->getPorte()->getId()}' where id = {$market->getId()}";
+			$query = "update market set razao = '{$market->getRazao()}', nome = '{$market->getNome()}' , cnpj = '{$market->getCnpj()}' , site = '{$market->getSite()}' , endereco = '{$market->getEndereco()}', estado = '{$market->getEstado()}', cidade = '{$market->getCidade()}', segmento = '{$market->getSegmento()}', tel = '{$market->getTel()}', bairro = '{$market->getBairro()}', porte_id = '{$market->getPorte()->getId()}' , image = '{$market->getImage()}' where id = {$market->getId()}";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{

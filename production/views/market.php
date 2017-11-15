@@ -29,7 +29,7 @@
       <th>Bairro</th>
       <th>Segmento</th>	
       <th>Porte</th> 
-      <th>Ações</th>
+      <th class="col-md-2">Ações</th>
     </tr>
   </thead>
   <tfoot>
@@ -46,44 +46,35 @@
     	$marketDao = new MarketDao($conexao);
       $leadDao = new LeadDao($conexao);
     	$markets = $marketDao->listaMarkets($usuario_id);
-      foreach ($markets as $market): 
+      foreach ($markets as $market){ 
         $leads = $leadDao->listaLeadsMarket($market->getId());
-        $cidade = $marketDao->buscaCidade($market->getCidade() );                              
+        $cidade = $marketDao->buscaCidade($market->getCidade() );
+        if(count($leads) == 0){
     ?>
-      <tr>
-        <td><?=$market->getNome() ?></td>
-        <td><?=$cidade ?></td>
-        <td><?=$market->getEstado() ?></td>
-        <td><?=$market->getBairro() ?></td>
-        <td><?=$market->getSegmento() ?></td>
-        <td><?=$market->getPorte()->getDescricao()?></td>
-        <td align="center">
-      <?php
-        if(count($leads) > 0){
-      ?>
-        <a><button data-toggle="tooltip" data-placement="top" title="Lead já Adicionado" class="btn btn-warning btn-xs"><i class="fa fa-thumbs-up"></i></button></a>
-      <?php
-        }else{
-      ?>
 
-        <a href="../views/lead-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
+        <tr>
+          <td><?=$market->getNome() ?></td>
+          <td><?=$cidade ?></td>
+          <td><?=$market->getEstado() ?></td>
+          <td><?=$market->getBairro() ?></td>
+          <td><?=$market->getSegmento() ?></td>
+          <td><?=$market->getPorte()->getDescricao()?></td>
+          <td align="center">
+            <a href="lead-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Lead" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>          
+            <a href="market-profile.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
+            <a href="market-altera.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Market" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+            <a href="historico-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Adicionar Histórico" class="btn btn-info btn-xs"><i class="fa fa-history"></i></button></a>
+          </td>
+        </tr>
 
-      <?php
-        }
-      ?>
-          
-          <a href="../views/market-profile.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
-          <a href="../views/market-altera.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Market" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-          <a href="../views/historico-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Adicionar Histórico" class="btn btn-info btn-xs"><i class="fa fa-history"></i></button></a>
-        </td>
-      </tr>
     <?php
-      endforeach
+        }                              
+      }
     ?>
   </tbody>      
 </table>
 <div class="ln_solid"></div>
-  <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Novo Market" href="../views/market-formulario.php?"><i class="fa fa-plus"></i></a>
+  <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Novo Market" href="market-formulario.php?"><i class="fa fa-plus"></i></a>
 </div>
 
 			

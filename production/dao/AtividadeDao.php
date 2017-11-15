@@ -99,7 +99,7 @@
 			  $mail->SMTPSecure = 'ssl';  // SSL REQUERIDO pelo GMail
 			  $mail->Host = 'smtp.gmail.com'; // Endereço do servidor SMTP (Autenticação, utilize o host smtp.seudomínio.com.br)
 			  $mail->Port = 465;
-			  $mail->Username = 'joevansantos.projek@gmail.com'; // Usuário do servidor SMTP (endereço de email)
+			  $mail->Username = 'manager.projek@gmail.com'; // Usuário do servidor SMTP (endereço de email)
 			  $mail->Password = 'Projek@90'; // Senha do servidor SMTP (senha do email usado)
 
 			  //Define o remetente

@@ -13,7 +13,7 @@
 
 <?php require_once "body.php"; ?>
 
-<form action="../altera/altera-market.php?id=<?=$id?>" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<form action="../altera/altera-market.php?id=<?=$id?>" enctype="multipart/form-data" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome<span class="required">*</span>
     </label>
@@ -84,6 +84,7 @@
         <option value="Combustíveis">Combustíveis</option>
         <option value="Confecção">Confecção</option>
         <option value="Couros">Couros</option>
+        <option value="Distribuidor">Distribuidor</option>
         <option value="Educação">Educação</option>
         <option value="Equipamentos">Equipamentos</option>
         <option value="Extração">Extração</option>
@@ -127,7 +128,13 @@
         <?php  endforeach ?>  
       </select>
     </div>
-  </div>    
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="image">Imagem</label>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <input type="file" name="image">
+    </div>
+  </div>     
   <div class="ln_solid"></div>
   <div class=" form-group">
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

@@ -14,8 +14,9 @@
 		private $bairro;
 		private $porte;
 		private $usuario;
+		private $image;
 
-		function __construct($razao, $nome, $cnpj, $site, $endereco, $estado, $cidade, $segmento, $tel, $bairro, Porte $porte, Usuario $usuario){
+		function __construct($razao, $nome, $cnpj, $site, $endereco, $estado, $cidade, $segmento, $tel, $bairro, Porte $porte, Usuario $usuario, $image){
 			$this->razao = $razao;
 			$this->nome = $nome;
 			$this->cnpj = $cnpj;
@@ -28,6 +29,7 @@
 			$this->bairro = $bairro;
 			$this->porte = $porte;
 			$this->usuario = $usuario;
+			$this->image = $image;
 		}
 
 		public function addLead (Lead $lead){
@@ -142,6 +144,13 @@
 			$this->id = $id;
 		}
 
+		public function getImage() {
+			return $this->image;
+		}
+
+		public function setImage($image) {
+			$this->image = $image;
+		}
 
 	}
 

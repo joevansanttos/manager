@@ -10,7 +10,7 @@
 
 		function listaDepartamentos() {
 			$departamentos = array();			
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from departamentos as u");
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from departamentos as u order by descricao");
 			while($departamento_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new DepartamentoFactory();
 				$departamento_id = $departamento_array['id'];				

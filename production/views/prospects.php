@@ -50,39 +50,13 @@
     ?>
       <tr>
       	<td><?=$market->getNome()?></td>
-        <td><?=$prospect->getProb()?></td>
+        <td><?=$prospect->getProb() . '%'?></td>
         <td><?=$novoRecebimento?></td>
         <td><?=$novoFechamento?></td>
         <td><?=$prospect->getValorOp()?></td>
         <td><?=$prospect->getValorEs()?></td>			    		        
         <td align="center">
-
-          <?php
-              $num = 0;
-              $contratoDao = new ContratoDao($conexao);
-              $contratos = $contratoDao->listaTodosContratos();
-              foreach ($contratos as $contrato){
-                $contratoMarket = $contrato->getMarket();
-                if($contratoMarket == $market){
-                  $num = 1;
-                }
-              }
-              if($num == 1){
-          ?>
-              <a><button data-toggle="tooltip" data-placement="top" title="Contrato já Adicionado" class="btn btn-warning btn-xs"><i class="fa fa-thumbs-up"></i></button></a>
-          <?php
-                }else{
-          ?>
-
-              <a href="../views/contrato-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Contrato" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button>
-              </a>
-
-          <?php
-                }
-          ?>
-
-
-          
+          <a href="../views/contrato-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Contrato" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button>
           <a href="../views/market-profile.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
           <a href="../views/prospect-altera.php?id=<?=$prospect->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Prospect" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
           <a href="../views/historico-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Adicionar Histórico" class="btn btn-info btn-xs"><i class="fa fa-history"></i></button></a>

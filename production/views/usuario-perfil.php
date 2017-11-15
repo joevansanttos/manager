@@ -40,7 +40,7 @@
     <div id="crop-avatar">
       <?php
         if($u->getImage() != null){
-          if (getimagesize('../' . $u->getImage()) !== false) {
+          if (file_exists('../' . $u->getImage()) !== false) {
 
       ?>
             <img class="img-responsive avatar-view" src="<?='../' . $u->getImage()?>" alt="Avatar" title="Change the avatar">
