@@ -23,7 +23,6 @@
 			<th>Email</th>
 			<th>Estado</th>
 			<th>Cidade</th>
-			<th>Sexo</th>
 			<th>Telefone</th>
 			<th class="col-md-1">Ações</th>
 		</tr>
@@ -41,7 +40,6 @@
 				<td><?=$u->getEmail() ?></td>
 				<td><?=$u->getEstado() ?></td>			    		        
 				<td><?=$cidade?></td>
-				<td><?=$u->getSexo() ?></td>
 				<td><?=$u->getTelefone() ?></td>
 				<td align="center">
 					<a href="usuario-perfil.php?id=<?=$u->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Usuário" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>

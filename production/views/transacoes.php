@@ -4,22 +4,33 @@
   require_once "../dao/DespesaDao.php";
 ?>
 
+<link src="../../vendors/bootstrap-daterangepicker/daterangepicker.css"></link>
+
+
+
 <?php require_once "css.php"; ?> 
 
 <h3>Transações</h3>
 
 <?php require_once "body.php";	?>
 
+<div class="col-md-4">
+  <div id="reportrange_right" class="pull-left" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+  </div>
+</div>
+<div class="clearfix"></div>
 <div class="" role="tabpanel" data-example-id="togglable-tabs">
   <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
     <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Recebimentos</a>
     </li>
     <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Despesas</a>
-    </li>                           
+    </li>                                      
   </ul>
   <div id="myTabContent" class="tab-content">
     <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-      <table id="recebimento" class="table table-striped datatable">
+      <table id="tabela" class="table table-striped datatable">
         <thead>
           <tr>
             <th>DATA</th>
@@ -59,7 +70,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary  btn-round  btn-block "  href="../views/recebimento-formulario.php?">+ Adicionar recebimento</a>
+        <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary  btn-round  btn-block "  href="../views/recebimento-formulario.php?"><strong>NOVO RECEBIMENTO</strong></a>
       </div>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
@@ -105,7 +116,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-danger  btn-round  btn-block "  href="../views/despesa-formulario.php?">+ Adicionar despesa</a>
+        <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-danger  btn-round  btn-block "  href="../views/despesa-formulario.php?"><strong>NOVA DESPESA</strong></a>
       </div>
     </div>                           
   </div>
@@ -114,5 +125,16 @@
 
 <?php	
 	require_once "script.php"; 
+?>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript">
+$('#myDatepicker').datetimepicker();
+</script>
+
+
+
+<?php
 	require_once "rodape.php"; 
 ?>

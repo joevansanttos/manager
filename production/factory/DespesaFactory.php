@@ -26,8 +26,8 @@ class DespesaFactory {
 		$pago_id = $params["pago_id"];
 		$pagoDao = new PagoDao($conexao);
 		$pago = $pagoDao->buscaPago($pago_id);
-		$image = $params["image"];	
-		return new Despesa($data, $descricao,  $valor, $categoria, $pagamento, $pago, $fornecedor, $image);
+		$doc = $params["doc"];	
+		return new Despesa($data, $descricao,  $valor, $categoria, $pagamento, $pago, $fornecedor, $doc);
 	}	
 
 }

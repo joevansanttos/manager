@@ -23,7 +23,7 @@
 		}
 
 		function insereDespesa(Despesa $despesa) {
-			$query = "insert into despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, image) values ('{$despesa->getFornecedor()->getId()}', '{$despesa->getData()}', '{$despesa->getDescricao()}', '{$despesa->getValor()}', '{$despesa->getCategoria()->getId()}', '{$despesa->getPagamento()->getId()}', '{$despesa->getPago()->getId()}', '{$despesa->getImage()}')";
+			$query = "insert into despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, doc) values ('{$despesa->getFornecedor()->getId()}', '{$despesa->getData()}', '{$despesa->getDescricao()}', '{$despesa->getValor()}', '{$despesa->getCategoria()->getId()}', '{$despesa->getPagamento()->getId()}', '{$despesa->getPago()->getId()}', '{$despesa->getDoc()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 13-Nov-2017 às 16:03
+-- Generation Time: 19-Nov-2017 às 14:22
 -- Versão do servidor: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.1.8
 
@@ -41,17 +41,18 @@ CREATE TABLE `atividades` (
   `resultados` varchar(200) DEFAULT NULL,
   `delegante_id` int(11) DEFAULT NULL,
   `observacao` varchar(1000) DEFAULT NULL,
-  `objetivo` varchar(1000) DEFAULT NULL,
-  `fim` varchar(50) DEFAULT NULL
+  `objetivo` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `atividades`
 --
 
-INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `filial`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`, `fim`) VALUES
-(1, '2017-11-08', '2017-11-24', 5, 'PROJETOS', 'SALVADOR', 'Alimentar o Quality de informações para demonstrar aos clientes os benefócios de uso da solução da P', 9, 'Captar um estagiário temporário para cadastramento das bases de dados dos projetos', 'Adquirir novos contratos e criar cases a serem utilizados pelo marketing', 1, 'Concluída de novo', 'ok', '2017-11-13 07:20:49'),
-(4, '2017-11-08', '2017-11-14', 3, 'PROJETOS', 'Salvador', 'Concluir o cadastramento do partner para que ele inicie suas vendas', 9, 'Apoiar a conclusão do cadastramento do MARKET do partner VERTICAL CONSULTORIA', 'Obter novos negócios', 1, NULL, NULL, NULL);
+INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `filial`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`) VALUES
+(1, '2017-11-08', '2017-11-24', 3, 'PROJETOS', 'SALVADOR', 'Alimentar o Quality de informações para demonstrar aos clientes os benefócios de uso da solução da P', 9, 'Captar um estagiário temporário para cadastramento das bases de dados dos projetos', 'Adquirir novos contratos e criar cases a serem utilizados pelo marketing', 1, NULL, NULL),
+(2, '2017-11-07', '2017-11-09', 5, 'FINANCEIRO', 'Salvador', 'Criar relacionamento com o mercado', 11, 'Finalizar o cadastramento da PROJEK na ASSESPRO', 'Aumentar o número de contratos', 1, NULL, NULL),
+(3, '07/11/2017', '08/11/2017', 1, 'FINANCEIRO', 'Salvador', 'Formalizar a relação comercial com a agência de publicidade.', 11, 'Obter o contrato de marketing  (3 meses) para assinatura', 'Criar condições para medir o trabalho e eficiência da consultoria que foi contratada com a Mana Comunicação.', 1, NULL, NULL),
+(4, '2017-11-08', '2017-11-14', 3, 'PROJETOS', 'Salvador', 'Concluir o cadastramento do partner para que ele inicie suas vendas', 9, 'Apoiar a conclusão do cadastramento do MARKET do partner VERTICAL CONSULTORIA', 'Obter novos negócios', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -5710,7 +5711,10 @@ CREATE TABLE `contratos` (
 --
 
 INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `consultor`, `inicio`, `fim`, `id`) VALUES
-(1, 5, 1, NULL, '2017-01-01', '2018-01-01', '1');
+(1, 5, 1, NULL, '2017-12-08', '2018-12-08', '1'),
+(22, 6, 1, NULL, '2017-10-01', '2017-12-01', '3'),
+(23, 5, 1, NULL, '2017-08-04', '2018-07-04', '5'),
+(24, 5, 1, NULL, '2017-08-23', '2018-08-23', '7');
 
 -- --------------------------------------------------------
 
@@ -5735,7 +5739,11 @@ INSERT INTO `departamentos` (`id`, `descricao`) VALUES
 (5, 'MARKETING'),
 (6, 'LOGÍSTICA'),
 (7, 'FINANCEIRO'),
-(8, 'ADMINISTRATIVO');
+(8, 'ADMINISTRATIVO'),
+(9, 'COMPRAS'),
+(10, 'JURÍDICO'),
+(11, 'RECURSOS HUMANOS'),
+(12, 'SECRETARIA');
 
 -- --------------------------------------------------------
 
@@ -5754,8 +5762,28 @@ CREATE TABLE `departamentos_contratos` (
 --
 
 INSERT INTO `departamentos_contratos` (`departamento_id`, `contrato_id`, `id`) VALUES
-(1, '1', 9),
-(2, '1', 10);
+(2, '1', 13),
+(5, '1', 14),
+(8, '1', 15),
+(1, '7', 37),
+(2, '7', 38),
+(3, '7', 39),
+(4, '7', 40),
+(5, '7', 41),
+(6, '7', 42),
+(7, '7', 43),
+(8, '7', 44),
+(6, '3', 47),
+(7, '3', 48),
+(3, '5', 52),
+(7, '5', 53),
+(8, '5', 54),
+(9, '5', 55),
+(10, '5', 56),
+(11, '5', 57),
+(12, '5', 58),
+(12, '5', 59),
+(12, '5', 60);
 
 -- --------------------------------------------------------
 
@@ -5772,8 +5800,16 @@ CREATE TABLE `despesas` (
   `categoria_id` int(11) DEFAULT NULL,
   `pagamento_id` int(11) DEFAULT NULL,
   `pago_id` int(11) DEFAULT NULL,
-  `image` varchar(1000) DEFAULT NULL
+  `doc` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `despesas`
+--
+
+INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`) VALUES
+(1, 1, '2017-01-01', 'Coelba', '30', 1, 1, 1, 'upload/Dafiti_Boleto_Pedido_44588673.pdf'),
+(2, 1, '2017-11-18', 'Conta de Luz', '230', 1, 1, 1, 'upload/Dafiti_Boleto_Pedido_44588673.pdf');
 
 -- --------------------------------------------------------
 
@@ -5843,7 +5879,7 @@ CREATE TABLE `fornecedores` (
 --
 
 INSERT INTO `fornecedores` (`id`, `razao`, `nome`, `cnpj`, `endereco`, `estado`, `cidade`, `tel`, `segmento`) VALUES
-(58, 'Coelba Sa', 'Coelba', '22.222.222/2222-22', 'Avenida Joana Angélica, 79, 40050-001', 'BA', '2927408', '(71) 98333-3333', 'Serviços');
+(1, 'Coelba Sa', 'Coelba', '22.222.222/2222-22', 'R. Osvaldo Sento Sé 126 Imbuí', 'AP', '1600402', '(71) 98333-3333', 'Abatedouro');
 
 -- --------------------------------------------------------
 
@@ -5863,9 +5899,19 @@ CREATE TABLE `historico` (
 --
 
 INSERT INTO `historico` (`market_id`, `descricao`, `id`, `data`) VALUES
-(1, 'fdfdfd', 1, '06.11.17'),
-(1, 'Histórico 2', 3, ''),
-(1, 'ssqwqwq', 4, '06.11.17');
+(1, 'Foi marcada uma reunião por telefone', 1, '06.11.17'),
+(1, 'A reunião foi desmarcada', 2, '06.11.17'),
+(1, 'Foi contactado o contato de outro funcionário', 3, '06.11.17'),
+(1, 'Surgiu interesse para apresentação.', 4, '06.11.17'),
+(1, 'Adicionado histórico de suspect', 5, '06.11.17'),
+(1, 'adicionar histórico a suspect 2', 6, '06.11.17'),
+(1, 'adicionar histórico lead', 7, '06.11.17'),
+(1, '....', 8, '07.11.17'),
+(1, '...', 9, '07.11.17'),
+(22, 'Foi entrado em contato com Srº Dario Neto.', 10, '09.11.17'),
+(23, 'Foi entrado em contato com o Srº. Marcos Pimenta.', 11, '09.11.17'),
+(24, 'Fi entrado em contato com Srº. Flávio Viana,', 12, '09.11.17'),
+(31, 'Foi entrado em contato com Srº Ângela Carvalho de novo.', 13, '14.11.17');
 
 -- --------------------------------------------------------
 
@@ -5887,9 +5933,11 @@ CREATE TABLE `leads` (
 --
 
 INSERT INTO `leads` (`nome`, `email`, `tel`, `cargo`, `id`, `market_id`) VALUES
-('José Gevan', 'jose@gevan.com', '(71) 98333-3333', 'Coordenador', 1, 1),
-('José Gevan 2', 'jose2@gevan.com', '(71) 98333-3333', 'Diretor', 2, 1),
-('Manoel Gevan', 'manoel@gevan.com.br', '(71) 98333-3333', 'Coordenador', 5, 1);
+('Catharina Ramos', 'catharina.ramos@projek.com.br', '(71) 00000-0000', 'Gerente', 5, 1),
+('DARIO M. DE OLIVEIRA NETO II', 'darioneto@gujao.com', '(99) 99999-9999', 'Socio', 6, 22),
+('MARCOS ROGÉRIO LYRIO PIMENTA', 'marcos@pimentaadvogados.com', '(71) 3341-8444', 'Socio', 7, 23),
+('FLÁVIO ANASTÁCIO SOUZA VIANA', 'p7tecnologia@gmail.com', '(75) 99858-0933', 'Coordenador', 8, 24),
+('ANGELA MARA MAGALHÃES CARVALHO', 'angelamara23@hotmail.com', '(75) 98148-2655', 'Diretor', 9, 31);
 
 -- --------------------------------------------------------
 
@@ -5910,15 +5958,45 @@ CREATE TABLE `market` (
   `segmento` varchar(255) DEFAULT NULL,
   `bairro` varchar(200) DEFAULT NULL,
   `porte_id` int(11) DEFAULT NULL,
-  `usuario_id` int(11) NOT NULL
+  `usuario_id` int(11) NOT NULL,
+  `image` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `market`
 --
 
-INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado`, `cidade`, `tel`, `segmento`, `bairro`, `porte_id`, `usuario_id`) VALUES
-(1, 'Gevan', 'Gevan SA', '11.111.111/1111-11', '', 'Avenida Joana Angélica, 79, 40050-001', 'BA', '2901502', '(71) 98333-3333', 'Abatedouro', 'Bairro do Piauí', 2, 1);
+INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado`, `cidade`, `tel`, `segmento`, `bairro`, `porte_id`, `usuario_id`, `image`) VALUES
+(1, 'FABIO MARTINS DA SILVA EIRELI - ME', 'PROJEK CONSULTORIA', '23.913.076/0001-12', '', 'Parque Tecnológico da Bahia', 'BA', '2927408', '(71) 98840-9093', 'Serviços', 'Trobogy', 3, 8, NULL),
+(2, 'Teste', 'Teste sa', '', '', 'R General Venâncio Flores, 481 - lj-c, Leblon - Rio de Janeiro, RJ', 'PR', '4101200', '(71) 98333-3333', 'Abatedouro', 'Pituba', 2, 1, NULL),
+(4, 'KÁTIA CRISTINA SOUTO', 'KÁTIA CRISTINA SOUTO', '', '', 'Alameda Praia de Oliveira', 'BA', '2927408', '(71) 3374-0499', 'Serviços', 'Stella Maris', 1, 8, NULL),
+(5, 'PANIFICADORA E LANCHONETE IRMÃOS ANDRADE LOBO', 'PANIFICADORA E LANCHONETE IRMÃOS ANDRADE LOBO', '', '', 'Rua do Norte, 120', 'BA', '2927408', '(71) 3345-4526', 'Alimentação', 'Nordeste de Amaralina', 1, 8, NULL),
+(6, 'IARA BIAO FLORES 40910300500  ', 'PANELAS', '18.670.024/0001-13', '', 'Av. Manoel Dias da Silva 1303, apt 101', 'BA', '2927408', '(71) 98789-0192', 'Restaurante', 'Pituba', 1, 8, NULL),
+(7, 'MYRA ARAUJO INDUSTRIA E COMERCIO LTDA - EPP  ', 'MYRA ARAUJO IND. COM. LTDA', '03.243.846/0001-40', '', 'Rua dos Colibris, 44, lj 7 e 8, Shopping Caboatã', 'BA', '2927408', '(71) 9206-6816', 'Alimentação', 'Imbuí', 2, 8, NULL),
+(8, 'DELICIA DE PAO COMERCIO E PANIFICADORA EIRELI - ME', 'DELICIA DE PÃO', '18.495.131/0001-52', '', 'Praça Martiniano Maia, nº 19, 02', 'BA', '2919207', '(71) 99620-1902', 'Alimentação', 'Centro', 1, 8, NULL),
+(9, 'Carlos', 'CANAPÉ', '', '', 'Rua Botuporã', 'BA', '2927408', '(71) 99165-1357', 'Serviços', 'Pernambués', 1, 8, NULL),
+(10, 'MASSALINS COMERCIO E INDUSTRIA DE ALIMENTOS EIRELI - ME', 'MASSALINS', '27.447.136/0001-09', '', 'Av. Otavio Mangabeira, 31, Térreo ', 'BA', '2927408', '(71) 99951-2005', 'Alimentação', 'Boca do Rio', 1, 8, NULL),
+(11, 'A DONA PÃO', 'A DONA PÃO', '', '', 'Sem informação', 'BA', '2927408', '(71) 98667-0450', 'Serviços', 'Sem informação', 1, 8, NULL),
+(12, 'MN TORTAS ESPECIAIS', 'MN TORTAS ESPECIAIS', '', '', 'Rua São Paulo', 'BA', '2927408', '(71) 3043-8406', 'Alimentação', 'Pituba', 1, 8, NULL),
+(13, 'SALGADOS DA TERRA', 'SALGADOS DA TERRA', '', '', 'R. São João do Aeroporto, nº 11 E', 'BA', '2927408', '(71) 99732-0505', 'Alimentação', 'Jardim das Margaridas', 1, 8, NULL),
+(14, 'TREVOX TECNOLOGIA E INOVACAO LTDA - ME', 'TREVOX TECNOLOGIA', '07.528.526/0001-98', 'www.trevox.com.br', 'Alameda Salvador, 1057, Salvador Shopping Business, Torre America, Sala 912', 'BA', '2927408', '(71) 3484-4126', 'Tecnologia', 'Caminho das Árvores', 2, 8, NULL),
+(15, 'COLOSSOS EQUIPAMENTOS PROFISSIONAIS', 'COLOSSOS EQUIPAMENTOS PROFISSIONAIS', '', '', 'Avenida Maria Quitéria, 2770', 'BA', '2910800', '(75) 98838-0559', 'Serviços', 'Centro', 1, 8, NULL),
+(16, 'DELICATESSEN VICTOR LTDA. - ME  ', 'DELICATESSEN VICTOR', '09.296.825/0001-70', '', 'Praça Amadeu Nogueira Campos, 150', 'BA', '2914505', '(75) 98122-0079', 'Alimentação', 'Centro', 2, 8, NULL),
+(17, 'CASA DE DELÍCIAS PROGRESSO', 'CASA DE DELÍCIAS PROGRESSO', '', '', 'Rua Arnold Silva, 104', 'BA', '2927408', '(75) 98893-8371', 'Alimentação', 'Centro', 1, 8, NULL),
+(18, 'MAXIMA DELICATESSEN & REFEICOES INDUSTRIAIS LTDA - ME', 'PADARIA MÁXIMA', '14.798.004/0001-71', '', 'Rua 2 de Julho, 219', 'BA', '2933307', '(77) 99923-0073', 'Alimentação', 'Centro', 1, 8, NULL),
+(19, 'PANIS DELICATESSEN', 'PANIS DELICATESSEN', '', '', 'Av. Antônio Sérgio Carneiro, 140', 'BA', '2910800', '(75) 3616-7876', 'Alimentação', 'Santo Antônio dos Prazeres', 1, 8, NULL),
+(20, 'JULIO CESAR MARTINS DA SILVA', 'PADARIA E DELICATESSEN GRÃO DE TRIGO', '20.390.908/0001-66', '', 'Avenida Ayrton Senna da Silva, 4461', 'BA', '2910800', '(75) 98888-8271', 'Alimentação', 'Mangabeira', 1, 8, NULL),
+(21, 'FABIANA DE OLIVEIRA GOMES - ME  ', 'NUTRILEV', '18.019.581/0001-79', 'www.nutrilevsaudaveis.com.br', 'Av. Amarildo Thiago dos Santos, 1613, 	Cond. Vilas de Ipitanga, Lote 2  ', 'BA', '2919207', '(71) 99987-4751', 'Alimentação', 'Portão', 1, 8, NULL),
+(22, 'GUJÃO ALIMENTOS S/A,', 'GUJÃO', '34.149.823/0001-03', 'www.gujao.com.br', 'Rodovia BA 502, KM 27,8', 'BA', '2910800', '(75) 36224-196_', 'Abatedouro', 'Sede', 3, 8, 'upload/photo.jpg'),
+(23, 'PIMENTA ADVOGADOS ASSOCIADOS', 'PIMENTA ADVOGADOS', '14.451.969/0001-93', 'www.pimentaadvogados.com', 'Av. Tancredo Neves, 1632, Edif. Salvador Trade Center, Torre Sul, Sala 2205 A 2212', 'BA', '2927408', '(71) 3341-8444', 'Advocacia', 'Caminho das Árvores', 1, 8, NULL),
+(24, 'P7GO TECNOLOGIA EIRELI- ME', 'P7GO', '26.792.567/0001-31', 'www.p7go.com.br', 'Av. Getúlio Vargas, 792', 'BA', '2910800', '(75) 3221-0321', 'Tecnologia', 'Centro', 2, 8, NULL),
+(25, 'Le Biscuit', 'Le Biscuit ', '', '', 'Av. Mario Leal Ferreira ', 'BA', '2927408', '(71) 32768-0000', 'Varejo', 'Bonoco', 3, 13, NULL),
+(26, 'A.Gomes & Irmão Ltda', 'A Gomes ', '', '', 'Ladeira da Água de Meninos', 'BA', '2927408', '(71) 31835-511_', 'Varejo', 'Santo Antonio ', 3, 13, NULL),
+(27, 'Grupo Solução&Cia', 'Grupo Solução&Cia ', '', '', 'Av. Magalhães Neto ', 'BA', '2927408', '(71) 34166-000_', 'Serviços', 'Costa Azul ', 3, 13, NULL),
+(28, 'Maria Panificação ', 'Maria Panificação ', '', '', 'Ladeira do Ipiranga, 105 ', 'BA', '2927408', '(71) 32444-455_', 'Alimentação', 'Cidade Nova', 3, 13, NULL),
+(29, 'Carballo Faro ', 'Carballo Faro ', '', '', 'R. Doutor Altino Teixeira, nº 1012, Quadra F, Lotes 15 e 16', 'BA', '2927408', '(71) 34225-252_', 'Alimentação', 'Porto seco Pirajá', 3, 13, NULL),
+(30, 'Almacem Pepe', 'Almacem Pepe', '', '', 'AV. PAULO VI, 1498', 'BA', '2927408', '(71) 30155-100_', 'Alimentação', 'Pituba', 3, 13, NULL),
+(31, 'COLÉGIO CIVILIZAÇÃO LTDA EPP', 'COLÉGIO CIVILIZAÇÃO', '01.180.951/0001-88', 'www.colegiocivilizacao.com.br', 'Rua Pilar do Sul, 840, CEP 44088-606', 'BA', '2910800', '(75) 3225-8971', 'Educação', 'Brasília ', 1, 8, 'upload/colegio_civilizacao.jpg');
 
 -- --------------------------------------------------------
 
@@ -6087,7 +6165,11 @@ CREATE TABLE `prospects` (
 --
 
 INSERT INTO `prospects` (`id`, `market_id`, `prob`, `valor_op`, `valor_est`, `recebimento`, `fechamento`, `produto_id`, `consultor_id`) VALUES
-(1, 1, '25.00', '1405.00', '351.25', '2017-01-01', '2017-01-02', 5, NULL);
+(4, 1, '100.00', '1405.00', '1405.00', '2017-08-27', '2017-08-04', 6, NULL),
+(6, 22, '100.00', '1405.00', '1405.00', '2017-08-27', '2017-08-04', 6, NULL),
+(7, 23, '100.00', '1405.00', '1405.00', '2017-08-27', '2017-08-04', 6, NULL),
+(8, 24, '100.00', '1405.00', '1405.00', '2017-08-27', '2017-08-04', 6, NULL),
+(9, 31, '100.00', '1405.00', '1405.00', '2016-11-09', '2017-04-09', 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -6143,7 +6225,14 @@ CREATE TABLE `socios` (
 --
 
 INSERT INTO `socios` (`id`, `nome`, `cpf`, `residencia`, `nacionalidade`, `profissao`, `civil`, `contrato_id`) VALUES
-(7, 'Lucas Carvalho', '111-111-111-11', 'Rua das Hortênsias, 5', 'Brasileiro', 'Administrador', 'Solteiro', '1');
+(5, 'Joevan Santos', '000-000-000-00', 'Paralela', 'B]', 'analista', '', '1'),
+(12, 'WENDERSON MARTINS DE ALMEIDA', '928-664-095-15', 'Rua Juracy Magalhães, 403, Edf. Falcão, ap 401, Feira de Santana-BA', 'Brasileiro', '', 'Solteiro', '7'),
+(13, 'FLÁVIO ANASTÁCIO SOUZA VIANA', '028-992-505-31', 'Rua Juracy Magalhães, 403, Edf. Falcão, ap 401, Feira de Santana-BA', 'Brasileiro', '', 'Solteiro', '7'),
+(15, 'DARIO M. DE OLIVEIRA NETO II', '733-517-415-53', 'Feira de Santana-BA', 'Brasileiro', '', 'Casado', '3'),
+(17, 'MARCOS ROGÉRIO LYRIO PIMENTA', '727-277-995-00', 'Av. Santa Luzia, nº 610, ap. 902, Horto Florestal, Salvador-BA', 'Brasileiro', '', 'Casado', '5'),
+(18, 'Ângela Mara Magalhães Carvalho', '504-447-945-49', 'Feira de Santana – Bahia', 'Brasileira', '', 'Casada', '5'),
+(19, 'Ângela Mara Magalhães Carvalho', '504-447-945-49', 'Feira de Santana – Bahia', 'Brasileira', '', 'Casada', '5'),
+(20, 'Ângela Mara Magalhães Carvalho', '504-447-945-49', 'Feira de Santana – Bahia', 'Brasileira', '', 'Casada', '5');
 
 -- --------------------------------------------------------
 
@@ -6231,7 +6320,12 @@ CREATE TABLE `suspects` (
 --
 
 INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consultor_id`, `id`, `market_id`, `tel`, `email`) VALUES
-('José Gevan', '2016-01-01', 'Agendado', '01:01', NULL, NULL, 1, 1, '(71) 98333-3333', 'joevansantos@hotmail.com');
+('Juliana Menezes', '2017-11-08', 'Agendado', '14:30', NULL, NULL, 3, 1, '(71) 99999-9999', 'juliana.menezes@projek.com.br'),
+('DARIO M. DE OLIVEIRA NETO II', '2017-09-25', 'Realizado', '09:00', NULL, NULL, 4, 22, '(99) 99999-9999', 'darioneto@gujao.com'),
+('MARCOS ROGÉRIO LYRIO PIMENTA', '2017-07-28', 'Realizado', '10:00', NULL, NULL, 5, 23, '(71) 3341-8444', 'marcos@pimentaadvogados.com'),
+('FLÁVIO ANASTÁCIO SOUZA VIANA', '2017-08-16', 'Realizado', '11:00', NULL, NULL, 6, 24, '(75) 99858-0933', 'p7tecnologia@gmail.com'),
+('ÂNGELA MARA MAGALHÃES CARVALHO', '2016-04-28', 'Realizado', '09:00', NULL, NULL, 8, 31, '(75) 98148-2655', 'angelamara23@hotmail.com'),
+('ANGELA MARA MAGALHÃES CARVALHO', '2016-11-09', 'Realizado', '09:00', NULL, NULL, 9, 31, '(75) 98148-2655', 'angelamara23@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -6299,10 +6393,13 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `profissao_id`, `image`) VALUES
-('$2a$08$NzA5MjQ5NjYyNWEwMDZhZOjpmK7Rh5xqIkATOfYOc1hMkLmpMyOb.', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'PI', '2201150', '(71) 98333-3334', 1, 'Martins', 1, 'upload/Fábio_Bordignon_Rio2016_cr.jpg'),
-('$2a$08$MTMyNTA5MzQ0OTVhMDA5YOSFW/96AlGOSFhdsHCQ5pUn.qYwtRivW', 'Marcos', 'marcos@partner.com', 'masculino', 'RJ', '3300902', '(71) 98333-3333', 8, 'Hide', 4, ''),
-('$2a$08$MTQyOTUzNDUzMzVhMDM1M.mE/dCesQ6tj4PAoonCxQvTX8SQMvSmK', 'Juliana', 'julianamenezes.projek@gmail.com', 'feminino', 'BA', '2927408', '(71) 98333-3333', 9, 'Menezes', 1, ''),
-('$2a$08$MTk4MjQ1OTUzODVhMDVlNeSghFR8Mt53d5l9ht.phGvm4JjCKXc7a', 'Catharina', 'catharinaramos.projek@gmail.com', 'feminino', 'BA', '2927408', '(71) 98333-3333', 10, 'Ramos', 1, 'upload/S54vF-9R.jpeg');
+('$2a$08$NzA5MjQ5NjYyNWEwMDZhZOjpmK7Rh5xqIkATOfYOc1hMkLmpMyOb.', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'BA', '2927408', '(71) 98841-9093', 1, 'Martins', 1, 'upload/Ryan_Gosling_2_Cannes_2011_(cropped).jpg'),
+('$2a$08$MjQ2NDIwOTMyNWEwMDkyZOw8pPlbGttZbK3pJTy886JeyOju3ZkiS', 'Juliana', 'juliana.menezes@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99999-9999', 8, 'Menezes', 1, 'upload/avatar juliana.png'),
+('$2a$08$MTgzNzc0ODMzMjVhMDA5Mu7mirf75uGoGlzmIU9LP8SeptJfFDFvm', 'Catharina', 'catharina.ramos@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99669-8684', 9, 'Ramos', 3, ''),
+('$2a$08$MTg2MTQ5NDA0MjVhMDBiM.5/DK0GqKMiakfqvVgQfxh.M7Lru5//C', 'Joevan', 'joevan.santos@projek.com.br', 'masculino', 'BA', '2927408', '(71) 99673-0948', 10, 'Santos', 2, ''),
+('$2a$08$NjgyODIwMzQ1NWEwMGIyNuwzhGQpI3IA1Yp4oT0KMcXVgqI3Jah9S', 'Filipe ', 'financeiro@projek.com.br', 'masculino', 'BA', '2927408', '(71) 99669-2612', 11, 'Passos', 5, ''),
+('$2a$08$NzgxMDU1NjY1YTAwYjJlZ.K0WmVvRd6Oc2T4Wj6.DmYND4ppVAmhu', 'Carson', 'carson.menezes@projek.com.br', 'masculino', 'BA', '2910800', '(75) 98185-7493', 12, 'Menezes', 3, ''),
+('$2a$08$MTU5NTQ1OTQ0NDVhMDllZenw.XPXSPsuGgGi2A2rKgqJKIRkruyj2', 'Marcos', 'vertical.partner@projek.com.br', 'masculino', 'BA', '2927408', '(71) 99645-4545', 13, 'Hide', 4, '');
 
 --
 -- Indexes for dumped tables
@@ -6505,37 +6602,37 @@ ALTER TABLE `cidade`
 -- AUTO_INCREMENT for table `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `departamentos_contratos`
 --
 ALTER TABLE `departamentos_contratos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `despesas`
 --
 ALTER TABLE `despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `fornecedores`
 --
 ALTER TABLE `fornecedores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `historico`
 --
 ALTER TABLE `historico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `market`
 --
 ALTER TABLE `market`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `mensagens`
 --
@@ -6575,7 +6672,7 @@ ALTER TABLE `profissao`
 -- AUTO_INCREMENT for table `prospects`
 --
 ALTER TABLE `prospects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `recebimentos`
 --
@@ -6590,7 +6687,7 @@ ALTER TABLE `relatorios`
 -- AUTO_INCREMENT for table `socios`
 --
 ALTER TABLE `socios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `status_atividade`
 --
@@ -6610,7 +6707,7 @@ ALTER TABLE `status_mensagem`
 -- AUTO_INCREMENT for table `suspects`
 --
 ALTER TABLE `suspects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tarefas`
 --
@@ -6625,7 +6722,7 @@ ALTER TABLE `tarefas_contrato`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
