@@ -96,6 +96,7 @@ $atividade = $atividadeDao->buscaAtividade($id);
       <button id="send" type="submit" name="enviar" class="btn btn-success">Alterar</button>
       <input type="hidden" name="delegado_id" id="id" value="<?=$atividade->getDelegado()->getId()?>" />
       <input type="hidden" name="delegante_id" id="id" value="<?=$atividade->getDelegante()->getId()?>" />
+      <input type="hidden" name="status_prazo_id" id="id" value="<?=$atividade->getStatusPrazo()->getId()?>" />
     </div>
   </div>
 </form>

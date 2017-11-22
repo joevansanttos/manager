@@ -1,6 +1,9 @@
 <?php 
   require_once "cabecalho.php"; 
   require_once "../dao/ContratoDao.php";
+  require_once "../dao/ConsultorProjetoDao.php";
+  require_once "../dao/DepartamentoContratoDao.php";
+  require_once "../dao/TarefaContratoDao.php";
 ?>
 
 <!-- Datatables -->
@@ -19,57 +22,82 @@
   require_once "body.php"; 
 ?>
 
-<table id="tabela" class="table table-striped projects">
+<table id="tabela" class="table table-bordered projects">
  <thead>
    <tr>
-     <th style="width: 1%">#</th>
-     <th style="width: 20%">Nomes do Projeto</th>
-     <th>Membros dos Projeto</th>
+     <th>Nomes do Projeto</th>
+     <th>Membros do Projeto</th>
      <th>Progresso do Projeto</th>
-     <th>Status</th>
-     <th style="width: 20%">#Editar</th>
+     <th class="col-md-2">Ações</th>
    </tr>
    <tbody>
      <?php
-      $contratoDao = new ContratoDao($conexao);
-      $contratos = $contratoDao->listaContratosAprovados();
-       foreach ($contratos as $contrato){
+      $consultorProjetoDao = new ConsultorProjetoDao($conexao);
+      if($usuario_id == 1){
+        $projetos = $consultorProjetoDao->listaTodos(); 
+      }else{
+        $projetos = $consultorProjetoDao->busca($usuario_id); 
+      }
+      
+      $finalizados = 0;
+      $total = 0;    
+      foreach ($projetos as $projeto){
+        $contrato = $projeto->getContrato();
+        $departamentoContratoDao = new DepartamentoContratoDao($conexao);
+        $departamentosContratos = $departamentoContratoDao->listaDepartamentosContratos($contrato);
+        foreach ($departamentosContratos as $departamentoContrato) {
+          $tarefaContratoDao = new TarefaContratoDao($conexao);
+          $tarefasContrato = $tarefaContratoDao->listaTarefasContratos($departamentoContrato);
+          foreach ($tarefasContrato as $t) {
+            if($t->getStatusAtividade()->getId() == 5){
+              $finalizados++;
+            }
+            $total++;
+          }
+        }
+        if($finalizados != 0){
+          $num = $total/$finalizados;
+          $progresso = round($num);
+        }else{
+           $progresso = 0;
+        }
+
+
+       
         $market = $contrato->getMarket();
+        $consultoresProjeto = $consultorProjetoDao->lista($contrato->getNumero());
      ?>
      <tr>
-       <td>#</td>
        <td>
          <a><?=$market->getNome()?></a>
          <br />
-         <small>Criado em</small>
+         <small>Criado em <?=$contrato->getInicio()?></small>
        </td>
        <td>
          <ul class="list-inline">
-           <?php
-             {
-           ?>
-           <li>
-             <img src="../images/user.png"  class="avatar" alt="Avatar">
-             
-           </li>
-           <?php
-             }
-           ?>
+          <?php
+           foreach ($consultoresProjeto as $c) {
+          ?>
+            <li>
+              <img src="../images/user.png"  class="avatar" alt="Avatar">
+              <?=$c->getConsultor()->getNome()?>
+            </li>
+
+          <?php
+           }
+          ?>
          </ul>
        </td>
        <td class="project_progress">
          <div class="progress progress_sm">
-           <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="57"></div>
+           <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?=$progresso?>"></div>
          </div>
-         <small>57% Completado</small>
+         <small> <?=$progresso?>% Completado</small>
        </td>
-       <td>
-         <button type="button" class="btn btn-success btn-xs">Successo</button>
-       </td>
-       <td>                                
-         <a href="detalhes-projeto.php?id=<?=$contrato->getNumero()?>" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
-         <a href="../forms/form-consultores-projeto.php?id_projeto=" class="btn btn-warning btn-xs"><i class="fa fa-users"></i></a>
-         <a href="../remove/remove-projeto.php?id=<?=$contrato->getNumero()?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+       <td align="center">                                
+         <a href="detalhes-projeto.php?id=<?=$contrato->getNumero()?>" data-toggle="tooltip" data-placement="top" title="Ver Projeto" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
+         <a href="consultores-projeto-formulario.php?id=<?=$contrato->getNumero()?>" data-toggle="tooltip" data-placement="top" title="Adicionar Consultores a Projeto" class="btn btn-warning btn-xs"><i class="fa fa-users"></i></a>
+         <a href="../remove/remove-projeto.php?id=<?=$contrato->getNumero()?>" data-toggle="tooltip" data-placement="top" title="Remover Projeto" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
        </td>
      </tr>
      <?php

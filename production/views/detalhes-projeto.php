@@ -3,8 +3,13 @@
   require_once "../dao/ContratoDao.php";
   require_once "../dao/DepartamentoContratoDao.php";
   require_once "../dao/TarefaContratoDao.php";
+  require_once "../dao/RelatorioDao.php";
   require_once "../dao/StatusAtividadeDao.php";
+  require_once "../dao/ConsultorProjetoDao.php";
+
 ?>
+
+
 
 <?php require_once "css.php"; ?> 
 
@@ -15,7 +20,18 @@
   require_once "body.php";
   $id = $_GET['id']; 
   $contratoDao = new ContratoDao($conexao);
+  $relatorioDao = new RelatorioDao($conexao);  
   $contrato = $contratoDao->buscaContrato($id);
+  $consultorProjetoDao = new ConsultorProjetoDao($conexao);
+  $consultoresProjeto = $consultorProjetoDao->lista($contrato->getNumero());
+  $consultores = [];
+
+  foreach ($consultoresProjeto as $c) {
+    $c_id = $c->getConsultor()->getId();
+    $string = (string)$c_id;
+    $consultores[$string] = $c->getConsultor()->getNome();
+  }
+
   $departamentoContratoDao = new DepartamentoContratoDao($conexao);
   $departamentosContratos = $departamentoContratoDao->listaDepartamentosContratos($contrato);
   $i = 1;
@@ -26,7 +42,15 @@
     $id = 'editable_table' . $string_i;
     $i++;
 ?>
+
+
+  <div class="x_title">
+    <h2><?=$string_i . '.' . $departamentoContrato->getDepartamento()->getDescricao()?></h2>
+    <br>
+    <div class="ln_solid"></div>
+  </div>
   
+
   <table id="<?=$id?>" class="table table-bordered table-striped datatable">
    <thead>
     <th class="hide"></th>
@@ -34,13 +58,14 @@
     <th class="col-md-1" >Horas</th>
     <th class="col-md-1">Data</th>
     <th class="col-md-2">Status</th>
-    <th  class="col-md-3">Consultor</th>
+    <th  class="col-md-2">Consultor</th>
     <th class="col-md-1">Ações</th>
    </thead>
    <tbody>
   <?php
     foreach ($tarefasContrato as $tarefaContrato){      
       $statusAtividade = $tarefaContrato->getStatusAtividade();
+      $relatorio = $relatorioDao->buscaRelatorioTarefa($tarefaContrato->getId());
   ?>                  
       <tr>
        <td class="hide"> <?=$tarefaContrato->getId()?></td>
@@ -51,7 +76,7 @@
       <?php
         if($tarefaContrato->getUsuario() != null){
       ?>
-        <td><?=$tarefaContrato->getUsuario()->getNome() . $tarefaContrato->getUsuario()->getSobrenome()?></td>
+        <td><?=$tarefaContrato->getUsuario()->getNome() . ' ' . $tarefaContrato->getUsuario()->getSobrenome()?></td>
       <?php
          }else{
       ?>
@@ -59,10 +84,25 @@
       <?php
          }
        ?>
-            
        <td align="center">
-        <a href="../views/relatorio-formulario.php?id=<?=$tarefaContrato->getId()?>" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></a>
-        <a href="detalhes-projeto.php?id=<?=$contrato->getNumero()?>" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
+        <?php
+          if($relatorio != null){
+        ?>
+
+          <a href="relatorio-altera.php?id=<?=$relatorio->getId()?>" data-toggle="tooltip" data-placement="top" title="Editar Relatório" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+          <a href="detalhes-relatorio.php?id=<?=$relatorio->getId()?>" data-toggle="tooltip" data-placement="top" title="Ver Relatório" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
+          
+
+        <?php
+          }else{
+
+        ?>
+          <a href="relatorio-formulario.php?id=<?=$tarefaContrato->getId()?>" data-toggle="tooltip" data-placement="top" title="Adicionar Relatório" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></a>
+          <button  data-toggle="tooltip" data-placement="top" title="Adicione um Relatório" class="btn btn-danger btn-xs"><i class="fa fa-thumbs-down"></i></button>
+        <?php
+          }
+        ?>
+        
       </td>
 
       </tr> 
@@ -89,6 +129,8 @@
 <script>
 $(".datatable").each( function() {
   var id = this.id;
+  var consultores = <?=json_encode($consultores)?>;
+  var jsonConsultores = JSON.stringify(consultores);
   $('#'+ id).Tabledit({
     url:'action.php',
     deleteButton: false,
@@ -96,7 +138,7 @@ $(".datatable").each( function() {
     hideIdentifier: true,
     columns:{
       identifier:[0, "id"],
-      editable:[[2, 'horas'], [3, 'data'], [4, 'status', '{"1": "Não Iniciada", "2": "Em Andamento", "3": "Em Conclusão", "4": "Concluída" }']]
+      editable:[[2, 'horas'], [3, 'data_fim'], [4, 'status', '{"1": "Não Iniciada", "2": "Iniciada", "3": "Em Andamento", "4": "Em Conclusão", "5": "Concluída" }'], [5, 'consultor', jsonConsultores ]]
     }
   });
 });

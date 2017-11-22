@@ -24,7 +24,6 @@
       <th>Cidade</th>
       <th>Estado</th>
       <th>Segmento</th>	
-      <th class="col-md-1">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -40,10 +39,6 @@
         <td><?=$cidade ?></td>
         <td><?=$fornecedor->getEstado() ?></td>
         <td><?=$fornecedor->getSegmento() ?></td>
-        <td align="center">          
-          <a href="market-altera.php?id=<?=$fornecedor->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Editar Fornecedor" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-          <a  href="../remove/remove-fornecedor.php?id=<?=$fornecedor->getId()?>" class="delete" data-toggle="tooltip" data-placement="top" title="Remover Fornecedor"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-        </td>
       </tr>
     <?php
       endforeach

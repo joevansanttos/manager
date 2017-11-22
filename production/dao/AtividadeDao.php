@@ -29,11 +29,10 @@
 		}
 
 		function insereAtividade(Atividade $atividade) {
-			$query = "insert into atividades ( descricao, inicio, fim, prazo, setor, filial, resultados, importancia, objetivo, observacao, status_atividade_id, delegado_id, delegante_id) values ('{$atividade->getDescricao()}', '{$atividade->getInicio()}', '{$atividade->getFim()}', '{$atividade->getPrazo()}', '{$atividade->getSetor()}', '{$atividade->getFilial()}', '{$atividade->getResultados()}', '{$atividade->getImportancia()}', '{$atividade->getObjetivo()}', '{$atividade->getObservacao()}', '{$atividade->getStatusAtividade()->getId()}', '{$atividade->getDelegado()->getId()}', '{$atividade->getDelegante()->getId()}')";
+			$query = "insert into atividades ( descricao, inicio, prazo, setor, filial, resultados, importancia, objetivo, observacao, status_atividade_id, delegado_id, delegante_id, status_prazo_id) values ('{$atividade->getDescricao()}', '{$atividade->getInicio()}',  '{$atividade->getPrazo()}', '{$atividade->getSetor()}', '{$atividade->getFilial()}', '{$atividade->getResultados()}', '{$atividade->getImportancia()}', '{$atividade->getObjetivo()}', '{$atividade->getObservacao()}', '{$atividade->getStatusAtividade()->getId()}', '{$atividade->getDelegado()->getId()}', '{$atividade->getDelegante()->getId()}','{$atividade->getStatusPrazo()->getId()}' )";
 			if(mysqli_query($this->conexao->conecta(), $query)){
-
 			}else{
-				echo mysqli_error($this->conexao->conecta());
+				echo ( mysqli_error($this->conexao->conecta()));
 			}
 		}
 
@@ -49,15 +48,7 @@
 		}
 
 		function atualizaAtividade(Atividade $atividade) {
-			date_default_timezone_set('America/Bahia');
-			if($atividade->getStatusAtividade()->getId() == 5){
-				$today = date("Y-m-d H:i:s");
-				$query = "update atividades set  objetivo = '{$atividade->getObjetivo()}', observacao = '{$atividade->getObservacao()}',status_atividade_id = '{$atividade->getStatusAtividade()->getId()}', fim = '{$today}' where id = '{$atividade->getId()}'";
-
-			}else{
-				$query = "update atividades set  objetivo = '{$atividade->getObjetivo()}', observacao = '{$atividade->getObservacao()}',status_atividade_id = '{$atividade->getStatusAtividade()->getId()}' where id = '{$atividade->getId()}'";
-			}
-			
+			$query = "update atividades set  objetivo = '{$atividade->getObjetivo()}', observacao = '{$atividade->getObservacao()}',status_atividade_id = '{$atividade->getStatusAtividade()->getId()}', status_prazo_id = '{$atividade->getStatusPrazo()->getId()}' where id = '{$atividade->getId()}'";
 
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
@@ -148,6 +139,16 @@
 			}
 			return $atividades;
 		}		
+
+		function atualizaStatusPrazo(Atividade $atividade, $status_prazo_id) {
+			$query = "update atividades set  status_prazo_id = '{$status_prazo_id}' where id = '{$atividade->getId()}'";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+			}else{
+				echo (mysqli_error($this->conexao->conecta()));
+			}
+
+
+		}
 		
 
 	}

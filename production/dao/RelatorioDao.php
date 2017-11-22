@@ -29,6 +29,27 @@
 			return $relatorio;
 		}
 
+		function buscaRelatorioTarefa($tarefa_contrato_id) {
+			$query = "select * from relatorios where tarefa_contrato_id = {$tarefa_contrato_id}";
+			$resultado = mysqli_query($this->conexao->conecta(), $query);
+			while($relatorio_array= mysqli_fetch_assoc($resultado)) {
+				$id = $relatorio_array['id'];
+				$factory = new RelatorioFactory();
+				$relatorio = $factory->criaRelatorio($relatorio_array);
+				$relatorio->setId($id);
+			}
+			return $relatorio;
+		}
+
+		function atualiza(Relatorio $relatorio) {
+			$query = "update relatorios set descricao = '{$relatorio->getDescricao()}', data = '{$relatorio->getData()}',  usuario_id = '{$relatorio->getUsuario()->getId()}'";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
 		
 
 	}

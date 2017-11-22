@@ -95,7 +95,7 @@
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
       <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
       <button id="send" type="submit" name="enviar" class="btn btn-success">Cadastrar</button>
-      <input type="hidden" name="pago_id" id="id" value="1" />
+      <input type="hidden" name="pago_id" id="id" value="2" />
     </div>
   </div>
 </form>

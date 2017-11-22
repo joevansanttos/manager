@@ -22,6 +22,19 @@
 			return $despesas;
 		}
 
+		function listaNovasDespesas($start, $end) {
+			$despesas = array();			
+			$resultado = mysqli_query($this->conexao->conecta(), "select * from despesas where data between '{$start}' and '{$end}'");
+			while($despesa_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new DespesaFactory();
+				$despesa_id = $despesa_array['id'];				
+				$despesa = $factory->criaDespesa($despesa_array);
+				$despesa->setId($despesa_id);
+				array_push($despesas, $despesa);
+			}
+			return $despesas;
+		}
+
 		function insereDespesa(Despesa $despesa) {
 			$query = "insert into despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, doc) values ('{$despesa->getFornecedor()->getId()}', '{$despesa->getData()}', '{$despesa->getDescricao()}', '{$despesa->getValor()}', '{$despesa->getCategoria()->getId()}', '{$despesa->getPagamento()->getId()}', '{$despesa->getPago()->getId()}', '{$despesa->getDoc()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
@@ -40,6 +53,15 @@
 			$despesa = $factory->criaDespesa($despesa_array);
 			$despesa->setId($id);
 			return $despesa;
+		}
+
+		function atualiza(Despesa $despesa) {
+			$query = "update despesas set  data = '{$despesa->getData()}', descricao = '{$despesa->getDescricao()}', valor =  '{$despesa->getValor()}', categoria_id = '{$despesa->getCategoria()->getId()}', pagamento_id = '{$despesa->getPagamento()->getId()}', pago_id = '{$despesa->getPago()->getId()}', doc = '{$despesa->getDoc()}' where id = '{$despesa->getId()}'";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
 		}
 
 	}

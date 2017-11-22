@@ -1,6 +1,7 @@
 <?php
 	require_once "../factory/TarefaContratoFactory.php";
 	require_once "../factory/TarefaFactory.php";
+	require_once "../factory/RelatorioFactory.php";
 	require_once "../factory/DepartamentoContratoFactory.php";
 	require_once "../dao/DepartamentoContratoDao.php";
 	require_once "../dao/TarefaDao.php";
@@ -82,6 +83,8 @@
 		return $tarefaContrato;
 	}
 
+
+	
 	
 
 }

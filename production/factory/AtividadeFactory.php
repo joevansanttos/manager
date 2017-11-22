@@ -1,6 +1,7 @@
 <?php 
 	require_once "../dao/UsuarioDao.php";
 	require_once "../dao/StatusAtividadeDao.php";
+	require_once "../dao/StatusPrazoDao.php";
 	require_once "../class/Conexao.php";
 	require_once "../class/Atividade.php";
 
@@ -18,7 +19,6 @@ class AtividadeFactory {
 		$statusAtividade = $statusAtividadeDao->buscaStatusAtividade($status_atividade_id);
 		$descricao = $params["descricao"];
 		$inicio = $params["inicio"];
-		$fim = $params["fim"];
 		$prazo = $params["prazo"];
 		$setor = $params["setor"];
 		$filial = $params["filial"];
@@ -26,7 +26,10 @@ class AtividadeFactory {
 		$observacao = $params["observacao"];
 		$objetivo = $params["objetivo"];
 		$resultados = $params["resultados"];
-		return new Atividade($descricao, $inicio, $fim, $prazo, $setor, $filial, $resultados, $importancia, $observacao, $objetivo, $statusAtividade, $delegante, $delegado);
+		$status_prazo_id = $params["status_prazo_id"];
+		$statusPrazoDao = new StatusPrazoDao($conexao);
+		$statusPrazo = $statusPrazoDao->buscaStatusPrazo($status_prazo_id);
+		return new Atividade($descricao, $inicio,  $prazo, $setor, $filial, $resultados, $importancia, $observacao, $objetivo, $statusAtividade, $delegante, $delegado, $statusPrazo);
 	}	
 
 }

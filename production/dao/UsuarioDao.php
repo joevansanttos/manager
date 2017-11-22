@@ -35,7 +35,22 @@
 
 		function listaUsuarios() {
 			$usuarios = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from usuarios as u");
+			$resultado = mysqli_query($this->conexao->conecta(), "select * from usuarios order by nome");
+			while($usuario_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new UsuarioFactory();
+				$id = $usuario_array['id'];				
+				$usuario = $factory->criaUsuario($usuario_array);
+				$usuario->setId($id);
+				array_push($usuarios, $usuario);
+			}
+
+			return $usuarios;
+		}
+
+
+		function listaConsultores() {
+			$usuarios = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select * from usuarios where profissao_id = 1");
 			while($usuario_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new UsuarioFactory();
 				$id = $usuario_array['id'];				

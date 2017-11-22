@@ -35,11 +35,11 @@ require_once '../dao/UsuarioDao.php';
   <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="recebimento">Inicio<span class="required">*</span></label>
     <div class="col-sm-2 col-xs-12 col-md-2">
-      <input type="date" id=recebimento" name="inicio" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+      <input type="date" id="recebimento" name="inicio" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
     </div>
     <label class="control-label col-md-2 col-sm-3 col-xs-12" for="fechamento">Prazo</label>
     <div class="col-sm-2 col-xs-12 col-md-2">
-      <input type="date" id=fechamento" name="prazo" required="required" data-validate-length-range="6,20" class="form-control col-md-7 col-xs-12">
+      <input type="date" id="fechamento" name="prazo" required="required" data-validate-length-range="6,20" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="form-group">
@@ -85,7 +85,7 @@ require_once '../dao/UsuarioDao.php';
       <input type="hidden" name="status_atividade_id" id="id" value="1" />
       <input type="hidden" name="delegante_id" id="id" value="<?=$usuario_id?>" />
       <input type="hidden" name="observacao" id="id" value="" />
-      <input type="hidden" name="fim" id="id" value="" />
+      <input type="hidden" name="status_prazo_id" id="id" value="1" />
     </div>
   </div>
 </form>

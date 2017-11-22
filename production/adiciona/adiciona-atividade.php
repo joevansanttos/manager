@@ -6,8 +6,8 @@
 	$factory = new AtividadeFactory();
 	$atividade = $factory->criaAtividade($_POST);
 	$atividadeDao = new AtividadeDao($conexao);
-	$atividade = $atividadeDao->insereAtividade($atividade);
-	$atividadeDao->enviaEmail($_POST);
+	$atividadeDao->insereAtividade($atividade);
+	//$atividadeDao->enviaEmail($_POST);
 
 	header("Location: ../views/atividades.php");
 ?>

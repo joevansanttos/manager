@@ -1,6 +1,6 @@
-<?php	
-	require_once "cabecalho.php"; 
-	require_once "../dao/AtividadeDao.php";
+<?php 
+  require_once "cabecalho.php"; 
+  require_once "../dao/AtividadeDao.php";
   require_once "../dao/StatusAtividadeDao.php";
 ?>
 
@@ -14,18 +14,19 @@
 
 <?php require_once "css.php"; ?>
 
-<h3>Tarefas</h3>
+<h3>Tarefas Requiridas</h3>
 
-<?php require_once "body.php";	?>
+<?php require_once "body.php";  ?>
 
-<table id="tabela" class="table table-striped projects">
+<table id="tabela" class="table table-bordered projects">
   <thead>
     <tr>
       <th class="col-md-3">Atividade</th>
       <th>Delegante</th>
       <th>Colaborador</th>
-      <th>Progresso da Atividade</th>
+      <th>Progresso</th>
       <th>Status</th>
+      <th>Prazo</th>
       <th class="col-md-2">Ações</th>
     </tr>
     <tbody>
@@ -37,7 +38,17 @@
             $novoPrazo = date("d-m-Y", strtotime($atividade->getPrazo()));
             $status_atividade_id = $atividade->getStatusAtividade()->getId();
             $statusAtividadeDao = new StatusAtividadeDao($conexao);
-            $statusAtividade = $statusAtividadeDao->buscaStatusAtividade($status_atividade_id);                           
+            $statusAtividade = $statusAtividadeDao->buscaStatusAtividade($status_atividade_id);
+            date_default_timezone_set('America/Bahia');
+            $today= date("Y-m-d");
+            $status_prazo_id = $atividade->getStatusPrazo()->getId();
+            if($status_prazo_id == 1){
+              if((strtotime($atividade->getPrazo())) < (strtotime($today))){
+                $atividadeDao->atualizaStatusPrazo($atividade, 2);
+              }
+            }
+            
+                                   
       ?>
       <tr>
         <td>
@@ -49,7 +60,6 @@
         <td>
           <ul class="list-inline">
             <li>
-              <img src="../images/user.png"  class="avatar" alt="Avatar">
               <?= $atividade->getDelegante()->getNome() .' '. $atividade->getDelegante()->getSobrenome()?>
             </li>
           </ul>
@@ -57,7 +67,6 @@
         <td>
           <ul class="list-inline">
             <li>
-              <img src="../images/user.png"  class="avatar" alt="Avatar">
               <?= $atividade->getDelegado()->getNome() .' '. $atividade->getDelegado()->getSobrenome()?>
             </li>
           </ul>
@@ -73,26 +82,44 @@
           <?php
             if($statusAtividade->getPorcentagem() == 0){
           ?>
-            <button type="button" class="btn btn-danger btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+            <button type="button" class="btn btn-danger btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
           <?php    
             }elseif($statusAtividade->getPorcentagem() == 25){
           ?>
-            <button type="button" class="btn btn-warning btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+            <button type="button" class="btn btn-warning btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
           <?php
             }elseif($statusAtividade->getPorcentagem() == 50){
           ?>
-            <button type="button" class="btn btn-primary btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+            <button type="button" class="btn btn-primary btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
           <?php    
             }elseif($statusAtividade->getPorcentagem() == 75){
           ?>
-            <button type="button" class="btn btn-info btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+            <button type="button" class="btn btn-info btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
           <?php
             }else{
           ?>
-            <button type="button" class="btn btn-success btn-xs"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
+            <button  type="button" class="btn btn-success btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
           <?php
             }
           ?>
+          
+        </td>
+        <td align="center">
+          <?php
+            if($atividade->getStatusPrazo()->getId() == 1){
+              $button = 'primary';
+              $icon = '  fa-history ';
+            }else if($atividade->getStatusPrazo()->getId() == 2){
+              $button = 'danger';
+              $icon = ' fa-thumbs-down';
+            }else{
+              $button = 'success';
+              $icon = ' fa-thumbs-up';
+            }
+
+            $texto = $atividade->getStatusPrazo()->getDescricao();  
+          ?>
+              <button type="button" class="btn btn-<?=$button?> btn-xs" data-toggle="tooltip" data-placement="top" title="<?=$texto?>"><i class="fa <?=$icon?> "></i></button>        
           
         </td>
         <td align="center">
@@ -115,8 +142,8 @@
 <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Nova Tarefa" style="" href="../views/atividade-formulario.php?"><i class="fa fa-plus"></i></a>
 </div>
 
-<?php	
-	require_once "script.php";
+<?php 
+  require_once "script.php";
 ?>
 
 
@@ -137,5 +164,5 @@
 
 
 <?php
-	require_once "rodape.php"; 
+  require_once "rodape.php"; 
 ?>

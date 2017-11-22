@@ -186,6 +186,11 @@
 			return $socios;
 		}
 
+
+		function buscaContratosProjetos(){
+
+		}
+
 		
 
 

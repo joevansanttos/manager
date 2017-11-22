@@ -15,30 +15,20 @@
 
 <?php require_once "body.php";	?>
 
-<div class="" role="tabpanel" data-example-id="togglable-tabs">
-  <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Detalhes</a>
-    </li>
-    <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Resultados Esperados</a>
-    </li>
-    <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Observação do Colaborador</a>
-    </li>
-  </ul>
-  <div id="myTabContent" class="tab-content">
-    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-      <p>Inicio: <?=$novoInicio?></p>
-      <p>Prazo: <?=$novoPrazo?></p>
-      <p>Status: <?=$atividade->getStatusAtividade()->getDescricao()?></p>
-    </div>
-    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-      <p><?=$atividade->getResultados()?></p>
-    </div>
-    <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-      <p><?=$atividade->getObservacao()?></p>
-    </div>
-  </div>
+<div style="padding: 1cm;">
+  <h2 style="text-align: center;">Relatório da Atividade</h2>
+    <div class="ln_solid"></div>
+
+  <br>
+  <p><strong>Inicio da Tarefa:</strong> <?=$novoInicio?></p>
+  <p><strong>Prazo da Tarefa:</strong> <?=$novoPrazo?></p>
+  <p><strong>Status:</strong> <?=$atividade->getStatusAtividade()->getDescricao()?></p>
+  <p><strong>Resultados Esperados:</strong> <?=$atividade->getResultados()?></p>
+  <p><strong>Objetivo Estratégico:</strong> <?=$atividade->getObjetivo()?></p>
+  <p><strong>Observação do Colaborador:</strong> <?=$atividade->getObservacao()?></p>  
 </div>
-			    	
+
+		    	
 
 
 <?php	require_once "script.php"; ?>

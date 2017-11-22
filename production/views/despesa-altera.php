@@ -5,6 +5,8 @@
   require_once "../dao/PagamentoDao.php";
   require_once "../dao/FornecedorDao.php";
   require_once "../dao/DespesaDao.php";
+  require_once "../dao/PagoDao.php";
+
 
   $id = $_GET['id'];
   $despesaDao = new DespesaDao($conexao);
@@ -17,7 +19,7 @@
 
 <?php require_once "body.php"; ?>
 
-<form action="../altera/altera-despesa.php" method="post" id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+<form action="../altera/altera-despesa.php?id=<?=$id?>" method="post" id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Fornecedor<span class="required">*</span>
     </label>
@@ -67,6 +69,23 @@
      </select>
    </div>
   </div>
+  <div class="item form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Pago?<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+     <select name="pago_id" class="form-control col-md-7 col-xs-12">
+      <?php
+        $pagoDao = new PagoDao($conexao);
+        $pagos = $pagoDao->listaPago();                            
+       foreach ($pagos as $pago): 
+      ?>       
+       <option value="<?=$pago->getId()?>"><?=$pago->getDescricao()?></option>
+      <?php
+       endforeach
+      ?>  
+     </select>
+   </div>
+  </div>
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="date">Data <span class="required">*</span>
     </label>
@@ -90,7 +109,7 @@
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
       <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
       <button id="send" type="submit" name="enviar" class="btn btn-success">Alterar</button>
-      <input type="hidden" name="pago_id" id="id" value="1" />
+      <input type="hidden" name="fornecedor_id" id="id" value="<?=$despesa->getFornecedor()->getId()?>" />
     </div>
   </div>
 </form>
