@@ -1,31 +1,33 @@
 <?php 
-  require_once "cabecalho.php"; 
-  require_once '../dao/RecebimentoDao.php';
-  $id = $_GET['id'];
-  $recebimentoDao = new RecebimentoDao($conexao);
-  $recebimento = $recebimentoDao->buscaRecebimento($id);
-?>
-
-<?php require_once "css.php"; ?> 
-
-<h3>Detalhes da Despesa</h3>
-
-<?php require_once "body.php";  ?>
-
-<?php
-  $file = '../' .$recebimento->getDoc();
-  $filename = 'filename.pdf';
-  header('Content-type: application/pdf');
-  header('Content-Disposition: inline; filename="' . $filename . '"');
-  header('Content-Transfer-Encoding: binary');
-  header('Accept-Ranges: bytes');
-  @readfile($file);
-?>
-
-<?php 
-  require_once "script.php";
+require_once '../dao/RecebimentoDao.php';
+require_once "../views/conexao.php";
+$id = $_GET['id'];
+$recebimentoDao = new RecebimentoDao($conexao);
+$recebimento = $recebimentoDao->buscaRecebimento($id);
 ?>
 
 <?php
-  require_once "rodape.php"; 
+$file = '../' .$recebimento->getDoc();
+if($file != '../'){
+  if (file_exists($file)) {
+    $fp = fopen($file, "r") ;
+    header("Cache-Control: maxage=1");
+    header("Pragma: public");
+    header("Content-type: application/pdf");
+    header("Content-Disposition: inline; filename=".$myFileName."");
+    header("Content-Description: PHP Generated Data");
+    header("Content-Transfer-Encoding: binary");
+    header('Content-Length:' . filesize($file));
+    ob_clean();
+    flush();
+    while (!feof($fp)) {
+     $buff = fread($fp, 1024);
+     print $buff;
+   }
+   exit;
+ }else{
+ }  
+}else{
+}
+
 ?>

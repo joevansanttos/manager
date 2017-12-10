@@ -4,13 +4,36 @@
   require_once "../dao/CategoriaDao.php";
   require_once "../dao/PagamentoDao.php";
   require_once "../dao/FornecedorDao.php";
+  require_once "../dao/FilialDao.php";
+
 ?>
 
 <?php require_once "css.php"; ?> 
 
-<h3>Nova Despesa</h3>
+<h3>Financeiro</h3>
 
-<?php require_once "body.php"; ?>
+<?php require "body.php"; ?>
+
+<div class="x_title">
+  <h2>Adicionar Nova Despesa</h2>
+  <ul class="nav navbar-right panel_toolbox">
+    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Settings 1</a>
+        </li>
+        <li><a href="#">Settings 2</a>
+        </li>
+      </ul>
+    </li>
+    <li><a class="close-link"><i class="fa fa-close"></i></a>
+    </li>
+  </ul>
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
 
 <form action="../adiciona/adiciona-despesa.php" method="post" id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">                      
   <div class="form-group">
@@ -44,8 +67,7 @@
      <select name="categoria_id" class="form-control col-md-7 col-xs-12">
       <?php
         $categoriaDao = new CategoriaDao($conexao);
-        $categorias = $categoriaDao->listaCategorias();
-        var_dump($categorias) ;                          
+        $categorias = $categoriaDao->listaCategoriasDespesa();
        foreach ($categorias as $categoria): 
       ?>       
        <option value="<?=$categoria->getId()?>"><?=$categoria->getDescricao()?></option>
@@ -55,6 +77,23 @@
      </select>
    </div>
   </div> 
+  <div class="item form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filial_id">Filial<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+     <select name="filial_id" class="form-control col-md-7 col-xs-12">
+      <?php
+        $filialDao = new FilialDao($conexao);
+        $filiais = $filialDao->lista();
+       foreach ($filiais as $filial): 
+      ?>       
+       <option value="<?=$filial->getId()?>"><?=$filial->getNome()?></option>
+      <?php
+       endforeach
+      ?>  
+     </select>
+   </div>
+  </div>
   <div class="item form-group">
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Pagamentos<span class="required">*</span>
    </label>

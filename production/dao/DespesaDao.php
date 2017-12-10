@@ -35,8 +35,30 @@
 			return $despesas;
 		}
 
+		function calculoDespesasMes($today) {
+			$mes = date("m",strtotime($today));
+			$despesas = array();			
+			$resultado = mysqli_query($this->conexao->conecta(), "select * from despesas");
+			while($despesa_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new DespesaFactory();
+				$despesa_id = $despesa_array['id'];				
+				$despesa = $factory->criaDespesa($despesa_array);
+				$despesa->setId($despesa_id);
+				array_push($despesas, $despesa);
+			}
+			$valor = 0;
+			foreach ($despesas as $despesa) {
+				$m = date("m",strtotime($despesa->getData()));
+				if( $m == $mes){
+					$valor = $valor + $despesa->getValor();
+
+				}
+			}
+			return $valor;
+		}
+
 		function insereDespesa(Despesa $despesa) {
-			$query = "insert into despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, doc) values ('{$despesa->getFornecedor()->getId()}', '{$despesa->getData()}', '{$despesa->getDescricao()}', '{$despesa->getValor()}', '{$despesa->getCategoria()->getId()}', '{$despesa->getPagamento()->getId()}', '{$despesa->getPago()->getId()}', '{$despesa->getDoc()}')";
+			$query = "insert into despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, filial_id, doc) values ('{$despesa->getFornecedor()->getId()}', '{$despesa->getData()}', '{$despesa->getDescricao()}', '{$despesa->getValor()}', '{$despesa->getCategoria()->getId()}', '{$despesa->getPagamento()->getId()}', '{$despesa->getPago()->getId()}', '{$despesa->getFilial()->getId()}', '{$despesa->getDoc()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
@@ -63,6 +85,16 @@
 				echo mysqli_error($this->conexao->conecta());
 			}
 		}
+
+		function remove(Despesa $despesa){
+			$query = "delete from despesas where id = {$despesa->getId()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
 
 	}
 

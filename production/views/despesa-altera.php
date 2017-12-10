@@ -15,9 +15,31 @@
 
 <?php require_once "css.php"; ?> 
 
-<h3>Alterar Despesa</h3>
+<h3>Financeiro</h3>
 
-<?php require_once "body.php"; ?>
+
+<?php require "body.php"; ?>
+
+<div class="x_title">
+  <h2>Alterar Despesa</h2>
+  <ul class="nav navbar-right panel_toolbox">
+    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Settings 1</a>
+        </li>
+        <li><a href="#">Settings 2</a>
+        </li>
+      </ul>
+    </li>
+    <li><a class="close-link"><i class="fa fa-close"></i></a>
+    </li>
+  </ul>
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
 
 <form action="../altera/altera-despesa.php?id=<?=$id?>" method="post" id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
@@ -38,10 +60,10 @@
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Categoria<span class="required">*</span>
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
-     <select name="categoria_id" class="form-control col-md-7 col-xs-12">
+     <select id="categoria_id" name="categoria_id" class="form-control col-md-7 col-xs-12">
       <?php
         $categoriaDao = new CategoriaDao($conexao);
-        $categorias = $categoriaDao->listaCategorias();
+        $categorias = $categoriaDao->listaCategoriasDespesa();
         var_dump($categorias) ;                          
        foreach ($categorias as $categoria): 
       ?>       
@@ -53,10 +75,27 @@
    </div>
   </div> 
   <div class="item form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filial_id">Filial<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+     <select id="filial_id" name="filial_id" class="form-control col-md-7 col-xs-12">
+      <?php
+        $filialDao = new FilialDao($conexao);
+        $filiais = $filialDao->lista();
+       foreach ($filiais as $filial): 
+      ?>       
+       <option value="<?=$filial->getId()?>"><?=$filial->getNome()?></option>
+      <?php
+       endforeach
+      ?>  
+     </select>
+   </div>
+  </div>
+  <div class="item form-group">
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Pagamentos<span class="required">*</span>
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
-     <select name="pagamento_id" class="form-control col-md-7 col-xs-12">
+     <select id="pagamento_id" name="pagamento_id" class="form-control col-md-7 col-xs-12">
       <?php
         $pagamentoDao = new PagamentoDao($conexao);
         $pagamentos = $pagamentoDao->listaPagamentos();                            
@@ -73,7 +112,7 @@
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Pago?<span class="required">*</span>
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
-     <select name="pago_id" class="form-control col-md-7 col-xs-12">
+     <select id="pago_id" name="pago_id" class="form-control col-md-7 col-xs-12">
       <?php
         $pagoDao = new PagoDao($conexao);
         $pagos = $pagoDao->listaPago();                            
@@ -129,6 +168,23 @@
     novoValor = valor.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
     document.getElementById('valor').value = novoValor ;
   }
+</script>
+
+
+<script type="text/javascript">
+  document.getElementById('categoria_id').value = '<?=$recebimento->getCategoria()->getId()?>';
+</script>
+
+<script type="text/javascript">
+  document.getElementById('filial_id').value = '<?=$recebimento->getFilial()->getId()?>';
+</script>
+
+<script type="text/javascript">
+  document.getElementById('pagamento_id').value = '<?=$recebimento->getPagamento()->getId()?>';
+</script>
+
+<script type="text/javascript">
+  document.getElementById('pago_id').value = '<?=$recebimento->getPago()->getId()?>';
 </script>
 
 <?php	require_once "rodape.php"; ?>

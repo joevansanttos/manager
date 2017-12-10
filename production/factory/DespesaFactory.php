@@ -6,6 +6,7 @@
 	require_once "../dao/PagamentoDao.php";
 	require_once "../dao/PagoDao.php";
 	require_once "../dao/FornecedorDao.php";
+	require_once "../dao/FilialDao.php";
 
 class DespesaFactory {
 
@@ -14,7 +15,10 @@ class DespesaFactory {
 		$descricao = $params["descricao"];
 		$categoria_id = $params["categoria_id"];
 		$categoriaDao = new CategoriaDao($conexao);
-		$categoria = $categoriaDao->buscaCategoria($categoria_id);		
+		$categoria = $categoriaDao->buscaCategoriaDespesa($categoria_id);
+		$filial_id = $params["filial_id"];
+		$filialDao = new FilialDao($conexao);
+		$filial = $filialDao->busca($filial_id);			
 		$data = $params["data"];
 		$valor = $params["valor"];
 		$fornecedor_id = $params["fornecedor_id"];
@@ -27,7 +31,7 @@ class DespesaFactory {
 		$pagoDao = new PagoDao($conexao);
 		$pago = $pagoDao->buscaPago($pago_id);
 		$doc = $params["doc"];	
-		return new Despesa($data, $descricao,  $valor, $categoria, $pagamento, $pago, $fornecedor, $doc);
+		return new Despesa($data, $descricao,  $valor, $categoria, $pagamento, $pago, $filial, $fornecedor, $doc);
 	}	
 
 }

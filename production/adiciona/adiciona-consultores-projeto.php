@@ -18,4 +18,12 @@
 		$consultorProjetoDao->insere($consultorProjeto);
 	}
 
-	header("Location: ../views/projetos.php");
+	$contrato = $consultorProjeto->getContrato();
+
+	if($contrato->getProduto()->getId() == 5){
+		header("Location: ../views/consultoria_mapeamento.php");
+	}elseif($contrato->getProduto()->getId() == 6){
+		header("Location: ../views/consultoria_auditoria.php");
+	}else{
+		header("Location: ../views/consultoria_universidade.php");
+	}

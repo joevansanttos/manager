@@ -52,5 +52,23 @@
 			
 		}
 
+		function atualizaFornecedor(Fornecedor $fornecedor) {
+			$query = "update fornecedores set  nome = '{$fornecedor->getNome()}', razao = '{$fornecedor->getRazao()}', cnpj = '{$fornecedor->getCnpj()}', endereco = '{$fornecedor->getEndereco()}', estado = '{$fornecedor->getEstado()}', cidade = '{$fornecedor->getCidade()}', tel = '{$fornecedor->getTel()}', segmento = '{$fornecedor->getSegmento()}' where id = '{$fornecedor->getId()}'";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
+		function remove(Fornecedor $fornecedor){
+			$query = "delete from fornecedores where id = {$fornecedor->getId()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
 	}	
 ?>

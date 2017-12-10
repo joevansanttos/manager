@@ -7,7 +7,7 @@
         <div class="left_col scroll-view">
           
           <div class="navbar nav_title" style="border: 0;">
-            <a href="dashboard.php" class="site_title"><i class="fa fa-rocket"></i><span> Projek Manager!</span></a>
+            
           </div>
           <div class="clearfix"></div>
           <div class="profile clearfix">
@@ -52,17 +52,20 @@
               <?php
                 if($usuario->getProfissao()->getId() != 4){
               ?>                  
-                <li><a><i class="fa fa-users"></i> Usuários<span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-user"></i> Usuários<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="usuarios.php">Usuários</a></li>
                     <li><a href="consultores.php">Consultores</a></li>
                     <li><a href="partners.php">Partners</a></li>
+                    <li><a href="outros.php">Outros Colaboradores</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-calendar"></i> Tarefas<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="atividades.php">Tarefas Requiridas</a></li>
+                    <li><a href="atividades-requiridas.php">Tarefas Requiridas</a></li>
                     <li><a href="atividades-delegadas.php">Tarefas Delegadas</a></li>
+                    <li><a href="atividades-delegadas-concluidas.php">Tarefas Concluídas</a></li>
+
                   </ul>
                 </li>
               <?php
@@ -70,7 +73,9 @@
               ?>
                 <li><a><i class="fa fa-cart-plus"></i> Produtos<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="produtos.php">Produtos Cadastrados</a></li>
+                    <li><a href="produtos.php">Nossos Produtos</a></li>
+                    <li><a href="tabela_produtos.php">Tabela de Produtos</a></li>
+                    <li><a href="tabela_produtos_partner.php">Tabela de Produtos - Partner</a></li>
                   </ul>
                 </li>                  
                 <li><a><i class="fa fa-briefcase"></i> Negócios <span class="fa fa-chevron-down"></span></a>
@@ -79,19 +84,7 @@
                     <li><a href="leads.php">Leads</a></li>
                     <li><a href="suspects.php">Suspects</a></li>
                     <li><a href="prospects.php">Prospects</a></li>
-                  </ul>
-                </li>
-                <li><a><i class="fa fa-file" aria-hidden="true"></i> Contratos <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu">
-                    <li><a href="contratos.php">Todos Contratos</a></li>
-              <?php
-                if($usuario->getProfissao()->getId() != 4){
-              ?>  
-                    <li><a href="contratos_pendentes.php">Contratos Pendentes</a></li>
-              <?php
-                }
-              ?>
-                    <li><a href="contratos_aprovados.php">Contratos Aprovados</a></li>                      
+                    <li><a href="contratos.php">Contratos</a></li>
                   </ul>
                 </li>
               <?php
@@ -100,19 +93,25 @@
                 
                 <li><a><i class="fa fa-line-chart"></i> Consultoria <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="projetos.php">Projetos</a></li>
-                  </ul>
-                </li>
-                <li><a><i class="fa fa-comments" aria-hidden="true"></i> Pós-Venda <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu">
-                    <li><a href="pos-venda.php">Pós-Venda</a></li>                      
+                    <li><a href="consultoria_mapeamento.php">Mapeamento</a></li>
+                    <li><a href="consultoria_auditoria.php">Auditoria</a></li>
+                    <li><a href="consultoria_universidade.php">Universidade</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-calculator"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="clientes.php">Clientes</a></li>                      
-                    <li><a href="fornecedores.php">Fornecedores</a></li>
-                    <li><a href="transacoes.php">Transações</a></li>
+                    <li><a href="financeiro_transacoes.php">Transações</a></li>
+                    <li><a href="financeiro_clientes.php">Clientes</a></li>
+                    <li><a href="financeiro_fornecedores.php">Fornecedores</a></li>
+                    <li><a href="financeiro_contatos.php">Contatos</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-users"></i> Recursos Humanos <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="rh_curriculos.php">Currículos</a></li> 
+                    <li><a href="recrutamento_selecao.php">Recrutamento e Seleção</a></li>
+                    <li><a href="cargos.php">Cargos e Salários</a></li>
+                    <li><a href="pos-venda.php">Pós-Venda</a></li>                   
                   </ul>
                 </li>
               <?php

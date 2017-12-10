@@ -1,6 +1,6 @@
 <?php
 
-	class Categoria{
+	abstract class  Categoria{
 		private $descricao;
 		private $id;
 

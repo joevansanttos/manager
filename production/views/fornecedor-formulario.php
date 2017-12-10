@@ -47,7 +47,7 @@
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="endereco">Endereço <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="endereco" name="endereco" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="endereco" name="endereco" required="required"  class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="item form-group">
@@ -68,13 +68,16 @@
         <option value="Couros">Couros</option>
         <option value="Distribuidor">Distribuidor</option>
         <option value="Educação">Educação</option>
+        <option value="Engenharia">Engenharia</option>
         <option value="Equipamentos">Equipamentos</option>
         <option value="Extração">Extração</option>
         <option value="Ferragens">Ferragens</option>
         <option value="Frigorífico">Frigorífico</option>
         <option value="Gráfica">Gráfica</option> 
-        <option value="Hospital">Hospital</option> 
+        <option value="Hospital">Hospital</option>
+        <option value="Informática">Informática</option> 
         <option value="Lazer">Lazer</option>
+        <option value="Marketing">Marketing</option>
         <option value="Mobiliário">Mobiliário</option>
         <option value="Pecuária">Pecuária</option>
         <option value="Pesca">Pesca</option>
@@ -84,6 +87,7 @@
         <option value="Supermercado">Supermercado</option>
         <option value="Tecidos">Tecidos</option>
         <option value="Tecnologia">Tecnologia</option>
+        <option value="Telefonia">Telefonia</option>
         <option value="Transporte">Transporte</option>
         <option value="Turismo">Turismo</option>
         <option value="Varejo">Varejo</option>

@@ -25,7 +25,7 @@
 	$despesaDao = new DespesaDao($conexao);
 	$despesaDao->atualiza($despesa);
 
-	header("Location: ../views/transacoes.php"); 	
+	header("Location: ../views/financeiro_transacoes.php"); 	
 
 
 ?>

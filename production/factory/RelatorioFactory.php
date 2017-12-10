@@ -1,6 +1,5 @@
 <?php 
 	require_once "../dao/RelatorioDao.php";
-	require_once "../dao/TarefaContratoDao.php";
 	require_once "../class/Conexao.php";
 	require_once "../class/Relatorio.php";
 	require_once "../dao/UsuarioDao.php";

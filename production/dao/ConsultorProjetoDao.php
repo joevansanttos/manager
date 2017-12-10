@@ -50,26 +50,7 @@
 			return $consultoresProjeto;
 		}
 
-		function listaTodos() {
-			$consultoresProjeto = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select * from consultor_projeto");
-			while($consultor_projeto_array = mysqli_fetch_assoc($resultado)) {
-				$factory = new ConsultorProjetoFactory();
-				$consultorProjeto = $factory->cria($consultor_projeto_array);
-				$contrato_id = $consultorProjeto->getContrato()->getNumero();
-				$i = 0;
-				foreach ($consultoresProjeto as $c) {
-					if($c->getContrato()->getNumero() == $contrato_id){
-						$i++;
-					}
-				}
-				if($i == 0){
-					array_push($consultoresProjeto, $consultorProjeto);
-				}
-				
-			}
-			return $consultoresProjeto;
-		}
+		
 
 }
 

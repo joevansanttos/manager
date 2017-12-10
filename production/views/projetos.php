@@ -31,18 +31,17 @@
      <th class="col-md-2">Ações</th>
    </tr>
    <tbody>
-     <?php
-      $consultorProjetoDao = new ConsultorProjetoDao($conexao);
+    <?php
+      $contratoDao = new ContratoDao($conexao);
       if($usuario_id == 1){
-        $projetos = $consultorProjetoDao->listaTodos(); 
+        $contratos = $contratoDao->listaContratosAprovados(); 
       }else{
-        $projetos = $consultorProjetoDao->busca($usuario_id); 
+        $contratos = $contratoDao->listaContratosAprovadosConsultor($usuario_id); 
       }
       
       $finalizados = 0;
       $total = 0;    
-      foreach ($projetos as $projeto){
-        $contrato = $projeto->getContrato();
+      foreach ($contratos as $contrato){
         $departamentoContratoDao = new DepartamentoContratoDao($conexao);
         $departamentosContratos = $departamentoContratoDao->listaDepartamentosContratos($contrato);
         foreach ($departamentosContratos as $departamentoContrato) {
@@ -62,9 +61,9 @@
            $progresso = 0;
         }
 
-
-       
         $market = $contrato->getMarket();
+             $consultorProjetoDao = new ConsultorProjetoDao($conexao);
+
         $consultoresProjeto = $consultorProjetoDao->lista($contrato->getNumero());
      ?>
      <tr>

@@ -25,7 +25,7 @@
 	$recebimentoDao = new RecebimentoDao($conexao);
 	$recebimentoDao->atualiza($recebimento);
 
-	header("Location: ../views/transacoes.php"); 	
+	header("Location: ../views/financeiro_transacoes.php"); 	
 
 
 ?>

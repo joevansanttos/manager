@@ -8,9 +8,14 @@
    
     function conecta() {
       $conexao = mysqli_connect("127.0.0.1", "root", "", "manager");
-      //$conexao = mysqli_connect('localhost', 'proje304_root', 'Projek@90', 'proje304_manager');
-      mysqli_set_charset($conexao, "utf8");
-      return $conexao;
+      if(!$conexao)
+      {
+           die("could not connect");
+      }else{
+        mysqli_set_charset($conexao, "utf8");
+        return $conexao;
+      }
+     
     }
   }
 ?>

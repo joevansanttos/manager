@@ -50,7 +50,7 @@
           <?php
             if($contrato->getStatusContrato()->getId() == 1){
           ?>
-          <a href="../adiciona/adiciona-tarefa.php?id=<?=$contrato->getNumero()?>"><button data-toggle="tooltip" data-placement="top" title="Aprovar Contrato"  class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a> 
+          <a href="../adiciona/adiciona_projeto.php?id=<?=$contrato->getNumero()?>"><button data-toggle="tooltip" data-placement="top" title="Aprovar Contrato"  class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a> 
 
           <?php
             }else{

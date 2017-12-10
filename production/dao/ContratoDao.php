@@ -4,7 +4,9 @@
 	require_once "../factory/SocioFactory.php";
 	require_once "../factory/DepartamentoContratoFactory.php";
 	require_once "../dao/DepartamentoContratoDao.php";
-	require_once "../dao/TarefaContratoDao.php";
+	require_once "../dao/ConsultorProjetoDao.php";
+	require_once "../factory/ConsultorProjetoFactory.php";
+
 
 	
 	class ContratoDao{
@@ -63,6 +65,16 @@
 				array_push($contratos, $contrato);
 			}
 			return $contratos;
+		}
+
+		function listaClientes() {
+			$clientes = array();
+			$contratos = $this->listaContratosAprovados();
+			
+			foreach ($contratos as $contrato) {
+				array_push($clientes, $contrato->getMarket());
+			}
+			return $clientes;
 		}
 
 		
@@ -187,10 +199,99 @@
 		}
 
 
-		function buscaContratosProjetos(){
-
+		function listaContratosAprovadosConsultor($usuario_id) {		
+			$contratos = array();
+			$consultorProjetoDao = new ConsultorProjetoDao($this->conexao);
+			$consultoresProjeto = $consultorProjetoDao->busca($usuario_id);
+			foreach ($consultoresProjeto as $consultorProjeto) {
+				array_push($contratos, $consultorProjeto->getContrato());
+			}
+			return $contratos;
 		}
 
+		function listaContratosMapeamentoConsultor($usuario_id) {
+			$contratos = array();
+			$marketDao = new MarketDao($this->conexao);
+			$markets = $marketDao->listaMarkets($usuario_id);
+			foreach ($markets as $market) {
+				$market_id = $market->getId();
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where market_id = {$market_id} and produto_id = 5 and status_contrato_id = 2");
+				while($contrato_array = mysqli_fetch_assoc($resultado)) {
+					$factory = new ContratoFactory();
+					$contrato = $factory->criaContrato($contrato_array);
+					array_push($contratos, $contrato);
+				}
+			}
+			
+			return $contratos;
+		}
+
+		function listaContratosMapeamento() {
+			$contratos = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where status_contrato_id = 2 and produto_id = 5");
+			while($contrato_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new ContratoFactory();
+				$contrato = $factory->criaContrato($contrato_array);
+				array_push($contratos, $contrato);
+			}
+			return $contratos;
+		}
+
+		function listaContratosAuditoriaConsultor($usuario_id) {
+			$contratos = array();
+			$marketDao = new MarketDao($this->conexao);
+			$markets = $marketDao->listaMarkets($usuario_id);
+			foreach ($markets as $market) {
+				$market_id = $market->getId();
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where market_id = {$market_id} and produto_id = 6 and status_contrato_id = 2");
+				while($contrato_array = mysqli_fetch_assoc($resultado)) {
+					$factory = new ContratoFactory();
+					$contrato = $factory->criaContrato($contrato_array);
+					array_push($contratos, $contrato);
+				}
+			}
+			
+			return $contratos;
+		}
+
+		function listaContratosAuditoria() {
+			$contratos = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where status_contrato_id = 2 and produto_id = 6");
+			while($contrato_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new ContratoFactory();
+				$contrato = $factory->criaContrato($contrato_array);
+				array_push($contratos, $contrato);
+			}
+			return $contratos;
+		}
+
+		function listaContratosUniversidadeConsultor($usuario_id) {
+			$contratos = array();
+			$marketDao = new MarketDao($this->conexao);
+			$markets = $marketDao->listaMarkets($usuario_id);
+			foreach ($markets as $market) {
+				$market_id = $market->getId();
+				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where market_id = {$market_id} and produto_id = 7 and status_contrato_id = 2");
+				while($contrato_array = mysqli_fetch_assoc($resultado)) {
+					$factory = new ContratoFactory();
+					$contrato = $factory->criaContrato($contrato_array);
+					array_push($contratos, $contrato);
+				}
+			}
+			
+			return $contratos;
+		}
+
+		function listaContratosUniversidade() {
+			$contratos = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where status_contrato_id = 2 and produto_id = 7");
+			while($contrato_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new ContratoFactory();
+				$contrato = $factory->criaContrato($contrato_array);
+				array_push($contratos, $contrato);
+			}
+			return $contratos;
+		}
 		
 
 

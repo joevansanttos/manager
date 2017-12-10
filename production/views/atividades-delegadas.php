@@ -14,20 +14,40 @@
 
 <?php require_once "css.php"; ?>
 
-<h3>Tarefas Delegadas</h3>
+<h3>Tarefas</h3>
 
-<?php require_once "body.php";  ?>
+<?php require "../views/body.php";  ?>
+
+<div class="x_title">
+  <h2>Lista de Tarefas Delegadas a um Colaborador</h2>
+  <ul class="nav navbar-right panel_toolbox">
+    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Settings 1</a>
+        </li>
+        <li><a href="#">Settings 2</a>
+        </li>
+      </ul>
+    </li>
+    <li><a class="close-link"><i class="fa fa-close"></i></a>
+    </li>
+  </ul>
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
 
 <table id="tabela" class="table table-bordered projects">
   <thead>
     <tr>
-      <th class="col-md-3">Atividade</th>
-      <th>Delegante</th>
-      <th>Colaborador</th>
-      <th>Progresso</th>
-      <th>Status</th>
-      <th>Prazo</th>
-      <th class="col-md-2">Ações</th>
+      <th>Atividade</th>
+      <th class="col-md-3">Delegado</th>
+      <th class="col-md-2">Progresso</th>
+      <th class="col-md-1">Status</th>
+      <th class="col-md-1">Prazo</th>
+      <th class="col-md-1">Ações</th>
     </tr>
     <tbody>
       <?php
@@ -60,14 +80,10 @@
         <td>
           <ul class="list-inline">
             <li>
-              <?= $atividade->getDelegante()->getNome() .' '. $atividade->getDelegante()->getSobrenome()?>
-            </li>
-          </ul>
-        </td>
-        <td>
-          <ul class="list-inline">
-            <li>
               <?= $atividade->getDelegado()->getNome() .' '. $atividade->getDelegado()->getSobrenome()?>
+              <br />
+              <small>Filial: <?=$atividade->getFilial()?></small>
+              <small>Setor: <?=$atividade->getSetor()?></small>
             </li>
           </ul>
         </td>
@@ -123,7 +139,6 @@
         </td>
         <td align="center">
           <a href="../views/atividade-detalhes.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Ver Atividade"><button class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
-          <a href="../views/atividade-altera.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Editar Atividade"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
           <a href="../remove/remove-atividade.php?id=<?=$atividade->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Atividade"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>           
         </td>
       </tr>

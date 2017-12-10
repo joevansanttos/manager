@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Nov-2017 às 17:25
+-- Generation Time: 10-Dez-2017 às 19:38
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -54,24 +54,71 @@ INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor
 (4, '2017-11-08', '2017-11-12', 1, 'Consultoria', 'Salvador', 'Alta', 1, 'Testar Sistema', 'Testes mais rápidos possíveis para executar o sistema', 9, '', 'Desenvolver', 2),
 (5, '2017-11-10', '2017-11-10', 5, 'Consultoria', 'Salvador', 'Altíssima', 1, 'Convidar Pesssoas Hangout', 'Desejo que as pessoas relacionadas sejam convidadas a participar da reunião', 10, 'fdfdfd', 'Alinhar Desejos da Projek', 2),
 (7, '2017-11-01', '2017-11-02', 3, 'Consultoria', 'Salvador', 'Alta', 9, 'Consultoria', 'dfdfdf', 10, '', 'Consultar Empresa', 2),
-(9, '2017-11-01', '2017-11-22', 4, 'Consultoria', 'Salvador', 'Alta', 10, 'Consultoria', '', 1, 'fdfdf', 'Consultar Empresa', 1);
+(9, '2017-11-01', '2017-11-22', 4, 'Consultoria', 'Salvador', 'Alta', 10, 'Consultoria', '', 1, 'fdfdf', 'Consultar Empresa', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categorias`
+-- Estrutura da tabela `categorias_custo`
 --
 
-CREATE TABLE `categorias` (
+CREATE TABLE `categorias_custo` (
   `id` int(11) NOT NULL,
   `descricao` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `categorias`
+-- Extraindo dados da tabela `categorias_custo`
 --
 
-INSERT INTO `categorias` (`id`, `descricao`) VALUES
+INSERT INTO `categorias_custo` (`id`, `descricao`) VALUES
+(10, 'Salário'),
+(11, 'Vale Transporte'),
+(12, 'Vale Transporte'),
+(13, 'Refeição'),
+(14, 'Plano de Saúde'),
+(15, 'Compra');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categorias_despesa`
+--
+
+CREATE TABLE `categorias_despesa` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `categorias_despesa`
+--
+
+INSERT INTO `categorias_despesa` (`id`, `descricao`) VALUES
+(3, 'Despesas Administrativas'),
+(4, 'Despesas com Impostos'),
+(5, 'Despesas com RH'),
+(6, 'Despesas Financeira'),
+(7, 'Inadiplência'),
+(8, 'Despesas com Vendas'),
+(9, 'Despesas com Marketing');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categorias_recebimento`
+--
+
+CREATE TABLE `categorias_recebimento` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `categorias_recebimento`
+--
+
+INSERT INTO `categorias_recebimento` (`id`, `descricao`) VALUES
 (1, 'Vendas'),
 (2, 'Mensalidade');
 
@@ -5709,8 +5756,58 @@ CREATE TABLE `consultor_projeto` (
 --
 
 INSERT INTO `consultor_projeto` (`id`, `contrato_id`, `consultor_id`) VALUES
-(12, 1, 9),
-(13, 1, 10);
+(3, 1, 9),
+(4, 1, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `contato_cliente`
+--
+
+CREATE TABLE `contato_cliente` (
+  `id` int(11) NOT NULL,
+  `estado` varchar(100) DEFAULT NULL,
+  `cidade` varchar(100) DEFAULT NULL,
+  `endereco` varchar(1000) DEFAULT NULL,
+  `cpf` varchar(15) DEFAULT NULL,
+  `tel` varchar(15) DEFAULT NULL,
+  `market_id` int(11) DEFAULT NULL,
+  `nome` varchar(500) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `contato_cliente`
+--
+
+INSERT INTO `contato_cliente` (`id`, `estado`, `cidade`, `endereco`, `cpf`, `tel`, `market_id`, `nome`, `email`) VALUES
+(4, 'BA', '2929602', '', '', '(71) 98333-3333', 1, 'Antonio Carlos Santos', 'antonio.carlos.gevan@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `contato_fornecedor`
+--
+
+CREATE TABLE `contato_fornecedor` (
+  `id` int(11) NOT NULL,
+  `estado` varchar(100) DEFAULT NULL,
+  `cidade` varchar(100) DEFAULT NULL,
+  `endereco` varchar(1000) DEFAULT NULL,
+  `cpf` varchar(15) DEFAULT NULL,
+  `tel` varchar(15) DEFAULT NULL,
+  `fornecedor_id` int(11) DEFAULT NULL,
+  `nome` varchar(500) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `contato_fornecedor`
+--
+
+INSERT INTO `contato_fornecedor` (`id`, `estado`, `cidade`, `endereco`, `cpf`, `tel`, `fornecedor_id`, `nome`, `email`) VALUES
+(7, 'BA', '2907806', '', '', '(71) 98333-3333', 58, 'José Carlos Silva', 'josecarlos.coelva@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -5733,6 +5830,31 @@ CREATE TABLE `contratos` (
 
 INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `inicio`, `fim`, `id`) VALUES
 (1, 5, 2, '2017-01-01', '2018-01-01', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `custos`
+--
+
+CREATE TABLE `custos` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(100) DEFAULT NULL,
+  `usuario_id` int(11) DEFAULT NULL,
+  `categoria_id` int(11) DEFAULT NULL,
+  `pagamento_id` int(11) DEFAULT NULL,
+  `data` varchar(15) DEFAULT NULL,
+  `valor` decimal(9,2) DEFAULT NULL,
+  `pago_id` int(11) DEFAULT NULL,
+  `filial_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `custos`
+--
+
+INSERT INTO `custos` (`id`, `descricao`, `usuario_id`, `categoria_id`, `pagamento_id`, `data`, `valor`, `pago_id`, `filial_id`) VALUES
+(4, 'Salário Mensal', 9, 15, 1, '2017-12-10', '900.00', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -5794,18 +5916,20 @@ CREATE TABLE `despesas` (
   `categoria_id` int(11) DEFAULT NULL,
   `pagamento_id` int(11) DEFAULT NULL,
   `pago_id` int(11) DEFAULT NULL,
-  `doc` varchar(1000) DEFAULT NULL
+  `doc` varchar(1000) DEFAULT NULL,
+  `filial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `despesas`
 --
 
-INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`) VALUES
-(3, 58, '2017-11-19', 'Conta de Luz', '1250.00', 1, 1, 2, ''),
-(5, 58, '2017-11-19', 'Conta de Luz', '1200.00', 1, 1, 1, ''),
-(6, 58, '2017-11-19', 'Conta de Luz', '1200.00', 1, 1, 1, ''),
-(7, 58, '2017-11-19', 'Conta de Luz', '1200.00', 1, 1, 1, '');
+INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`) VALUES
+(3, 58, '2017-12-19', 'Conta de Luz', '1250.00', 1, 1, 2, '', 1),
+(5, 58, '2017-12-19', 'Conta de Luz', '1200.00', 1, 1, 1, '', 1),
+(6, 58, '2017-11-19', 'Conta de Luz', '1200.00', 9, 1, 1, '', 1),
+(7, 58, '2017-11-19', 'Conta de Luz', '1200.00', 3, 1, 1, '', 1),
+(9, 58, '2017-12-10', 'Conta de Luz 4', '500.00', 7, 1, 1, '', 1);
 
 -- --------------------------------------------------------
 
@@ -5851,6 +5975,24 @@ INSERT INTO `estados` (`cod_estados`, `sigla`, `nome`) VALUES
 (25, 'SC', 'SANTA CATARINA'),
 (26, 'SP', 'SÃO PAULO'),
 (27, 'SE', 'SERGIPE');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `filiais`
+--
+
+CREATE TABLE `filiais` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `filiais`
+--
+
+INSERT INTO `filiais` (`id`, `nome`) VALUES
+(1, 'Salvador');
 
 -- --------------------------------------------------------
 
@@ -6132,15 +6274,17 @@ CREATE TABLE `recebimentos` (
   `categoria_id` int(11) DEFAULT NULL,
   `pagamento_id` int(11) DEFAULT NULL,
   `pago_id` int(11) DEFAULT NULL,
-  `doc` varchar(1000) DEFAULT NULL
+  `doc` varchar(1000) DEFAULT NULL,
+  `filial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `recebimentos`
 --
 
-INSERT INTO `recebimentos` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`) VALUES
-(1, 1, '2017-11-21', 'Consultoria', '1234.00', 1, 1, 1, 'upload/NFe_33800228.pdf');
+INSERT INTO `recebimentos` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`) VALUES
+(1, 1, '2017-11-21', 'Consultoria', '1000.00', 1, 1, 2, 'upload/NFe_33800228.pdf', 1),
+(3, 1, '2017-11-21', 'Consultoria', '1234.00', 1, 2, 1, 'upload/NFe_33800228.pdf', 1);
 
 -- --------------------------------------------------------
 
@@ -6303,60 +6447,22 @@ INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consult
 
 CREATE TABLE `tarefas` (
   `id` int(11) NOT NULL,
-  `descricao` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `tarefas`
---
-
-INSERT INTO `tarefas` (`id`, `descricao`) VALUES
-(1, 'Levantar Dados'),
-(2, 'Escopo de Fluxograma'),
-(3, 'Produção de Fluxograma Horizontal'),
-(4, 'Produção de Escopo de PI'),
-(5, 'Produção de PI'),
-(6, 'Produção do Relatório de Melhoria'),
-(7, 'Validação de Relatório'),
-(8, 'Treinamento');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `tarefas_contrato`
---
-
-CREATE TABLE `tarefas_contrato` (
-  `id` int(11) NOT NULL,
   `departamento_contrato_id` int(11) DEFAULT NULL,
-  `data_fim` varchar(20) DEFAULT NULL,
-  `tarefa_id` int(11) DEFAULT NULL,
+  `fim` varchar(20) DEFAULT NULL,
+  `descricao` varchar(100) DEFAULT NULL,
   `horas` int(11) DEFAULT NULL,
   `status_atividade_id` int(11) DEFAULT NULL,
   `usuario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `tarefas_contrato`
+-- Extraindo dados da tabela `tarefas`
 --
 
-INSERT INTO `tarefas_contrato` (`id`, `departamento_contrato_id`, `data_fim`, `tarefa_id`, `horas`, `status_atividade_id`, `usuario_id`) VALUES
-(1, 9, '10/11/2017', 1, 100, 5, 9),
-(2, 9, NULL, 2, NULL, 5, NULL),
-(3, 9, NULL, 3, NULL, 5, NULL),
-(4, 9, NULL, 4, NULL, 1, NULL),
-(5, 9, NULL, 5, NULL, 1, NULL),
-(6, 9, NULL, 6, NULL, 1, NULL),
-(7, 9, NULL, 7, NULL, 1, NULL),
-(8, 9, NULL, 8, NULL, 1, NULL),
-(9, 10, NULL, 1, NULL, 1, NULL),
-(10, 10, NULL, 2, NULL, 1, NULL),
-(11, 10, NULL, 3, NULL, 1, NULL),
-(12, 10, NULL, 4, NULL, 1, NULL),
-(13, 10, NULL, 5, NULL, 1, NULL),
-(14, 10, NULL, 6, NULL, 1, NULL),
-(15, 10, NULL, 7, NULL, 1, NULL),
-(16, 10, NULL, 8, NULL, 1, NULL);
+INSERT INTO `tarefas` (`id`, `departamento_contrato_id`, `fim`, `descricao`, `horas`, `status_atividade_id`, `usuario_id`) VALUES
+(6, 9, NULL, 'Levantamento de Dados', NULL, 5, 9),
+(7, 9, NULL, 'Consultoria', NULL, 1, 1),
+(9, 10, NULL, 'Implantação', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -6399,9 +6505,21 @@ ALTER TABLE `atividades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorias`
+-- Indexes for table `categorias_custo`
 --
-ALTER TABLE `categorias`
+ALTER TABLE `categorias_custo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categorias_despesa`
+--
+ALTER TABLE `categorias_despesa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categorias_recebimento`
+--
+ALTER TABLE `categorias_recebimento`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6417,9 +6535,27 @@ ALTER TABLE `consultor_projeto`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contato_cliente`
+--
+ALTER TABLE `contato_cliente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contato_fornecedor`
+--
+ALTER TABLE `contato_fornecedor`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contratos`
 --
 ALTER TABLE `contratos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `custos`
+--
+ALTER TABLE `custos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6438,6 +6574,12 @@ ALTER TABLE `departamentos_contratos`
 -- Indexes for table `despesas`
 --
 ALTER TABLE `despesas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `filiais`
+--
+ALTER TABLE `filiais`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6567,12 +6709,6 @@ ALTER TABLE `tarefas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tarefas_contrato`
---
-ALTER TABLE `tarefas_contrato`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -6588,10 +6724,20 @@ ALTER TABLE `usuarios`
 ALTER TABLE `atividades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `categorias`
+-- AUTO_INCREMENT for table `categorias_custo`
 --
-ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `categorias_custo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `categorias_despesa`
+--
+ALTER TABLE `categorias_despesa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `categorias_recebimento`
+--
+ALTER TABLE `categorias_recebimento`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `cidade`
 --
@@ -6601,7 +6747,22 @@ ALTER TABLE `cidade`
 -- AUTO_INCREMENT for table `consultor_projeto`
 --
 ALTER TABLE `consultor_projeto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `contato_cliente`
+--
+ALTER TABLE `contato_cliente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `contato_fornecedor`
+--
+ALTER TABLE `contato_fornecedor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `custos`
+--
+ALTER TABLE `custos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `departamentos`
 --
@@ -6616,7 +6777,12 @@ ALTER TABLE `departamentos_contratos`
 -- AUTO_INCREMENT for table `despesas`
 --
 ALTER TABLE `despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `filiais`
+--
+ALTER TABLE `filiais`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `fornecedores`
 --
@@ -6681,7 +6847,7 @@ ALTER TABLE `prospects`
 -- AUTO_INCREMENT for table `recebimentos`
 --
 ALTER TABLE `recebimentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `relatorios`
 --
@@ -6721,12 +6887,7 @@ ALTER TABLE `suspects`
 -- AUTO_INCREMENT for table `tarefas`
 --
 ALTER TABLE `tarefas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `tarefas_contrato`
---
-ALTER TABLE `tarefas_contrato`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --

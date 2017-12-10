@@ -5,9 +5,30 @@
 
 <?php require_once "css.php"; ?>
 
-<h3>Novo Market</h3>
+<h3>Negócios</h3>
 
-<?php require_once "body.php"; ?>
+<?php require "body.php"; ?>
+
+<div class="x_title">
+  <h2>Adicionar Novo Market</h2>
+  <ul class="nav navbar-right panel_toolbox">
+    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Settings 1</a>
+        </li>
+        <li><a href="#">Settings 2</a>
+        </li>
+      </ul>
+    </li>
+    <li><a class="close-link"><i class="fa fa-close"></i></a>
+    </li>
+  </ul>
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
 
 <form action="../adiciona/adiciona-market.php" method="post" id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
@@ -82,13 +103,16 @@
         <option value="Couros">Couros</option>
         <option value="Distribuidor">Distribuidor</option>
         <option value="Educação">Educação</option>
+        <option value="Engenharia">Engenharia</option>
         <option value="Equipamentos">Equipamentos</option>
         <option value="Extração">Extração</option>
         <option value="Ferragens">Ferragens</option>
         <option value="Frigorífico">Frigorífico</option>
         <option value="Gráfica">Gráfica</option> 
-        <option value="Hospital">Hospital</option> 
+        <option value="Hospital">Hospital</option>
+        <option value="Informática">Informática</option> 
         <option value="Lazer">Lazer</option>
+        <option value="Marketing">Marketing</option>
         <option value="Mobiliário">Mobiliário</option>
         <option value="Pecuária">Pecuária</option>
         <option value="Pesca">Pesca</option>
@@ -98,10 +122,11 @@
         <option value="Supermercado">Supermercado</option>
         <option value="Tecidos">Tecidos</option>
         <option value="Tecnologia">Tecnologia</option>
+        <option value="Telefonia">Telefonia</option>
         <option value="Transporte">Transporte</option>
         <option value="Turismo">Turismo</option>
         <option value="Varejo">Varejo</option>
-        <option value="Vestuário">Vestuário</option>                                         
+        <option value="Vestuário">Vestuário</option>                                           
       </select>
     </div>
     <label class="control-label col-md-1 col-sm-3 col-xs-12" for="tel">Telefone <span class="required">*</span>
