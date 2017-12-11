@@ -104,12 +104,13 @@
                     <li><a href="financeiro_clientes.php">Clientes</a></li>
                     <li><a href="financeiro_fornecedores.php">Fornecedores</a></li>
                     <li><a href="financeiro_contatos.php">Contatos</a></li>
+                    <li><a href="financeiro_planejamentos.php">Planejamentos Financeiros</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-users"></i> Recursos Humanos <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="rh_curriculos.php">Currículos</a></li> 
-                    <li><a href="recrutamento_selecao.php">Recrutamento e Seleção</a></li>
+                    <li><a href="rh_recrutamento_selecao.php">Recrutamento e Seleção</a></li>
                     <li><a href="cargos.php">Cargos e Salários</a></li>
                     <li><a href="pos-venda.php">Pós-Venda</a></li>                   
                   </ul>

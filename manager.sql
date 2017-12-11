@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 10-Dez-2017 às 19:38
+-- Generation Time: 11-Dez-2017 às 19:54
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -5834,6 +5834,47 @@ INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `inici
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `curriculos`
+--
+
+CREATE TABLE `curriculos` (
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `sexo` varchar(20) DEFAULT NULL,
+  `estado` varchar(20) DEFAULT NULL,
+  `cidade` varchar(50) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `sobrenome` varchar(255) DEFAULT NULL,
+  `idade` int(11) DEFAULT NULL,
+  `filhos` int(11) DEFAULT NULL,
+  `endereco` varchar(1000) DEFAULT NULL,
+  `objetivo` varchar(1000) DEFAULT NULL,
+  `curso` varchar(100) DEFAULT NULL,
+  `universidade` varchar(100) DEFAULT NULL,
+  `conclusao` varchar(100) DEFAULT NULL,
+  `ano` int(11) DEFAULT NULL,
+  `empresa1` varchar(100) DEFAULT NULL,
+  `entrada1` int(11) DEFAULT NULL,
+  `saida1` int(11) DEFAULT NULL,
+  `cargo1` varchar(100) DEFAULT NULL,
+  `empresa2` varchar(100) DEFAULT NULL,
+  `entrada2` int(11) DEFAULT NULL,
+  `saida2` int(11) DEFAULT NULL,
+  `cargo2` varchar(100) DEFAULT NULL,
+  `qualificacoes` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `curriculos`
+--
+
+INSERT INTO `curriculos` (`nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `idade`, `filhos`, `endereco`, `objetivo`, `curso`, `universidade`, `conclusao`, `ano`, `empresa1`, `entrada1`, `saida1`, `cargo1`, `empresa2`, `entrada2`, `saida2`, `cargo2`, `qualificacoes`) VALUES
+('Vinicus ', 'vinicius@gmail.com', 'masculino', 'BA', '2927408', '(71) 98333-3333', 6, 'Santos de Oliveira', 26, 0, 'Av. Prof. Magalhães Neto, 1856 - Pituba, Salvador - BA, 41810-012', 'Emprego', 'Análise de Sistemas', 'Universidade Federal da Bahia', 'concluido', 2017, 'Braskem', 2015, 2017, 'Desenvolvedor', '', 0, 0, '', 'HTML - ALURA\r\nCSS - ALURA');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `custos`
 --
 
@@ -6159,6 +6200,76 @@ INSERT INTO `pago` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `planejamentos`
+--
+
+CREATE TABLE `planejamentos` (
+  `id` int(11) NOT NULL,
+  `ano` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `planejamentos`
+--
+
+INSERT INTO `planejamentos` (`id`, `ano`) VALUES
+(2, '2018');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `planejamento_despesas`
+--
+
+CREATE TABLE `planejamento_despesas` (
+  `id` int(11) NOT NULL,
+  `fornecedor_id` int(100) NOT NULL,
+  `data` varchar(50) DEFAULT NULL,
+  `descricao` varchar(200) DEFAULT NULL,
+  `valor` decimal(9,2) DEFAULT NULL,
+  `categoria_id` int(11) DEFAULT NULL,
+  `pagamento_id` int(11) DEFAULT NULL,
+  `doc` varchar(1000) DEFAULT NULL,
+  `filial_id` int(11) DEFAULT NULL,
+  `planejamento_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `planejamento_despesas`
+--
+
+INSERT INTO `planejamento_despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `doc`, `filial_id`, `planejamento_id`) VALUES
+(12, 58, '2018-02-01', 'Conta de Luz ', '100.00', 3, 1, '', 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `planejamento_receita`
+--
+
+CREATE TABLE `planejamento_receita` (
+  `id` int(11) NOT NULL,
+  `market_id` int(11) DEFAULT NULL,
+  `data` varchar(20) DEFAULT NULL,
+  `descricao` varchar(100) DEFAULT NULL,
+  `valor` decimal(9,2) DEFAULT NULL,
+  `categoria_id` int(11) DEFAULT NULL,
+  `pagamento_id` int(11) DEFAULT NULL,
+  `doc` varchar(1000) DEFAULT NULL,
+  `filial_id` int(11) DEFAULT NULL,
+  `planejamento_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `planejamento_receita`
+--
+
+INSERT INTO `planejamento_receita` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `doc`, `filial_id`, `planejamento_id`) VALUES
+(2, 1, '2018-01-01', 'Teste', '1000.00', 1, 1, '', 1, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `porte`
 --
 
@@ -6299,13 +6410,6 @@ CREATE TABLE `relatorios` (
   `data` varchar(25) DEFAULT NULL,
   `usuario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `relatorios`
---
-
-INSERT INTO `relatorios` (`id`, `descricao`, `tarefa_contrato_id`, `data`, `usuario_id`) VALUES
-(2, 'nada', 1, '22.11.17', 1);
 
 -- --------------------------------------------------------
 
@@ -6553,6 +6657,12 @@ ALTER TABLE `contratos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `curriculos`
+--
+ALTER TABLE `curriculos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `custos`
 --
 ALTER TABLE `custos`
@@ -6622,6 +6732,24 @@ ALTER TABLE `pagamentos`
 -- Indexes for table `pago`
 --
 ALTER TABLE `pago`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `planejamentos`
+--
+ALTER TABLE `planejamentos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `planejamento_despesas`
+--
+ALTER TABLE `planejamento_despesas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `planejamento_receita`
+--
+ALTER TABLE `planejamento_receita`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6737,7 +6865,7 @@ ALTER TABLE `categorias_despesa`
 -- AUTO_INCREMENT for table `categorias_recebimento`
 --
 ALTER TABLE `categorias_recebimento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `cidade`
 --
@@ -6759,10 +6887,15 @@ ALTER TABLE `contato_cliente`
 ALTER TABLE `contato_fornecedor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
+-- AUTO_INCREMENT for table `curriculos`
+--
+ALTER TABLE `curriculos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `custos`
 --
 ALTER TABLE `custos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `departamentos`
 --
@@ -6819,6 +6952,21 @@ ALTER TABLE `pagamentos`
 ALTER TABLE `pago`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `planejamentos`
+--
+ALTER TABLE `planejamentos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `planejamento_despesas`
+--
+ALTER TABLE `planejamento_despesas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `planejamento_receita`
+--
+ALTER TABLE `planejamento_receita`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `porte`
 --
 ALTER TABLE `porte`
@@ -6852,7 +7000,7 @@ ALTER TABLE `recebimentos`
 -- AUTO_INCREMENT for table `relatorios`
 --
 ALTER TABLE `relatorios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `socios`
 --
