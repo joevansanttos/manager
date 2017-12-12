@@ -64,6 +64,15 @@ class CustoDao{
 		}
 	}
 
+	function remove(Custo $custo){
+		$query = "delete from custos where id = {$custo->getId()}";
+		if(mysqli_query($this->conexao->conecta(), $query)){
+
+		}else{
+			echo mysqli_error($this->conexao->conecta());
+		}
+	}
+
 	
 
 }

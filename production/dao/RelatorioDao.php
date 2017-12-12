@@ -10,7 +10,7 @@
 
 
 		function insereRelatorio(Relatorio $relatorio) {
-			$query = "insert into relatorios ( descricao, data, tarefa_contrato_id, usuario_id) values ('{$relatorio->getDescricao()}', '{$relatorio->getData()}', '{$relatorio->getTarefaContrato()->getId()}', '{$relatorio->getUsuario()->getId()}')";
+			$query = "insert into relatorios ( descricao, data, tarefa_id, usuario_id) values ('{$relatorio->getDescricao()}', '{$relatorio->getData()}', '{$relatorio->getTarefa()->getId()}', '{$relatorio->getUsuario()->getId()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
@@ -29,8 +29,8 @@
 			return $relatorio;
 		}
 
-		function buscaRelatorioTarefa($tarefa_contrato_id) {
-			$query = "select * from relatorios where tarefa_contrato_id = {$tarefa_contrato_id}";
+		function buscaRelatorioTarefa($tarefa_id) {
+			$query = "select * from relatorios where tarefa_id = {$tarefa_id}";
 			$resultado = mysqli_query($this->conexao->conecta(), $query);
 			while($relatorio_array= mysqli_fetch_assoc($resultado)) {
 				$id = $relatorio_array['id'];

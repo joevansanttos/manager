@@ -3,7 +3,7 @@
   header('Content-Type: application/json');
 
   $input = filter_input_array(INPUT_POST);
-  var_dump($input);
+
 
   if(($status= mysqli_real_escape_string($conexao->conecta(), $input["status"])) != NULL){
      if($input["action"] === 'edit'){
@@ -32,6 +32,14 @@
   if(($consultor= mysqli_real_escape_string($conexao->conecta(), $input["consultor"])) != NULL){
      if($input["action"] === 'edit'){
       $query = "  UPDATE tarefas SET usuario_id = '".$consultor."' WHERE id = '".$input["id"]."' ";
+      mysqli_query($conexao->conecta(), $query);
+      mysqli_close($conexao);
+     }
+  }
+
+  if(($descricao = mysqli_real_escape_string($conexao->conecta(), $input["descricao"])) != NULL){
+     if($input["action"] === 'edit'){
+     $query = "  UPDATE tarefas SET descricao = '".$descricao ."' WHERE id = '".$input["id"]."' ";      
       mysqli_query($conexao->conecta(), $query);
       mysqli_close($conexao);
      }

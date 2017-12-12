@@ -41,9 +41,9 @@ if(isset($_POST["start"], $_POST["end"])) {
   foreach ($recebimentos as $recebimento){
     $novaData = date("d-m-Y", strtotime($recebimento->getData()));
     if( $recebimento->getPago()->getId() == 2){
-      $pago = 'check';
-    }else{
       $pago = 'times';
+    }else{
+      $pago = 'check';
     }
     $output .= '
     <tr>
@@ -96,9 +96,9 @@ if(isset($_POST["start"], $_POST["end"])) {
   foreach ($despesas as $despesa){
     $novaData = date("d-m-Y", strtotime($despesa->getData()));
     if( $despesa->getPago()->getId() == 2){
-      $pago = 'check';
-    }else{
       $pago = 'times';
+    }else{
+      $pago = 'check';
     }
     $output .= '
     <tr>
@@ -149,11 +149,11 @@ if(isset($_POST["start"], $_POST["end"])) {
   $custoDao = new CustoDao($conexao);
   $custos = $custoDao->listaNovosCustos($_POST['start'], $_POST['end']);
   foreach ($custos as $custo){
-    $novaData = date("d-m-Y", strtotime($despesa->getData()));
-    if( $despesa->getPago()->getId() == 2){
-      $pago = 'check';
-    }else{
+    $novaData = date("d-m-Y", strtotime($custo->getData()));
+    if( $custo->getPago()->getId() == 2){
       $pago = 'times';
+    }else{
+      $pago = 'check';
     }
     $output .= '
     <tr>

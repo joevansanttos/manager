@@ -1,4 +1,3 @@
-
 <?php	
 	require_once "cabecalho.php";
 	require_once "../dao/PlanejamentoDao.php";
@@ -57,7 +56,7 @@
       ?>
         <tr>
           <td>Projek</td>
-          <td><?=$planejamento->getAno() ?></td>         
+          <td><?=$planejamento->getAno()?></td>         
           <td align="center">
             <a href="financeiro_plan_receita_form.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Nova Receita à Planejamento" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
             <a href="financeiro_plan_despesa_form.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Nova Despesa à Planejamento" class="btn btn-danger btn-xs"><i class="fa fa-plus"></i></button></a>

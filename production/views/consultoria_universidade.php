@@ -3,6 +3,7 @@
   require_once "../dao/ContratoDao.php";
   require_once "../dao/ConsultorProjetoDao.php";
   require_once "../dao/DepartamentoContratoDao.php";
+  require_once "../dao/TarefaDao.php";
 ?>
 
 <!-- Datatables -->
@@ -54,7 +55,7 @@
       if($usuario_id == 1){
         $contratos = $contratoDao->listaContratosUniversidade(); 
       }else{
-        $contratos = $contratoDao->listaContratosUniversidadeConsultor($usuario_id); 
+        $contratos = $contratoDao->listaProjetosUniversidade($usuario_id); 
       }
       
       $finalizados = 0;

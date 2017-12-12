@@ -51,18 +51,13 @@
     </div>
     <div class="pull-right animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <div class="tile-stats">
-        <div class="icon"><i class="fa fa-level-up"></i>
-        </div>
-        <div class="green count"><?=$valorRecebimento?></div>
-
+        <div class="green count"><?='R$ '.number_format($valorRecebimento, 2, '.', '')?></div>
         <h3>Receitas do Mês</h3>
       </div>
     </div>
     <div class="pull-right animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <div class="tile-stats">
-        <div class="icon"><i class="fa fa-level-down"></i>
-        </div>
-        <div class="red  count"><?=$valorDespesa?></div>
+        <div class="red  count"><?='R$ '.number_format($valorDespesa, 2, '.', '')?></div>
         <h3>Despesas do Mês</h3>
       </div>
     </div>

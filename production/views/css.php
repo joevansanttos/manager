@@ -101,6 +101,7 @@
                 <li><a><i class="fa fa-calculator"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="financeiro_transacoes.php">Transações</a></li>
+                    <li><a href="financeiro_contratos.php">Contratos Pendentes de Aprovação</a></li>
                     <li><a href="financeiro_clientes.php">Clientes</a></li>
                     <li><a href="financeiro_fornecedores.php">Fornecedores</a></li>
                     <li><a href="financeiro_contatos.php">Contatos</a></li>

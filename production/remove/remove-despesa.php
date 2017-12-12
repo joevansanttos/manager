@@ -6,5 +6,5 @@
 	$despesaDao = new DespesaDao($conexao);
 	$despesa = $despesaDao->buscaDespesa($id);
 	$despesaDao->remove($despesa);
-	header("Location: ../views/transacoes.php");
+	header("Location: ../views/financeiro_transacoes.php");
 ?>

@@ -56,7 +56,7 @@
       if($usuario_id == 1){
         $contratos = $contratoDao->listaContratosMapeamento(); 
       }else{
-        $contratos = $contratoDao->listaContratosMapeamentoConsultor($usuario_id); 
+        $contratos = $contratoDao->listaProjetosMapeamento($usuario_id); 
       }
       
       $finalizados = 0;

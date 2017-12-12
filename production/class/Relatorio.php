@@ -3,13 +3,13 @@ class Relatorio{
 	private $id;
 	private $descricao;
 	private $data;
-	private $tarefaContrato;
+	private $tarefa;
 	private $usuario;
 
-	function __construct($descricao, $data, TarefaContrato $tarefaContrato, Usuario $usuario){
+	function __construct($descricao, $data, Tarefa $tarefa, Usuario $usuario){
 		$this->descricao = $descricao;
 		$this->data = $data;
-		$this->tarefaContrato = $tarefaContrato;
+		$this->tarefa = $tarefa;
 		$this->usuario = $usuario;
 	}
 
@@ -29,12 +29,12 @@ class Relatorio{
 			$this->descricao = $descricao;
 		}
 
-	public function getTarefaContrato() {
-		return $this->tarefaContrato;
+	public function getTarefa() {
+		return $this->tarefa;
 	}
 
-	public function setTarefaContrato($tarefaContrato) {
-		$this->tarefaContrato = $tarefaContrato;
+	public function setTarefa($tarefa) {
+		$this->tarefa = $tarefa;
 	}
 
 	public function getData() {

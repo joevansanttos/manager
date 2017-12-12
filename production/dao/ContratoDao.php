@@ -5,6 +5,7 @@
 	require_once "../factory/DepartamentoContratoFactory.php";
 	require_once "../dao/DepartamentoContratoDao.php";
 	require_once "../dao/ConsultorProjetoDao.php";
+	require_once "../dao/TarefaDao.php";
 	require_once "../factory/ConsultorProjetoFactory.php";
 
 
@@ -35,7 +36,7 @@
 
 		function listaTodosContratos() {
 			$contratos = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u order by id ");
+			$resultado = mysqli_query($this->conexao->conecta(), "select * from contratos  order by id ");
 			while($contrato_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new ContratoFactory();
 				$contrato = $factory->criaContrato($contrato_array);
@@ -47,7 +48,7 @@
 
 		function listaContratosPendentes() {
 			$contratos = array();
-			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where status_contrato_id = 1");
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from contratos as u where status_contrato_id = 1 order by id");
 			while($contrato_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new ContratoFactory();
 				$contrato = $factory->criaContrato($contrato_array);
@@ -150,14 +151,24 @@
 			$departamentosContratos = $departamentoContratoDao->listaDepartamentosContratos($contrato);
 
 			foreach($departamentosContratos as $departamentoContrato){
-				$tarefaContratoDao = new TarefaContratoDao($this->conexao);
-				$tarefasContratos = $tarefaContratoDao->listaTarefasContratos($departamentoContrato);
-				foreach ($tarefasContratos as $tarefaContrato) {
-					$tarefaContratoDao->remove($tarefaContrato);
+				$tarefaDao = new TarefaDao($this->conexao);
+				$tarefas = $tarefaDao->listaTarefas($departamentoContrato->getId());
+				foreach ($tarefas as $tarefa) {
+					$tarefaDao = new TarefaDao($this->conexao);
+					$tarefaDao->remove($tarefa);  
 				}
 			}
 
 			$contrato->setStatusContrato(1);
+		}
+
+		function removeConsultores(Contrato $contrato){
+			$query = "delete from consultor_projeto where contrato_id = {$contrato->getNumero()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}			
 		}
 
 
@@ -199,15 +210,45 @@
 		}
 
 
-		function listaContratosAprovadosConsultor($usuario_id) {		
+		function listaProjetosMapeamento($usuario_id) {		
 			$contratos = array();
 			$consultorProjetoDao = new ConsultorProjetoDao($this->conexao);
 			$consultoresProjeto = $consultorProjetoDao->busca($usuario_id);
 			foreach ($consultoresProjeto as $consultorProjeto) {
-				array_push($contratos, $consultorProjeto->getContrato());
+				if($consultorProjeto->getContrato()->getProduto()->getId() == 5){
+					array_push($contratos, $consultorProjeto->getContrato());
+				}
+				
 			}
 			return $contratos;
 		}
+
+		function listaProjetosAuditoria($usuario_id) {		
+			$contratos = array();
+			$consultorProjetoDao = new ConsultorProjetoDao($this->conexao);
+			$consultoresProjeto = $consultorProjetoDao->busca($usuario_id);
+			foreach ($consultoresProjeto as $consultorProjeto) {
+				if($consultorProjeto->getContrato()->getProduto()->getId() == 6){
+					array_push($contratos, $consultorProjeto->getContrato());
+				}
+				
+			}
+			return $contratos;
+		}
+
+		function listaProjetosUniversidade($usuario_id) {		
+			$contratos = array();
+			$consultorProjetoDao = new ConsultorProjetoDao($this->conexao);
+			$consultoresProjeto = $consultorProjetoDao->busca($usuario_id);
+			foreach ($consultoresProjeto as $consultorProjeto) {
+				if($consultorProjeto->getContrato()->getProduto()->getId() == 7){
+					array_push($contratos, $consultorProjeto->getContrato());
+				}
+				
+			}
+			return $contratos;
+		}
+
 
 		function listaContratosMapeamentoConsultor($usuario_id) {
 			$contratos = array();

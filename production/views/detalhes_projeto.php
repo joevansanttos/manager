@@ -21,6 +21,7 @@
   }
   $departamentoContratoDao = new DepartamentoContratoDao($conexao);
 	$departamentosContratos = $departamentoContratoDao->listaDepartamentosContratos($contrato);
+	$relatorioDao = new RelatorioDao($conexao);  
 ?>
 
 <link rel="stylesheet" type="text/css" href="../css/cronograma.css">
@@ -117,11 +118,14 @@
 				?>
 
 				<div class="tab-pane active" id=<?=$tabDefault?>>
+			<?php
+				if($tarefas != null){
+			?>
 
 					<table id="<?=$id?>" class="table table-bordered table-striped datatable">
 					 <thead>
 					 	<th class="hide"></th>
-					  <th  class="col-md-3">Tarefa</th>
+					  <th  class="col-md-3">Descrição</th>
 					  <th class="col-md-1" >Horas</th>
 					  <th class="col-md-1">Data</th>
 					  <th class="col-md-2">Status</th>
@@ -141,9 +145,21 @@
 					     	<td><?=$statusAtividade->getDescricao()?></td>
 					     	<td><?=$tarefa->getUsuario()->getNome() . ' ' . $tarefa->getUsuario()->getSobrenome()?></td>
 					     	<td align="center">
-					     		<a href="relatorio-altera.php" data-toggle="tooltip" data-placement="top" title="Editar Relatório" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-					     		<a href="detalhes-relatorio.php" data-toggle="tooltip" data-placement="top" title="Ver Relatório" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
-					     		<a href="detalhes-relatorio.php" data-toggle="tooltip" data-placement="top" title="Ver Relatório" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+					    	<?php
+					    		$relatorio = $relatorioDao->buscaRelatorioTarefa($tarefa->getId());
+					    		if($relatorio == null){
+					    	?>
+					    		<a href="consultoria_relatorio_form.php?id=<?=$tarefa->getId()?>" data-toggle="tooltip" data-placement="top" title="Adicionar Relatório" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></a>
+					    	<?php
+					    		}else{
+					    	?>
+					    			<a href="consultoria_relatorio.php?id=<?=$relatorio->getId()?>" data-toggle="tooltip" data-placement="top" title="Ver Relatório" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
+					    		
+					    	<?php
+					    	}
+					    	?>
+					     					     		
+					     		<a href="../remove/remove_tarefa.php?id=<?=$tarefa->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Tarefa" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
 					    	</td>
 					    </tr> 
 						<?php  
@@ -151,6 +167,9 @@
 						?>
 					 </tbody>
 					</table>
+			<?php
+				}
+			?>
 
 					<div class="text-center">
 					  <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-danger    btn-block "  href="tarefa_form.php?id=<?=$departamentoContrato->getId()?>"><strong>NOVA TAREFA</strong></a>
@@ -167,10 +186,14 @@
 				?>
 				<div class="tab-pane" id=<?=$tabDefault?> >
 
+			<?php
+				if($tarefas != null){
+			?>
+
 					<table id="<?=$id?>" class="table table-bordered table-striped datatable">
 					 <thead>
 					 	<th class="hide"></th>
-					  <th  class="col-md-3">Tarefa</th>
+					  <th  class="col-md-3">Descrição</th>
 					  <th class="col-md-1" >Horas</th>
 					  <th class="col-md-1">Data</th>
 					  <th class="col-md-2">Status</th>
@@ -190,9 +213,21 @@
 					     	<td><?=$statusAtividade->getDescricao()?></td>
 					     	<td><?=$tarefa->getUsuario()->getNome() . ' ' . $tarefa->getUsuario()->getSobrenome()?></td>
 					     	<td align="center">
-					     		<a href="relatorio-altera.php" data-toggle="tooltip" data-placement="top" title="Editar Relatório" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-					     		<a href="detalhes-relatorio.php" data-toggle="tooltip" data-placement="top" title="Ver Relatório" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
-					     		<a href="detalhes-relatorio.php" data-toggle="tooltip" data-placement="top" title="Ver Relatório" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+					    	<?php
+					    		$relatorio = $relatorioDao->buscaRelatorioTarefa($tarefa->getId());
+					    		if($relatorio == null){
+					    	?>
+					    		<a href="consultoria_relatorio_form.php?id=<?=$tarefa->getId()?>" data-toggle="tooltip" data-placement="top" title="Adicionar Relatório" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></a>
+					    	<?php
+					    		}else{
+					    	?>
+					    			<a href="consultoria_relatorio.php?id=<?=$relatorio->getId()?>" data-toggle="tooltip" data-placement="top" title="Ver Relatório" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>
+					    		
+					    	<?php
+					    	}
+					    	?>
+					     					     		
+					     		<a href="../remove/remove_tarefa.php?id=<?=$tarefa->getId()?>" data-toggle="tooltip" data-placement="top" title="Remover Tarefa" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
 					    	</td>
 					    </tr> 
 						<?php  
@@ -200,6 +235,9 @@
 						?>
 					 </tbody>
 					</table>
+			<?php
+				}
+			?>
 
 					<div class="text-center">
 					  <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-danger    btn-block "  href="tarefa_form.php?id=<?=$departamentoContrato->getId()?>"><strong>NOVA TAREFA</strong></a>
@@ -240,7 +278,7 @@ $(".datatable").each( function() {
     hideIdentifier: true,
     columns:{
       identifier:[0, "id"],
-      editable:[[2, 'horas'], [3, 'data_fim'], [4, 'status', '{"1": "Não Iniciada", "2": "Iniciada", "3": "Em Andamento", "4": "Em Conclusão", "5": "Concluída" }'], [5, 'consultor', jsonConsultores ]]
+      editable:[[1, 'descricao'], [2, 'horas'], [3, 'data_fim'], [4, 'status', '{"1": "Não Iniciada", "2": "Iniciada", "3": "Em Andamento", "4": "Em Conclusão", "5": "Concluída" }'], [5, 'consultor', jsonConsultores ]]
     }
   });
 });

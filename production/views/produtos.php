@@ -14,7 +14,7 @@ require_once "../dao/ProdutoDao.php";
 	p{
 		color: #6d747e;
 		  font-family: 'Open Sans', sans-serif;
-		  font-size: 16px;
+		  font-size: 14px;
 		  line-height: 1.5em;
 		  text-align: justify;
 		      text-justify: inter-word;
@@ -50,7 +50,6 @@ require_once "../dao/ProdutoDao.php";
 
 <div class="row">
 	<div class="col-sm-12">
-		<a href="#" class="nav-tabs-dropdown btn btn-block btn-primary">Produtos</a>
 		<ul id="nav-tabs-wrapper" class="nav nav-tabs nav-tabs-horizontal">
 			<li class="active"><a href="#htab1" data-toggle="tab">Mapeamento</a></li>
 			<li><a href="#htab2" data-toggle="tab">Auditoria</a></li>

@@ -6,5 +6,5 @@
 	$recebimentoDao = new RecebimentoDao($conexao);
 	$recebimento = $recebimentoDao->buscaRecebimento($id);
 	$recebimentoDao->remove($recebimento);
-	header("Location: ../views/transacoes.php");
+	header("Location: ../views/financeiro_transacoes.php");
 ?>

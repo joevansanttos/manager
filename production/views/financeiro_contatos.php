@@ -75,6 +75,7 @@
              <th>Estado</th>
              <th>Cidade</th>
              <th>Telefone</th>
+             <th>Ações</th>
            </tr>
          </thead>
          <tbody>
@@ -88,7 +89,11 @@
                <td><?=$c->getEmail() ?></td>
                <td><?=$c->getEstado() ?></td>                      
                <td><?=$cidade?></td>
-               <td><?=$c->getTel() ?></td>          
+               <td><?=$c->getTel() ?></td>
+               <td align="center">
+                 <a href="financeiro_contato_cliente_altera.php?id=<?=$c->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Altera Fornecedor" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                 <a  href="../remove/remove_contato_cliente.php?id=<?=$c->getId()?>" class="delete" data-toggle="tooltip" data-placement="top" title="Remover Fornecedor"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+               </td>          
              </tr>
              <?php
            endforeach
@@ -97,7 +102,7 @@
         </table>
         <br>
         <div class="text-center">
-          <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary btn-block "  href="contato_cliente_form.php"><strong>NOVO CONTATO DE UM CLIENTE</strong></a>
+          <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary btn-block "  href="financeiro_contato_cliente_form.php"><strong>NOVO CONTATO DE UM CLIENTE</strong></a>
         </div>
       </div>
       <!-- END TAB CLIENTE-->

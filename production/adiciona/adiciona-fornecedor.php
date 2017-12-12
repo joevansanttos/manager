@@ -6,5 +6,5 @@
 	$fornecedor = $factory->criaFornecedor($_POST);
 	$fornecedorDao = new FornecedorDao($conexao);
 	$fornecedor = $fornecedorDao->insereFornecedor($fornecedor);
-	header("Location: ../views/fornecedores.php");
+	header("Location: ../views/financeiro_fornecedores.php");
 ?>

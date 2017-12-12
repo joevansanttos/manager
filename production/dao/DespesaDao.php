@@ -1,6 +1,7 @@
 <?php
 	require_once "../factory/DespesaFactory.php";
 	require_once "../factory/AtividadeFactory.php";
+		require_once "../factory/CustoFactory.php";
 
 	class DespesaDao{
 		private $conexao;
@@ -51,6 +52,23 @@
 				$m = date("m",strtotime($despesa->getData()));
 				if( $m == $mes){
 					$valor = $valor + $despesa->getValor();
+
+				}
+			}
+
+			$custos = array();			
+			$resultado = mysqli_query($this->conexao->conecta(), "select * from custos");
+			while($custo_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new CustoFactory();
+				$custo_id = $custo_array['id'];				
+				$custo = $factory->cria($custo_array);
+				$custo->setId($custo_id);
+				array_push($custos, $custo);
+			}
+			foreach ($custos as $custo) {
+				$m = date("m",strtotime($custo->getData()));
+				if( $m == $mes){
+					$valor = $valor + $custo->getValor();
 
 				}
 			}

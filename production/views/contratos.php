@@ -53,7 +53,12 @@
 
     <?php
     	$contratoDao = new ContratoDao($conexao);
-    	$contratos = $contratoDao->listaTodosContratos();
+      if($usuario_id == 1){
+        $contratos = $contratoDao->listaTodosContratos();
+      }else{
+         $contratos = $contratoDao->listaContratos($usuario_id);
+      }
+    	
       foreach ($contratos as $contrato): 
       	$market = $contrato->getMarket();
         $novoInicio = date("d-m-Y", strtotime($contrato->getInicio()));
