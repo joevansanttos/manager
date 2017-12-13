@@ -8,12 +8,10 @@ if(isset($_POST["start"], $_POST["end"])) {
 
   $output .= ' 
   <ul id="myTab" class="nav-tabs-wrapper nav nav-tabs nav-tabs-horizontal" role="tablist">
-  <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Recebimentos</a>
+  <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Receitas</a>
   </li>
   <li role="presentation"><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Despesas</a>
-  </li>   
-  <li role="presentation"><a href="#tab_content3" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Colaboradores</a>
-  </li>                                    
+  </li>                                     
   </ul>
   <br>
   <div id="myTabContent" class="tab-content">';
@@ -67,7 +65,7 @@ if(isset($_POST["start"], $_POST["end"])) {
   </tbody>
   </table>
   <div class="text-center">
-  <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary    btn-block "  href="recebimento-formulario.php?"><strong>NOVO RECEBIMENTO</strong></a>
+  <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary    btn-block "  href="recebimento-formulario.php?"><strong>NOVA RECEITA</strong></a>
   </div>
   </div>'
   ;
@@ -79,7 +77,7 @@ if(isset($_POST["start"], $_POST["end"])) {
   <tr>
   <th>DATA</th>
   <th>DESCRIÇÃO</th>
-  <th>RECEBIDO DE</th>
+  <th>PAGO A</th>
   <th>FILIAL</th>
   <th>VALOR</th>
   <th>CATEGORIA</th>
@@ -126,62 +124,6 @@ if(isset($_POST["start"], $_POST["end"])) {
   <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-danger  btn-block "  href="despesa-formulario.php?"><strong>NOVA DESPESA</strong></a>
   </div>
   </div>';
-
-  $output .= ' 
-  <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-  <table id="despesa" class="table datatable">
-  <thead>
-  <tr>
-  <th>DATA</th>
-  <th>DESCRIÇÃO</th>
-  <th>DESPESA DE</th>
-  <th>FILIAL</th>
-  <th>VALOR</th>
-  <th>CATEGORIA</th>
-  <th>PAGAMENTO</th>
-  <th>PAGO?</th>
-  <th style="width:11%;">AÇÕES</th>
-  </tr>                                  
-  </thead>
-  <tbody>
-  ';  
-
-  $custoDao = new CustoDao($conexao);
-  $custos = $custoDao->listaNovosCustos($_POST['start'], $_POST['end']);
-  foreach ($custos as $custo){
-    $novaData = date("d-m-Y", strtotime($custo->getData()));
-    if( $custo->getPago()->getId() == 2){
-      $pago = 'times';
-    }else{
-      $pago = 'check';
-    }
-    $output .= '
-    <tr>
-    <td>' . $novaData . '</td>
-    <td>' .$custo->getDescricao(). '</td>
-    <td>' .$custo->getUsuario()->getNome(). '</td>
-    <td>' .$custo->getFilial()->getNome(). '</td>
-    <td> R$' . $custo->getValor(). '</td>
-    <td>' .$custo->getCategoria()->getDescricao(). '</td>
-    <td>' .$custo->getPagamento()->getDescricao(). '</td>
-    <td> <i class="fa fa-' . $pago . '" aria-hidden="true"></i> </td>
-    <td>
-    <a href="custo-detalhes.php?id=' .$custo->getId(). '"><button data-toggle="tooltip" data-placement="top" title="Ver Despesa" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
-    <a href="financeiro_custo_altera.php?id=' .$custo->getId(). '"><button data-toggle="tooltip" data-placement="top" title="Alterar Despesa" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-    <a  href="../remove/remove-custo.php?id=' .$custo->getId(). '" class="delete" data-toggle="tooltip" data-placement="top" title="Remover Despesa"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-    </td>
-    </tr>
-    ';
-  }
-
-  $output .= '
-  </tbody>
-  </table>
-  <div class="text-center">
-  <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-warning btn-block "  href="financeiro_custo_form.php?"><strong>NOVA DESPESA DE COLABORADOR</strong></a>
-  </div>
-  </div>';
-
 
 
   $output .= '

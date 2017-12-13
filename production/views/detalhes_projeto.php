@@ -125,12 +125,12 @@
 					<table id="<?=$id?>" class="table table-bordered table-striped datatable">
 					 <thead>
 					 	<th class="hide"></th>
-					  <th  class="col-md-3">Descrição</th>
+					  <th  class="col-md-5">Descrição</th>
 					  <th class="col-md-1" >Horas</th>
 					  <th class="col-md-1">Data</th>
 					  <th class="col-md-2">Status</th>
 					  <th  class="col-md-2">Consultor</th>
-					  <th style="width: 12%;">Ações</th>
+					  <th class="col-md-1">Ações</th>
 					 </thead>
 					 <tbody>
 						<?php
@@ -193,12 +193,12 @@
 					<table id="<?=$id?>" class="table table-bordered table-striped datatable">
 					 <thead>
 					 	<th class="hide"></th>
-					  <th  class="col-md-3">Descrição</th>
+					  <th  class="col-md-5">Descrição</th>
 					  <th class="col-md-1" >Horas</th>
 					  <th class="col-md-1">Data</th>
 					  <th class="col-md-2">Status</th>
 					  <th  class="col-md-2">Consultor</th>
-					  <th style="width: 12%;">Ações</th>
+					  <th class="col-md-1">Ações</th>
 					 </thead>
 					 <tbody>
 						<?php

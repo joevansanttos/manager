@@ -53,7 +53,7 @@
    <tbody>
     <?php
       $contratoDao = new ContratoDao($conexao);
-      if($usuario_id == 1){
+      if($usuario_id == 1 || $usuario->getProfissao()->getId() == 3){
         $contratos = $contratoDao->listaContratosMapeamento(); 
       }else{
         $contratos = $contratoDao->listaProjetosMapeamento($usuario_id); 

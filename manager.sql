@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12-Dez-2017 às 17:12
+-- Generation Time: 13-Dez-2017 às 15:30
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -136,8 +136,8 @@ CREATE TABLE `categorias_recebimento` (
 --
 
 INSERT INTO `categorias_recebimento` (`id`, `descricao`) VALUES
-(1, 'Vendas'),
-(2, 'Mensalidade');
+(1, 'Contrato'),
+(2, 'Projeto');
 
 -- --------------------------------------------------------
 
@@ -5773,12 +5773,11 @@ CREATE TABLE `consultor_projeto` (
 --
 
 INSERT INTO `consultor_projeto` (`id`, `contrato_id`, `consultor_id`) VALUES
-(14, 2, 8),
-(15, 2, 9),
-(16, 2, 12),
 (22, 7, 8),
 (23, 7, 9),
-(24, 7, 12);
+(24, 7, 12),
+(25, 2, 8),
+(26, 2, 12);
 
 -- --------------------------------------------------------
 
@@ -6306,7 +6305,8 @@ CREATE TABLE `planejamentos` (
 --
 
 INSERT INTO `planejamentos` (`id`, `ano`) VALUES
-(2, '2018');
+(2, '2018'),
+(3, '2017');
 
 -- --------------------------------------------------------
 
@@ -6332,7 +6332,7 @@ CREATE TABLE `planejamento_despesas` (
 --
 
 INSERT INTO `planejamento_despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `doc`, `filial_id`, `planejamento_id`) VALUES
-(12, 58, '2018-02-01', 'Conta de Luz ', '100.00', 3, 1, '', 1, 2);
+(12, 59, '2018-02-01', 'Conta de Luz 2', '100.00', 4, 1, '', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -6483,7 +6483,9 @@ CREATE TABLE `recebimentos` (
 --
 
 INSERT INTO `recebimentos` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`) VALUES
-(3, 22, '2017-11-06', 'HONORÁRIOS DE AUDITORIA', '1405.00', 2, 1, 1, '', 1);
+(3, 22, '2017-11-06', 'HONORÁRIOS DE AUDITORIA', '1405.00', 2, 1, 1, '', 1),
+(4, 1, '2018-10-01', 'Teste', '1000.00', 1, 1, 2, '', 1),
+(5, 31, '2018-10-01', 'Salário Mensal', '1000.00', 1, 1, 2, '', 1);
 
 -- --------------------------------------------------------
 
@@ -6504,7 +6506,7 @@ CREATE TABLE `relatorios` (
 --
 
 INSERT INTO `relatorios` (`id`, `descricao`, `tarefa_id`, `data`, `usuario_id`) VALUES
-(28, 'Teste dsdsddsds', 10, '12.12.17', 9);
+(29, 'Testando ddsdsds fffffffffffffffffffffff', 1, '13.12.17', 1);
 
 -- --------------------------------------------------------
 
@@ -6667,6 +6669,14 @@ CREATE TABLE `tarefas` (
   `status_atividade_id` int(11) DEFAULT NULL,
   `usuario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tarefas`
+--
+
+INSERT INTO `tarefas` (`id`, `departamento_contrato_id`, `fim`, `descricao`, `horas`, `status_atividade_id`, `usuario_id`) VALUES
+(1, 37, NULL, 'Desenvolver Sistema ddddddddddddddddd', NULL, 1, 1),
+(2, 38, NULL, 'Salário Mensal', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -6983,17 +6993,17 @@ ALTER TABLE `cidade`
 -- AUTO_INCREMENT for table `consultor_projeto`
 --
 ALTER TABLE `consultor_projeto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `contato_cliente`
 --
 ALTER TABLE `contato_cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `contato_fornecedor`
 --
 ALTER TABLE `contato_fornecedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `curriculos`
 --
@@ -7028,7 +7038,7 @@ ALTER TABLE `filiais`
 -- AUTO_INCREMENT for table `fornecedores`
 --
 ALTER TABLE `fornecedores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT for table `historico`
 --
@@ -7063,7 +7073,7 @@ ALTER TABLE `pago`
 -- AUTO_INCREMENT for table `planejamentos`
 --
 ALTER TABLE `planejamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `planejamento_despesas`
 --
@@ -7073,7 +7083,7 @@ ALTER TABLE `planejamento_despesas`
 -- AUTO_INCREMENT for table `planejamento_receita`
 --
 ALTER TABLE `planejamento_receita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `porte`
 --
@@ -7098,12 +7108,12 @@ ALTER TABLE `prospects`
 -- AUTO_INCREMENT for table `recebimentos`
 --
 ALTER TABLE `recebimentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `relatorios`
 --
 ALTER TABLE `relatorios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `socios`
 --
@@ -7138,7 +7148,7 @@ ALTER TABLE `suspects`
 -- AUTO_INCREMENT for table `tarefas`
 --
 ALTER TABLE `tarefas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --

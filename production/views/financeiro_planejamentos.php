@@ -22,7 +22,7 @@
 <?php require "../views/body.php";  ?>
 
 <div class="x_title">
-  <h2>Planejamentos Financeiros<small>Lista de Planejamentos Financeiros Cadastrados</small></h2>
+  <h2>Planejamento</h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>
@@ -55,13 +55,13 @@
         foreach ($planejamentos as $planejamento): 
       ?>
         <tr>
-          <td>Projek</td>
+          <td>PROJEK</td>
           <td><?=$planejamento->getAno()?></td>         
           <td align="center">
             <a href="financeiro_plan_receita_form.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Nova Receita à Planejamento" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
             <a href="financeiro_plan_despesa_form.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Nova Despesa à Planejamento" class="btn btn-danger btn-xs"><i class="fa fa-plus"></i></button></a>
             <a href="financeiro_planejamento.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Planejamento" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
-            <a href="financeiro_plan_altera.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Alterar Suspect" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+            <a href="financeiro_plan_altera.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Alterar Planejamento" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
           </td>
         </tr>
       <?php

@@ -9,8 +9,8 @@
 	$relatorio->setId($id);
 	$relatorioDao = new RelatorioDao($conexao);
 	$relatorioDao->atualiza($relatorio);
-	$id = $relatorio->getTarefaContrato()->getDepartamentoContrato()->getContrato()->getNumero();
-	header("Location: ../views/detalhes-projeto.php?id=$id");  	
+	$id = $relatorio->getTarefa()->getDepartamentoContrato()->getContrato()->getNumero();
+	header("Location: ../views/detalhes_projeto.php?id=$id");  	
 
 
 ?>

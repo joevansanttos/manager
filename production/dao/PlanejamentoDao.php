@@ -2,6 +2,8 @@
 require_once "../factory/PlanejamentoFactory.php";
 require_once "../factory/PlanejamentoReceitaFactory.php";
 require_once "../factory/PlanejamentoDespesaFactory.php";
+require_once "../factory/RecebimentoFactory.php";
+require_once "../factory/DespesaFactory.php";
 
 
 class PlanejamentoDao{
@@ -45,9 +47,9 @@ class PlanejamentoDao{
 		}
 	}
 
-	function calculaReceitas() {
+	function calculaReceitas($id) {
 		$recebimentos = array();			
-		$resultado = mysqli_query($this->conexao->conecta(), "select * from planejamento_receita");
+		$resultado = mysqli_query($this->conexao->conecta(), "select * from planejamento_receita where planejamento_id = $id");
 		while($recebimento_array = mysqli_fetch_assoc($resultado)) {
 			$factory = new PlanejamentoReceitaFactory();
 			$recebimento_id = $recebimento_array['id'];				
@@ -66,7 +68,6 @@ class PlanejamentoDao{
 		$receitas[13] = 0;
 		foreach ($recebimentos as $recebimento) {
 			$int = idate('m', strtotime($recebimento->getData()));
-			$int = idate('m', $m);
 			$receitas[$int] = $receitas[$m] + $recebimento->getValor();
 			$receitas[13] = $receitas[13] + $recebimento->getValor();
 		}
@@ -74,9 +75,9 @@ class PlanejamentoDao{
 	}
 
 
-	function calculaDespesas() {
+	function calculaDespesas($id) {
 		$recebimentos = array();			
-		$resultado = mysqli_query($this->conexao->conecta(), "select * from planejamento_despesas");
+		$resultado = mysqli_query($this->conexao->conecta(), "select * from planejamento_despesas where planejamento_id = $id");
 		while($recebimento_array = mysqli_fetch_assoc($resultado)) {
 			$factory = new PlanejamentoDespesaFactory();
 			$recebimento_id = $recebimento_array['id'];				
@@ -101,6 +102,104 @@ class PlanejamentoDao{
 
 
 		return $despesas;
+	}
+
+	function calculaLucro($id) {
+		$lucro = array();			
+		$despesas = $this->calculaDespesas($id);
+		$receitas = $this->calculaReceitas($id);
+
+		for ($i=1; $i < 14 ; $i++) { 
+			$lucro['valor'][$i] = $receitas[$i] - $despesas[$i];
+			if($lucro['valor'][$i] == 0){
+				$lucro['class'][$i] = 'default';
+			}elseif($lucro['valor'][$i] > 0){
+				$lucro['class'][$i] = 'success';
+			}else{
+				$lucro['class'][$i] = 'danger';
+			}
+		}
+		return $lucro;
+	}
+
+	function calculaRecebimentos($ano) {
+		$recebimentos = array();			
+		$resultado = mysqli_query($this->conexao->conecta(), "select * from recebimentos");
+		while($recebimento_array = mysqli_fetch_assoc($resultado)) {
+			$factory = new RecebimentoFactory();
+			$recebimento_id = $recebimento_array['id'];				
+			$recebimento = $factory->criaRecebimento($recebimento_array);
+			$recebimento->setId($recebimento_id);
+			$year = date("Y", strtotime($recebimento->getData()));
+			if($year == $ano){
+				array_push($recebimentos, $recebimento);
+			}
+			
+		}
+
+		$receitas = [];
+		$i = 1;
+		while ( $i <= 12) {
+			$receitas[$i] = 0;
+			$i++;
+		}
+
+		$receitas[13] = 0;
+		foreach ($recebimentos as $recebimento) {
+			$int = idate('m', strtotime($recebimento->getData()));
+			$receitas[$int] = $receitas[$m] + $recebimento->getValor();
+			$receitas[13] = $receitas[13] + $recebimento->getValor();
+		}
+		return $receitas;
+	}
+
+	function calculaDespesasAtuais($ano) {
+		$recebimentos = array();			
+		$resultado = mysqli_query($this->conexao->conecta(), "select * from despesas");
+		while($recebimento_array = mysqli_fetch_assoc($resultado)) {
+			$factory = new DespesaFactory();
+			$recebimento_id = $recebimento_array['id'];				
+			$recebimento = $factory->criaDespesa($recebimento_array);
+			$recebimento->setId($recebimento_id);
+			$year = date("Y", strtotime($recebimento->getData()));
+			if($year == $ano){
+				array_push($recebimentos, $recebimento);
+			}
+			
+		}
+
+		$receitas = [];
+		$i = 1;
+		while ( $i <= 12) {
+			$receitas[$i] = 0;
+			$i++;
+		}
+
+		$receitas[13] = 0;
+		foreach ($recebimentos as $recebimento) {
+			$int = idate('m', strtotime($recebimento->getData()));
+			$receitas[$int] = $receitas[$m] + $recebimento->getValor();
+			$receitas[13] = $receitas[13] + $recebimento->getValor();
+		}
+		return $receitas;
+	}
+
+	function calculaLucroAtual($ano) {
+		$lucro = array();			
+		$despesas = $this->calculaDespesasAtuais($ano);
+		$receitas = $this->calculaRecebimentos($ano);
+
+		for ($i=1; $i < 14 ; $i++) { 
+			$lucro['valor'][$i] = $receitas[$i] - $despesas[$i];
+			if($lucro['valor'][$i] == 0){
+				$lucro['class'][$i] = 'default';
+			}elseif($lucro['valor'][$i] > 0){
+				$lucro['class'][$i] = 'success';
+			}else{
+				$lucro['class'][$i] = 'danger';
+			}
+		}
+		return $lucro;
 	}
 	
 }

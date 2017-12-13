@@ -39,16 +39,16 @@
 <div style="padding: 1cm;">
   <h2 style="text-align: center;">Relatório da Atividade</h2>
     <div class="ln_solid"></div>
+    <a class="btn btn-default pull-right" data-toggle="tooltip" data-placement="top" title="Altera Relatório" href="consultoria_relatorio_altera.php?id=<?=$id?>"><i class="fa fa-pencil"></i></a>
     <p>Consultor: <?=$relatorio->getUsuario()->getNome() . ' ' . $relatorio->getUsuario()->getSobrenome() ?></p>
     <p>Data: <?=$relatorio->getData()?></p>
     <p>Cliente: <?=$relatorio->getTarefa()->getDepartamentoContrato()->getContrato()->getMarket()->getNome() ?></p>
     <p>Departamento: <?=$relatorio->getTarefa()->getDepartamentoContrato()->getDepartamento()->getDescricao() ?></p>
     <p>Atividade: <?=$relatorio->getTarefa()->getDescricao() ?></p>
     <p>Observação do Consultor: <?=$relatorio->getDescricao() ?></p>
-
   <br>
- 
 </div>
+
 
 		    	
 

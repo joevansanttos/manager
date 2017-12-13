@@ -66,6 +66,9 @@
       <!-- TAB CLIENTE-->
       <div role="tabpanel" class="tab-pane fade in active" id="htab1">
         <br>
+      <?php
+      if($contatosClientes != null){
+      ?>
         <table  class="table table-bordered">
          <thead>
            <tr>
@@ -100,6 +103,9 @@
            ?>
          </tbody>      
         </table>
+      <?php
+      }
+      ?>
         <br>
         <div class="text-center">
           <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary btn-block "  href="financeiro_contato_cliente_form.php"><strong>NOVO CONTATO DE UM CLIENTE</strong></a>
@@ -110,37 +116,49 @@
       <!-- TAB FORNECEDOR-->
       <div role="tabpanel" class="tab-pane fade" id="htab2">
         <br>
-        <table  class="table table-bordered">
-         <thead>
-           <tr>
-             <th>Nome</th>
-             <th>Fornecedor</th>
-             <th>Email</th>
-             <th>Estado</th>
-             <th>Cidade</th>
-             <th>Telefone</th>
-           </tr>
-         </thead>
-         <tbody>
-           <?php
-           foreach ($contatosFornecedores as $f):
-             $cidade = $usuarioDao->buscaCidade($f->getCidade() );                               
-             ?>
+        <?php
+        if($contatosFornecedores != null){
+        ?>
+          <table  class="table table-bordered">
+           <thead>
              <tr>
-               <td><?=$f->getNome()?></td>
-               <td><?=$f->getFornecedor()->getNome()?></td>
-               <td><?=$f->getEmail() ?></td>
-               <td><?=$f->getEstado() ?></td>                      
-               <td><?=$cidade?></td>
-               <td><?=$f->getTel() ?></td>          
+               <th>Nome</th>
+               <th>Fornecedor</th>
+               <th>Email</th>
+               <th>Estado</th>
+               <th>Cidade</th>
+               <th>Telefone</th>
+               <th>Ações</th>
              </tr>
+           </thead>
+           <tbody>
              <?php
-           endforeach
-           ?>
-         </tbody>      
-        </table>
+             foreach ($contatosFornecedores as $f):
+               $cidade = $usuarioDao->buscaCidade($f->getCidade() );                               
+               ?>
+               <tr>
+                 <td><?=$f->getNome()?></td>
+                 <td><?=$f->getFornecedor()->getNome()?></td>
+                 <td><?=$f->getEmail() ?></td>
+                 <td><?=$f->getEstado() ?></td>                      
+                 <td><?=$cidade?></td>
+                 <td><?=$f->getTel() ?></td>
+                 <td align="center">
+                   <a href="financeiro_contato_fornecedor_altera.php?id=<?=$f->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Alterar Contato de Fornecedor" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                   <a  href="../remove/remove_contato_fornecedor.php?id=<?=$f->getId()?>" class="delete" data-toggle="tooltip" data-placement="top" title="Remover Contato de Fornecedor"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                 </td>           
+               </tr>
+               <?php
+             endforeach
+             ?>
+           </tbody>      
+          </table>
+        <?php
+        }
+        ?>
+        
         <div class="text-center">
-          <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary btn-block "  href="contato_fornecedor_form.php"><strong>NOVO CONTATO DE UM FORNECEDOR</strong></a>
+          <a style="justify-content: center;" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary btn-block "  href="financeiro_contato_fornecedor_form.php"><strong>NOVO CONTATO DE UM FORNECEDOR</strong></a>
         </div>
       </div>
       <!-- END TAB FORNECEDOR-->

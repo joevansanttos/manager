@@ -33,6 +33,35 @@
 			return $contatos;
 		}
 
+		function busca($id) {
+			$query = "select * from contato_fornecedor where id = {$id}";
+			$resultado = mysqli_query($this->conexao->conecta(), $query);
+			$fornecedor_buscado = mysqli_fetch_assoc($resultado);
+			$id = $fornecedor_buscado['id'];
+			$factory = new ContatoFornecedorFactory();
+			$fornecedor = $factory->cria($fornecedor_buscado);
+			$fornecedor->setId($id);
+			return $fornecedor;
+		}
+
+		function atualiza(ContatoFornecedor $contatoCliente) {
+			$query = "update contato_fornecedor  set nome = '{$contatoCliente->getNome()}', endereco = '{$contatoCliente->getEndereco()}', estado = '{$contatoCliente->getEstado()}', cidade = '{$contatoCliente->getCidade()}', tel = '{$contatoCliente->getTel()}', cpf = '{$contatoCliente->getCpf()}', fornecedor_id = '{$contatoCliente->getFornecedor()->getId()}', email = '{$contatoCliente->getEmail()}' where id = '{$contatoCliente->getId()}'";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
+		function remove(ContatoFornecedor $contato){
+			$query = "delete from contato_fornecedor where id = {$contato->getId()}";
+			if(mysqli_query($this->conexao->conecta(), $query)){
+
+			}else{
+				echo mysqli_error($this->conexao->conecta());
+			}
+		}
+
 
 
 	}
