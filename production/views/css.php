@@ -1,9 +1,10 @@
 </head>
 <body class="nav-md">
   <div class="container body">
-    <div class="main_container">
+    <div class="main_container"> 
       <!-- Sidebar-->      
       <div class="col-md-3 left_col">
+        
         <div class="left_col scroll-view">
           
           <div class="navbar nav_title" style="border: 0;">
@@ -74,8 +75,8 @@
                 <li><a><i class="fa fa-cart-plus"></i> Produtos<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="produtos.php">Nossos Produtos</a></li>
-                    <li><a href="tabela_produtos.php">Tabela de Produtos</a></li>
-                    <li><a href="tabela_produtos_partner.php">Tabela de Produtos - Partner</a></li>
+                    <li><a href="tabela_produtos.php">Tabela de Valores</a></li>
+                    <li><a href="tabela_produtos_partner.php">Tabela de Valores - Partner</a></li>
                   </ul>
                 </li>                  
                 <li><a><i class="fa fa-briefcase"></i> Negócios <span class="fa fa-chevron-down"></span></a>

@@ -42,7 +42,7 @@
 				$contrato = $factory->criaContrato($contrato_array);
 				array_push($contratos, $contrato);
 			}
-			
+
 			return $contratos;
 		}
 

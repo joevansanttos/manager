@@ -21,9 +21,9 @@
      }
   }
 
-  if(($data_fim= mysqli_real_escape_string($conexao->conecta(), $input["data_fim"])) != NULL){
+  if(($data= mysqli_real_escape_string($conexao->conecta(), $input["data"])) != NULL){
      if($input["action"] === 'edit'){
-       $query = "  UPDATE tarefas  SET  data_fim = '".$data_fim."' WHERE id = '".$input["id"]."' ";
+       $query = "  UPDATE tarefas  SET  data = '".$data."' WHERE id = '".$input["id"]."' ";
        mysqli_query($conexao->conecta(), $query);
       mysqli_close($conexao);
      }

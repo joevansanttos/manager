@@ -45,7 +45,7 @@
     	<th>Número do Contrato</th>
       <th>Inicio</th>
       <th>Fim</th>
-      <th>Status do Contrato</th>				    		     
+      <th class="col-md-2">Status do Contrato</th>				    		     
       <th class="col-md-1">Ações</th>				     
     </tr>
   </thead>
@@ -70,10 +70,26 @@
         <td><?=str_pad($contrato->getNumero(), 3, '0', STR_PAD_LEFT).'.2017'?></td>
         <td><?=$novoInicio?></td>
         <td><?=$novoFim?></td>
-        <td><?=$contrato->getStatusContrato()->getDescricao()?></td>			    		        
+        <td align="center">
+          <?php
+            if($contrato->getStatusContrato()->getId() == 1){
+              $button = 'primary';
+              $icon = '  fa-hourglass-o ';
+            }else if($contrato->getStatusContrato()->getId() == 2){
+              $button = 'danger';
+              $icon = ' fa-thumbs-down';
+            }else{
+              $button = 'success';
+              $icon = ' fa-thumbs-up';
+            }  
+            $texto = $contrato->getStatusContrato()->getDescricao();  
+          ?>
+              <button style="text-transform: uppercase;" type="button" class="btn btn-<?=$button?> col-md-12 btn-xs" data-toggle="tooltip" data-placement="top" title="<?=$texto?>"><?=$texto?></button>            
+          
+        </td>			    		        
         <td align="center">
                      
-          <a href="../imprime/imprime-contrato.php?id=<?=$contrato->getNumero()?>"><button data-toggle="tooltip" data-placement="top" title="Imprime Contrato"  class="btn btn-success btn-xs"><i class="fa fa-print"></i></button></a>                                                          
+          <a href="../imprime/imprime-contrato.php?id=<?=$contrato->getNumero()?>"><button data-toggle="tooltip" data-placement="top" title="Imprimir Contrato"  class="btn btn-success btn-xs"><i class="fa fa-print"></i></button></a>                                                          
           <a  href="../remove/remove-contrato.php?id=<?=$contrato->getNumero()?>" data-toggle="tooltip" data-placement="top" title="Remover Contrato"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
         </td>
       </tr>

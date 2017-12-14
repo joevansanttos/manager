@@ -13,8 +13,7 @@ require_once "../dao/ProdutoDao.php";
 <style type="text/css">
 	p{
 		color: #6d747e;
-		  font-family: 'Open Sans', sans-serif;
-		  font-size: 14px;
+		  font-size: 11pt;
 		  line-height: 1.5em;
 		  text-align: justify;
 		      text-justify: inter-word;
@@ -57,20 +56,26 @@ require_once "../dao/ProdutoDao.php";
 		</ul>
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade in active" id="htab1">
+				<br>
 				<h3>Mapeamento de Processos</h3>
+				<br>
 				<p>A metodologia BPM identifica os processos do cliente e define prioridades de abordagem. Para cada processo estudado são identificados gargalos, indicadores e apontadas melhorias. As normas e procedimentos da organização são também revisados e adequados aos processos modificados.</p>
 				<p>Simplificação organizacional,  Aumento do desempenho dos processos,Otimização das equipes de negócio, Redução dos custos, Padronização dos processos</p>
 				<p>Relatório de Procedimentos Internos, Fluxogramas de processos, Checklist de processos, Relatório de Não Conformidades, Relatórios de Ações preventivas/corretivas</p>
 				
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="htab2">
+					<br>
 					<h3>Auditoria de Processos</h3>
+					<br>
 					<p>A metodologia de auditoria é um instrumento gerencial utilizado para avaliar as ações da qualidade. É um processo de auxílio à prevenção de problemas, um exame sistemático e independente para determinar se as atividades da qualidade cumprem as providências planejadas e se essas providências são implementadas de maneira eficaz, e se são adequadas para atingir os objetivos.</p>
 					<p>Assegurar que todos os controles estão sendo executados, Apurar as responsabilidades por eventuais omissões na realização das transações da empresa</p>
 					<p>Relatórios de auditoria, Análise de riscos, Checklist de processos,Relatório de não conformidades, Relatórios de ações preventivas/corretivas</p>
 			</div>
 			<div role="tabpanel" class="tab-pane fade in" id="htab3">
+					<br>
 					<h3>Universidade Corporativa</h3>
+					<br>
 					<p>Através de uma plataforma de estudo online, realizamos toda a Gestão do Conhecimento para promover as necessidades de aprendizado de cada empresa de forma eficiente e bem estruturada.</p>
 			</div>
 			</div>

@@ -18,10 +18,11 @@ class TarefaFactory {
 		$statusAtividadeDao = new StatusAtividadeDao($conexao);
 		$statusAtividade = $statusAtividadeDao->buscaStatusAtividade($status_atividade_id);	
 		$usuario_id = $params["usuario_id"];
+		$data = $params["data"];
 		$usuarioDao = new UsuarioDao($conexao);
 		$usuario = $usuarioDao->buscaUsuario($usuario_id);
 
-		return new Tarefa($departamentoContrato, $horas,  $fim, $descricao, $statusAtividade, $usuario);
+		return new Tarefa($departamentoContrato, $horas,  $fim, $descricao, $statusAtividade, $usuario, $data);
 	}	
 
 }

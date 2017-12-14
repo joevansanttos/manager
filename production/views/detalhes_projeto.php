@@ -35,7 +35,7 @@
 <?php require "../views/body.php";  ?>
 
 <div class="x_title">
-  <h2>Cronograma do Projeto</h2>
+  <h2>CRONOGRAMA DO PROJETO <?=$contrato->getMarket()->getNome()?></h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>
@@ -141,7 +141,7 @@
 					    	<td class="hide"> <?=$tarefa->getId()?></td>
 					     	<td><?=$tarefa->getDescricao()?></td> 
 					     	<td><?=$tarefa->getHoras()?></td>
-					     	<td><?=$tarefa->getFim()?></td>
+					     	<td><?=$tarefa->getData()?></td>
 					     	<td><?=$statusAtividade->getDescricao()?></td>
 					     	<td><?=$tarefa->getUsuario()->getNome() . ' ' . $tarefa->getUsuario()->getSobrenome()?></td>
 					     	<td align="center">
@@ -209,7 +209,7 @@
 					    	<td class="hide"> <?=$tarefa->getId()?></td>
 					     	<td><?=$tarefa->getDescricao()?></td> 
 					     	<td><?=$tarefa->getHoras()?></td>
-					     	<td><?=$tarefa->getFim()?></td>
+					     	<td><?=$tarefa->getData()?></td>
 					     	<td><?=$statusAtividade->getDescricao()?></td>
 					     	<td><?=$tarefa->getUsuario()->getNome() . ' ' . $tarefa->getUsuario()->getSobrenome()?></td>
 					     	<td align="center">
@@ -278,7 +278,7 @@ $(".datatable").each( function() {
     hideIdentifier: true,
     columns:{
       identifier:[0, "id"],
-      editable:[[1, 'descricao'], [2, 'horas'], [3, 'data_fim'], [4, 'status', '{"1": "Não Iniciada", "2": "Iniciada", "3": "Em Andamento", "4": "Em Conclusão", "5": "Concluída" }'], [5, 'consultor', jsonConsultores ]]
+      editable:[[1, 'descricao'], [2, 'horas'], [3, 'data'], [4, 'status', '{"1": "Não Iniciada", "2": "Iniciada", "3": "Em Andamento", "4": "Em Conclusão", "5": "Concluída" }'], [5, 'consultor', jsonConsultores ]]
     }
   });
 });

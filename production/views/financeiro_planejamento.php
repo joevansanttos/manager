@@ -76,8 +76,8 @@
 <div class="x_content"> 		
 
   <div class="tabbable-panel">
-    <div class="tabbable-line">
-      <ul class="nav nav-tabs ">
+    <div class="tabbable-line " >
+      <ul  class="nav nav-tabs ">
           <li class="active">
             <a href="#principal" data-toggle="tab">
            Orçamento </a>
@@ -87,16 +87,20 @@
            Resultado Atual</a>
           </li>
           <li>
-            <a href="#grafico_resultado" data-toggle="tab">
-           Gráfico do Resultado Atual</a>
+            <a href="#grafico_receitas" data-toggle="tab">
+           Comparação entre Receitas</a>
+          </li>
+          <li>
+            <a href="#grafico_despesas" data-toggle="tab">
+           Comparação entre Despesas</a>
           </li>
           <li>
             <a href="#tabela_orçamento" data-toggle="tab">
-          Tabela de Receitas Planejadas</a>
+          Receitas Planejadas</a>
           </li>
           <li>
             <a href="#tabela_despesas" data-toggle="tab">
-          Tabela de Despesas Planejadas</a>
+          Despesas Planejadas</a>
           </li>
       </ul>
       <div class="tab-content">
@@ -244,10 +248,17 @@
               </tbody>
             </table>
           </div>
-          <div class="tab-pane" id="grafico_resultado" >
+          <div class="tab-pane" id="grafico_receitas" >
             <canvas id="line-chart" width="800" height="450"></canvas>
           </div>
+          <div class="tab-pane" id="grafico_despesas" >
+            <canvas id="despesas" width="800" height="450"></canvas>
+          </div>
           <div class="tab-pane" id="tabela_orçamento" >
+            <?php
+            if($planejamentoReceitas != null){
+            ?>
+
             <table id="tabela"  class="table table-bordered">
               <thead>
                 <tr>
@@ -284,8 +295,16 @@
               </tbody>
             </table>
 
+            <?php
+            }
+            ?>
+
           </div>
           <div class="tab-pane" id="tabela_despesas" >
+            <?php
+            if($planejamentoDespesas != null){
+            ?>
+
             <table id="tabela"  class="table table-bordered">
               <thead>
                 <tr>
@@ -322,6 +341,9 @@
               </tbody>
             </table>
 
+            <?php
+            }
+            ?>
           </div>
       </div>
     </div>
@@ -368,6 +390,33 @@
       title: {
         display: true,
         text: 'Comparação entre Receitas'
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript">
+  new Chart(document.getElementById("despesas"), {
+    type: 'line',
+    data: {
+      labels: ["Janeiro", "Fevereiro", "Março", "Maio", "Junho", "Julho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+      datasets: [{ 
+          data: [<?=$despesas[1]?>, <?=$despesas[2]?>, <?=$despesas[3]?>, <?=$despesas[4]?>, <?=$despesas[5]?>, <?=$despesas[6]?>, <?=$despesas[7]?>, <?=$despesas[8]?>, <?=$despesas[9]?>, <?=$despesas[10]?>, <?=$despesas[11]?>, <?=$despesas[12]?> ],
+          label: "Despesa Atual",
+          borderColor: "#3e95cd",
+          fill: false
+        }, { 
+          data: [<?=$despesasAtuais[1]?>, <?=$despesasAtuais[2]?>, <?=$despesasAtuais[3]?>, <?=$despesasAtuais[4]?>, <?=$despesasAtuais[5]?>, <?=$despesasAtuais[6]?>, <?=$despesasAtuais[7]?>, <?=$despesasAtuais[8]?>, <?=$despesasAtuais[9]?>, <?=$despesasAtuais[10]?>, <?=$despesasAtuais[11]?>, <?=$despesasAtuais[12]?> ],
+          label: "Despesa Planejada",
+          borderColor: "#8e5ea2",
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Comparação entre Despesas'
       }
     }
   });

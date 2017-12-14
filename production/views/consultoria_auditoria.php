@@ -44,10 +44,11 @@
 <table id="tabela" class="table table-bordered projects">
  <thead>
    <tr>
-     <th>Projeto</th>
+     <th class="col-md-4">Projeto</th>
      <th>Membros</th>
+     <th>Início</th>
      <th>Progresso</th>
-     <th style="width: 13%;">Ações</th>
+     <th style="width: 11%;">Ações</th>
    </tr>
    <tbody>
     <?php
@@ -106,6 +107,7 @@
           ?>
          </ul>
        </td>
+       <td><?=date("d-m-Y", strtotime($contrato->getInicio()))?></td>
        <td class="project_progress">
          <div class="progress progress_sm">
            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?=$progresso?>"></div>

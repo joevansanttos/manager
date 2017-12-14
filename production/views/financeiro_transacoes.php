@@ -16,6 +16,7 @@
 <?php require_once "css.php"; ?> 
 
 <link rel="stylesheet" type="text/css" href="../css/transacao.css">
+<link rel="stylesheet" type="text/css" href="../css/cronograma.css">
 
 <h3>Financeiro</h3>
 

@@ -74,8 +74,8 @@
         <td><?=$prospect->getProb() . '%'?></td>
         <td><?=$novoRecebimento?></td>
         <td><?=$novoFechamento?></td>
-        <td><?=$prospect->getValorOp()?></td>
-        <td><?=$prospect->getValorEs()?></td>			    		        
+        <td><?='R$ '.number_format($prospect->getValorOp(), 2, '.', '')?></td>
+        <td><?='R$ '.number_format($prospect->getValorEs(), 2, '.', '')?></td>
         <td align="center">
           <a href="../views/contrato-formulario.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Novo Contrato" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button>
           <a href="../views/market-profile.php?id=<?=$market->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Market" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>

@@ -8,14 +8,16 @@ class Tarefa{
 	private $statusAtividade;
 	private $usuario;
 	private $descricao;
+	private $data;
 
-	function __construct(DepartamentoContrato $departamentoContrato, $horas,  $fim, $descricao, StatusAtividade $statusAtividade, Usuario $usuario){
+	function __construct(DepartamentoContrato $departamentoContrato, $horas,  $fim, $descricao, StatusAtividade $statusAtividade, Usuario $usuario, $data){
 		$this->departamentoContrato = $departamentoContrato;
 		$this->horas = $horas;
 		$this->fim = $fim;
 		$this->descricao = $descricao;
 		$this->statusAtividade = $statusAtividade;
 		$this->usuario = $usuario;
+		$this->data = $data;
 	}
 
 
@@ -25,6 +27,14 @@ class Tarefa{
 
 	public function setId($id) {
 		$this->id = $id;
+	}
+
+	public function getData() {
+		return $this->data;
+	}
+
+	public function setData($data) {
+		$this->data = $data;
 	}
 
 	public function getDescricao() {

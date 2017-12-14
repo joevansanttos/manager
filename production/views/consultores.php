@@ -54,7 +54,7 @@
 		$usuarios = $usuarioDao->listaUsuarios();
 		foreach ($usuarios as $u):
 			$cidade = $usuarioDao->buscaCidade($u->getCidade() );
-			if($u->getProfissao()->getId() == 1){
+			if($u->getProfissao()->getId() == 1 || $u->getProfissao()->getId() == 3){
 		?>
 			<tr>
 				<td><?=$u->getNome() .' '.$u->getSobrenome()  ?></td>
