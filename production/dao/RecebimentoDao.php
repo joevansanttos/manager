@@ -58,7 +58,7 @@
 		}
 
 		function insereRecebimento(Recebimento $recebimento) {
-			$query = "insert into recebimentos ( market_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, filial_id, doc) values ('{$recebimento->getMarket()->getId()}', '{$recebimento->getData()}', '{$recebimento->getDescricao()}', '{$recebimento->getValor()}', '{$recebimento->getCategoria()->getId()}', '{$recebimento->getPagamento()->getId()}', '{$recebimento->getPago()->getId()}' , '{$recebimento->getFilial()->getId()}', '{$recebimento->getDoc()}')";
+			$query = "insert into recebimentos ( contrato_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, filial_id, doc) values ('{$recebimento->getContrato()->getNumero()}', '{$recebimento->getData()}', '{$recebimento->getDescricao()}', '{$recebimento->getValor()}', '{$recebimento->getCategoria()->getId()}', '{$recebimento->getPagamento()->getId()}', '{$recebimento->getPago()->getId()}' , '{$recebimento->getFilial()->getId()}', '{$recebimento->getDoc()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
@@ -78,7 +78,7 @@
 		}
 
 	function atualiza(Recebimento $recebimento) {
-		$query = "update recebimentos set  data = '{$recebimento->getData()}', descricao = '{$recebimento->getDescricao()}', valor =  '{$recebimento->getValor()}', categoria_id = '{$recebimento->getCategoria()->getId()}', pagamento_id = '{$recebimento->getPagamento()->getId()}', pago_id = '{$recebimento->getPago()->getId()}', doc = '{$recebimento->getDoc()}' where id = '{$recebimento->getId()}'";
+		$query = "update recebimentos set  data = '{$recebimento->getData()}', descricao = '{$recebimento->getDescricao()}', valor =  '{$recebimento->getValor()}', categoria_id = '{$recebimento->getCategoria()->getId()}', pagamento_id = '{$recebimento->getPagamento()->getId()}', pago_id = '{$recebimento->getPago()->getId()}', doc = '{$recebimento->getDoc()}', contrato_id = '{$recebimento->getContrato()->getNumero()}' where id = '{$recebimento->getId()}'";
 		if(mysqli_query($this->conexao->conecta(), $query)){
 
 		}else{

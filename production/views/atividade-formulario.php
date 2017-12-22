@@ -85,17 +85,16 @@ require_once '../dao/UsuarioDao.php';
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Objetivo Estratégico<span class="required">*</span>
-    </label>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="objetivo">Objetivo Estratégico</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="nome" name="objetivo"  required="required" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="objetivo" name="objetivo" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Resultados Esperados<span class="required">*</span>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="resultados">Resultados Esperados<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <textarea  name="resultados" class="form-control col-md-12 col-xs-12" rows="6"></textarea> 
+      <textarea  name="resultados" class="form-control col-md-12 col-xs-12" rows="3"></textarea> 
     </div>
   </div>                                     
   <div class="ln_solid"></div>

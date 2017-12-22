@@ -42,13 +42,40 @@
 <div class="x_content">
 
 <form action="../altera/altera-despesa.php?id=<?=$id?>" method="post" id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
-  <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Fornecedor<span class="required">*</span>
-    </label>
-    <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="" name="" readonly="readonly" value="<?=$despesa->getFornecedor()->getNome()?>" required="required" class="form-control col-md-7 col-xs-12">
-    </div>
-  </div>                      
+  <div class="item form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="contrato_id">Centro de Resultados<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+     <select name="contrato_id" id="contrato_id" class="form-control col-md-7 col-xs-12">
+      <?php
+       $contratoDao = new ContratoDao($conexao);
+       $contratos = $contratoDao->listaTodosContratos();                           
+       foreach ($contratos as $contrato): 
+      ?>       
+       <option value="<?=$contrato->getNumero()?>"><?= str_pad($contrato->getNumero(), 3, '0', STR_PAD_LEFT).'.2017'. ' - ' .$contrato->getMarket()->getNome()?></option>
+       <?php
+       endforeach
+       ?>  
+     </select>
+   </div>
+  </div> 
+  <div class="item form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fornecedor_id">Pago a<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <select name="fornecedor_id" id="fornecedor_id" class="form-control col-md-7 col-xs-12">
+     <?php
+      $fornecedorDao = new FornecedorDao($conexao);
+      $fornecedores = $fornecedorDao->listaFornecedores();                           
+      foreach ($fornecedores as $fornecedor): 
+     ?>       
+      <option value="<?=$fornecedor->getId()?>"><?=$fornecedor->getNome()?></option>
+      <?php
+      endforeach
+      ?>  
+    </select>
+   </div>
+  </div>                       
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Descrição<span class="required">*</span>
     </label>
@@ -148,7 +175,6 @@
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
       <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
       <button id="send" type="submit" name="enviar" class="btn btn-success">Alterar</button>
-      <input type="hidden" name="fornecedor_id" id="id" value="<?=$despesa->getFornecedor()->getId()?>" />
     </div>
   </div>
 </form>
@@ -170,21 +196,28 @@
   }
 </script>
 
-
 <script type="text/javascript">
-  document.getElementById('categoria_id').value = '<?=$recebimento->getCategoria()->getId()?>';
+  document.getElementById('contrato_id').value = '<?=$despesa->getContrato()->getNumero()?>';
 </script>
 
 <script type="text/javascript">
-  document.getElementById('filial_id').value = '<?=$recebimento->getFilial()->getId()?>';
+  document.getElementById('fornecedor_id').value = '<?=$despesa->getFornecedor()->getId()?>';
 </script>
 
 <script type="text/javascript">
-  document.getElementById('pagamento_id').value = '<?=$recebimento->getPagamento()->getId()?>';
+  document.getElementById('categoria_id').value = '<?=$despesa->getCategoria()->getId()?>';
 </script>
 
 <script type="text/javascript">
-  document.getElementById('pago_id').value = '<?=$recebimento->getPago()->getId()?>';
+  document.getElementById('filial_id').value = '<?=$despesa->getFilial()->getId()?>';
+</script>
+
+<script type="text/javascript">
+  document.getElementById('pagamento_id').value = '<?=$despesa->getPagamento()->getId()?>';
+</script>
+
+<script type="text/javascript">
+  document.getElementById('pago_id').value = '<?=$despesa->getPago()->getId()?>';
 </script>
 
 <?php	require_once "rodape.php"; ?>

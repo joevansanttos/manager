@@ -15,7 +15,7 @@ require_once "../dao/FornecedorDao.php";
 
 <h3>Financeiro</h3>
 
-<?php require "../views/body.php";?>
+<?php require_once "../views/body.php";?>
 
 <div class="x_title">
   <h2>Lista de Fornecedores Cadastrados</h2>

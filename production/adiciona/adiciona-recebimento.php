@@ -16,7 +16,7 @@
 	$factory = new RecebimentoFactory();
 	$recebimento = $factory->criaRecebimento($_POST);
 	$recebimentoDao = new RecebimentoDao($conexao);
-	$recebimento = $recebimentoDao->insereRecebimento($recebimento);
+	$recebimentoDao->insereRecebimento($recebimento);
 
 	header("Location: ../views/financeiro_transacoes.php");
 ?>

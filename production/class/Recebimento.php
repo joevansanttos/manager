@@ -11,8 +11,9 @@ class Recebimento{
 	private $doc;
 	private $pago;
 	private $id;
+	private $contrato;
 
-	function __construct($data, $descricao,  $valor, CategoriaRecebimento $categoria,Pagamento $pagamento, Pago $pago, Filial $filial, Market $market, $doc) {
+	function __construct($data, $descricao,  $valor, CategoriaRecebimento $categoria,Pagamento $pagamento, Pago $pago, Filial $filial,  $doc,  Contrato $contrato) {
 		$this->data = $data;
 		$this->descricao = $descricao;
 		$this->market = $market;
@@ -22,6 +23,7 @@ class Recebimento{
 		$this->pago = $pago;
 		$this->filial = $filial;
 		$this->doc = $doc;
+		$this->contrato = $contrato;
 	}
 
 	public function getData() {
@@ -95,6 +97,13 @@ class Recebimento{
 		$this->doc = $doc;
 	}
 	
+	public function getContrato() {
+		return $this->contrato;
+	}
+
+	public function setContrato($contrato) {
+		$this->contrato = $contrato;
+	}
 
 }
 

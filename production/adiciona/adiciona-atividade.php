@@ -9,5 +9,5 @@
 	$atividadeDao->insereAtividade($atividade);
 	//$atividadeDao->enviaEmail($_POST);
 
-	header("Location: ../views/atividades.php");
+	header("Location: ../views/atividades-delegadas.php");
 ?>

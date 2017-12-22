@@ -47,7 +47,7 @@
       <th>Email</th>
       <th>Telefone</th>
       <th>Cargo</th>
-      <th class="col-md-3">Ações</th>				     
+      <th style="width: 20%;">Ações</th>				     
     </tr>
   </thead>
   <tfoot>

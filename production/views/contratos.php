@@ -61,8 +61,8 @@
     	
       foreach ($contratos as $contrato): 
       	$market = $contrato->getMarket();
-        $novoInicio = date("d-m-Y", strtotime($contrato->getInicio()));
-        $novoFim = date("d-m-Y", strtotime($contrato->getFim()));
+        $novoInicio = date("d/m/Y", strtotime($contrato->getInicio()));
+        $novoFim = date("d/m/Y", strtotime($contrato->getFim()));
     ?>
       <tr>
       	<td><?=$market->getNome()?></td>

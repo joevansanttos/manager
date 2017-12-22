@@ -402,12 +402,12 @@
       labels: ["Janeiro", "Fevereiro", "Março", "Maio", "Junho", "Julho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
       datasets: [{ 
           data: [<?=$despesas[1]?>, <?=$despesas[2]?>, <?=$despesas[3]?>, <?=$despesas[4]?>, <?=$despesas[5]?>, <?=$despesas[6]?>, <?=$despesas[7]?>, <?=$despesas[8]?>, <?=$despesas[9]?>, <?=$despesas[10]?>, <?=$despesas[11]?>, <?=$despesas[12]?> ],
-          label: "Despesa Atual",
+          label: "Despesa Planejada",
           borderColor: "#3e95cd",
           fill: false
         }, { 
           data: [<?=$despesasAtuais[1]?>, <?=$despesasAtuais[2]?>, <?=$despesasAtuais[3]?>, <?=$despesasAtuais[4]?>, <?=$despesasAtuais[5]?>, <?=$despesasAtuais[6]?>, <?=$despesasAtuais[7]?>, <?=$despesasAtuais[8]?>, <?=$despesasAtuais[9]?>, <?=$despesasAtuais[10]?>, <?=$despesasAtuais[11]?>, <?=$despesasAtuais[12]?> ],
-          label: "Despesa Planejada",
+          label: "Despesa Atual",
           borderColor: "#8e5ea2",
           fill: false
         }

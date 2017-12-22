@@ -6,14 +6,12 @@
 	require_once "../dao/PagamentoDao.php";
 	require_once "../dao/PagoDao.php";
 	require_once "../dao/FilialDao.php";
+	require_once "../dao/ContratoDao.php";
 
 class RecebimentoFactory {
 
 	public function criaRecebimento($params) {
 		$conexao = new Conexao();						
-		$market_id = $params["market_id"];
-		$marketDao = new MarketDao($conexao);
-		$market = $marketDao->buscaMarket($market_id);
 		$descricao = $params["descricao"];
 		$categoria_id = $params["categoria_id"];
 		$categoriaDao = new CategoriaDao($conexao);
@@ -29,8 +27,11 @@ class RecebimentoFactory {
 		$pago_id = $params["pago_id"];
 		$pagoDao = new PagoDao($conexao);
 		$pago = $pagoDao->buscaPago($pago_id);
-		$doc = $params["doc"];	
-		return new Recebimento($data, $descricao,  $valor, $categoria, $pagamento, $pago, $filial, $market, $doc);
+		$doc = $params["doc"];
+		$contrato_id = $params["contrato_id"];
+		$contratoDao = new ContratoDao($conexao);
+		$contrato = $contratoDao->buscaContrato($contrato_id);			
+		return new Recebimento($data, $descricao,  $valor, $categoria, $pagamento, $pago, $filial, $doc, $contrato);
 	}	
 
 }

@@ -6,5 +6,5 @@
 	$atividadeDao = new AtividadeDao($conexao);
 	$atividade = $atividadeDao->buscaAtividade($atividade_id);
 	$atividadeDao->remove($atividade);
-	header("Location: ../views/atividades.php");
+	header("Location: ../views/atividades-requiridas.php");
 ?>

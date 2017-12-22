@@ -17,7 +17,7 @@
 	$atividadeDao = new AtividadeDao($conexao);
 	$atividadeDao->atualizaAtividade($atividade);
 
-	header("Location: ../views/atividades.php"); 	
+	header("Location: ../views/atividades-requiridas.php"); 	
 
 
 ?>

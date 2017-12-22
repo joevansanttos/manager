@@ -10,7 +10,7 @@ if(isset($_POST["start"], $_POST["end"])) {
 <div class="tabbable-panel">
   <div class="tabbable-line">
   <ul id="myTab" class="nav-tabs-wrapper nav nav-tabs nav-tabs-horizontal" role="tablist">
-  <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Receitas</a>
+  <li role="presentation" id="receitas" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Receitas</a>
   </li>
   <li role="presentation"><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Despesas</a>
   </li>                                     
@@ -19,17 +19,18 @@ if(isset($_POST["start"], $_POST["end"])) {
 
   $output .= '  
   <div role="tabpanel"  class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-  <table style="font-size:9pt;" id="recebimento" class="table  datatable">
+  <table style="font-size:9.5pt;"  id="recebimento" class="table  datatable">
   <thead>
   <tr>
-  <th style="width:9%;">DATA</th>
-  <th style="width:25%;">DESCRIÇÃO</th>
+  <th style="width:8%;">DATA</th>
+  <th>DESCRIÇÃO</th>
+  <th>CENTRO DE RESULTADOS</th>
   <th>RECEBIDO DE</th>
   <th>FILIAL</th>
   <th>VALOR</th>
-  <th style="width:20%;">CATEGORIA</th>
+  <th>CATEGORIA</th>
   <th>PAGAMENTO</th>
-  <th>PAGO?</th>
+  <th style="width:1%">PAGO?</th>
   <th style="width:11%;">AÇÕES</th>
   </tr>                                  
   </thead>
@@ -38,7 +39,7 @@ if(isset($_POST["start"], $_POST["end"])) {
   $recebimentoDao = new RecebimentoDao($conexao);
   $recebimentos = $recebimentoDao->listaNovosRecebimentos($_POST['start'], $_POST['end']);
   foreach ($recebimentos as $recebimento){
-    $novaData = date("d-m-Y", strtotime($recebimento->getData()));
+    $novaData = date("d/m/Y", strtotime($recebimento->getData()));
     if( $recebimento->getPago()->getId() == 2){
       $pago = 'times';
     }else{
@@ -48,7 +49,8 @@ if(isset($_POST["start"], $_POST["end"])) {
     <tr>
     <td>' . $novaData . '</td>
     <td> '. $recebimento->getDescricao() .'</td>
-    <td> '. $recebimento->getMarket()->getNome() .'</td>
+    <td> '. str_pad($recebimento->getContrato()->getNumero(), 3, '0', STR_PAD_LEFT).'.2017' .'</td>
+    <td>'. $recebimento->getContrato()->getMarket()->getNome() .'</td>
     <td> '. $recebimento->getFilial()->getNome() .'</td>
     <td> R$' . $recebimento->getValor(). '</td>
     <td> '. $recebimento->getCategoria()->getDescricao().' </td>
@@ -73,17 +75,18 @@ if(isset($_POST["start"], $_POST["end"])) {
 
   $output .= ' 
   <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-  <table style="font-size:9pt;" id="despesa" class="table datatable">
+  <table  id="despesa" class="table datatable">
   <thead>
   <tr>
   <th style="width:8%;">DATA</th>
   <th>DESCRIÇÃO</th>
+  <th>CENTRO DE RESULTADOS</th>
   <th>PAGO A</th>
   <th>FILIAL</th>
   <th>VALOR</th>
   <th>CATEGORIA</th>
   <th>PAGAMENTO</th>
-  <th>PAGO?</th>
+  <th style="width:1%">PAGO?</th>
   <th style="width:11%;">AÇÕES</th>
   </tr>                                  
   </thead>
@@ -93,7 +96,7 @@ if(isset($_POST["start"], $_POST["end"])) {
   $despesaDao = new DespesaDao($conexao);
   $despesas = $despesaDao->listaNovasDespesas($_POST['start'], $_POST['end']);
   foreach ($despesas as $despesa){
-    $novaData = date("d-m-Y", strtotime($despesa->getData()));
+    $novaData = date("d/m/Y", strtotime($despesa->getData()));
     if( $despesa->getPago()->getId() == 2){
       $pago = 'times';
     }else{
@@ -103,6 +106,7 @@ if(isset($_POST["start"], $_POST["end"])) {
     <tr>
     <td>' . $novaData . '</td>
     <td>' .$despesa->getDescricao(). '</td>
+    <td>' . str_pad($despesa->getContrato()->getNumero(), 3, '0', STR_PAD_LEFT).'.2017' . '</td>
     <td>' .$despesa->getFornecedor()->getNome(). '</td>
     <td> '. $despesa->getFilial()->getNome() .'</td>
     <td> R$' . $despesa->getValor(). '</td>

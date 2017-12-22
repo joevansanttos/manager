@@ -76,7 +76,7 @@
 		}
 
 		function insereDespesa(Despesa $despesa) {
-			$query = "insert into despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, filial_id, doc) values ('{$despesa->getFornecedor()->getId()}', '{$despesa->getData()}', '{$despesa->getDescricao()}', '{$despesa->getValor()}', '{$despesa->getCategoria()->getId()}', '{$despesa->getPagamento()->getId()}', '{$despesa->getPago()->getId()}', '{$despesa->getFilial()->getId()}', '{$despesa->getDoc()}')";
+			$query = "insert into despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, pago_id, filial_id, doc, contrato_id) values ('{$despesa->getFornecedor()->getId()}', '{$despesa->getData()}', '{$despesa->getDescricao()}', '{$despesa->getValor()}', '{$despesa->getCategoria()->getId()}', '{$despesa->getPagamento()->getId()}', '{$despesa->getPago()->getId()}', '{$despesa->getFilial()->getId()}', '{$despesa->getDoc()}', '{$despesa->getContrato()->getNumero()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
@@ -96,7 +96,7 @@
 		}
 
 		function atualiza(Despesa $despesa) {
-			$query = "update despesas set  data = '{$despesa->getData()}', descricao = '{$despesa->getDescricao()}', valor =  '{$despesa->getValor()}', categoria_id = '{$despesa->getCategoria()->getId()}', pagamento_id = '{$despesa->getPagamento()->getId()}', pago_id = '{$despesa->getPago()->getId()}', doc = '{$despesa->getDoc()}' where id = '{$despesa->getId()}'";
+			$query = "update despesas set  data = '{$despesa->getData()}', descricao = '{$despesa->getDescricao()}', valor =  '{$despesa->getValor()}', categoria_id = '{$despesa->getCategoria()->getId()}', pagamento_id = '{$despesa->getPagamento()->getId()}', pago_id = '{$despesa->getPago()->getId()}', doc = '{$despesa->getDoc()}', fornecedor_id = '{$despesa->getFornecedor()->getId()}', contrato_id = '{$despesa->getContrato()->getNumero()}' where id = '{$despesa->getId()}'";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{

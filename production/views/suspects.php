@@ -46,7 +46,7 @@
       <th>Data</th>
       <th>Hora</th>
       <th>Status</th>
-      <th class="col-md-3">Ações</th>				     
+      <th style="width: 20%;">Ações</th>				     
     </tr>
   </thead>
   <tfoot>
@@ -64,7 +64,7 @@
     	$suspects = $suspectDao->listaSuspects($usuario_id);
       foreach ($suspects as $suspect): 
       	$market = $suspect->getMarket();
-        $novaData = date("d-m-Y", strtotime($suspect->getData()));
+        $novaData = date("d/m/Y", strtotime($suspect->getData()));
     ?>
       <tr>
       	<td><?=$market->getNome()?></td>

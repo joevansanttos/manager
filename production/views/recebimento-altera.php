@@ -39,12 +39,22 @@
 <div class="x_content">
 
 <form action="../altera/altera-recebimento.php?id=<?=$id?>" method="post" id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
-  <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Cliente<span class="required">*</span>
-    </label>
-    <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="" name="" readonly="readonly" value="<?=$recebimento->getMarket()->getNome()?>" required="required" class="form-control col-md-7 col-xs-12">
-    </div>
+  <div class="item form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="contrato_id">Centro de Resultados<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+     <select name="contrato_id" id="contrato_id" class="form-control col-md-7 col-xs-12">
+      <?php
+       $contratoDao = new ContratoDao($conexao);
+       $contratos = $contratoDao->listaTodosContratos();                           
+       foreach ($contratos as $contrato): 
+      ?>       
+       <option value="<?=$contrato->getNumero()?>"><?= str_pad($contrato->getNumero(), 3, '0', STR_PAD_LEFT).'.2017'. ' - ' .$contrato->getMarket()->getNome()?></option>
+       <?php
+       endforeach
+       ?>  
+     </select>
+   </div>
   </div>                      
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Descrição<span class="required">*</span>
@@ -144,7 +154,6 @@
     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
       <button type="reset" name="reset" class="btn btn-primary">Resetar</button>
       <button id="send" type="submit" name="enviar" class="btn btn-success">Alterar</button>
-      <input type="hidden" name="market_id" id="id" value="<?=$recebimento->getMarket()->getId()?>" />
     </div>
   </div>
 </form>
@@ -169,6 +178,10 @@
 
 <script type="text/javascript">
   document.getElementById('categoria_id').value = '<?=$recebimento->getCategoria()->getId()?>';
+</script>
+
+<script type="text/javascript">
+  document.getElementById('contrato_id').value = '<?=$recebimento->getContrato()->getNumero()?>';
 </script>
 
 <script type="text/javascript">

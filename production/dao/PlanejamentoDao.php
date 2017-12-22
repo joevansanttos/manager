@@ -57,7 +57,6 @@ class PlanejamentoDao{
 			$recebimento->setId($recebimento_id);
 			array_push($recebimentos, $recebimento);
 		}
-
 		$receitas = [];
 		$i = 1;
 		while ( $i <= 12) {
@@ -68,7 +67,7 @@ class PlanejamentoDao{
 		$receitas[13] = 0;
 		foreach ($recebimentos as $recebimento) {
 			$int = idate('m', strtotime($recebimento->getData()));
-			$receitas[$int] = $receitas[$m] + $recebimento->getValor();
+			$receitas[$int] = $receitas[$int] + $recebimento->getValor();
 			$receitas[13] = $receitas[13] + $recebimento->getValor();
 		}
 		return $receitas;
@@ -96,8 +95,8 @@ class PlanejamentoDao{
 		$despesas[13] = 0;
 		foreach ($recebimentos as $recebimento) {
 			$int = idate('m', strtotime($recebimento->getData()));
-			$despesas[$int] = $despesas[$m] + $recebimento->getValor();
-			$despesas[13] = $receitas[13] + $recebimento->getValor();
+			$despesas[$int] = $despesas[$int] + $recebimento->getValor();
+			$despesas[13] = $despesas[13] + $recebimento->getValor();
 		}
 
 
@@ -147,7 +146,7 @@ class PlanejamentoDao{
 		$receitas[13] = 0;
 		foreach ($recebimentos as $recebimento) {
 			$int = idate('m', strtotime($recebimento->getData()));
-			$receitas[$int] = $receitas[$m] + $recebimento->getValor();
+			$receitas[$int] = $receitas[$int] + $recebimento->getValor();
 			$receitas[13] = $receitas[13] + $recebimento->getValor();
 		}
 		return $receitas;
@@ -178,7 +177,7 @@ class PlanejamentoDao{
 		$receitas[13] = 0;
 		foreach ($recebimentos as $recebimento) {
 			$int = idate('m', strtotime($recebimento->getData()));
-			$receitas[$int] = $receitas[$m] + $recebimento->getValor();
+			$receitas[$int] = $receitas[$int] + $recebimento->getValor();
 			$receitas[13] = $receitas[13] + $recebimento->getValor();
 		}
 		return $receitas;

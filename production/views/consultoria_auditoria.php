@@ -58,12 +58,12 @@
       }else{
         $contratos = $contratoDao->listaProjetosAuditoria($usuario_id); 
       }
-      
-      $finalizados = 0;
-      $total = 0;    
+        
       foreach ($contratos as $contrato){
         $departamentoContratoDao = new DepartamentoContratoDao($conexao);
         $departamentosContratos = $departamentoContratoDao->listaDepartamentosContratos($contrato);
+        $finalizados = 0;
+        $total = 0;  
         foreach ($departamentosContratos as $departamentoContrato) {
           $tarefaDao = new TarefaDao($conexao);
           $tarefas = $tarefaDao->listaTarefas($departamentoContrato->getId());
@@ -74,11 +74,18 @@
             $total++;
           }
         }
+
         if($finalizados != 0){
-          $num = $total/$finalizados;
-          $progresso = round($num);
+          $progresso = $finalizados/$total;
+          $percent = round((float)$progresso * 100 ) . '%';          
         }else{
-           $progresso = 0;
+          if($total == 0){
+           $progresso = 1;
+           $percent = round((float)$progresso * 100 ) . '%';  
+          }else{
+            $progresso = 0;
+            $percent = round((float)$progresso * 100 ) . '%'; 
+          }
         }
 
         $market = $contrato->getMarket();
@@ -110,9 +117,9 @@
        <td><?=date("d-m-Y", strtotime($contrato->getInicio()))?></td>
        <td class="project_progress">
          <div class="progress progress_sm">
-           <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?=$progresso?>"></div>
+           <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?=$percent?>"></div>
          </div>
-         <small> <?=$progresso?>% Completado</small>
+         <small> <?=$percent?> Completado</small>
        </td>
        <td align="center">                                
          <a href="detalhes_projeto.php?id=<?=$contrato->getNumero()?>" data-toggle="tooltip" data-placement="top" title="Ver Projeto" class="btn btn-success btn-xs"><i class="fa fa-search"></i></a>

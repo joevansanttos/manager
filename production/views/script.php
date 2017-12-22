@@ -22,6 +22,7 @@
   <!-- NProgress -->
   <script src="../../vendors/nprogress/nprogress.js"></script>
   <!-- Custom Theme Scripts -->
+  <script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
   
   
 

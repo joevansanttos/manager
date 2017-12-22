@@ -11,8 +11,10 @@ class Despesa{
 	private $filial;
 	private $doc;
 	private $id;
+	private $contrato;
 
-	function __construct($data, $descricao,  $valor, Categoria $categoria,Pagamento $pagamento, Pago $pago, Filial $filial,Fornecedor $fornecedor, $doc) {
+
+	function __construct($data, $descricao,  $valor, Categoria $categoria,Pagamento $pagamento, Pago $pago, Filial $filial,Fornecedor $fornecedor, $doc, Contrato $contrato) {
 		$this->data = $data;
 		$this->descricao = $descricao;
 		$this->fornecedor = $fornecedor;
@@ -22,6 +24,7 @@ class Despesa{
 		$this->pago = $pago;
 		$this->filial = $filial;
 		$this->doc = $doc;
+		$this->contrato = $contrato;
 	}
 
 	public function getData() {
@@ -95,6 +98,13 @@ class Despesa{
 		$this->doc = $doc;
 	}
 
+	public function getContrato() {
+		return $this->contrato;
+	}
+
+	public function setContrato($contrato) {
+		$this->contrato = $contrato;
+	}
 
 }
 

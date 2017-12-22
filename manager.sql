@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Dez-2017 às 14:58
+-- Generation Time: 22-Dez-2017 às 15:59
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -52,7 +52,8 @@ CREATE TABLE `atividades` (
 INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `filial`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`, `status_prazo_id`) VALUES
 (1, '2017-11-08', '2017-11-24', 3, 'PROJETOS', 'SALVADOR', 'Alimentar o Quality de informações para demonstrar aos clientes os benefócios de uso da solução da P', 9, 'Captar um estagiário temporário para cadastramento das bases de dados dos projetos', 'Adquirir novos contratos e criar cases a serem utilizados pelo marketing', 1, NULL, NULL, 2),
 (2, '2017-11-07', '2017-11-09', 5, 'FINANCEIRO', 'Salvador', 'Criar relacionamento com o mercado', 11, 'Finalizar o cadastramento da PROJEK na ASSESPRO', 'Aumentar o número de contratos', 1, NULL, NULL, 3),
-(3, '07/11/2017', '08/11/2017', 1, 'FINANCEIRO', 'Salvador', 'Formalizar a relação comercial com a agência de publicidade.', 11, 'Obter o contrato de marketing  (3 meses) para assinatura', 'Criar condições para medir o trabalho e eficiência da consultoria que foi contratada com a Mana Comunicação.', 1, NULL, NULL, 2);
+(4, '2017-10-16', '2017-09-17', 1, 'Finanças', 'Salvador', 'Alta', 10, 'Desenvolver Sistema', 'Desenvolver Sistema o mais rápido', 1, '', 'Desenvolvimento', 2),
+(5, '2013-02-01', '3233-10-01', 2, 'Finanças', 'Salvador', 'Alta', 9, 'Conta de Luz 3', 'ewewewewe', 1, '', 'Desenvolvimento', 2);
 
 -- --------------------------------------------------------
 
@@ -136,8 +137,8 @@ CREATE TABLE `categorias_recebimento` (
 --
 
 INSERT INTO `categorias_recebimento` (`id`, `descricao`) VALUES
-(1, 'Vendas'),
-(2, 'Mensalidade');
+(1, 'Contrato'),
+(2, 'Projeto');
 
 -- --------------------------------------------------------
 
@@ -5800,6 +5801,17 @@ CREATE TABLE `contato_cliente` (
   `email` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `contato_cliente`
+--
+
+INSERT INTO `contato_cliente` (`id`, `estado`, `cidade`, `endereco`, `cpf`, `tel`, `market_id`, `nome`, `email`) VALUES
+(5, 'BA', '2910800', 'Rua Aracajú, No. 280', '', '(75) 98185-0080', 36, 'Rafael Boaventura', 'diretoria2@atacadaobahia.com.br'),
+(6, 'BA', '2910800', 'Av. Getúlio Vargas, 792 - Centro', '', '(75) 99858-0933', 24, 'Flávio Mariano', 'p7tecnologia@gmail.com'),
+(7, 'BA', '2927408', 'RUA ALCEU AMOROSO LIMA, 172 - EDF. OFFICE POOL, CAMINHO DAS ÁRVORES', '', '(71) 98246-7995', 32, 'Israel Val de Assis', 'israel@assistecnologia.com.br'),
+(8, 'BA', '2927408', 'RUA ALCEU AMOROSO LIMA, 668, CAMINHO DAS ÁRVORES', '', '(71) 98112-1366', 34, 'Thiago', 'thiago@assisengenharia.com.br'),
+(9, 'BA', '2910800', 'BA-502, 1178', '', '(75) 3622-4812', 22, 'Aldenice Ferreira', 'aldenice@gujao.com.br');
+
 -- --------------------------------------------------------
 
 --
@@ -5831,7 +5843,7 @@ CREATE TABLE `contratos` (
   `consultor` int(11) DEFAULT NULL,
   `inicio` varchar(20) DEFAULT NULL,
   `fim` varchar(20) DEFAULT NULL,
-  `id` int(10) NOT NULL
+  `id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5839,13 +5851,15 @@ CREATE TABLE `contratos` (
 --
 
 INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `consultor`, `inicio`, `fim`, `id`) VALUES
-(1, 5, 1, NULL, '2017-12-08', '2018-12-08', 1),
-(31, 5, 2, NULL, '2016-11-09', '2017-05-09', 2),
-(22, 6, 2, NULL, '2017-10-01', '2017-12-01', 3),
-(31, 5, 1, NULL, '2016-05-28', '2016-11-28', 4),
-(23, 5, 2, NULL, '2017-08-04', '2018-07-04', 5),
-(32, 5, 1, NULL, '2017-11-20', '2018-12-20', 6),
-(24, 5, 2, NULL, '2017-08-23', '2018-08-23', 7);
+(1, 5, 2, NULL, '2017-12-08', '2018-12-08', '1'),
+(31, 5, 2, NULL, '2016-11-09', '2017-05-09', '2'),
+(22, 6, 2, NULL, '2017-10-01', '2017-12-01', '3'),
+(31, 5, 2, NULL, '2016-05-28', '2016-11-28', '4'),
+(23, 5, 2, NULL, '2017-08-04', '2018-07-04', '5'),
+(32, 5, 2, NULL, '2017-11-20', '2018-12-20', '6'),
+(24, 5, 2, NULL, '2017-08-23', '2018-08-23', '7'),
+(34, 5, 2, NULL, '2017-11-20', '2018-12-30', '8'),
+(36, 5, 2, NULL, '2016-06-22', '2018-12-28', '9');
 
 -- --------------------------------------------------------
 
@@ -5993,7 +6007,16 @@ INSERT INTO `departamentos_contratos` (`departamento_id`, `contrato_id`, `id`) V
 (9, '6', 67),
 (7, '6', 68),
 (6, '6', 69),
-(11, '6', 70);
+(11, '6', 70),
+(3, '8', 71),
+(9, '8', 72),
+(7, '8', 73),
+(6, '8', 74),
+(11, '8', 75),
+(3, '9', 80),
+(9, '9', 81),
+(7, '9', 82),
+(11, '9', 83);
 
 -- --------------------------------------------------------
 
@@ -6011,36 +6034,38 @@ CREATE TABLE `despesas` (
   `pagamento_id` int(11) DEFAULT NULL,
   `pago_id` int(11) DEFAULT NULL,
   `doc` varchar(1000) DEFAULT NULL,
-  `filial_id` int(11) DEFAULT NULL
+  `filial_id` int(11) DEFAULT NULL,
+  `contrato_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `despesas`
 --
 
-INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`) VALUES
-(7, 59, '2017-11-03', 'DOMÍNIO', '22.00', 2, 1, 1, 'upload/HOSTGATOR 03-11.pdf', 1),
-(8, 59, '2017-11-06', 'DOMÍNIO', '45.00', 2, 1, 1, 'upload/HOSTGATOR 06-11.pdf', 1),
-(9, 64, '2017-11-08', 'ESCRITÓRIO VIRTUAL', '140.00', 2, 1, 1, 'upload/EV ESCRITÓRIO VIRTUAL.pdf', 1),
-(10, 59, '2017-11-09', 'DOMÍNIO', '54.00', 2, 1, 1, 'upload/HOSTGATOR 09-11.pdf', 1),
-(11, 59, '2017-11-13', 'DOMÍNIO', '54.00', 3, 1, 1, 'upload/HOSTGATOR 13-11.pdf', 1),
-(12, 65, '2017-11-16', 'ASSOCIAÇÃO ', '65.00', 3, 1, 1, 'upload/ASSESPRO.pdf', 1),
-(13, 59, '2017-11-21', 'DOMÍNIO', '68.97', 3, 1, 1, 'upload/HOSTGATOR 21-11.pdf', 1),
-(14, 60, '2017-11-21', 'TELEFONIA', '52.51', 3, 1, 1, 'upload/VIVO.pdf', 1),
-(15, 62, '2017-11-21', 'ASSOCIAÇÃO ', '444.00', 3, 1, 1, 'upload/AMCHAM.pdf', 1),
-(16, 66, '2017-11-21', 'REDE SOCIAL', '200.00', 9, 1, 1, 'upload/FACEBOOK.pdf', 1),
-(17, 67, '2017-11-16', 'BANCO', '249.08', 6, 1, 1, 'upload/SANTANDER.pdf', 1),
-(19, 59, '2017-12-04', 'DOMÍNIO', '21.99', 6, 1, 2, 'upload/HOSTGATOR 04-12.pdf', 1),
-(20, 68, '2017-11-30', 'ASSOCIAÇÃO ', '247.50', 3, 1, 2, 'upload/ABRH 30-11.pdf', 1),
-(21, 70, '2017-11-27', 'GRÁFICA', '374.58', 9, 1, 2, 'upload/GRÁFICA UNIVERSITÁRIA.pdf', 1),
-(22, 60, '2017-11-27', 'TELEFONIA', '51.36', 3, 1, 2, 'upload/VIVO 27-11.pdf', 1),
-(23, 71, '2017-12-07', 'PRESTAÇÃO DE SERVIÇO', '250.00', 3, 1, 2, 'upload/CAMILA 07-12.pdf', 1),
-(24, 64, '2017-12-07', 'ESCRITÓRIO VIRTUAL', '208.00', 3, 1, 2, 'upload/EV VIRTUAL.pdf', 1),
-(25, 61, '2017-11-29', 'AGÊNCIA DE MARKETING', '530.00', 9, 1, 2, 'upload/MANA.pdf', 1),
-(26, 72, '2017-11-29', 'PSICÓLOGA', '120.00', 3, 1, 2, 'upload/NEUZA.pdf', 1),
-(27, 73, '2017-11-27', 'PORTAL', '360.00', 9, 1, 2, 'upload/TIBAHIA.pdf', 1),
-(28, 74, '2017-11-27', 'RH', '180.00', 5, 1, 2, 'upload/RH DECISÃO.pdf', 1),
-(29, 75, '2017-12-12', 'ESCRITÓRIO VIRTUAL', '215.62', 3, 1, 2, 'upload/TALENTUS4.pdf', 1);
+INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`, `contrato_id`) VALUES
+(7, 59, '2017-11-03', 'DOMÍNIO', '22.00', 2, 1, 1, 'upload/HOSTGATOR 03-11.pdf', 1, 1),
+(8, 59, '2017-11-06', 'DOMÍNIO', '45.00', 2, 1, 1, 'upload/HOSTGATOR 06-11.pdf', 1, 1),
+(9, 64, '2017-11-08', 'ESCRITÓRIO VIRTUAL', '140.00', 2, 1, 1, 'upload/EV ESCRITÓRIO VIRTUAL.pdf', 1, 1),
+(10, 59, '2017-11-09', 'DOMÍNIO', '54.00', 2, 1, 1, 'upload/HOSTGATOR 09-11.pdf', 1, 1),
+(11, 59, '2017-11-13', 'DOMÍNIO', '54.00', 3, 1, 1, 'upload/HOSTGATOR 13-11.pdf', 1, 1),
+(12, 65, '2017-11-16', 'ASSOCIAÇÃO ', '65.00', 3, 1, 1, 'upload/ASSESPRO.pdf', 1, 1),
+(13, 59, '2017-11-21', 'DOMÍNIO', '68.97', 3, 1, 1, 'upload/HOSTGATOR 21-11.pdf', 1, 1),
+(14, 60, '2017-11-21', 'TELEFONIA', '52.51', 3, 1, 1, 'upload/VIVO.pdf', 1, 1),
+(15, 62, '2017-11-21', 'ASSOCIAÇÃO ', '444.00', 3, 1, 1, 'upload/AMCHAM.pdf', 1, 1),
+(16, 66, '2017-11-21', 'REDE SOCIAL', '200.00', 9, 1, 1, 'upload/FACEBOOK.pdf', 1, 1),
+(17, 67, '2017-11-16', 'BANCO', '249.08', 6, 1, 1, 'upload/SANTANDER.pdf', 1, 1),
+(19, 59, '2017-12-04', 'DOMÍNIO', '21.99', 6, 1, 2, 'upload/HOSTGATOR 04-12.pdf', 1, 1),
+(20, 68, '2017-11-30', 'ASSOCIAÇÃO ', '247.50', 3, 1, 2, 'upload/ABRH 30-11.pdf', 1, 1),
+(21, 70, '2017-11-27', 'GRÁFICA', '374.58', 9, 1, 2, 'upload/GRÁFICA UNIVERSITÁRIA.pdf', 1, 1),
+(22, 60, '2017-11-27', 'TELEFONIA', '51.36', 3, 1, 2, 'upload/VIVO 27-11.pdf', 1, 1),
+(23, 71, '2017-12-07', 'PRESTAÇÃO DE SERVIÇO', '250.00', 3, 1, 2, 'upload/CAMILA 07-12.pdf', 1, 1),
+(24, 64, '2017-12-07', 'ESCRITÓRIO VIRTUAL', '208.00', 3, 1, 2, 'upload/EV VIRTUAL.pdf', 1, 1),
+(25, 61, '2017-11-29', 'AGÊNCIA DE MARKETING', '530.00', 9, 1, 2, 'upload/MANA.pdf', 1, 1),
+(26, 72, '2017-11-29', 'PSICÓLOGA', '120.00', 3, 1, 2, 'upload/NEUZA.pdf', 1, 1),
+(27, 73, '2017-11-27', 'PORTAL', '360.00', 9, 1, 2, 'upload/TIBAHIA.pdf', 1, 1),
+(28, 74, '2017-11-27', 'RH', '180.00', 5, 1, 2, 'upload/RH DECISÃO.pdf', 1, 1),
+(29, 75, '2017-12-12', 'ESCRITÓRIO VIRTUAL', '215.62', 3, 1, 2, 'upload/TALENTUS4.pdf', 1, 1),
+(31, 63, '2017-12-20', 'Viagem Carro', '700.00', 3, 1, 1, '', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -6203,7 +6228,9 @@ INSERT INTO `leads` (`nome`, `email`, `tel`, `cargo`, `id`, `market_id`) VALUES
 ('MARCOS ROGÉRIO LYRIO PIMENTA', 'marcos@pimentaadvogados.com', '(71) 3341-8444', 'Socio', 7, 23),
 ('FLÁVIO ANASTÁCIO SOUZA VIANA', 'p7tecnologia@gmail.com', '(75) 99858-0933', 'Coordenador', 8, 24),
 ('ANGELA MARA MAGALHÃES CARVALHO', 'angelamara23@hotmail.com', '(75) 98148-2655', 'Diretor', 9, 31),
-('ISRAEL VAL DE ASSIS', 'israel@assistecnologia.com.br', '(71) 98246-7995', 'Diretor', 10, 32);
+('ISRAEL VAL DE ASSIS', 'israel@assistecnologia.com.br', '(71) 98246-7995', 'Diretor', 10, 32),
+('THIAGO', 'thiago@assisengenharia.com.br', '(71) 98112-1366', 'Diretor', 11, 34),
+('Rafael Boaventura', 'diretoria2@atacadaobahia.com.br', '(75) 98185-0080', 'Diretor', 13, 36);
 
 -- --------------------------------------------------------
 
@@ -6263,7 +6290,10 @@ INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado
 (30, 'Almacem Pepe', 'Almacem Pepe', '', '', 'AV. PAULO VI, 1498', 'BA', '2927408', '(71) 30155-100_', 'Alimentação', 'Pituba', 3, 13),
 (31, 'COLÉGIO CIVILIZAÇÃO LTDA EPP', 'COLÉGIO CIVILIZAÇÃO', '01.180.951/0001-88', 'www.colegiocivilizacao.com.br', 'Rua Pilar do Sul, 840, CEP 44088-606', 'BA', '2910800', '(75) 3225-8971', 'Educação', 'Brasília ', 1, 8),
 (32, 'ASSIS TECNOLOGIA INTEGRADA COMERCIO E MANUTENCAO DE EQUIPAMENTOS DE SEGURANÇA EIRELI - ME', 'ASSIS TECNOLOGIA', '18.373.354/0001-47', 'www.assistecnologia.com.br', 'Rua Alceu Amoroso Lima, 172 - Sala 1109 Ed. Salvador Office & Pool', 'BA', '2927408', '(71) 3014-2811', 'Tecnologia', 'Caminho das Árvores', 1, 11),
-(33, 'ASSIS TECNOLOGIA INTEGRADA COMERCIO E MANUTENCAO DE EQUIPAMENTOS DE SEGURANÇA EIRELI - ME', 'ASSIS TECNOLOGIA', '18.373.354/0001-47', 'www.assistecnologia.com.br', 'Rua Alceu Amoroso Lima, 172 - Sala 1109 Ed. Salvador Office & Pool', 'BA', '2927408', '(71) 3014-2811', 'Tecnologia', 'Caminho das Árvores', 1, 11);
+(33, 'ASSIS TECNOLOGIA INTEGRADA COMERCIO E MANUTENCAO DE EQUIPAMENTOS DE SEGURANÇA EIRELI - ME', 'ASSIS TECNOLOGIA', '18.373.354/0001-47', 'www.assistecnologia.com.br', 'Rua Alceu Amoroso Lima, 172 - Sala 1109 Ed. Salvador Office & Pool', 'BA', '2927408', '(71) 3014-2811', 'Tecnologia', 'Caminho das Árvores', 1, 11),
+(34, 'ASSISENG COMÉRCIO E MANUTENÇÃO DE EQUIPAMENTOS DE SEGURANÇA LTDA - ME', 'ASSIS ENGENHARIA', '12.903.812/0001-26', 'http://assisengenharia.com.br/', 'Rua Alceu Amoroso Lima, 668 – Sala 813 – Ed. America Towers', 'BA', '2927408', '(71) 4103-7202', 'Engenharia', 'Caminho das Árvores', 1, 11),
+(35, 'AVENIDA COMÉRCIO VAREJISTA E ATACADO', 'ATACADÃO BAHIA', '09.276.913/0001-00', '', 'Rua Aracajú, No. 280', 'BA', '2910800', '(75) 2101-0080', 'Varejo', 'Centro', 3, 11),
+(36, 'AVENIDA COMÉRCIO VAREJISTA E ATACADO,', 'ATACADÃO BAHIA', '09.276.913/0001-00', '', 'Rua Aracajú, No. 280', 'BA', '2910800', '(75) 2101-0080', 'Varejo', 'Centro', 2, 11);
 
 -- --------------------------------------------------------
 
@@ -6361,7 +6391,9 @@ CREATE TABLE `planejamento_despesas` (
 --
 
 INSERT INTO `planejamento_despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `doc`, `filial_id`, `planejamento_id`) VALUES
-(1, 59, '2018-10-01', 'Conta de Luz', '1045.00', 3, 1, '', 1, 2);
+(1, 59, '2018-02-20', 'Salário Mensal', '900.00', 3, 1, '', 1, 2),
+(2, 63, '2018-01-20', 'Salário Mensal', '1000.00', 3, 1, '', 1, 2),
+(3, 70, '2018-01-02', 'Salário Mensal', '500.00', 3, 1, '', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -6381,6 +6413,36 @@ CREATE TABLE `planejamento_receita` (
   `filial_id` int(11) DEFAULT NULL,
   `planejamento_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `planejamento_receita`
+--
+
+INSERT INTO `planejamento_receita` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `doc`, `filial_id`, `planejamento_id`) VALUES
+(2, 34, '2018-01-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(3, 34, '2018-02-28', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(4, 34, '2018-03-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(5, 34, '2018-04-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(6, 34, '2018-05-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(7, 34, '2018-06-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(8, 34, '2018-07-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(10, 34, '2018-08-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(11, 34, '2018-09-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(12, 34, '2018-10-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(13, 34, '2018-11-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(14, 34, '2018-12-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(15, 32, '2018-01-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(16, 32, '2018-02-28', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(17, 32, '2018-03-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(18, 32, '2018-04-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(19, 32, '2018-05-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(20, 32, '2018-06-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(21, 32, '2018-07-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(22, 32, '2018-08-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(23, 32, '2018-09-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(24, 32, '2018-10-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(25, 32, '2018-11-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(26, 32, '2018-12-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -6480,7 +6542,9 @@ INSERT INTO `prospects` (`id`, `market_id`, `prob`, `valor_op`, `valor_est`, `re
 (8, 24, '100.00', '1405.00', '1405.00', '2017-08-27', '2017-08-04', 6, NULL),
 (9, 31, '100.00', '1405.00', '1405.00', '2016-11-09', '2017-04-09', 5, NULL),
 (10, 31, '100.00', '937.00', '937.00', '2016-10-27', '2016-08-28', 5, NULL),
-(11, 32, '100.00', '937.00', '937.00', '2017-11-24', '2017-11-20', 5, NULL);
+(11, 32, '100.00', '937.00', '937.00', '2017-11-24', '2017-11-20', 5, NULL),
+(12, 34, '100.00', '937.00', '937.00', '2017-11-24', '2017-11-20', 5, NULL),
+(14, 36, '100.00', '1405.00', '1405.00', '2016-06-23', '2018-12-28', 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -6498,17 +6562,22 @@ CREATE TABLE `recebimentos` (
   `pagamento_id` int(11) DEFAULT NULL,
   `pago_id` int(11) DEFAULT NULL,
   `doc` varchar(100) DEFAULT NULL,
-  `filial_id` int(11) DEFAULT NULL
+  `filial_id` int(11) DEFAULT NULL,
+  `contrato_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `recebimentos`
 --
 
-INSERT INTO `recebimentos` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`) VALUES
-(3, 22, '2017-11-06', 'HONORÁRIOS DE AUDITORIA', '1405.00', 2, 1, 1, '', 1),
-(4, 22, '2017-11-21', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, '', 1),
-(6, 24, '2017-11-28', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 2, 1, 2, 'upload/P7GO 28-11.pdf', 1);
+INSERT INTO `recebimentos` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`, `contrato_id`) VALUES
+(3, 22, '2017-11-06', 'HONORÁRIOS DE AUDITORIA', '1405.00', 2, 1, 1, '', 1, 1),
+(4, 22, '2017-11-21', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, '', 1, 1),
+(6, 24, '2017-11-28', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 2, 1, 1, 'upload/P7GO 28-11.pdf', 1, 1),
+(7, 32, '2017-11-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, 'upload/ASSIS TECNOLOGIA.pdf', 1, 1),
+(8, 34, '2017-11-24', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, 'upload/ASSIS ENGENHARIA.pdf', 1, 1),
+(9, 36, '2017-11-24', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, 2, 'upload/ATACADAO 24-11.pdf', 1, 1),
+(11, NULL, '2017-12-20', 'Consultoria', '1050.00', 1, 1, 2, '', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -6586,7 +6655,9 @@ INSERT INTO `socios` (`id`, `nome`, `cpf`, `residencia`, `nacionalidade`, `profi
 (20, 'Ângela Mara Magalhães Carvalho', '504-447-945-49', 'Feira de Santana – Bahia', 'Brasileira', '', 'Casada', '5'),
 (23, 'Ângela Mara Magalhães Carvalho', '504-447-945-49', 'Feira de Santana – Bahia', 'Brasileira', '', 'Casada', '2'),
 (25, 'Ângela Mara Magalhães Carvalho', '504-447-945-49', 'Feira de Santana – Bahia', 'Brasileira', '', 'Casada', '4'),
-(26, 'ISRAEL VAL DE ASSIS', '', '', '', '', '', '6');
+(26, 'ISRAEL VAL DE ASSIS', '', '', '', '', '', '6'),
+(27, 'THIAGO', '', '', '', '', '', '8'),
+(29, 'Rafael Boaventura', '', '', '', '', '', '9');
 
 -- --------------------------------------------------------
 
@@ -6700,7 +6771,9 @@ INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consult
 ('FLÁVIO ANASTÁCIO SOUZA VIANA', '2017-08-16', 'Realizado', '11:00', NULL, NULL, 6, 24, '(75) 99858-0933', 'p7tecnologia@gmail.com'),
 ('ÂNGELA MARA MAGALHÃES CARVALHO', '2016-04-28', 'Realizado', '09:00', NULL, NULL, 8, 31, '(75) 98148-2655', 'angelamara23@hotmail.com'),
 ('ANGELA MARA MAGALHÃES CARVALHO', '2016-11-09', 'Realizado', '09:00', NULL, NULL, 9, 31, '(75) 98148-2655', 'angelamara23@hotmail.com'),
-('ISRAEL VAL DE ASSIS', '2017-11-20', 'Realizado', '10:00', NULL, NULL, 11, 32, '(71) 98246-7995', 'israel@assistecnologia.com.br');
+('ISRAEL VAL DE ASSIS', '2017-11-20', 'Realizado', '10:00', NULL, NULL, 11, 32, '(71) 98246-7995', 'israel@assistecnologia.com.br'),
+('THIAGO', '2017-11-20', 'Realizado', '09:00', NULL, NULL, 12, 34, '(71) 98112-1366', 'thiago@assisengenharia.com.br'),
+('Rafael Boaventura', '2016-06-22', 'Realizado', '09:00', NULL, NULL, 14, 36, '(75) 98185-0080', 'diretoria2@atacadaobahia.com.br');
 
 -- --------------------------------------------------------
 
@@ -7037,7 +7110,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `atividades`
 --
 ALTER TABLE `atividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `categorias`
 --
@@ -7072,7 +7145,7 @@ ALTER TABLE `consultor_projeto`
 -- AUTO_INCREMENT for table `contato_cliente`
 --
 ALTER TABLE `contato_cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `contato_fornecedor`
 --
@@ -7097,12 +7170,12 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT for table `departamentos_contratos`
 --
 ALTER TABLE `departamentos_contratos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT for table `despesas`
 --
 ALTER TABLE `despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `filiais`
 --
@@ -7122,12 +7195,12 @@ ALTER TABLE `historico`
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `market`
 --
 ALTER TABLE `market`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `mensagens`
 --
@@ -7152,12 +7225,12 @@ ALTER TABLE `planejamentos`
 -- AUTO_INCREMENT for table `planejamento_despesas`
 --
 ALTER TABLE `planejamento_despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `planejamento_receita`
 --
 ALTER TABLE `planejamento_receita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `porte`
 --
@@ -7177,12 +7250,12 @@ ALTER TABLE `profissao`
 -- AUTO_INCREMENT for table `prospects`
 --
 ALTER TABLE `prospects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `recebimentos`
 --
 ALTER TABLE `recebimentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `relatorios`
 --
@@ -7192,7 +7265,7 @@ ALTER TABLE `relatorios`
 -- AUTO_INCREMENT for table `socios`
 --
 ALTER TABLE `socios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `status_atividade`
 --
@@ -7217,7 +7290,7 @@ ALTER TABLE `status_prazo`
 -- AUTO_INCREMENT for table `suspects`
 --
 ALTER TABLE `suspects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tarefas`
 --

@@ -43,16 +43,16 @@
     </div>
   </div>
   <div class="item form-group">
-   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Recebido de<span class="required">*</span>
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="contrato_id">Centro de Resultados<span class="required">*</span>
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
-     <select name="market_id" class="form-control col-md-7 col-xs-12">
+     <select name="contrato_id" class="form-control col-md-7 col-xs-12">
       <?php
        $contratoDao = new ContratoDao($conexao);
        $contratos = $contratoDao->listaTodosContratos();                           
        foreach ($contratos as $contrato): 
       ?>       
-       <option value="<?=$contrato->getMarket()->getId()?>"><?=$contrato->getMarket()->getNome()?></option>
+       <option value="<?=$contrato->getNumero()?>"><?= str_pad($contrato->getNumero(), 3, '0', STR_PAD_LEFT).'.2017'. ' - ' .$contrato->getMarket()->getNome()?></option>
        <?php
        endforeach
        ?>  

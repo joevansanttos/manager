@@ -41,12 +41,12 @@
 <table id="tabela" class="table datatable table-bordered table-striped">
   <thead>
     <tr>
-    	<th>Empresa</th>
+    	<th class="col-md-3">Empresa</th>
     	<th>Probabilidade</th>
       <th>Recebimento</th>
       <th>Fechamento</th>
-      <th>Valor Oportunidade</th>
-      <th>Valor Estimado</th>				    		     
+      <th>Valor Op.</th>
+      <th>Valor Est.</th>				    		     
       <th class="col-md-2">Ações</th>				     
     </tr>
   </thead>
@@ -55,8 +55,8 @@
       <th>Probabilidade</th>
       <th>Recebimento</th>
       <th>Fechamento</th>
-      <th>Valor Oportunidade</th>
-      <th>Valor Estimado</th>                    
+      <th>Valor Op.</th>
+      <th>Valor Est.</th>                    
       <th></th>       
   </tfoot>
   <tbody>
@@ -66,8 +66,8 @@
     	$prospects = $prospectDao->listaProspects($usuario_id);
       foreach ($prospects as $prospect): 
       	$market = $prospect->getMarket();
-        $novoRecebimento = date("d-m-Y", strtotime($prospect->getRecebimento()));
-        $novoFechamento = date("d-m-Y", strtotime($prospect->getFechamento()));                           
+        $novoRecebimento = date("d/m/Y", strtotime($prospect->getRecebimento()));
+        $novoFechamento = date("d/m/Y", strtotime($prospect->getFechamento()));                           
     ?>
       <tr>
       	<td><?=$market->getNome()?></td>

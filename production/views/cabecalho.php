@@ -21,6 +21,7 @@
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../vendors/bootstrap-daterangepicker/daterangepicker.css" />
     <!-- Custom styling plus plugins -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">

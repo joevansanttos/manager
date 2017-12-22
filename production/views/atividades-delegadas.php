@@ -19,7 +19,7 @@
 <?php require "../views/body.php";  ?>
 
 <div class="x_title">
-  <h2>Lista de Tarefas Delegadas a um Colaborador</h2>
+  <h2>Lista de Tarefas Delegadas<small>Tarefas que foram delegadas à você por um colaborador</small></h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>
@@ -54,8 +54,8 @@
           $atividadeDao = new AtividadeDao($conexao);
           $atividades = $atividadeDao->listaAtividadesDelegadadas($usuario_id);
           foreach ($atividades as $atividade):
-            $novoInicio = date("d-m-Y", strtotime($atividade->getInicio()));
-            $novoPrazo = date("d-m-Y", strtotime($atividade->getPrazo()));
+            $novoInicio = date("d/m/Y", strtotime($atividade->getInicio()));
+            $novoPrazo = date("d/m/Y", strtotime($atividade->getPrazo()));
             $status_atividade_id = $atividade->getStatusAtividade()->getId();
             $statusAtividadeDao = new StatusAtividadeDao($conexao);
             $statusAtividade = $statusAtividadeDao->buscaStatusAtividade($status_atividade_id);

@@ -75,10 +75,9 @@ $atividade = $atividadeDao->buscaAtividade($id);
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Objetivo Estratégico<span class="required">*</span>
-    </label>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Objetivo Estratégico</label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="nome" name="objetivo" readonly="readonly" required="required" value="<?=$atividade->getObjetivo()?>" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="nome" name="objetivo" readonly="readonly"  value="<?=$atividade->getObjetivo()?>" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="form-group">
@@ -107,7 +106,7 @@ $atividade = $atividadeDao->buscaAtividade($id);
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Observação<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <textarea  name="observacao" class="form-control col-md-12 col-xs-12"  rows="6"><?=$atividade->getObservacao()?></textarea> 
+      <textarea  name="observacao" class="form-control col-md-12 col-xs-12"  rows="3"><?=$atividade->getObservacao()?></textarea> 
     </div>
   </div>                                     
   <div class="ln_solid"></div>
