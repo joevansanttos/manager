@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Dez-2017 às 15:59
+-- Generation Time: 17-Jan-2018 às 19:33
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -34,26 +34,38 @@ CREATE TABLE `atividades` (
   `prazo` varchar(25) DEFAULT NULL,
   `status_atividade_id` int(11) DEFAULT NULL,
   `setor` varchar(50) DEFAULT NULL,
-  `filial` varchar(50) DEFAULT NULL,
   `importancia` varchar(1000) DEFAULT NULL,
   `delegado_id` int(11) NOT NULL,
-  `descricao` varchar(200) DEFAULT NULL,
-  `resultados` varchar(200) DEFAULT NULL,
+  `descricao` varchar(90) DEFAULT NULL,
+  `resultados` varchar(1000) DEFAULT NULL,
   `delegante_id` int(11) DEFAULT NULL,
   `observacao` varchar(1000) DEFAULT NULL,
   `objetivo` varchar(1000) DEFAULT NULL,
-  `status_prazo_id` int(11) DEFAULT NULL
+  `status_prazo_id` int(11) DEFAULT NULL,
+  `filial_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `atividades`
 --
 
-INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `filial`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`, `status_prazo_id`) VALUES
-(1, '2017-11-08', '2017-11-24', 3, 'PROJETOS', 'SALVADOR', 'Alimentar o Quality de informações para demonstrar aos clientes os benefócios de uso da solução da P', 9, 'Captar um estagiário temporário para cadastramento das bases de dados dos projetos', 'Adquirir novos contratos e criar cases a serem utilizados pelo marketing', 1, NULL, NULL, 2),
-(2, '2017-11-07', '2017-11-09', 5, 'FINANCEIRO', 'Salvador', 'Criar relacionamento com o mercado', 11, 'Finalizar o cadastramento da PROJEK na ASSESPRO', 'Aumentar o número de contratos', 1, NULL, NULL, 3),
-(4, '2017-10-16', '2017-09-17', 1, 'Finanças', 'Salvador', 'Alta', 10, 'Desenvolver Sistema', 'Desenvolver Sistema o mais rápido', 1, '', 'Desenvolvimento', 2),
-(5, '2013-02-01', '3233-10-01', 2, 'Finanças', 'Salvador', 'Alta', 9, 'Conta de Luz 3', 'ewewewewe', 1, '', 'Desenvolvimento', 2);
+INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`, `status_prazo_id`, `filial_id`) VALUES
+(2, '2017-11-07', '2017-11-09', 5, 'FINANCEIRO', 'Criar relacionamento com o mercado', 11, 'Finalizar o cadastramento da PROJEK na ASSESPRO', 'Aumentar o número de contratos', 1, NULL, NULL, 3, 1),
+(3, '07/11/2017', '08/11/2017', 1, 'FINANCEIRO', 'Formalizar a relação comercial com a agência de publicidade.', 11, 'Obter o contrato de marketing  (3 meses) para assinatura', 'Criar condições para medir o trabalho e eficiência da consultoria que foi contratada com a Mana Comunicação.', 1, NULL, NULL, 2, 1),
+(6, '2017-12-15', '2017-12-20', 5, 'TECNOLOGIA', 'Tornar mais flexivel a abertura dos chamados', 10, 'Retirar a obrigatoriedade do campo objetivo estratégico do campo do Ge', 'Obter uma ferramenta mais otimizada', 1, '', 'Implantar o ERP - Manager - PROJEK', 2, 1),
+(7, '2017-12-15', '2017-12-19', 5, 'TECNOLOGIA', 'Tornar o preenchimento das tarefas mais flexível', 10, 'Remover a obirgatoriedade do campo Objetivo Estratégico', 'Ter um uso mais frequente da ferramenta pelos usuários', 1, '', 'Implantar um ERP para gestão da PROJEK', 2, 1),
+(8, '2018-01-08', '2018-01-12', 5, 'Tecnologia', 'Facilitar o cadastro dos clientes na plataforma.', 10, 'Remover obrigatoriedade do campo Fax em cadastro de clientes no Qualit', 'Fazer com que os dados estejam corretamente cadastrados na plataforma.', 9, '', 'Facilitar o cadastro dos clientes na plataforma.', 3, 1),
+(9, '2018-01-08', '2018-01-10', 1, 'Projetos', 'Finalizar a entrega do projeto no prazo para o cliente.', 12, 'Entrega de curso do Setor Financeiro da P7GO', 'Finalizar a entrega do projeto no prazo para o cliente.', 9, '', 'Entregar no prazo.', 2, 1),
+(10, '2018-01-10', '2018-01-15', 1, 'Tecnologia', 'Facilitar o cadastro das auditorias.', 10, 'Automatizar a numeração do código de auditoria', 'Automatizar a numeração do código de auditoria.', 9, '', 'Facilitar o cadastro das auditorias.', 2, 1),
+(11, '2018-01-10', '2018-01-15', 1, 'Qualidade', 'Média', 10, 'Projek Quality', 'Joevan, no momento que vou adicionar um cliente para começar o mapeamento de processos (logo na parte cliente, onde coloco o nome, endereço, estado, cep e etc) o número do contrato não aparece automat', 8, '', '', 2, 1),
+(12, '2018-01-10', '2018-01-18', 1, 'Financeiro', 'Urgente', 10, 'Criar uma tabela detalhada na parte do Planejamento.', '.', 11, '', '', 1, 1),
+(14, '2018-01-11', '2018-01-17', 1, 'Tecnologia', 'Adicionar os departamentos corretos no contrato.', 10, 'Adicionar mais departamentos na opção departamentos em Contrato', 'Adicionar os departamentos corretos no contrato', 9, '', 'Adicionar os departamentos corretos no contrato', 1, 1),
+(15, '2018-01-11', '2018-01-25', 1, 'Tecnologia', 'Poder baixar o PDF e adicionar na Universidade Corporativa.', 10, 'Gerar PDF dos processos e subprocessos cadastrados.', 'Poder baixar o PDF e adicionar na Universidade Corporativa.', 9, '', 'Poder baixar o PDF e adicionar na Universidade Corporativa.', 1, 1),
+(17, '2018-01-12', '2018-01-19', 1, 'TI', 'GRAVE', 10, 'Na parte de cadastrar um processo no manual de processos, é necessário', 'Poder colocar o tempo das tarefas menor que 1 hora. ', 8, '', '', 1, 1),
+(19, '2018-01-12', '2018-01-16', 1, 'TI', 'urgente', 10, 'Aumentar o número de caracteres da Descrição de Tarefa* do Manager, es', 'Visualizar mensagens da atividade completa.', 8, '', '', 2, 1),
+(20, '2017-01-30', '2017-10-31', 1, 'Compras', 'Alta', 10, 'Na parte de cadastrar um processo no manual de processos, é necessário', '', 1, '', '', 2, 1),
+(21, '2017-01-17', '2017-01-19', 5, 'Consultoria', 'Alta', 8, 'Desenvolver Sistema', '', 10, '', '', 2, 1),
+(22, '2017-02-01', '2017-02-02', 1, 'Consultoria', 'Alta', 12, 'Desenvolver Sistema', 'Consultar Clientes a partir', 10, '', '', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -5854,7 +5866,7 @@ INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `consu
 (1, 5, 2, NULL, '2017-12-08', '2018-12-08', '1'),
 (31, 5, 2, NULL, '2016-11-09', '2017-05-09', '2'),
 (22, 6, 2, NULL, '2017-10-01', '2017-12-01', '3'),
-(31, 5, 2, NULL, '2016-05-28', '2016-11-28', '4'),
+(31, 5, 1, NULL, '2016-05-28', '2016-11-28', '4'),
 (23, 5, 2, NULL, '2017-08-04', '2018-07-04', '5'),
 (32, 5, 2, NULL, '2017-11-20', '2018-12-20', '6'),
 (24, 5, 2, NULL, '2017-08-23', '2018-08-23', '7'),
@@ -6054,18 +6066,28 @@ INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `ca
 (15, 62, '2017-11-21', 'ASSOCIAÇÃO ', '444.00', 3, 1, 1, 'upload/AMCHAM.pdf', 1, 1),
 (16, 66, '2017-11-21', 'REDE SOCIAL', '200.00', 9, 1, 1, 'upload/FACEBOOK.pdf', 1, 1),
 (17, 67, '2017-11-16', 'BANCO', '249.08', 6, 1, 1, 'upload/SANTANDER.pdf', 1, 1),
-(19, 59, '2017-12-04', 'DOMÍNIO', '21.99', 6, 1, 2, 'upload/HOSTGATOR 04-12.pdf', 1, 1),
+(19, 59, '2017-12-04', 'DOMÍNIO', '21.99', 3, 1, 1, 'upload/HOSTGATOR 04-12.pdf', 1, 1),
 (20, 68, '2017-11-30', 'ASSOCIAÇÃO ', '247.50', 3, 1, 2, 'upload/ABRH 30-11.pdf', 1, 1),
 (21, 70, '2017-11-27', 'GRÁFICA', '374.58', 9, 1, 2, 'upload/GRÁFICA UNIVERSITÁRIA.pdf', 1, 1),
 (22, 60, '2017-11-27', 'TELEFONIA', '51.36', 3, 1, 2, 'upload/VIVO 27-11.pdf', 1, 1),
-(23, 71, '2017-12-07', 'PRESTAÇÃO DE SERVIÇO', '250.00', 3, 1, 2, 'upload/CAMILA 07-12.pdf', 1, 1),
-(24, 64, '2017-12-07', 'ESCRITÓRIO VIRTUAL', '208.00', 3, 1, 2, 'upload/EV VIRTUAL.pdf', 1, 1),
+(23, 71, '2017-12-07', 'PRESTAÇÃO DE SERVIÇO', '250.00', 3, 1, 1, 'upload/CAMILA 07-12.pdf', 1, 1),
+(24, 64, '2017-12-07', 'ESCRITÓRIO VIRTUAL', '208.00', 3, 1, 1, 'upload/EV VIRTUAL.pdf', 1, 1),
 (25, 61, '2017-11-29', 'AGÊNCIA DE MARKETING', '530.00', 9, 1, 2, 'upload/MANA.pdf', 1, 1),
 (26, 72, '2017-11-29', 'PSICÓLOGA', '120.00', 3, 1, 2, 'upload/NEUZA.pdf', 1, 1),
 (27, 73, '2017-11-27', 'PORTAL', '360.00', 9, 1, 2, 'upload/TIBAHIA.pdf', 1, 1),
 (28, 74, '2017-11-27', 'RH', '180.00', 5, 1, 2, 'upload/RH DECISÃO.pdf', 1, 1),
-(29, 75, '2017-12-12', 'ESCRITÓRIO VIRTUAL', '215.62', 3, 1, 2, 'upload/TALENTUS4.pdf', 1, 1),
-(31, 63, '2017-12-20', 'Viagem Carro', '700.00', 3, 1, 1, '', 1, 2);
+(29, 75, '2017-12-12', 'ESCRITÓRIO VIRTUAL', '215.62', 3, 1, 1, 'upload/TALENTUS4.pdf', 1, 1),
+(30, 70, '2017-12-26', 'GRÁFICA', '64.60', 9, 1, 1, 'upload/GRAFICA UNIVERSITARIA 26-12.pdf', 1, 1),
+(31, 76, '2017-12-29', 'ESCRITÓRIO VIRTUAL', '272.32', 3, 1, 1, 'upload/REGUS 29-12.pdf', 1, 1),
+(32, 61, '2017-12-26', 'REEMBOLSO', '194.00', 9, 1, 1, 'upload/MANA 26-12.pdf', 1, 1),
+(33, 82, '2017-12-07', 'DAM', '118.40', 4, 1, 1, 'upload/DAM.pdf', 1, 1),
+(34, 79, '2017-12-07', 'BOLSA SALÁRIO/TRANSPORTE FILIPE', '514.40', 5, 1, 1, 'upload/BOLSA FILIPE.pdf', 1, 1),
+(35, 79, '2017-12-07', 'BOLSA SALÁRIO/TRANSPORTE JULIANA', '557.60', 5, 1, 1, 'upload/BOLSA JULIANA.pdf', 1, 1),
+(36, 79, '2017-12-07', 'BOLSA SALÁRIO/TRANSPORTE CATHARINA', '572.00', 5, 1, 1, 'upload/BOLSA CATHARINA.pdf', 1, 1),
+(37, 79, '2017-12-07', 'BOLSA SALÁRIO/TRANSPORTE JOEVAN', '542.40', 5, 1, 1, 'upload/BOLSA JOEVAN.pdf', 1, 1),
+(38, 79, '2017-12-21', 'FÁBIO - CRÉDITO EM CONTA', '340.00', 5, 1, 1, 'upload/CRÉDITO EM CONTA FÁBIO.pdf', 1, 1),
+(39, 79, '2017-12-26', 'FÁBIO - CRÉDITO EM CONTA', '500.00', 5, 1, 1, 'upload/CRÉDITO EM CONTA FÁBIO 26-12.pdf', 1, 1),
+(40, 79, '2017-12-27', 'FÁBIO - CRÉDITO EM CONTA', '300.00', 5, 1, 1, 'upload/CRÉDITO EM CONTA FÁBIO 27-12.pdf', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -6162,14 +6184,20 @@ INSERT INTO `fornecedores` (`id`, `razao`, `nome`, `cnpj`, `endereco`, `estado`,
 (65, 'ASS DAS EMP BRAS D T D INF SOF', 'ASSESPRO', '14.987.739/0001-43', 'Av. Orlando Gomes 1845, 3º andar. Cimatec 2', 'BA', '2927408', '(71) 99175-0523', 'Serviços'),
 (66, 'FACEBOOK SERVICOS ONLINE DO BRASIL LTDA', 'FACEBOOK', '13.347.016/0001-17', 'R. Leopoldo Couto de Magalhães, 700, 5° andar', 'SP', '3550308', '(11) 99999-9999', 'Serviços'),
 (67, 'BANCO SANTANDER S.A. ', 'SANTANDER', '90.400.888/0001-42', 'Rua Amador Bueno nº 474', 'SP', '3550308', '(08) 00762-7777', 'Serviços'),
-(68, 'ABRH-BA ASSOC BRASILEIRA REC HUMANOS - BAHIA', 'ABRH-BA', '32.699.803/0001-72', 'Av. Tancredo Neves, 3343 - BL. B Salas 508/509 Edf. CEMPRE - Pituba', 'BA', '2927408', '(71) 3341-0877', 'Serviços'),
 (69, 'ABRH-BA ASSOC BRASILEIRA REC HUMANOS - BAHIA', 'ABRH-BA', '32.699.803/0001-72', 'Av. Tancredo Neves, 3343 - BL. B Salas 508/509 Edf. CEMPRE - Pituba', 'BA', '2927408', '(71) 3341-0877', 'Serviços'),
 (70, 'ESTACAO DIGITAL SISTEMAS R. LTDA', 'COPIADORA UNIVERSITÁRIA', '04.858.785/0001-99', 'AV. Tancredo Neves, 1632; Ed. Salvador Trade Center, Lj 12 - Caminho das Árvores', 'BA', '2927408', '(71) 3113-1133', 'Gráfica'),
 (71, 'CAMILA SOARES DOS SANTOS', 'CAMILA SOARES DOS SANTOS', '01.283.171/597_-__', '...', 'BA', '2927408', '(71) 99999-9999', 'Serviços'),
 (72, 'NEUZA MARIA FERNANDES ZAMARIOLI', 'NEUZA MARIA FERNANDES ZAMARIOLI', '88.067.106/800_-__', '...', 'BA', '2927408', '(71) 99972-9124', 'Serviços'),
 (73, 'T.I. Bahia - Tecnologia da Informacao Bahia Ltda', 'TI BAHIA', '01.652.060/0001-51', 'Rua Capitão Melo, 79 - Alameda Shopping, Loja 11 - Stella Maris', 'BA', '2927408', '(71) 3012-5062', 'Informática'),
 (74, 'RH DECISÃO', 'RH DECISÃO', '04.735.152/539_-__', 'Av. Tancredo Neves, 1283, Edf. Ômega, Sala 902 Caminho das Árvores', 'BA', '2927408', '(71) 3340-1826', 'Serviços'),
-(75, 'TALENTUS 4 ESCRITORIO VIRTUAL LTDA ME', 'TALENTUS 4', '16.646.272/0002-84', 'R. Alceu Amoroso Lima, 786 Edf. Tancredo Neves Trade Center, Salas 311 e 312 Caminho das árvores', 'BA', '2927408', '(71) 2626-5246', 'Serviços');
+(75, 'TALENTUS 4 ESCRITORIO VIRTUAL LTDA ME', 'TALENTUS 4', '16.646.272/0002-84', 'R. Alceu Amoroso Lima, 786 Edf. Tancredo Neves Trade Center, Salas 311 e 312 Caminho das árvores', 'BA', '2927408', '(71) 2626-5246', 'Serviços'),
+(76, 'HQ BR ADM DE BENS E SERV LTDA', 'REGUS BR ', '67.003.590/0001-87', 'Avenida Tancredo Neves, 450, 16º andar – Caminho das Árvores', 'BA', '2927408', '(71) 2202-6000', 'Serviços'),
+(77, 'NBL - CONTABILIDADE S. A. L. -. ME', 'PROGRESS CONTABILIDADE', '09.636.708/0001-08', 'Av. Antonio Carlos Magalhães, 3591, 9º Andar, Parque Bela Vista (Iguatemi)', 'BA', '2927408', '(71) 2104-2255', 'Serviços'),
+(78, 'Banco do Nordeste do Brasil S/a', 'BANCO DO NORDESTE', '07.237.373/0001-20', 'Salvador Trade Center - Av. Tancredo Neves, 1632 - 3-29 - Caminho das Árvores', 'BA', '2927408', '(08) 00728-3030', 'Serviços'),
+(79, 'FABIO MARTINS DA SILVA EIRELI - ME', 'PROJEK CONSULTORIA', '23.913.067/0001-12', 'R. Alceu Amoroso Lima, 786 Edf. Tancredo Neves Trade Center, Sala 312 Caminho das árvores', 'BA', '2927408', '(71) 98841-9093', 'Serviços'),
+(80, 'Ânima Gestão em RH Eirelli - ME', 'ÂNIMA RH', '26.210.193/0001-07', 'Av. ACM, 771 – Ed. Empresarial Torre do Parque - salas 706/805/807 – Itaigara', 'BA', '2927408', '(71) 3316-4237', 'Serviços'),
+(81, 'PREVIDÊNCIA SOCIAL', 'PREVIDÊNCIA SOCIAL', '16.727.230/0001-97', 'R. Miguel Calmom, 395 - Comercio, Salvador - BA, 40015-010', 'BA', '2927408', '(71) 3319-4600', 'Serviços'),
+(82, 'SECRETARIA MUNICIPAL DA FAZENDA', 'SEFAZ', '', 'Av. Tancredo Neves, 776 - Bloco B - Caminho das Árvores', 'BA', '2927408', '(71) 3103-4000', 'Serviços');
 
 -- --------------------------------------------------------
 
@@ -6230,7 +6258,8 @@ INSERT INTO `leads` (`nome`, `email`, `tel`, `cargo`, `id`, `market_id`) VALUES
 ('ANGELA MARA MAGALHÃES CARVALHO', 'angelamara23@hotmail.com', '(75) 98148-2655', 'Diretor', 9, 31),
 ('ISRAEL VAL DE ASSIS', 'israel@assistecnologia.com.br', '(71) 98246-7995', 'Diretor', 10, 32),
 ('THIAGO', 'thiago@assisengenharia.com.br', '(71) 98112-1366', 'Diretor', 11, 34),
-('Rafael Boaventura', 'diretoria2@atacadaobahia.com.br', '(75) 98185-0080', 'Diretor', 13, 36);
+('Rafael Boaventura', 'diretoria2@atacadaobahia.com.br', '(75) 98185-0080', 'Diretor', 13, 36),
+('Lucas Carvalho de Souza,', 'lucas.souza@gevan.com.br', '(71) 37978-100_', 'Diretor', 14, 37);
 
 -- --------------------------------------------------------
 
@@ -6293,7 +6322,8 @@ INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado
 (33, 'ASSIS TECNOLOGIA INTEGRADA COMERCIO E MANUTENCAO DE EQUIPAMENTOS DE SEGURANÇA EIRELI - ME', 'ASSIS TECNOLOGIA', '18.373.354/0001-47', 'www.assistecnologia.com.br', 'Rua Alceu Amoroso Lima, 172 - Sala 1109 Ed. Salvador Office & Pool', 'BA', '2927408', '(71) 3014-2811', 'Tecnologia', 'Caminho das Árvores', 1, 11),
 (34, 'ASSISENG COMÉRCIO E MANUTENÇÃO DE EQUIPAMENTOS DE SEGURANÇA LTDA - ME', 'ASSIS ENGENHARIA', '12.903.812/0001-26', 'http://assisengenharia.com.br/', 'Rua Alceu Amoroso Lima, 668 – Sala 813 – Ed. America Towers', 'BA', '2927408', '(71) 4103-7202', 'Engenharia', 'Caminho das Árvores', 1, 11),
 (35, 'AVENIDA COMÉRCIO VAREJISTA E ATACADO', 'ATACADÃO BAHIA', '09.276.913/0001-00', '', 'Rua Aracajú, No. 280', 'BA', '2910800', '(75) 2101-0080', 'Varejo', 'Centro', 3, 11),
-(36, 'AVENIDA COMÉRCIO VAREJISTA E ATACADO,', 'ATACADÃO BAHIA', '09.276.913/0001-00', '', 'Rua Aracajú, No. 280', 'BA', '2910800', '(75) 2101-0080', 'Varejo', 'Centro', 2, 11);
+(36, 'AVENIDA COMÉRCIO VAREJISTA E ATACADO,', 'ATACADÃO BAHIA', '09.276.913/0001-00', '', 'Rua Aracajú, No. 280', 'BA', '2910800', '(75) 2101-0080', 'Varejo', 'Centro', 2, 11),
+(37, 'PLATAFORMA TRANSPORTES SPE S/A', 'PLATAFORMA - PRAIA GRANDE', '21.120.716/0001-00', '', 'Av. Afrânio Peixoto, s/n - Praia Grande, 40720-690', 'BA', '2927408', '(71) 37978-100_', 'Transporte', 'Praia Grande', 3, 9);
 
 -- --------------------------------------------------------
 
@@ -6391,9 +6421,313 @@ CREATE TABLE `planejamento_despesas` (
 --
 
 INSERT INTO `planejamento_despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `doc`, `filial_id`, `planejamento_id`) VALUES
-(1, 59, '2018-02-20', 'Salário Mensal', '900.00', 3, 1, '', 1, 2),
-(2, 63, '2018-01-20', 'Salário Mensal', '1000.00', 3, 1, '', 1, 2),
-(3, 70, '2018-01-02', 'Salário Mensal', '500.00', 3, 1, '', 1, 2);
+(1, 76, '2018-01-01', 'ESCRITÓRIO VIRTUAL', '938.00', 3, 1, '', 1, 2),
+(2, 76, '2018-02-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(3, 76, '2018-03-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(4, 76, '2018-04-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(5, 76, '2018-05-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(6, 76, '2018-06-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(7, 76, '2018-07-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(8, 76, '2018-08-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(9, 76, '2018-09-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(10, 76, '2018-10-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(11, 76, '2018-11-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(12, 76, '2018-12-01', 'ESCRITÓRIO VIRTUAL', '469.00', 3, 1, '', 1, 2),
+(13, 60, '2018-01-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(14, 60, '2018-02-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(15, 60, '2018-03-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(16, 60, '2018-04-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(17, 60, '2018-05-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(18, 60, '2018-06-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(19, 60, '2018-07-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(20, 60, '2018-08-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(21, 60, '2018-09-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(22, 60, '2018-10-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(23, 60, '2018-11-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(24, 60, '2018-12-01', 'CELULAR', '300.00', 3, 1, '', 1, 2),
+(25, 77, '2018-01-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(26, 77, '2018-02-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(27, 77, '2018-03-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(28, 77, '2018-04-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(29, 77, '2018-05-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(30, 77, '2018-06-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(31, 77, '2018-07-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(32, 77, '2018-08-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(33, 77, '2018-09-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(34, 77, '2018-10-01', 'CONTABILIDADE', '250.00', 3, 1, '', 1, 2),
+(35, 77, '2018-11-01', 'CONTABILIDADE', '375.00', 3, 1, '', 1, 2),
+(36, 77, '2018-12-01', 'CONTABILIDADE', '375.00', 3, 1, '', 1, 2),
+(37, 59, '2018-01-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(38, 59, '2018-02-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(39, 59, '2018-03-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(40, 59, '2018-04-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(41, 59, '2018-05-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(42, 59, '2018-06-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(43, 59, '2018-07-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(44, 59, '2018-08-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(45, 59, '2018-09-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(46, 59, '2018-10-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(47, 59, '2018-11-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(48, 59, '2018-12-01', 'HOSPEDAGEM DO SERVIDOR', '190.00', 3, 1, '', 1, 2),
+(49, 78, '2018-01-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(50, 78, '2018-02-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(51, 78, '2018-03-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(52, 78, '2018-04-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(53, 78, '2018-05-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(54, 78, '2018-06-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(55, 78, '2018-07-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(56, 78, '2018-08-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(57, 78, '2018-09-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(58, 78, '2018-10-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(59, 78, '2018-11-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(60, 78, '2018-12-01', 'TAXAS BANCÁRIAS', '100.00', 3, 1, '', 1, 2),
+(61, 81, '2018-01-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(62, 81, '2018-02-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(63, 81, '2018-03-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(64, 81, '2018-04-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(65, 81, '2018-05-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(66, 81, '2018-06-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(67, 81, '2018-07-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(68, 81, '2018-08-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(69, 81, '2018-09-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(70, 81, '2018-10-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(71, 81, '2018-11-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(72, 81, '2018-12-01', 'IMPOSTOS', '920.00', 4, 1, '', 1, 2),
+(73, 74, '2018-01-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(74, 74, '2018-02-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(75, 74, '2018-03-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(76, 74, '2018-04-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(77, 74, '2018-05-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(78, 74, '2018-06-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(79, 74, '2018-07-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(80, 74, '2018-08-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(81, 74, '2018-09-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(82, 74, '2018-10-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(83, 74, '2018-11-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(84, 74, '2018-12-01', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, '', 1, 2),
+(85, 80, '2018-01-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(86, 80, '2018-02-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(87, 80, '2018-03-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(88, 80, '2018-04-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(89, 80, '2018-05-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(90, 80, '2018-06-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(91, 80, '2018-07-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(92, 80, '2018-08-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(93, 80, '2018-09-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(94, 80, '2018-10-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(95, 80, '2018-11-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(96, 80, '2018-12-01', 'CONTRATO ESTAGIÁRIOS', '60.00', 3, 1, '', 1, 2),
+(97, 66, '2018-01-01', 'REDE SOCIAL', '200.00', 9, 1, '', 1, 2),
+(98, 61, '2018-01-01', 'REDE SOCIAL', '530.00', 9, 1, '', 1, 2),
+(99, 61, '2018-02-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(100, 61, '2018-03-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(101, 61, '2018-04-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(102, 61, '2018-05-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(103, 61, '2018-06-01', 'AGÊNCIA DE MARKETING', '600.00', 3, 1, '', 1, 2),
+(104, 61, '2018-07-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(105, 61, '2018-08-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(106, 61, '2018-09-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(107, 61, '2018-10-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(108, 61, '2018-11-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(109, 61, '2018-12-01', 'AGÊNCIA DE MARKETING', '600.00', 9, 1, '', 1, 2),
+(110, 73, '2018-01-01', 'MÍDIA DIGITAL', '320.00', 9, 1, '', 1, 2),
+(111, 73, '2018-02-01', 'MÍDIA DIGITAL', '320.00', 9, 1, '', 1, 2),
+(112, 73, '2018-03-01', 'MÍDIA DIGITAL', '320.00', 9, 1, '', 1, 2),
+(113, 73, '2018-04-01', 'MÍDIA DIGITAL', '320.00', 9, 1, '', 1, 2),
+(114, 70, '2018-01-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(115, 70, '2018-02-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(116, 70, '2018-03-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(117, 70, '2018-04-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(118, 70, '2018-05-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(119, 70, '2018-06-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(120, 70, '2018-07-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(121, 70, '2018-08-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(122, 70, '2018-09-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(123, 70, '2018-10-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(124, 70, '2018-11-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(125, 70, '2018-12-01', 'MATERIAL GRÁFICO', '250.00', 9, 1, '', 1, 2),
+(126, 62, '2018-01-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(127, 62, '2018-02-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(128, 62, '2018-03-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(129, 62, '2018-04-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(130, 62, '2018-05-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(131, 62, '2018-06-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(132, 62, '2018-07-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(133, 62, '2018-08-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(134, 62, '2018-09-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(135, 62, '2018-10-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(136, 62, '2018-11-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(137, 62, '2018-12-01', 'ASSOCIAÇÃO ', '556.00', 3, 1, '', 1, 2),
+(138, 65, '2018-01-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(139, 65, '2018-02-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(140, 65, '2018-03-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(141, 65, '2018-04-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(142, 65, '2018-05-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(143, 65, '2018-06-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(144, 65, '2018-07-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(145, 65, '2018-08-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(146, 65, '2018-09-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(147, 65, '2018-10-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(148, 65, '2018-11-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(149, 65, '2018-12-01', 'ASSOCIAÇÃO ', '65.00', 3, 1, '', 1, 2),
+(150, 79, '2018-01-01', 'SALÁRIO ESTAGIÁRIO 1', '500.00', 5, 1, '', 1, 2),
+(151, 79, '2018-02-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(152, 79, '2018-03-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(153, 79, '2018-04-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(154, 79, '2018-05-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(155, 79, '2018-06-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(156, 79, '2018-07-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(157, 79, '2018-08-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(158, 79, '2018-09-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(159, 79, '2018-10-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(160, 79, '2018-11-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(161, 79, '2018-12-01', 'SALÁRIO ESTAGIÁRIO 1', '700.00', 5, 1, '', 1, 2),
+(162, 79, '2018-01-01', 'SALÁRIO ESTAGIÁRIO 2', '500.00', 5, 1, '', 1, 2),
+(163, 79, '2018-02-01', 'SALÁRIO ESTAGIÁRIO 2', '500.00', 5, 1, '', 1, 2),
+(164, 79, '2018-03-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(165, 79, '2018-04-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(166, 79, '2018-05-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(167, 79, '2018-06-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(168, 79, '2018-07-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(169, 79, '2018-08-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(170, 79, '2018-09-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(171, 79, '2018-10-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(172, 79, '2018-11-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(173, 79, '2018-12-01', 'SALÁRIO ESTAGIÁRIO 2', '700.00', 5, 1, '', 1, 2),
+(174, 79, '2018-01-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(175, 79, '2018-02-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(176, 79, '2018-03-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(177, 79, '2018-04-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(178, 79, '2018-05-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(179, 79, '2018-06-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(180, 79, '2018-07-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(181, 79, '2018-08-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(182, 79, '2018-09-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(183, 79, '2018-10-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(184, 79, '2018-11-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(185, 79, '2018-12-01', 'SALÁRIO ESTAGIÁRIO 3', '600.00', 5, 1, '', 1, 2),
+(186, 79, '2018-01-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(187, 79, '2018-02-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(188, 79, '2018-03-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(189, 79, '2018-04-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(190, 79, '2018-05-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(191, 79, '2018-06-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(192, 79, '2018-07-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(193, 79, '2018-08-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(194, 79, '2018-09-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(195, 79, '2018-10-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(196, 79, '2018-11-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(197, 79, '2018-12-01', 'SALÁRIO FINANCEIRO', '500.00', 5, 1, '', 1, 2),
+(198, 79, '2018-01-01', 'SALÁRIO CONSULTOR', '0.00', 5, 1, '', 1, 2),
+(199, 79, '2018-02-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(200, 79, '2018-03-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(201, 79, '2018-04-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(202, 79, '2018-05-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(203, 79, '2018-06-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(204, 79, '2018-07-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(205, 79, '2018-08-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(206, 79, '2018-09-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(207, 79, '2018-10-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(208, 79, '2018-11-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(209, 79, '2018-12-01', 'SALÁRIO CONSULTOR', '1547.00', 5, 1, '', 1, 2),
+(210, 79, '2018-01-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(211, 79, '2018-02-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(212, 79, '2018-03-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(213, 79, '2018-04-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(214, 79, '2018-05-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(215, 79, '2018-06-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(216, 79, '2018-07-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(217, 79, '2018-08-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(218, 79, '2018-09-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(219, 79, '2018-10-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(220, 79, '2018-11-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(221, 79, '2018-12-01', 'SALÁRIO FÁBIO', '4000.00', 5, 1, '', 1, 2),
+(222, 79, '2018-01-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(223, 79, '2018-02-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(224, 79, '2018-03-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(225, 79, '2018-04-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(226, 79, '2018-05-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(227, 79, '2018-06-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(228, 79, '2018-07-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(229, 79, '2018-08-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(230, 79, '2018-09-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(231, 79, '2018-10-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(232, 79, '2018-11-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(233, 79, '2018-12-01', 'TRANSPORTE ESTAGIÁRIO 1', '144.00', 5, 1, '', 1, 2),
+(234, 79, '2018-01-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(235, 79, '2018-02-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(236, 79, '2018-03-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(237, 79, '2018-04-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(238, 79, '2018-05-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(239, 79, '2018-06-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(240, 79, '2018-07-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(241, 79, '2018-08-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(242, 79, '2018-09-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(243, 79, '2018-10-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(244, 79, '2018-11-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(245, 79, '2018-12-01', 'TRANSPORTE ESTAGIÁRIO 2', '144.00', 5, 1, '', 1, 2),
+(246, 79, '2018-01-01', 'TRANSPORTE CONSULTOR', '0.00', 5, 1, '', 1, 2),
+(247, 79, '2018-02-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(248, 79, '2018-03-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(249, 79, '2018-04-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(250, 79, '2018-05-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(251, 79, '2018-06-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(252, 79, '2018-07-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(253, 79, '2018-08-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(254, 79, '2018-09-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(255, 79, '2018-10-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(256, 79, '2018-11-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(257, 79, '2018-12-01', 'TRANSPORTE CONSULTOR', '144.00', 5, 1, '', 1, 2),
+(258, 79, '2018-01-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(259, 79, '2018-02-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(260, 79, '2018-03-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(261, 79, '2018-04-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(262, 79, '2018-05-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(263, 79, '2018-06-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(264, 79, '2018-07-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(265, 79, '2018-08-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(266, 79, '2018-09-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(267, 79, '2018-10-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(268, 79, '2018-11-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(269, 79, '2018-12-01', 'TRANSPORTE ESTAGIÁRIO 3', '28.80', 5, 1, '', 1, 2),
+(270, 79, '2018-01-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(271, 79, '2018-02-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(272, 79, '2018-03-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(273, 79, '2018-04-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(274, 79, '2018-05-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(275, 79, '2018-06-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(276, 79, '2018-07-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(277, 79, '2018-08-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(278, 79, '2018-09-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(279, 79, '2018-10-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(280, 79, '2018-11-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(281, 79, '2018-12-01', 'TRANSPORTE FINANCEIRO', '28.80', 5, 1, '', 1, 2),
+(282, 79, '2018-01-01', 'VALE REFEIÇÃO CONSULTOR', '0.00', 5, 1, '', 1, 2),
+(283, 79, '2018-02-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(284, 79, '2018-03-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(285, 79, '2018-04-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(286, 79, '2018-05-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(287, 79, '2018-06-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(288, 79, '2018-07-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(289, 79, '2018-08-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(290, 79, '2018-09-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(291, 79, '2018-10-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(292, 79, '2018-11-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(293, 79, '2018-12-01', 'VALE REFEIÇÃO CONSULTOR', '260.00', 5, 1, '', 1, 2),
+(294, 69, '2018-10-01', 'ASSOCIAÇÃO ', '247.50', 3, 1, '', 1, 2),
+(295, 69, '2018-11-01', 'ASSOCIAÇÃO ', '247.50', 3, 1, '', 1, 2),
+(296, 79, '2018-01-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(297, 79, '2018-02-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(298, 79, '2018-03-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(299, 79, '2018-04-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(300, 79, '2018-05-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(301, 79, '2018-06-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(302, 79, '2018-07-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(303, 79, '2018-08-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(304, 79, '2018-09-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(305, 79, '2018-10-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(306, 79, '2018-11-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2),
+(307, 79, '2018-12-01', 'MATERIAL ESCRITÓRIO', '100.00', 3, 1, '', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -6442,7 +6776,67 @@ INSERT INTO `planejamento_receita` (`id`, `market_id`, `data`, `descricao`, `val
 (23, 32, '2018-09-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
 (24, 32, '2018-10-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
 (25, 32, '2018-11-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
-(26, 32, '2018-12-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2);
+(26, 32, '2018-12-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(27, 36, '2018-01-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(28, 36, '2018-02-28', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(29, 36, '2018-03-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(30, 36, '2018-04-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(31, 36, '2018-05-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(32, 36, '2018-06-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(33, 36, '2018-07-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(34, 36, '2018-08-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(35, 36, '2018-09-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(36, 36, '2018-10-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(37, 36, '2018-11-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(38, 36, '2018-12-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, '', 1, 2),
+(39, 22, '2018-01-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(40, 22, '2018-02-28', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(41, 22, '2018-03-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(42, 22, '2018-04-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(43, 22, '2018-05-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(44, 22, '2018-06-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(45, 22, '2018-07-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(46, 22, '2018-08-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(47, 22, '2018-09-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(48, 22, '2018-10-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(49, 22, '2018-11-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(50, 22, '2018-12-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, '', 1, 2),
+(51, 22, '2018-01-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(52, 22, '2018-02-28', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(53, 22, '2018-03-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(54, 22, '2018-04-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(55, 22, '2018-05-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(56, 22, '2018-06-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(57, 22, '2018-07-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(58, 22, '2018-08-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(59, 22, '2018-09-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(60, 22, '2018-10-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(61, 22, '2018-11-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(62, 22, '2018-12-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, '', 1, 2),
+(63, 24, '2018-01-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(64, 24, '2018-02-28', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(65, 24, '2018-03-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(66, 24, '2018-04-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(67, 24, '2018-05-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(68, 24, '2018-06-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(69, 24, '2018-07-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(70, 24, '2018-08-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(71, 24, '2018-09-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(72, 24, '2018-10-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(73, 24, '2018-11-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(74, 24, '2018-12-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, '', 1, 2),
+(75, 1, '2018-01-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(76, 1, '2018-02-28', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(77, 1, '2018-03-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(78, 1, '2018-04-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(79, 1, '2018-05-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(80, 1, '2018-06-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(81, 1, '2018-07-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(82, 1, '2018-08-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(83, 1, '2018-09-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(84, 1, '2018-10-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(85, 1, '2018-11-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2),
+(86, 1, '2018-12-30', 'CONTRATOS ( 7 MICRO )', '6559.00', 1, 1, '', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -6544,7 +6938,8 @@ INSERT INTO `prospects` (`id`, `market_id`, `prob`, `valor_op`, `valor_est`, `re
 (10, 31, '100.00', '937.00', '937.00', '2016-10-27', '2016-08-28', 5, NULL),
 (11, 32, '100.00', '937.00', '937.00', '2017-11-24', '2017-11-20', 5, NULL),
 (12, 34, '100.00', '937.00', '937.00', '2017-11-24', '2017-11-20', 5, NULL),
-(14, 36, '100.00', '1405.00', '1405.00', '2016-06-23', '2018-12-28', 5, NULL);
+(14, 36, '100.00', '1405.00', '1405.00', '2016-06-23', '2018-12-28', 5, NULL),
+(15, 37, '75.00', '1874.00', '1405.50', '2018-02-15', '2018-02-01', 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -6571,13 +6966,22 @@ CREATE TABLE `recebimentos` (
 --
 
 INSERT INTO `recebimentos` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`, `contrato_id`) VALUES
-(3, 22, '2017-11-06', 'HONORÁRIOS DE AUDITORIA', '1405.00', 2, 1, 1, '', 1, 1),
-(4, 22, '2017-11-21', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, '', 1, 1),
-(6, 24, '2017-11-28', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 2, 1, 1, 'upload/P7GO 28-11.pdf', 1, 1),
-(7, 32, '2017-11-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, 'upload/ASSIS TECNOLOGIA.pdf', 1, 1),
-(8, 34, '2017-11-24', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, 'upload/ASSIS ENGENHARIA.pdf', 1, 1),
-(9, 36, '2017-11-24', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, 2, 'upload/ATACADAO 24-11.pdf', 1, 1),
-(11, NULL, '2017-12-20', 'Consultoria', '1050.00', 1, 1, 2, '', 1, 6);
+(3, 22, '2017-11-06', 'HONORÁRIOS DE AUDITORIA', '1405.00', 2, 1, 1, '', 1, 3),
+(4, 22, '2017-11-21', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, '', 1, 3),
+(6, 24, '2017-11-28', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 2, 1, 1, 'upload/P7GO 28-11.pdf', 1, 7),
+(7, 32, '2017-11-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, 'upload/ASSIS TECNOLOGIA.pdf', 1, 6),
+(8, 34, '2017-11-24', 'HONORÁRIOS DE CONSULTORIA', '937.00', 2, 1, 1, 'upload/ASSIS ENGENHARIA.pdf', 1, 8),
+(9, 36, '2017-11-24', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, 2, 'upload/ATACADAO 24-11.pdf', 1, 9),
+(10, NULL, '2017-12-24', 'HONORÁRIOS DE CONSULTORIA', '187.40', 1, 1, 1, 'upload/ASSIS ENGENHARIA 24-30 PROPORCIONAL.pdf', 1, 8),
+(11, NULL, '2017-12-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, 1, 'upload/ASSIS ENGENHARIA 30.12.pdf', 1, 8),
+(12, NULL, '2017-12-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, 1, 'upload/ASSIS TECNOLOGIA 30.12.pdf', 1, 6),
+(13, NULL, '2017-12-24', 'HONORÁRIOS DE CONSULTORIA', '281.10', 1, 1, 1, 'upload/ATACADÃO 24-30 PROPORCIONAL.pdf', 1, 9),
+(14, NULL, '2017-12-30', 'HONORÁRIOS DE CONSULTORIA', '1405.50', 1, 1, 1, 'upload/ATACADÃO 30.12.pdf', 1, 9),
+(15, NULL, '2017-12-20', 'HONORÁRIOS DE CONSULTORIA', '343.56', 1, 1, 1, 'upload/GUJÃO 19-30 PROPORCIONAL2.pdf', 1, 3),
+(16, NULL, '2017-12-30', 'HONORÁRIOS DE CONSULTORIA', '937.00', 1, 1, 1, 'upload/GUJÃO 30.12.pdf', 1, 3),
+(17, NULL, '2017-12-30', 'HONORÁRIOS DE AUDITORIA', '1405.00', 1, 1, 1, 'upload/GUJÃO AUDITORIA 30.12.pdf', 1, 3),
+(18, NULL, '2017-12-23', 'HONORÁRIOS DE CONSULTORIA', '437.26', 1, 1, 1, 'upload/P7GO 23-30 PROPORCIONAL.pdf', 1, 7),
+(19, NULL, '2017-12-30', 'HONORÁRIOS DE CONSULTORIA', '1874.00', 1, 1, 1, 'upload/P7GO 30.12.pdf', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -6621,7 +7025,12 @@ INSERT INTO `relatorios` (`id`, `descricao`, `tarefa_id`, `data`, `usuario_id`) 
 (47, 'O relatório sofreu algumas modificações e foi finalizado.', 36, '13.12.17', 9),
 (48, 'Após revisado todo material com Leandro foi criado os treinamentos e uc do Pimenta do setor Financeiro.', 37, '13.12.17', 9),
 (49, 'Reunião de apresentação e finalização do Setor (23/10/2017).', 39, '13.12.17', 9),
-(50, 'Foi realizado uma revisão do material produzido para em seguida dar início a criação dos treinamentos da UC.', 40, '13.12.17', 9);
+(50, 'Foi realizado uma revisão do material produzido para em seguida dar início a criação dos treinamentos da UC.', 40, '13.12.17', 9),
+(51, 'No dia 15/12/2017 houve a quarta reunião no Setor Financeiro e foram preenchidos de maneira mais detalhada e consertados alguns dos processos coletados anteriormente.', 41, '19.12.17', 9),
+(52, 'Foi realizada a primeira reunião para a coleta de dados no Setor de Compras com a colaboradora Daniele. \r\n', 42, '08.01.18', 9),
+(53, 'Primeira reunião para a coleta de dados com a colaboradora do setor Maria Auxiliadora. ', 43, '09.01.18', 9),
+(54, 'Foi realizada a segunda reunião para a coleta de dados do setor  utilizando o Quality.', 44, '15.01.18', 9),
+(55, 'Foi ajustado o material produzido no Quality para a próxima reunião.', 45, '15.01.18', 9);
 
 -- --------------------------------------------------------
 
@@ -6773,7 +7182,8 @@ INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consult
 ('ANGELA MARA MAGALHÃES CARVALHO', '2016-11-09', 'Realizado', '09:00', NULL, NULL, 9, 31, '(75) 98148-2655', 'angelamara23@hotmail.com'),
 ('ISRAEL VAL DE ASSIS', '2017-11-20', 'Realizado', '10:00', NULL, NULL, 11, 32, '(71) 98246-7995', 'israel@assistecnologia.com.br'),
 ('THIAGO', '2017-11-20', 'Realizado', '09:00', NULL, NULL, 12, 34, '(71) 98112-1366', 'thiago@assisengenharia.com.br'),
-('Rafael Boaventura', '2016-06-22', 'Realizado', '09:00', NULL, NULL, 14, 36, '(75) 98185-0080', 'diretoria2@atacadaobahia.com.br');
+('Rafael Boaventura', '2016-06-22', 'Realizado', '09:00', NULL, NULL, 14, 36, '(75) 98185-0080', 'diretoria2@atacadaobahia.com.br'),
+('Lucas Carvalho de Souza,', '2018-01-09', 'Realizado', '15:00', NULL, NULL, 15, 37, '(71) 37978-100_', 'lucas.souza@gevan.com.br');
 
 -- --------------------------------------------------------
 
@@ -6808,9 +7218,9 @@ INSERT INTO `tarefas` (`id`, `departamento_contrato_id`, `fim`, `descricao`, `ho
 (16, 57, NULL, 'REUNIÃO DE APRESENTAÇÃO PARCIAL DO PROJETO', 5, 5, 9, NULL),
 (17, 57, NULL, 'AJUSTAR RELATÓRIO COM AS SOLICITAÇÕES FEITAS PELO DIRETOR', 5, 3, 9, NULL),
 (18, 57, NULL, 'APRESENTAÇÃO FINAL', 5, 1, 9, NULL),
-(20, 43, NULL, 'COLETA DE DADOS', 5, 5, 12, NULL),
-(21, 43, NULL, 'COLETA DE DADOS', 5, 5, 12, NULL),
-(22, 43, NULL, 'CRIAR PROCEDIMENTO INTERNO', 5, 5, 12, NULL),
+(20, 43, NULL, 'COLETAR DADOS', 5, 5, 12, NULL),
+(21, 43, NULL, 'COLETAR DADOS', 5, 5, 12, NULL),
+(22, 43, NULL, 'CRIAR MANUAIS DE PROCESSOS', 5, 5, 12, NULL),
 (24, 63, NULL, 'COLETA DE DADOS', 5, 5, 12, NULL),
 (25, 63, NULL, 'COLETA DE DADOS', 5, 5, 12, NULL),
 (27, 63, NULL, 'COLETA DE DADOS', 5, 5, 12, NULL),
@@ -6823,7 +7233,14 @@ INSERT INTO `tarefas` (`id`, `departamento_contrato_id`, `fim`, `descricao`, `ho
 (36, 53, NULL, 'PRODUZIR RELATÓRIO DE MELHORIA CONTÍNUA', 5, 5, 9, NULL),
 (37, 53, NULL, 'CRIAR TREINAMENTOS E QUESTÕES DA U.C.', 5, 5, 9, NULL),
 (39, 53, NULL, 'APRESENTAÇÃO FINAL', 5, 5, 9, NULL),
-(40, 63, NULL, 'REVISÃO DA DOCUMENTAÇÃO PRODUZIDA', 5, 5, 12, NULL);
+(40, 63, NULL, 'REVISÃO DA DOCUMENTAÇÃO PRODUZIDA', 5, 5, 12, NULL),
+(41, 43, NULL, 'CRIAR MANUAIS DE PROCESSOS', 5, 5, 12, ''),
+(42, 72, NULL, '1ª REUNIÃO PRESENCIAL', 2, 5, 9, '08/01/2018'),
+(43, 68, NULL, '1ª REUNIÃO PRESENCIAL', 2, 5, 9, '09/01/2018'),
+(45, 72, NULL, 'AJUSTAR MATERIAL PRODUZIDO', 2, 5, 9, '12/01/2018'),
+(46, 72, NULL, '2ª REUNIÃO PRESENCIAL', 2, 5, 9, '15/01/2018'),
+(47, 68, NULL, 'AJUSTAR MATERIAL PRODUZIDO', 2, 5, 9, '12/01/2018'),
+(48, 68, NULL, '2ª REUNIÃO PRESENCIAL', 2, 5, 9, '15/01/2018');
 
 -- --------------------------------------------------------
 
@@ -7110,7 +7527,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `atividades`
 --
 ALTER TABLE `atividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `categorias`
 --
@@ -7175,7 +7592,7 @@ ALTER TABLE `departamentos_contratos`
 -- AUTO_INCREMENT for table `despesas`
 --
 ALTER TABLE `despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `filiais`
 --
@@ -7185,7 +7602,7 @@ ALTER TABLE `filiais`
 -- AUTO_INCREMENT for table `fornecedores`
 --
 ALTER TABLE `fornecedores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 --
 -- AUTO_INCREMENT for table `historico`
 --
@@ -7195,12 +7612,12 @@ ALTER TABLE `historico`
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `market`
 --
 ALTER TABLE `market`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `mensagens`
 --
@@ -7225,12 +7642,12 @@ ALTER TABLE `planejamentos`
 -- AUTO_INCREMENT for table `planejamento_despesas`
 --
 ALTER TABLE `planejamento_despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=308;
 --
 -- AUTO_INCREMENT for table `planejamento_receita`
 --
 ALTER TABLE `planejamento_receita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `porte`
 --
@@ -7250,17 +7667,17 @@ ALTER TABLE `profissao`
 -- AUTO_INCREMENT for table `prospects`
 --
 ALTER TABLE `prospects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `recebimentos`
 --
 ALTER TABLE `recebimentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `relatorios`
 --
 ALTER TABLE `relatorios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `socios`
 --
@@ -7290,12 +7707,12 @@ ALTER TABLE `status_prazo`
 -- AUTO_INCREMENT for table `suspects`
 --
 ALTER TABLE `suspects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `tarefas`
 --
 ALTER TABLE `tarefas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
