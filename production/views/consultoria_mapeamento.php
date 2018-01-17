@@ -49,7 +49,7 @@
      <th>Membros </th>     
      <th>Início</th>
      <th>Progresso</th>
-     <th style="width: 11%;">Ações</th>
+     <th style="width: 13%;">Ações</th>
    </tr>
    <tbody>
     <?php
@@ -116,7 +116,7 @@
           ?>
          </ul>
        </td>
-       <td><?=date("d-m-Y", strtotime($contrato->getInicio()))?></td>
+       <td><?=$contrato->getNovoInicio()?></td>
        <td class="project_progress">
          <div class="progress progress_sm">
            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?=$percent?>"></div>

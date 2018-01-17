@@ -41,12 +41,12 @@
   <thead>
     <tr>
     	<th>Empresa</th>
-      <th>Produto</th>
-    	<th>Número do Contrato</th>
-      <th>Inicio</th>
-      <th>Fim</th>
-      <th class="col-md-2">Status do Contrato</th>				    		     
-      <th class="col-md-1">Ações</th>				     
+      <th style="width: 19%;" >Produto</th>
+    	<th style="width: 12%;">Nº Contrato</th>
+      <th style="width: 12%;">Inicio</th>
+      <th style="width: 12%;">Fim</th>
+      <th style="width: 12%;">Status</th>				    		     
+      <th style="width: 10%;">Ações</th>				     
     </tr>
   </thead>
   <tbody>
@@ -67,7 +67,7 @@
       <tr>
       	<td><?=$market->getNome()?></td>
         <td><?=$contrato->getProduto()->getNome()?></td>
-        <td><?=str_pad($contrato->getNumero(), 3, '0', STR_PAD_LEFT).'.2017'?></td>
+        <td><?=str_pad($contrato->getNumero(), 3, '0', STR_PAD_LEFT) . "." . $contrato->getAnoContrato() ?></td>
         <td><?=$novoInicio?></td>
         <td><?=$novoFim?></td>
         <td align="center">

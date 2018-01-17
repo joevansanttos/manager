@@ -103,6 +103,11 @@ class PlanejamentoReceita{
 	public function setPlanejamento($planejamento) {
 		$this->planejamento = $planejamento;
 	}
+
+	public function getNovaData() {
+		$novoData = date("d/m/Y", strtotime($this->data));
+		return $novoData;
+	}
 	
 
 }

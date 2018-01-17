@@ -19,7 +19,7 @@
 
 <h3>Financeiro</h3>
 
-<?php require "../views/body.php";  ?>
+<?php require_once "body.php";  ?>
 
 <div class="x_title">
   <h2>Planejamento</h2>
@@ -42,12 +42,12 @@
 </div>
 <div class="x_content"> 		
 
-  <table id="tabela" class="table table-bordered ">
+  <table  class="table  ">
     <thead>
       <tr>
-        <th class="col-md-8">Empresa</th>
+        <th class="col-md-7">Empresa</th>
         <th class="col-md-2">Ano</th>       
-        <th class="col-md-2">Ações</th> 
+        <th class="col-md-3">Ações</th> 
       </tr>
     </thead>
     <tbody>
@@ -61,6 +61,8 @@
             <a href="financeiro_plan_receita_form.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Nova Receita do Planejamento" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
             <a href="financeiro_plan_despesa_form.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Nova Despesa do Planejamento" class="btn btn-danger btn-xs"><i class="fa fa-plus"></i></button></a>
             <a href="financeiro_planejamento.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Planejamento" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
+            <a href="financeiro_plan_graficos.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Planejamento" class="btn btn-primary btn-xs"><i class="fa fa-pie-chart"></i></button></a>
+            <a href="financeiro_planejamento.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Ver Planejamento" class="btn btn-info btn-xs"><i class="fa fa-calendar"></i></button></a>
             <a href="financeiro_plan_altera.php?id=<?=$planejamento->getId()?>"><button data-toggle="tooltip" data-placement="top" title="Alterar Ano do Planejamento" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
           </td>
         </tr>

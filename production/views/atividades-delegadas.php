@@ -19,7 +19,7 @@
 <?php require "../views/body.php";  ?>
 
 <div class="x_title">
-  <h2>Lista de Tarefas Delegadas<small>Tarefas que foram delegadas à você por um colaborador</small></h2>
+  <h2>Lista de Tarefas Delegadas<small>Tarefas que você delegou a um colaborador </small></h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>
@@ -39,15 +39,14 @@
 </div>
 <div class="x_content">
 
-<table id="tabela" class="table table-bordered projects">
+<table id="tabela" class="table projects">
   <thead>
     <tr>
       <th>Atividade</th>
-      <th class="col-md-3">Delegado</th>
-      <th class="col-md-2">Progresso</th>
+      <th style="width: 22%;">Delegado</th>
       <th class="col-md-1">Status</th>
       <th class="col-md-1">Prazo</th>
-      <th class="col-md-1">Ações</th>
+      <th style="width: 10%;">Ações</th>
     </tr>
     <tbody>
       <?php
@@ -82,17 +81,10 @@
             <li>
               <?= $atividade->getDelegado()->getNome() .' '. $atividade->getDelegado()->getSobrenome()?>
               <br />
-              <small>Filial: <?=$atividade->getFilial()?></small>
+              <small>Filial: <?=$atividade->getFilial()->getNome()?></small>
               <small>Setor: <?=$atividade->getSetor()?></small>
             </li>
           </ul>
-        </td>
-
-        <td class="project_progress">
-          <div class="progress progress_sm">
-            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?=$statusAtividade->getPorcentagem()?>"></div>
-          </div>
-          <small></small>
         </td>
         <td>
           <?php

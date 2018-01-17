@@ -6,6 +6,7 @@ require_once "../factory/RecebimentoFactory.php";
 require_once "../factory/DespesaFactory.php";
 
 
+
 class PlanejamentoDao{
 	private $conexao;
 
@@ -30,13 +31,15 @@ class PlanejamentoDao{
 		$query = "select * from planejamentos where id = {$id}";
 		$resultado = mysqli_query($this->conexao->conecta(), $query);
 		$pago_buscado = mysqli_fetch_assoc($resultado);
-		$pago_id = $pago_buscado['id'];
+		$planejamento_id = $pago_buscado['id'];
 		$factory = new PlanejamentoFactory();
-		$pago = $factory->cria($pago_buscado);
-		$pago->setId($pago_id);
-		return $pago;
-	}		
+		$planejamento = $factory->cria($pago_buscado);
+		$planejamento->setId($planejamento_id);
 
+		
+		
+		return $planejamento;
+	}	
 
 	function insere(Planejamento $planejamento) {
 		$query = "insert into planejamentos (ano) values ('{$planejamento->getAno()}')";

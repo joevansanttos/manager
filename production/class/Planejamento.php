@@ -3,9 +3,13 @@
 	class Planejamento{
 		private $ano;
 		private $id;
+		private $receitas;
+		private $despesas;
 
 		function __construct($ano) {
 			$this->ano = $ano;
+			$this->receitas = array();	
+			$this->despesas = array();	
 		}
 
 		public function getAno() {
@@ -20,6 +24,14 @@
 		}
 		public function setId($id) {
 			$this->id = $id;
+		}
+
+		public function getReceitas() {
+			return $this->receitas;
+		}	
+
+		public function addReceita(Receita $receita) {
+			$this->receitas[] = $receita;
 		}
 
 	}

@@ -18,7 +18,7 @@
 <?php require "../views/body.php";  ?>
 
 <div class="x_title">
-  <h2>Lista de Contratos<small>contratos pendentes de aprovação</small></h2>
+  <h2>Lista de Contratos<small>Contratos pendentes de aprovação</small></h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>
@@ -47,10 +47,10 @@
     <tr>
     	<th>Empresa</th>
       <th>Produto</th>
-    	<th>Número do Contrato</th>
-      <th>Inicio</th>
-      <th>Fim</th>
-      <th class="col-md-2">Ações</th>				     
+    	<th style="width: 12%;">Nº Contrato</th>
+      <th style="width: 12%;">Inicio</th>
+      <th style="width: 12%;">Fim</th>
+      <th style="width: 15%;">Ações</th>				     
     </tr>
   </thead>
   <tbody>
@@ -60,15 +60,13 @@
     	$contratos = $contratoDao->listaContratosPendentes();
       foreach ($contratos as $contrato): 
       	$market = $contrato->getMarket();
-        $novoInicio = date("d-m-Y", strtotime($contrato->getInicio()));
-        $novoFim = date("d-m-Y", strtotime($contrato->getFim()));
     ?>
       <tr>
       	<td><?=$market->getNome()?></td>
         <td><?=$contrato->getProduto()->getNome()?></td>
-        <td><?=str_pad($contrato->getNumero(), 3, '0', STR_PAD_LEFT).'.2017'?></td>
-        <td><?=$novoInicio?></td>
-        <td><?=$novoFim?></td>
+        <td><?=str_pad($contrato->getNumero(), 3, '0', STR_PAD_LEFT) . '.' . $contrato->getAnoContrato()?></td>
+        <td><?=$contrato->getNovoInicio()?></td>
+        <td><?=$contrato->getNovoFim()?></td>
         <td align="center">
           <?php
             if($contrato->getStatusContrato()->getId() == 1){

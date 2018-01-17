@@ -4,8 +4,6 @@
   require_once "../dao/PlanejamentoReceitaDao.php"; 
   require_once "../dao/PlanejamentoDespesaDao.php"; 
 
-
-
   $id = $_GET['id'];
   $planejamentoDao = new PlanejamentoDao($conexao);
   $planejamento = $planejamentoDao->busca($id);
@@ -18,7 +16,6 @@
   $receitas = $planejamentoDao->calculaReceitas($id);
   $despesas = $planejamentoDao->calculaDespesas($id);
   $lucro = $planejamentoDao->calculaLucro($id);
-
   $recebimentos = $planejamentoDao->calculaRecebimentos($ano);
   $despesasAtuais = $planejamentoDao->calculaDespesasAtuais($ano);
   $lucroAtual = $planejamentoDao->calculaLucroAtual($ano);
@@ -280,7 +277,7 @@
                   <td><?=$pr->getDescricao()?></td>
                   <td><?=$pr->getMarket()->getNome()?></td>
                   <td><?=$pr->getValor()?></td>
-                  <td><?=$pr->getData()?></td>
+                  <td><?=$pr->getNovaData()?></td>
                   <td><?=$pr->getCategoria()->getDescricao()?></td>
                   <td><?=$pr->getFilial()->getNome()?></td>
                   <td align="center">
@@ -326,7 +323,7 @@
                   <td><?=$pd->getDescricao()?></td>
                   <td><?=$pd->getFornecedor()->getNome()?></td>
                   <td><?=$pd->getValor()?></td>
-                  <td><?=$pd->getData()?></td>
+                  <td><?=$pd->getNovaData()?></td>
                   <td><?=$pd->getCategoria()->getDescricao()?></td>
                   <td><?=$pd->getFilial()->getNome()?></td>
                   <td align="center">

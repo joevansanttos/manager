@@ -15,7 +15,7 @@
 		private $delegado;
 		private $statusPrazo;
 
-		function __construct($descricao, $inicio,  $prazo, $setor, $filial, $resultados, $importancia, $observacao, $objetivo, StatusAtividade $statusAtividade, Usuario $delegante, Usuario $delegado, StatusPrazo $statusPrazo ) {
+		function __construct($descricao, $inicio,  $prazo, $setor, $resultados, $importancia, $observacao, $objetivo, StatusAtividade $statusAtividade, Usuario $delegante, Usuario $delegado, StatusPrazo $statusPrazo, Filial $filial ) {
 			$this->descricao = $descricao;
 			$this->inicio = $inicio;
 			$this->prazo = $prazo;			

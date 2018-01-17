@@ -24,7 +24,7 @@ if(isset($_POST["start"], $_POST["end"])) {
   <tr>
   <th style="width:8%;">DATA</th>
   <th>DESCRIÇÃO</th>
-  <th>CENTRO DE RESULTADOS</th>
+  <th>CENTRO</th>
   <th>RECEBIDO DE</th>
   <th>FILIAL</th>
   <th>VALOR</th>
@@ -49,7 +49,7 @@ if(isset($_POST["start"], $_POST["end"])) {
     <tr>
     <td>' . $novaData . '</td>
     <td> '. $recebimento->getDescricao() .'</td>
-    <td> '. str_pad($recebimento->getContrato()->getNumero(), 3, '0', STR_PAD_LEFT).'.2017' .'</td>
+    <td> '. str_pad($recebimento->getContrato()->getNumero(), 3, '0', STR_PAD_LEFT) . '.' . $recebimento->getAno() .'</td>
     <td>'. $recebimento->getContrato()->getMarket()->getNome() .'</td>
     <td> '. $recebimento->getFilial()->getNome() .'</td>
     <td> R$' . $recebimento->getValor(). '</td>
@@ -80,7 +80,7 @@ if(isset($_POST["start"], $_POST["end"])) {
   <tr>
   <th style="width:8%;">DATA</th>
   <th>DESCRIÇÃO</th>
-  <th>CENTRO DE RESULTADOS</th>
+  <th>CENTRO</th>
   <th>PAGO A</th>
   <th>FILIAL</th>
   <th>VALOR</th>
@@ -106,7 +106,7 @@ if(isset($_POST["start"], $_POST["end"])) {
     <tr>
     <td>' . $novaData . '</td>
     <td>' .$despesa->getDescricao(). '</td>
-    <td>' . str_pad($despesa->getContrato()->getNumero(), 3, '0', STR_PAD_LEFT).'.2017' . '</td>
+    <td>' . str_pad($despesa->getContrato()->getNumero(), 3, '0', STR_PAD_LEFT) . '.' . $despesa->getAno() . '</td>
     <td>' .$despesa->getFornecedor()->getNome(). '</td>
     <td> '. $despesa->getFilial()->getNome() .'</td>
     <td> R$' . $despesa->getValor(). '</td>

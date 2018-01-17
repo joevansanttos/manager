@@ -45,7 +45,7 @@
       <th>Empresa</th>  
       <th>Contato</th>
       <th>Email</th>
-      <th>Telefone</th>
+      <th style="width: 12%;">Telefone</th>
       <th>Cargo</th>
       <th style="width: 20%;">Ações</th>				     
     </tr>

@@ -106,6 +106,12 @@ class Despesa{
 		$this->contrato = $contrato;
 	}
 
+	public function getAno() {
+		$pieces = explode('-', $this->data);
+		$ano = $pieces[0];
+		return $ano;
+	}
+
 }
 
 ?>

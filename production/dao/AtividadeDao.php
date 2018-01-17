@@ -12,12 +12,7 @@
 
 		function listaAtividadesRequiridas($usuario_id) {
 			$atividades = array();
-			if($usuario_id == 1){
-				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u where status_atividade_id != 5");
-			}else{
 				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u where delegado_id = $usuario_id and  status_atividade_id != 5");
-
-			}			
 			while($atividade_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new AtividadeFactory();
 				$atividade_id = $atividade_array['id'];				
@@ -28,10 +23,49 @@
 			return $atividades;
 		}
 
+		function listaAtividadesRequiridasConcluidas($usuario_id) {
+			$atividades = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u where delegado_id = $usuario_id and  status_atividade_id = 5");			
+			while($atividade_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new AtividadeFactory();
+				$atividade_id = $atividade_array['id'];				
+				$atividade = $factory->criaAtividade($atividade_array);
+				$atividade->setId($atividade_id);
+				array_push($atividades, $atividade);
+			}
+			return $atividades;
+		}
+
+		function listaAtividadesDelegadadas($usuario_id) {
+			$atividades = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u where delegante_id = $usuario_id and status_atividade_id != 5");
+			while($atividade_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new AtividadeFactory();
+				$atividade_id = $atividade_array['id'];				
+				$atividade = $factory->criaAtividade($atividade_array);
+				$atividade->setId($atividade_id);
+				array_push($atividades, $atividade);
+			}
+			return $atividades;
+		}		
+
+		function listaAtividadesConcluidasDelegadadas($usuario_id) {
+			$atividades = array();
+			$resultado = mysqli_query($this->conexao->conecta(), "select * from atividades where delegante_id = $usuario_id and  status_atividade_id = 5");
+			while($atividade_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new AtividadeFactory();
+				$atividade_id = $atividade_array['id'];				
+				$atividade = $factory->criaAtividade($atividade_array);
+				$atividade->setId($atividade_id);
+				array_push($atividades, $atividade);
+			}
+			return $atividades;
+		}		
+
 		
 
 		function insereAtividade(Atividade $atividade) {
-			$query = "insert into atividades ( descricao, inicio, prazo, setor, filial, resultados, importancia, objetivo, observacao, status_atividade_id, delegado_id, delegante_id, status_prazo_id) values ('{$atividade->getDescricao()}', '{$atividade->getInicio()}',  '{$atividade->getPrazo()}', '{$atividade->getSetor()}', '{$atividade->getFilial()}', '{$atividade->getResultados()}', '{$atividade->getImportancia()}', '{$atividade->getObjetivo()}', '{$atividade->getObservacao()}', '{$atividade->getStatusAtividade()->getId()}', '{$atividade->getDelegado()->getId()}', '{$atividade->getDelegante()->getId()}','{$atividade->getStatusPrazo()->getId()}' )";
+			$query = "insert into atividades ( descricao, inicio, prazo, setor, filial_id, resultados, importancia, objetivo, observacao, status_atividade_id, delegado_id, delegante_id, status_prazo_id) values ('{$atividade->getDescricao()}', '{$atividade->getInicio()}',  '{$atividade->getPrazo()}', '{$atividade->getSetor()}', '{$atividade->getFilial()->getId()}', '{$atividade->getResultados()}', '{$atividade->getImportancia()}', '{$atividade->getObjetivo()}', '{$atividade->getObservacao()}', '{$atividade->getStatusAtividade()->getId()}', '{$atividade->getDelegado()->getId()}', '{$atividade->getDelegante()->getId()}','{$atividade->getStatusPrazo()->getId()}' )";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 			}else{
 				echo ( mysqli_error($this->conexao->conecta()));
@@ -124,41 +158,7 @@
 
 		}
 
-		function listaAtividadesDelegadadas($usuario_id) {
-			$atividades = array();
-			if($usuario_id == 1){
-				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u where status_atividade_id != 5");
-			}else{
-				$resultado = mysqli_query($this->conexao->conecta(), "select u.* from atividades as u where delegante_id = $usuario_id and status_atividade_id != 5");
-
-			}			
-			while($atividade_array = mysqli_fetch_assoc($resultado)) {
-				$factory = new AtividadeFactory();
-				$atividade_id = $atividade_array['id'];				
-				$atividade = $factory->criaAtividade($atividade_array);
-				$atividade->setId($atividade_id);
-				array_push($atividades, $atividade);
-			}
-			return $atividades;
-		}		
-
-		function listaAtividadesConcluidasDelegadadas($usuario_id) {
-			$atividades = array();
-			if($usuario_id == 1){
-				$resultado = mysqli_query($this->conexao->conecta(), "select * from atividades  where status_atividade_id = 5");
-			}else{
-				$resultado = mysqli_query($this->conexao->conecta(), "select * from atividades where delegante_id = $usuario_id and  status_atividade_id = 5");
-
-			}			
-			while($atividade_array = mysqli_fetch_assoc($resultado)) {
-				$factory = new AtividadeFactory();
-				$atividade_id = $atividade_array['id'];				
-				$atividade = $factory->criaAtividade($atividade_array);
-				$atividade->setId($atividade_id);
-				array_push($atividades, $atividade);
-			}
-			return $atividades;
-		}		
+		
 
 		function atualizaStatusPrazo(Atividade $atividade, $status_prazo_id) {
 			$query = "update atividades set  status_prazo_id = '{$status_prazo_id}' where id = '{$atividade->getId()}'";

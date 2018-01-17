@@ -19,7 +19,7 @@
 <?php require "../views/body.php";  ?>
 
 <div class="x_title">
-  <h2>Suas Tarefas<small>Tarefas que foram delegadas à você por um colaborador</small></h2>
+  <h2>Suas Tarefas Concluídas<small>Tarefas que foram delegadas à você por um colaborador que já foram concluídas</small></h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>
@@ -44,14 +44,13 @@
     <tr>
       <th>Atividade</th>
       <th style="width: 22%;">Delegante</th>
-      <th class="col-md-1">Status</th>
       <th class="col-md-1">Prazo</th>
       <th style="width: 10%;">Ações</th>
     </tr>
     <tbody>
       <?php
           $atividadeDao = new AtividadeDao($conexao);
-          $atividades = $atividadeDao->listaAtividadesRequiridas($usuario_id);
+          $atividades = $atividadeDao->listaAtividadesRequiridasConcluidas($usuario_id);
           foreach ($atividades as $atividade):
             $novoInicio = date("d/m/Y", strtotime($atividade->getInicio()));
             $novoPrazo = date("d/m/Y", strtotime($atividade->getPrazo()));
@@ -85,32 +84,6 @@
                <small>Setor: <?=$atividade->getSetor()?></small>
             </li>
           </ul>
-        </td>
-        <td>
-          <?php
-            if($statusAtividade->getPorcentagem() == 0){
-          ?>
-            <button type="button" class="btn btn-danger btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-          <?php    
-            }elseif($statusAtividade->getPorcentagem() == 25){
-          ?>
-            <button type="button" class="btn btn-warning btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-          <?php
-            }elseif($statusAtividade->getPorcentagem() == 50){
-          ?>
-            <button type="button" class="btn btn-primary btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-          <?php    
-            }elseif($statusAtividade->getPorcentagem() == 75){
-          ?>
-            <button type="button" class="btn btn-info btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-          <?php
-            }else{
-          ?>
-            <button  type="button" class="btn btn-success btn-xs col-md-12"><?=$atividade->getStatusAtividade()->getDescricao()?></button>
-          <?php
-            }
-          ?>
-          
         </td>
         <td align="center">
           <?php

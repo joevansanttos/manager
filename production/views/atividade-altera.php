@@ -61,10 +61,10 @@ $atividade = $atividadeDao->buscaAtividade($id);
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Filial <span class="required">*</span>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filial_id">Filial <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="nome" name="filial" readonly="readonly" value="<?=$atividade->getFilial()?>" required="required" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="filial_id" name="filial_id" readonly="readonly" value="<?=$atividade->getFilial()->getNome()?>" required="required" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="form-group">

@@ -1,6 +1,6 @@
 <?php 
 
-class Conexao {
+class ConexaoDao {
 
   function __construct(){
    $this->conecta();

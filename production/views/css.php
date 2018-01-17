@@ -8,7 +8,8 @@
         <div class="left_col scroll-view">
           
           <div class="navbar nav_title" style="border: 0;">
-            
+            <a href="index2.php" class="site_title"><i class="fa fa-rocket"></i><span> Projek Manager</span>
+            </a>
           </div>
           <div class="clearfix"></div>
           <div class="profile clearfix">
@@ -63,9 +64,11 @@
                 </li>
                 <li><a><i class="fa fa-calendar"></i> Tarefas<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="atividades-requiridas.php">Tarefas Requiridas</a></li>
+                    <li><a href="atividades-requiridas.php">Suas Tarefas</a></li>
+                    <li><a href="atividades-requiridas-concluidas.php">Suas Tarefas Concluídas</a></li>
                     <li><a href="atividades-delegadas.php">Tarefas Delegadas</a></li>
-                    <li><a href="atividades-delegadas-concluidas.php">Tarefas Concluídas</a></li>
+                    <li><a href="atividades-delegadas-concluidas.php">Tarefas Delegadas Concluídas</a></li>
+
 
                   </ul>
                 </li>

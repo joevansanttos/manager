@@ -119,6 +119,22 @@
 			$this->statusContrato = $statusContrato;
 		}
 
+		public function getAnoContrato() {
+			$pieces = explode('-', $this->inicio);
+			$ano = $pieces[0];
+			return $ano;
+		}
+
+		public function getNovoInicio() {
+			$novoInicio = date("d/m/Y", strtotime($this->inicio));
+			return $novoInicio;
+		}
+
+		public function getNovoFim() {
+			$novoFim = date("d/m/Y", strtotime($this->fim));
+			return $novoFim;
+		}
+
 
 	}
 

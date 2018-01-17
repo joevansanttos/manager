@@ -1,13 +1,18 @@
 <?php	
-require_once "cabecalho.php"; 
-require_once '../dao/UsuarioDao.php';
+  require_once "cabecalho.php"; 
+  require_once '../dao/UsuarioDao.php';
+  require_once '../dao/FilialDao.php';
 ?>
 
-<?php require_once "css.php"; ?>
+<?php 
+  require_once "css.php";
+?>
 
 <h3>Tarefas</h3>
 
-<?php require "body.php"; ?>
+<?php 
+  require_once "body.php"; 
+?>
 
 <div class="x_title">
   <h2>Adicionar Nova Tarefa</h2>
@@ -47,10 +52,10 @@ require_once '../dao/UsuarioDao.php';
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Descrição da Tarefa <span class="required">*</span>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descricao">Título da Tarefa <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="nome" name="descricao"  required="required" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="descricao" name="descricao" data-parsley-maxlength="90" data-validate-length-range="100" required="required" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="item form-group">
@@ -58,7 +63,7 @@ require_once '../dao/UsuarioDao.php';
     <div class="col-sm-2 col-xs-12 col-md-2">
       <input type="date" id="recebimento" name="inicio" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
     </div>
-    <label class="control-label col-md-2 col-sm-3 col-xs-12" for="fechamento">Prazo</label>
+    <label class="control-label col-md-2 col-sm-3 col-xs-12" for="fechamento">Prazo<span class="required">*</span></label>
     <div class="col-sm-2 col-xs-12 col-md-2">
       <input type="date" id="fechamento" name="prazo" required="required" data-validate-length-range="6,20" class="form-control col-md-7 col-xs-12">
     </div>
@@ -71,10 +76,22 @@ require_once '../dao/UsuarioDao.php';
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Filial <span class="required">*</span>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="filial_id">Filial <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="nome" name="filial"  required="required" class="form-control col-md-7 col-xs-12">
+      <select name="filial_id" class="form-control col-md-7 col-xs-12">
+        <?php
+          $filialDao = new FilialDao($conexao);
+          $filiais = $filialDao->lista();
+          foreach ($filiais as $filial):
+        ?>       
+            <option value="<?=$filial->getId()?>">
+              <?=$filial->getNome()?>
+            </option>
+        <?php 
+          endforeach 
+        ?>  
+      </select>
     </div>
   </div>
   <div class="form-group">
@@ -94,7 +111,7 @@ require_once '../dao/UsuarioDao.php';
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="resultados">Resultados Esperados<span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <textarea  name="resultados" class="form-control col-md-12 col-xs-12" rows="3"></textarea> 
+      <textarea  name="resultados" class="form-control col-md-12 col-xs-12" required="required" rows="3"></textarea> 
     </div>
   </div>                                     
   <div class="ln_solid"></div>
@@ -110,7 +127,9 @@ require_once '../dao/UsuarioDao.php';
   </div>
 </form>
 
-<?php require_once "script.php"; ?>
+<?php 
+  require_once "script.php"; 
+?>
 
 <!-- Parsley -->
 <script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>

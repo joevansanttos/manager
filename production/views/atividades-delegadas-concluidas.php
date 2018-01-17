@@ -19,7 +19,7 @@
 <?php require "../views/body.php";  ?>
 
 <div class="x_title">
-  <h2>Lista de Tarefas Delegadas e Concluídas</h2>
+  <h2>Lista de Tarefas Delegadas e Concluídas<small>Tarefas que você delegou a um colaborador e que foram concluídas </small></h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>
@@ -39,13 +39,13 @@
 </div>
 <div class="x_content">
 
-<table id="tabela" class="table table-bordered projects">
+<table id="tabela" class="table projects">
   <thead>
     <tr>
       <th>Atividade</th>
-      <th class="col-md-3">Delegado</th>
+      <th style="width: 22%;">Delegado</th>
       <th class="col-md-1">Prazo</th>
-      <th class="col-md-1">Ações</th>
+      <th style="width: 10%;">Ações</th>
     </tr>
     <tbody>
       <?php
@@ -64,9 +64,7 @@
               if((strtotime($atividade->getPrazo())) < (strtotime($today))){
                 $atividadeDao->atualizaStatusPrazo($atividade, 2);
               }
-            }
-            
-                                   
+            }                               
       ?>
       <tr>
         <td>
@@ -80,7 +78,7 @@
             <li>
               <?= $atividade->getDelegado()->getNome() .' '. $atividade->getDelegado()->getSobrenome()?>
               <br />
-              <small>Filial: <?=$atividade->getFilial()?></small>
+              <small>Filial: <?=$atividade->getFilial()->getNome()?></small>
               <small>Setor: <?=$atividade->getSetor()?></small>
             </li>
           </ul>

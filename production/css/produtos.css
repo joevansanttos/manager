@@ -1,0 +1,23 @@
+
+
+p{
+  font-size: 11pt;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+h1 {
+font-size: 24pt;
+}
+
+h2 {
+font-size: 14pt;
+text-align: center;
+}
+
+
+
+.tabs{
+  padding: 20px;
+  height: 23cm;
+}
