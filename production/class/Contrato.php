@@ -135,6 +135,11 @@
 			return $novoFim;
 		}
 
+		public function getNumeroConvertido(){
+			$novoNumero = str_pad($this->getNumero(), 3, '0', STR_PAD_LEFT);
+			return $novoNumero;
+		}
+
 
 	}
 

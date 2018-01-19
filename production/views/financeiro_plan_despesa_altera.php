@@ -49,18 +49,11 @@
       <input type="text" id="descricao" value="<?=$planejamentoDespesa->getDescricao()?>" name="descricao" required="required" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
-  <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ano">Ano do Planejamento<span class="required">*</span>
-    </label>
-    <div class="col-md-6 col-sm-6 col-xs-12">
-      <input class="form-control col-md-3 col-sm-3 col-xs-12" value="<?=$planejamentoDespesa->getPlanejamento()->getAno()?>" readonly="readonly" type="text" id="ano" data-inputmask="'mask' : '9999'" name="ano" required="required"> 
-    </div>
-  </div>
   <div class="item form-group">
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Pago a<span class="required">*</span>
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
-    <select name="fornecedor_id" class="form-control col-md-7 col-xs-12">
+    <select id="fornecedor_id" name="fornecedor_id" class="form-control col-md-7 col-xs-12">
      <?php
       $fornecedorDao = new FornecedorDao($conexao);
       $fornecedores = $fornecedorDao->listaFornecedores();                           
@@ -170,8 +163,9 @@
 </script>
 
 <script type="text/javascript">
-  document.getElementById('market_id').value = '<?=$planejamentoDespesa->getMarket()->getId()?>';
+  document.getElementById('fornecedor_id').value = '<?=$planejamentoDespesa->getFornecedor()->getId()?>';
 </script>
+
 
 <script type="text/javascript">
   document.getElementById('categoria_id').value = '<?=$planejamentoDespesa->getCategoria()->getId()?>';
@@ -180,6 +174,8 @@
 <script type="text/javascript">
   document.getElementById('pagamento_id').value = '<?=$planejamentoDespesa->getPagamento()->getId()?>';
 </script>
+
+
 
 
 <?php	require_once "rodape.php"; ?>

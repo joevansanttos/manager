@@ -7,5 +7,5 @@
 	$planejamentoReceita = $planejamentoReceitaDao->busca($id);
 	$planejamentoReceitaDao->remove($planejamentoReceita);
 	$id = $planejamentoReceita->getPlanejamento()->getId();
-	header("Location: ../views/financeiro_planejamento.php?id=$id");
+	header("Location: ../views/financeiro_planejamento_detalhado.php?id=$id");
 ?>

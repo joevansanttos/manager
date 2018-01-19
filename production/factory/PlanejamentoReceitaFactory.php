@@ -28,11 +28,8 @@ class PlanejamentoReceitaFactory {
 		$pagamento_id = $params["pagamento_id"];
 		$pagamentoDao = new PagamentoDao($conexao);
 		$pagamento = $pagamentoDao->buscaPagamento($pagamento_id);
-		$planejamento_id = $params["planejamento_id"];
-		$planejamentoDao = new PlanejamentoDao($conexao);
-		$planejamento = $planejamentoDao->busca($planejamento_id);
 		$doc = $params["doc"];	
-		return new PlanejamentoReceita($data, $descricao,  $valor, $categoria, $pagamento,  $filial, $market, $doc, $planejamento);
+		return new PlanejamentoReceita($data, $descricao,  $valor, $categoria, $pagamento,  $filial, $market, $doc);
 	}	
 
 }

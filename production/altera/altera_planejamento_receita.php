@@ -17,10 +17,12 @@
 	  }
 	}	
 
-	$planejamentoReceita->setId($id);
-	$planejamentoDao = new PlanejamentoReceitaDao($conexao);
-	$planejamentoDao->atualiza($planejamentoReceita);
 
-	$id = $planejamentoReceita->getPlanejamento()->getId();
-	header("Location: ../views/financeiro_planejamento.php?id=$id");
+	$planejamentoReceita->setId($id);
+	$planejamentoReceitaDao = new PlanejamentoReceitaDao($conexao);
+
+	$planejamentoReceitaDao->atualiza($planejamentoReceita);
+
+	$id = $_POST['planejamento_id'];
+	header("Location: ../views/financeiro_planejamento_detalhado.php?id=$id");
 ?>

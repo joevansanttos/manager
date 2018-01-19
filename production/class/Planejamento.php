@@ -30,8 +30,16 @@
 			return $this->receitas;
 		}	
 
-		public function addReceita(Receita $receita) {
+		public function addReceita(PlanejamentoReceita $receita) {
 			$this->receitas[] = $receita;
+		}
+
+		public function getDespesas() {
+			return $this->despesas;
+		}	
+
+		public function addDespesa(PlanejamentoDespesa $despesa) {
+			$this->despesas[] = $despesa;
 		}
 
 	}

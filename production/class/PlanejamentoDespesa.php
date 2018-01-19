@@ -12,7 +12,7 @@ class PlanejamentoDespesa{
 	private $pago;
 	private $id;
 
-	function __construct($data, $descricao,  $valor, CategoriaDespesa $categoria,Pagamento $pagamento,  Filial $filial, Fornecedor $fornecedor, $doc, Planejamento $planejamento) {
+	function __construct($data, $descricao,  $valor, CategoriaDespesa $categoria,Pagamento $pagamento,  Filial $filial, Fornecedor $fornecedor, $doc) {
 		$this->data = $data;
 		$this->descricao = $descricao;
 		$this->fornecedor = $fornecedor;
@@ -22,7 +22,6 @@ class PlanejamentoDespesa{
 		$this->pago = $pago;
 		$this->filial = $filial;
 		$this->doc = $doc;
-		$this->planejamento = $planejamento;
 	}
 
 	public function getData() {
@@ -107,6 +106,11 @@ class PlanejamentoDespesa{
 	public function getNovaData() {
 		$novoData = date("d/m/Y", strtotime($this->data));
 		return $novoData;
+	}
+
+	public function getValorConvertido(){
+		$novoValor = "R$ " . $this->valor;
+		return $novoValor;
 	}
 	
 

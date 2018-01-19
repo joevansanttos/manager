@@ -21,6 +21,6 @@
 	$planejamentoDao = new PlanejamentoDespesaDao($conexao);
 	$planejamentoDao->atualiza($planejamentoDespesa);
 
-	$id = $planejamentoDespesa->getPlanejamento()->getId();
-	header("Location: ../views/financeiro_planejamento.php?id=$id");
+	$id = $_POST['planejamento_id'];
+	header("Location: ../views/financeiro_planejamento_detalhado.php?id=$id");
 ?>

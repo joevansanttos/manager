@@ -8,23 +8,23 @@
 			$this->conexao = $conexao;
 		}
 
-		function lista($id) {
-			$recebimentos = array();			
+		function addDespesas($planejamento) {
+			$id = $planejamento->getId();
 			$resultado = mysqli_query($this->conexao->conecta(), "select * from planejamento_despesas where planejamento_id = '{$id}'");
 			while($recebimento_array = mysqli_fetch_assoc($resultado)) {
 				$factory = new PlanejamentoDespesaFactory();
 				$recebimento_id = $recebimento_array['id'];				
 				$recebimento = $factory->cria($recebimento_array);
 				$recebimento->setId($recebimento_id);
-				array_push($recebimentos, $recebimento);
+				$planejamento->addDespesa($recebimento);
 			}
-			return $recebimentos;
+			return $planejamento;
 		}
 
 		
 
 		function insere(PlanejamentoDespesa $planejamento) {
-			$query = "insert into planejamento_despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, filial_id, doc, planejamento_id) values ('{$planejamento->getFornecedor()->getId()}', '{$planejamento->getData()}', '{$planejamento->getDescricao()}', '{$planejamento->getValor()}', '{$planejamento->getCategoria()->getId()}', '{$planejamento->getPagamento()->getId()}', '{$planejamento->getFilial()->getId()}', '{$planejamento->getDoc()}', '{$planejamento->getPlanejamento()->getId()}')";
+			$query = "insert into planejamento_despesas ( fornecedor_id, data, descricao, valor, categoria_id, pagamento_id, filial_id, doc) values ('{$planejamento->getFornecedor()->getId()}', '{$planejamento->getData()}', '{$planejamento->getDescricao()}', '{$planejamento->getValor()}', '{$planejamento->getCategoria()->getId()}', '{$planejamento->getPagamento()->getId()}', '{$planejamento->getFilial()->getId()}', '{$planejamento->getDoc()}')";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{
@@ -35,12 +35,15 @@
 		function busca($id) {
 			$query = "select * from planejamento_despesas where id = {$id}";
 			$resultado = mysqli_query($this->conexao->conecta(), $query);
-			$pago_buscado = mysqli_fetch_assoc($resultado);
-			$pago_id = $pago_buscado['id'];
+			$planejamento_buscado = mysqli_fetch_assoc($resultado);
+			$planejamento_id = $planejamento_buscado['id'];
 			$factory = new PlanejamentoDespesaFactory();
-			$pago = $factory->cria($pago_buscado);
-			$pago->setId($pago_id);
-			return $pago;
+			$planejamento_despesa = $factory->cria($planejamento_buscado);
+			$planejamento_despesa->setId($planejamento_id);
+			$planejamentoDao = new PlanejamentoDao($this->conexao);
+			$planejamento = $planejamentoDao->busca($planejamento_buscado['planejamento_id']);
+			$planejamento_despesa->setPlanejamento($planejamento);
+			return $planejamento_despesa;
 		}
 
 		function atualiza(PlanejamentoDespesa $planejamento) {

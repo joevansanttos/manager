@@ -112,6 +112,25 @@ class Despesa{
 		return $ano;
 	}
 
+	public function getNovaData() {
+		$novaData = date("d/m/Y", strtotime($this->data));
+		return $novaData;
+	}
+
+	public function getPagoSimbolo() {
+		if($this->getPago()->getId() == 2){
+			$string = 'times';
+		}else{
+			$string = 'check';
+		}
+		return $string;
+	}
+
+	public function getValorConvertido(){
+		$novoValor = "R$ " . $this->valor;
+		return $novoValor;
+	}
+
 }
 
 ?>

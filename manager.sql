@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.6
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 17-Jan-2018 às 19:33
--- Versão do servidor: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Host: localhost
+-- Tempo de geração: 19/01/2018 às 17:09
+-- Versão do servidor: 10.1.29-MariaDB
+-- Versão do PHP: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `manager`
+-- Banco de dados: `manager`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `atividades`
+-- Estrutura para tabela `atividades`
 --
 
 CREATE TABLE `atividades` (
@@ -37,7 +37,7 @@ CREATE TABLE `atividades` (
   `importancia` varchar(1000) DEFAULT NULL,
   `delegado_id` int(11) NOT NULL,
   `descricao` varchar(90) DEFAULT NULL,
-  `resultados` varchar(1000) DEFAULT NULL,
+  `resultados` varchar(2000) DEFAULT NULL,
   `delegante_id` int(11) DEFAULT NULL,
   `observacao` varchar(1000) DEFAULT NULL,
   `objetivo` varchar(1000) DEFAULT NULL,
@@ -46,31 +46,29 @@ CREATE TABLE `atividades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `atividades`
+-- Fazendo dump de dados para tabela `atividades`
 --
 
 INSERT INTO `atividades` (`id`, `inicio`, `prazo`, `status_atividade_id`, `setor`, `importancia`, `delegado_id`, `descricao`, `resultados`, `delegante_id`, `observacao`, `objetivo`, `status_prazo_id`, `filial_id`) VALUES
 (2, '2017-11-07', '2017-11-09', 5, 'FINANCEIRO', 'Criar relacionamento com o mercado', 11, 'Finalizar o cadastramento da PROJEK na ASSESPRO', 'Aumentar o número de contratos', 1, NULL, NULL, 3, 1),
 (3, '07/11/2017', '08/11/2017', 1, 'FINANCEIRO', 'Formalizar a relação comercial com a agência de publicidade.', 11, 'Obter o contrato de marketing  (3 meses) para assinatura', 'Criar condições para medir o trabalho e eficiência da consultoria que foi contratada com a Mana Comunicação.', 1, NULL, NULL, 2, 1),
-(6, '2017-12-15', '2017-12-20', 5, 'TECNOLOGIA', 'Tornar mais flexivel a abertura dos chamados', 10, 'Retirar a obrigatoriedade do campo objetivo estratégico do campo do Ge', 'Obter uma ferramenta mais otimizada', 1, '', 'Implantar o ERP - Manager - PROJEK', 2, 1),
+(6, '2017-12-15', '2017-12-20', 5, 'TECNOLOGIA', 'Tornar mais flexivel a abertura dos chamados', 10, 'Retirar a obrigatoriedade do campo objetivo estratégico do campo do Gerenciador de Tarefas', 'Obter uma ferramenta mais otimizada', 1, '', 'Implantar o ERP - Manager - PROJEK', 2, 1),
 (7, '2017-12-15', '2017-12-19', 5, 'TECNOLOGIA', 'Tornar o preenchimento das tarefas mais flexível', 10, 'Remover a obirgatoriedade do campo Objetivo Estratégico', 'Ter um uso mais frequente da ferramenta pelos usuários', 1, '', 'Implantar um ERP para gestão da PROJEK', 2, 1),
-(8, '2018-01-08', '2018-01-12', 5, 'Tecnologia', 'Facilitar o cadastro dos clientes na plataforma.', 10, 'Remover obrigatoriedade do campo Fax em cadastro de clientes no Qualit', 'Fazer com que os dados estejam corretamente cadastrados na plataforma.', 9, '', 'Facilitar o cadastro dos clientes na plataforma.', 3, 1),
+(8, '2018-01-08', '2018-01-12', 5, 'Tecnologia', 'Facilitar o cadastro dos clientes na plataforma.', 10, 'Remover obrigatoriedade do campo Fax em cadastro de clientes no Quality.', 'Fazer com que os dados estejam corretamente cadastrados na plataforma.', 9, '', 'Facilitar o cadastro dos clientes na plataforma.', 3, 1),
 (9, '2018-01-08', '2018-01-10', 1, 'Projetos', 'Finalizar a entrega do projeto no prazo para o cliente.', 12, 'Entrega de curso do Setor Financeiro da P7GO', 'Finalizar a entrega do projeto no prazo para o cliente.', 9, '', 'Entregar no prazo.', 2, 1),
 (10, '2018-01-10', '2018-01-15', 1, 'Tecnologia', 'Facilitar o cadastro das auditorias.', 10, 'Automatizar a numeração do código de auditoria', 'Automatizar a numeração do código de auditoria.', 9, '', 'Facilitar o cadastro das auditorias.', 2, 1),
-(11, '2018-01-10', '2018-01-15', 1, 'Qualidade', 'Média', 10, 'Projek Quality', 'Joevan, no momento que vou adicionar um cliente para começar o mapeamento de processos (logo na parte cliente, onde coloco o nome, endereço, estado, cep e etc) o número do contrato não aparece automat', 8, '', '', 2, 1),
-(12, '2018-01-10', '2018-01-18', 1, 'Financeiro', 'Urgente', 10, 'Criar uma tabela detalhada na parte do Planejamento.', '.', 11, '', '', 1, 1),
-(14, '2018-01-11', '2018-01-17', 1, 'Tecnologia', 'Adicionar os departamentos corretos no contrato.', 10, 'Adicionar mais departamentos na opção departamentos em Contrato', 'Adicionar os departamentos corretos no contrato', 9, '', 'Adicionar os departamentos corretos no contrato', 1, 1),
+(12, '2018-01-10', '2018-01-18', 1, 'Financeiro', 'Urgente', 10, 'Criar uma tabela detalhada na parte do Planejamento.', '.', 11, '', '', 2, 1),
+(14, '2018-01-11', '2018-01-17', 1, 'Tecnologia', 'Adicionar os departamentos corretos no contrato.', 10, 'Adicionar mais departamentos na opção departamentos em Contrato', 'Adicionar os departamentos corretos no contrato', 9, '', 'Adicionar os departamentos corretos no contrato', 2, 1),
 (15, '2018-01-11', '2018-01-25', 1, 'Tecnologia', 'Poder baixar o PDF e adicionar na Universidade Corporativa.', 10, 'Gerar PDF dos processos e subprocessos cadastrados.', 'Poder baixar o PDF e adicionar na Universidade Corporativa.', 9, '', 'Poder baixar o PDF e adicionar na Universidade Corporativa.', 1, 1),
-(17, '2018-01-12', '2018-01-19', 1, 'TI', 'GRAVE', 10, 'Na parte de cadastrar um processo no manual de processos, é necessário', 'Poder colocar o tempo das tarefas menor que 1 hora. ', 8, '', '', 1, 1),
-(19, '2018-01-12', '2018-01-16', 1, 'TI', 'urgente', 10, 'Aumentar o número de caracteres da Descrição de Tarefa* do Manager, es', 'Visualizar mensagens da atividade completa.', 8, '', '', 2, 1),
-(20, '2017-01-30', '2017-10-31', 1, 'Compras', 'Alta', 10, 'Na parte de cadastrar um processo no manual de processos, é necessário', '', 1, '', '', 2, 1),
-(21, '2017-01-17', '2017-01-19', 5, 'Consultoria', 'Alta', 8, 'Desenvolver Sistema', '', 10, '', '', 2, 1),
-(22, '2017-02-01', '2017-02-02', 1, 'Consultoria', 'Alta', 12, 'Desenvolver Sistema', 'Consultar Clientes a partir', 10, '', '', 2, 1);
+(17, '2018-01-12', '2018-01-19', 1, 'TI', 'GRAVE', 10, 'Na parte de cadastrar um processo no manual de processos, é necessário que se possa coloca', 'Poder colocar o tempo das tarefas menor que 1 hora. ', 8, '', '', 1, 1),
+(22, '2018-01-17', '2018-01-22', 1, 'TI', 'média', 10, 'Título: Nome do processo', 'Caminho: Quality/ Auditorias/ 3. PROCESSO DA AUDITORIA/ 3.1 NOTAS DE AUDITORIA/ 1. NOTA DO AUDITOR. Troque o nome nota do auditor para aparecer o que a gente escrever em Processo (o nome do processo d', 8, '', '', 1, 1),
+(25, '2018-01-17', '2018-01-19', 1, 'TI', 'Grave', 10, 'Não é possível excluir notas do auditor', 'Adicionei uma nota do auditor para teste no módulo de auditoria e não tem opçao nenhuma de excluir a nota', 8, '', '', 1, 1),
+(26, '2018-01-19', '2018-01-23', 1, 'Tecnologia', 'Facilitar o cadastro dos projetos.', 10, 'Permitir ao usuário de Catharina que adicione os consultores ao projeto', 'Facilitar o cadastro dos projetos.', 9, '', 'Facilitar o cadastro dos projetos.', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categorias`
+-- Estrutura para tabela `categorias`
 --
 
 CREATE TABLE `categorias` (
@@ -79,7 +77,7 @@ CREATE TABLE `categorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `categorias`
+-- Fazendo dump de dados para tabela `categorias`
 --
 
 INSERT INTO `categorias` (`id`, `descricao`) VALUES
@@ -89,7 +87,7 @@ INSERT INTO `categorias` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categorias_custo`
+-- Estrutura para tabela `categorias_custo`
 --
 
 CREATE TABLE `categorias_custo` (
@@ -98,7 +96,7 @@ CREATE TABLE `categorias_custo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `categorias_custo`
+-- Fazendo dump de dados para tabela `categorias_custo`
 --
 
 INSERT INTO `categorias_custo` (`id`, `descricao`) VALUES
@@ -112,7 +110,7 @@ INSERT INTO `categorias_custo` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categorias_despesa`
+-- Estrutura para tabela `categorias_despesa`
 --
 
 CREATE TABLE `categorias_despesa` (
@@ -121,7 +119,7 @@ CREATE TABLE `categorias_despesa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `categorias_despesa`
+-- Fazendo dump de dados para tabela `categorias_despesa`
 --
 
 INSERT INTO `categorias_despesa` (`id`, `descricao`) VALUES
@@ -136,7 +134,7 @@ INSERT INTO `categorias_despesa` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categorias_recebimento`
+-- Estrutura para tabela `categorias_recebimento`
 --
 
 CREATE TABLE `categorias_recebimento` (
@@ -145,7 +143,7 @@ CREATE TABLE `categorias_recebimento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `categorias_recebimento`
+-- Fazendo dump de dados para tabela `categorias_recebimento`
 --
 
 INSERT INTO `categorias_recebimento` (`id`, `descricao`) VALUES
@@ -155,7 +153,7 @@ INSERT INTO `categorias_recebimento` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cidade`
+-- Estrutura para tabela `cidade`
 --
 
 CREATE TABLE `cidade` (
@@ -166,7 +164,7 @@ CREATE TABLE `cidade` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Municipios das Unidades Federativas';
 
 --
--- Extraindo dados da tabela `cidade`
+-- Fazendo dump de dados para tabela `cidade`
 --
 
 INSERT INTO `cidade` (`CT_ID`, `CT_NOME`, `CT_UF`, `CT_IBGE`) VALUES
@@ -5772,7 +5770,7 @@ INSERT INTO `cidade` (`CT_ID`, `CT_NOME`, `CT_UF`, `CT_IBGE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `consultor_projeto`
+-- Estrutura para tabela `consultor_projeto`
 --
 
 CREATE TABLE `consultor_projeto` (
@@ -5782,7 +5780,7 @@ CREATE TABLE `consultor_projeto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `consultor_projeto`
+-- Fazendo dump de dados para tabela `consultor_projeto`
 --
 
 INSERT INTO `consultor_projeto` (`id`, `contrato_id`, `consultor_id`) VALUES
@@ -5798,7 +5796,7 @@ INSERT INTO `consultor_projeto` (`id`, `contrato_id`, `consultor_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `contato_cliente`
+-- Estrutura para tabela `contato_cliente`
 --
 
 CREATE TABLE `contato_cliente` (
@@ -5814,7 +5812,7 @@ CREATE TABLE `contato_cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `contato_cliente`
+-- Fazendo dump de dados para tabela `contato_cliente`
 --
 
 INSERT INTO `contato_cliente` (`id`, `estado`, `cidade`, `endereco`, `cpf`, `tel`, `market_id`, `nome`, `email`) VALUES
@@ -5827,7 +5825,7 @@ INSERT INTO `contato_cliente` (`id`, `estado`, `cidade`, `endereco`, `cpf`, `tel
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `contato_fornecedor`
+-- Estrutura para tabela `contato_fornecedor`
 --
 
 CREATE TABLE `contato_fornecedor` (
@@ -5845,7 +5843,7 @@ CREATE TABLE `contato_fornecedor` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `contratos`
+-- Estrutura para tabela `contratos`
 --
 
 CREATE TABLE `contratos` (
@@ -5859,7 +5857,7 @@ CREATE TABLE `contratos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `contratos`
+-- Fazendo dump de dados para tabela `contratos`
 --
 
 INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `consultor`, `inicio`, `fim`, `id`) VALUES
@@ -5876,7 +5874,7 @@ INSERT INTO `contratos` (`market_id`, `produto_id`, `status_contrato_id`, `consu
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `curriculos`
+-- Estrutura para tabela `curriculos`
 --
 
 CREATE TABLE `curriculos` (
@@ -5908,7 +5906,7 @@ CREATE TABLE `curriculos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `curriculos`
+-- Fazendo dump de dados para tabela `curriculos`
 --
 
 INSERT INTO `curriculos` (`nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `idade`, `filhos`, `endereco`, `objetivo`, `curso`, `universidade`, `conclusao`, `ano`, `empresa1`, `entrada1`, `saida1`, `cargo1`, `empresa2`, `entrada2`, `saida2`, `cargo2`, `qualificacoes`) VALUES
@@ -5917,7 +5915,7 @@ INSERT INTO `curriculos` (`nome`, `email`, `sexo`, `estado`, `cidade`, `telefone
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `custos`
+-- Estrutura para tabela `custos`
 --
 
 CREATE TABLE `custos` (
@@ -5933,7 +5931,7 @@ CREATE TABLE `custos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `custos`
+-- Fazendo dump de dados para tabela `custos`
 --
 
 INSERT INTO `custos` (`id`, `descricao`, `usuario_id`, `categoria_id`, `pagamento_id`, `data`, `valor`, `pago_id`, `filial_id`) VALUES
@@ -5950,7 +5948,7 @@ INSERT INTO `custos` (`id`, `descricao`, `usuario_id`, `categoria_id`, `pagament
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `departamentos`
+-- Estrutura para tabela `departamentos`
 --
 
 CREATE TABLE `departamentos` (
@@ -5959,7 +5957,7 @@ CREATE TABLE `departamentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `departamentos`
+-- Fazendo dump de dados para tabela `departamentos`
 --
 
 INSERT INTO `departamentos` (`id`, `descricao`) VALUES
@@ -5979,7 +5977,7 @@ INSERT INTO `departamentos` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `departamentos_contratos`
+-- Estrutura para tabela `departamentos_contratos`
 --
 
 CREATE TABLE `departamentos_contratos` (
@@ -5989,7 +5987,7 @@ CREATE TABLE `departamentos_contratos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `departamentos_contratos`
+-- Fazendo dump de dados para tabela `departamentos_contratos`
 --
 
 INSERT INTO `departamentos_contratos` (`departamento_id`, `contrato_id`, `id`) VALUES
@@ -6033,7 +6031,7 @@ INSERT INTO `departamentos_contratos` (`departamento_id`, `contrato_id`, `id`) V
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `despesas`
+-- Estrutura para tabela `despesas`
 --
 
 CREATE TABLE `despesas` (
@@ -6051,7 +6049,7 @@ CREATE TABLE `despesas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `despesas`
+-- Fazendo dump de dados para tabela `despesas`
 --
 
 INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`, `contrato_id`) VALUES
@@ -6087,12 +6085,37 @@ INSERT INTO `despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `ca
 (37, 79, '2017-12-07', 'BOLSA SALÁRIO/TRANSPORTE JOEVAN', '542.40', 5, 1, 1, 'upload/BOLSA JOEVAN.pdf', 1, 1),
 (38, 79, '2017-12-21', 'FÁBIO - CRÉDITO EM CONTA', '340.00', 5, 1, 1, 'upload/CRÉDITO EM CONTA FÁBIO.pdf', 1, 1),
 (39, 79, '2017-12-26', 'FÁBIO - CRÉDITO EM CONTA', '500.00', 5, 1, 1, 'upload/CRÉDITO EM CONTA FÁBIO 26-12.pdf', 1, 1),
-(40, 79, '2017-12-27', 'FÁBIO - CRÉDITO EM CONTA', '300.00', 5, 1, 1, 'upload/CRÉDITO EM CONTA FÁBIO 27-12.pdf', 1, 1);
+(40, 79, '2017-12-27', 'FÁBIO - CRÉDITO EM CONTA', '300.00', 5, 1, 1, 'upload/CRÉDITO EM CONTA FÁBIO 27-12.pdf', 1, 1),
+(41, 66, '2018-01-03', 'REDE SOCIAL', '100.00', 9, 1, 1, 'upload/FACEBOOK 03-01.pdf', 1, 1),
+(42, 65, '2018-01-10', 'ASSOCIAÇÃO ', '65.00', 3, 1, 1, 'upload/ASSESPRO 10-01.pdf', 1, 1),
+(43, 59, '2018-01-10', 'HOSPEDAGEM DO SERVIDOR', '44.99', 3, 1, 1, 'upload/HOSTGATOR 10-01.pdf', 1, 1),
+(44, 59, '2018-01-10', 'HOSPEDAGEM DO SERVIDOR', '21.99', 3, 1, 1, 'upload/HOSTGATOR 10-01 (2).pdf', 1, 1),
+(45, 79, '2018-01-10', 'DESPESA FÁBIO', '722.84', 3, 1, 1, 'upload/DESPESA FÁBIO 10-01.pdf', 1, 1),
+(46, 77, '2018-01-10', 'CONTABILIDADE', '260.00', 3, 1, 1, 'upload/CONTABILIDADE 10-01.pdf', 1, 1),
+(47, 79, '2018-01-15', 'DESPESA FÁBIO', '249.08', 3, 1, 1, 'upload/DESPESA FÁBIO 15-01.pdf', 1, 1),
+(48, 79, '2018-01-02', 'DESPESA FÁBIO', '500.00', 3, 1, 1, 'upload/DESPESA FÁBIO 02-01.pdf', 1, 1),
+(49, 79, '2018-01-03', 'DESPESA FÁBIO', '500.00', 3, 1, 1, 'upload/DESPESA FÁBIO 03-01.pdf', 1, 1),
+(50, 79, '2018-01-15', 'DESPESA FÁBIO', '200.00', 3, 1, 1, 'upload/DESPESA FÁBIO 15-01 (2).pdf', 1, 1),
+(51, 79, '2018-01-16', 'DESPESA FÁBIO', '954.00', 3, 1, 1, 'upload/DESPESA FÁBIO 16-01.pdf', 1, 1),
+(52, 79, '2018-01-16', 'DESPESA FÁBIO', '300.00', 3, 1, 1, 'upload/DESPESA FÁBIO 16-01 (2).pdf', 1, 1),
+(53, 61, '2018-01-03', 'AGÊNCIA DE MARKETING', '530.00', 9, 1, 1, 'upload/MANA 03-01.pdf', 1, 1),
+(54, 73, '2018-01-03', 'PORTAL', '320.00', 9, 1, 1, 'upload/TI BAHIA.pdf', 1, 1),
+(55, 74, '2018-01-03', 'CONTRATO ESTAGIÁRIOS', '180.00', 3, 1, 1, 'upload/RH DECISÃO.pdf', 1, 1),
+(56, 79, '2018-01-03', 'BOLSA SALÁRIO/TRANSPORTE FILIPE', '536.80', 5, 1, 1, 'upload/BOLSA FILIPE 03-01.pdf', 1, 1),
+(57, 79, '2018-01-03', 'BOLSA SALÁRIO/TRANSPORTE JOEVAN', '629.60', 5, 1, 1, 'upload/BOLSA JOEVAN 03-01.pdf', 1, 1),
+(58, 79, '2018-01-03', 'BOLSA SALÁRIO/TRANSPORTE JULIANA', '633.20', 5, 1, 1, 'upload/BOLSA JULIANA 03-01.pdf', 1, 1),
+(59, 79, '2018-01-03', 'BOLSA SALÁRIO/TRANSPORTE CATHARINA', '699.20', 5, 1, 1, 'upload/BOLSA CATHARINA 03-01.pdf', 1, 1),
+(60, 79, '2018-01-10', 'REEMBOLSO CARSON', '180.00', 5, 1, 1, 'upload/REEMBOLSO CARSON 10-01.pdf', 1, 1),
+(61, 80, '2018-01-10', 'CONTRATO ESTAGIÁRIOS', '125.00', 3, 1, 1, 'upload/ÂNIMA RH 10-01.pdf', 1, 1),
+(62, 60, '2018-01-11', 'TELEFONIA', '49.99', 3, 1, 1, 'upload/VIVO 11-01.pdf', 1, 1),
+(63, 60, '2018-01-12', 'TELEFONIA', '49.99', 3, 1, 1, 'upload/VIVO 12-01.pdf', 1, 1),
+(64, 83, '2018-01-10', 'IMPOSTOS', '166.33', 4, 1, 1, 'upload/SIMPLES NACIONAL 10-01.pdf', 1, 1),
+(65, 82, '2018-01-10', 'DAM', '121.59', 4, 1, 1, 'upload/DAM 10-01.pdf', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `estados`
+-- Estrutura para tabela `estados`
 --
 
 CREATE TABLE `estados` (
@@ -6102,7 +6125,7 @@ CREATE TABLE `estados` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Extraindo dados da tabela `estados`
+-- Fazendo dump de dados para tabela `estados`
 --
 
 INSERT INTO `estados` (`cod_estados`, `sigla`, `nome`) VALUES
@@ -6137,7 +6160,7 @@ INSERT INTO `estados` (`cod_estados`, `sigla`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `filiais`
+-- Estrutura para tabela `filiais`
 --
 
 CREATE TABLE `filiais` (
@@ -6146,7 +6169,7 @@ CREATE TABLE `filiais` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `filiais`
+-- Fazendo dump de dados para tabela `filiais`
 --
 
 INSERT INTO `filiais` (`id`, `nome`) VALUES
@@ -6155,7 +6178,7 @@ INSERT INTO `filiais` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `fornecedores`
+-- Estrutura para tabela `fornecedores`
 --
 
 CREATE TABLE `fornecedores` (
@@ -6171,7 +6194,7 @@ CREATE TABLE `fornecedores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `fornecedores`
+-- Fazendo dump de dados para tabela `fornecedores`
 --
 
 INSERT INTO `fornecedores` (`id`, `razao`, `nome`, `cnpj`, `endereco`, `estado`, `cidade`, `tel`, `segmento`) VALUES
@@ -6197,12 +6220,13 @@ INSERT INTO `fornecedores` (`id`, `razao`, `nome`, `cnpj`, `endereco`, `estado`,
 (79, 'FABIO MARTINS DA SILVA EIRELI - ME', 'PROJEK CONSULTORIA', '23.913.067/0001-12', 'R. Alceu Amoroso Lima, 786 Edf. Tancredo Neves Trade Center, Sala 312 Caminho das árvores', 'BA', '2927408', '(71) 98841-9093', 'Serviços'),
 (80, 'Ânima Gestão em RH Eirelli - ME', 'ÂNIMA RH', '26.210.193/0001-07', 'Av. ACM, 771 – Ed. Empresarial Torre do Parque - salas 706/805/807 – Itaigara', 'BA', '2927408', '(71) 3316-4237', 'Serviços'),
 (81, 'PREVIDÊNCIA SOCIAL', 'PREVIDÊNCIA SOCIAL', '16.727.230/0001-97', 'R. Miguel Calmom, 395 - Comercio, Salvador - BA, 40015-010', 'BA', '2927408', '(71) 3319-4600', 'Serviços'),
-(82, 'SECRETARIA MUNICIPAL DA FAZENDA', 'SEFAZ', '', 'Av. Tancredo Neves, 776 - Bloco B - Caminho das Árvores', 'BA', '2927408', '(71) 3103-4000', 'Serviços');
+(82, 'SECRETARIA MUNICIPAL DA FAZENDA', 'SEFAZ', '', 'Av. Tancredo Neves, 776 - Bloco B - Caminho das Árvores', 'BA', '2927408', '(71) 3103-4000', 'Serviços'),
+(83, 'RECEITA FEDERAL', 'RECEITA FEDERAL', '', 'R. Alceu Amoroso Lima, 862 - Caminho das Árvores', 'BA', '2927408', '(71) 3416-1300', 'Serviços');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `historico`
+-- Estrutura para tabela `historico`
 --
 
 CREATE TABLE `historico` (
@@ -6213,7 +6237,7 @@ CREATE TABLE `historico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `historico`
+-- Fazendo dump de dados para tabela `historico`
 --
 
 INSERT INTO `historico` (`market_id`, `descricao`, `id`, `data`) VALUES
@@ -6234,7 +6258,7 @@ INSERT INTO `historico` (`market_id`, `descricao`, `id`, `data`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `leads`
+-- Estrutura para tabela `leads`
 --
 
 CREATE TABLE `leads` (
@@ -6247,7 +6271,7 @@ CREATE TABLE `leads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `leads`
+-- Fazendo dump de dados para tabela `leads`
 --
 
 INSERT INTO `leads` (`nome`, `email`, `tel`, `cargo`, `id`, `market_id`) VALUES
@@ -6264,7 +6288,7 @@ INSERT INTO `leads` (`nome`, `email`, `tel`, `cargo`, `id`, `market_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `market`
+-- Estrutura para tabela `market`
 --
 
 CREATE TABLE `market` (
@@ -6284,7 +6308,7 @@ CREATE TABLE `market` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `market`
+-- Fazendo dump de dados para tabela `market`
 --
 
 INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado`, `cidade`, `tel`, `segmento`, `bairro`, `porte_id`, `usuario_id`) VALUES
@@ -6328,7 +6352,7 @@ INSERT INTO `market` (`id`, `razao`, `nome`, `cnpj`, `site`, `endereco`, `estado
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `mensagens`
+-- Estrutura para tabela `mensagens`
 --
 
 CREATE TABLE `mensagens` (
@@ -6341,10 +6365,18 @@ CREATE TABLE `mensagens` (
   `titulo` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Fazendo dump de dados para tabela `mensagens`
+--
+
+INSERT INTO `mensagens` (`id`, `emissor_id`, `receptor_id`, `mensagem`, `status_mensagem_id`, `data`, `titulo`) VALUES
+(4, 9, 8, 'oi', 1, '17.01.18', 'oi'),
+(5, 8, 9, 'oi, é possível enviar mensagem mas não da para responder', 1, '17.01.18', 'olá');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pagamentos`
+-- Estrutura para tabela `pagamentos`
 --
 
 CREATE TABLE `pagamentos` (
@@ -6353,7 +6385,7 @@ CREATE TABLE `pagamentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `pagamentos`
+-- Fazendo dump de dados para tabela `pagamentos`
 --
 
 INSERT INTO `pagamentos` (`id`, `descricao`) VALUES
@@ -6363,7 +6395,7 @@ INSERT INTO `pagamentos` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pago`
+-- Estrutura para tabela `pago`
 --
 
 CREATE TABLE `pago` (
@@ -6372,7 +6404,7 @@ CREATE TABLE `pago` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `pago`
+-- Fazendo dump de dados para tabela `pago`
 --
 
 INSERT INTO `pago` (`id`, `descricao`) VALUES
@@ -6382,7 +6414,7 @@ INSERT INTO `pago` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `planejamentos`
+-- Estrutura para tabela `planejamentos`
 --
 
 CREATE TABLE `planejamentos` (
@@ -6391,7 +6423,7 @@ CREATE TABLE `planejamentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `planejamentos`
+-- Fazendo dump de dados para tabela `planejamentos`
 --
 
 INSERT INTO `planejamentos` (`id`, `ano`) VALUES
@@ -6400,7 +6432,7 @@ INSERT INTO `planejamentos` (`id`, `ano`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `planejamento_despesas`
+-- Estrutura para tabela `planejamento_despesas`
 --
 
 CREATE TABLE `planejamento_despesas` (
@@ -6417,7 +6449,7 @@ CREATE TABLE `planejamento_despesas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `planejamento_despesas`
+-- Fazendo dump de dados para tabela `planejamento_despesas`
 --
 
 INSERT INTO `planejamento_despesas` (`id`, `fornecedor_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `doc`, `filial_id`, `planejamento_id`) VALUES
@@ -6732,7 +6764,7 @@ INSERT INTO `planejamento_despesas` (`id`, `fornecedor_id`, `data`, `descricao`,
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `planejamento_receita`
+-- Estrutura para tabela `planejamento_receita`
 --
 
 CREATE TABLE `planejamento_receita` (
@@ -6749,7 +6781,7 @@ CREATE TABLE `planejamento_receita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `planejamento_receita`
+-- Fazendo dump de dados para tabela `planejamento_receita`
 --
 
 INSERT INTO `planejamento_receita` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `doc`, `filial_id`, `planejamento_id`) VALUES
@@ -6841,7 +6873,7 @@ INSERT INTO `planejamento_receita` (`id`, `market_id`, `data`, `descricao`, `val
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `porte`
+-- Estrutura para tabela `porte`
 --
 
 CREATE TABLE `porte` (
@@ -6850,7 +6882,7 @@ CREATE TABLE `porte` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `porte`
+-- Fazendo dump de dados para tabela `porte`
 --
 
 INSERT INTO `porte` (`id`, `descricao`) VALUES
@@ -6861,7 +6893,7 @@ INSERT INTO `porte` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -6877,7 +6909,7 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `produtos`
+-- Fazendo dump de dados para tabela `produtos`
 --
 
 INSERT INTO `produtos` (`nome`, `descricao`, `beneficios`, `entregas`, `preco`, `id`, `preco_micro`, `preco_pequena`, `preco_media`) VALUES
@@ -6888,7 +6920,7 @@ INSERT INTO `produtos` (`nome`, `descricao`, `beneficios`, `entregas`, `preco`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `profissao`
+-- Estrutura para tabela `profissao`
 --
 
 CREATE TABLE `profissao` (
@@ -6897,7 +6929,7 @@ CREATE TABLE `profissao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `profissao`
+-- Fazendo dump de dados para tabela `profissao`
 --
 
 INSERT INTO `profissao` (`id`, `descricao`) VALUES
@@ -6910,7 +6942,7 @@ INSERT INTO `profissao` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `prospects`
+-- Estrutura para tabela `prospects`
 --
 
 CREATE TABLE `prospects` (
@@ -6926,7 +6958,7 @@ CREATE TABLE `prospects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `prospects`
+-- Fazendo dump de dados para tabela `prospects`
 --
 
 INSERT INTO `prospects` (`id`, `market_id`, `prob`, `valor_op`, `valor_est`, `recebimento`, `fechamento`, `produto_id`, `consultor_id`) VALUES
@@ -6944,7 +6976,7 @@ INSERT INTO `prospects` (`id`, `market_id`, `prob`, `valor_op`, `valor_est`, `re
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `recebimentos`
+-- Estrutura para tabela `recebimentos`
 --
 
 CREATE TABLE `recebimentos` (
@@ -6962,7 +6994,7 @@ CREATE TABLE `recebimentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `recebimentos`
+-- Fazendo dump de dados para tabela `recebimentos`
 --
 
 INSERT INTO `recebimentos` (`id`, `market_id`, `data`, `descricao`, `valor`, `categoria_id`, `pagamento_id`, `pago_id`, `doc`, `filial_id`, `contrato_id`) VALUES
@@ -6986,7 +7018,7 @@ INSERT INTO `recebimentos` (`id`, `market_id`, `data`, `descricao`, `valor`, `ca
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `relatorios`
+-- Estrutura para tabela `relatorios`
 --
 
 CREATE TABLE `relatorios` (
@@ -6998,7 +7030,7 @@ CREATE TABLE `relatorios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `relatorios`
+-- Fazendo dump de dados para tabela `relatorios`
 --
 
 INSERT INTO `relatorios` (`id`, `descricao`, `tarefa_id`, `data`, `usuario_id`) VALUES
@@ -7035,7 +7067,7 @@ INSERT INTO `relatorios` (`id`, `descricao`, `tarefa_id`, `data`, `usuario_id`) 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `socios`
+-- Estrutura para tabela `socios`
 --
 
 CREATE TABLE `socios` (
@@ -7050,7 +7082,7 @@ CREATE TABLE `socios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `socios`
+-- Fazendo dump de dados para tabela `socios`
 --
 
 INSERT INTO `socios` (`id`, `nome`, `cpf`, `residencia`, `nacionalidade`, `profissao`, `civil`, `contrato_id`) VALUES
@@ -7071,7 +7103,7 @@ INSERT INTO `socios` (`id`, `nome`, `cpf`, `residencia`, `nacionalidade`, `profi
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `status_atividade`
+-- Estrutura para tabela `status_atividade`
 --
 
 CREATE TABLE `status_atividade` (
@@ -7081,7 +7113,7 @@ CREATE TABLE `status_atividade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `status_atividade`
+-- Fazendo dump de dados para tabela `status_atividade`
 --
 
 INSERT INTO `status_atividade` (`id`, `descricao`, `porcentagem`) VALUES
@@ -7094,7 +7126,7 @@ INSERT INTO `status_atividade` (`id`, `descricao`, `porcentagem`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `status_contrato`
+-- Estrutura para tabela `status_contrato`
 --
 
 CREATE TABLE `status_contrato` (
@@ -7103,7 +7135,7 @@ CREATE TABLE `status_contrato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `status_contrato`
+-- Fazendo dump de dados para tabela `status_contrato`
 --
 
 INSERT INTO `status_contrato` (`id`, `descricao`) VALUES
@@ -7114,7 +7146,7 @@ INSERT INTO `status_contrato` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `status_mensagem`
+-- Estrutura para tabela `status_mensagem`
 --
 
 CREATE TABLE `status_mensagem` (
@@ -7123,7 +7155,7 @@ CREATE TABLE `status_mensagem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `status_mensagem`
+-- Fazendo dump de dados para tabela `status_mensagem`
 --
 
 INSERT INTO `status_mensagem` (`id`, `descricao`) VALUES
@@ -7133,7 +7165,7 @@ INSERT INTO `status_mensagem` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `status_prazo`
+-- Estrutura para tabela `status_prazo`
 --
 
 CREATE TABLE `status_prazo` (
@@ -7142,7 +7174,7 @@ CREATE TABLE `status_prazo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `status_prazo`
+-- Fazendo dump de dados para tabela `status_prazo`
 --
 
 INSERT INTO `status_prazo` (`id`, `descricao`) VALUES
@@ -7153,7 +7185,7 @@ INSERT INTO `status_prazo` (`id`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `suspects`
+-- Estrutura para tabela `suspects`
 --
 
 CREATE TABLE `suspects` (
@@ -7170,7 +7202,7 @@ CREATE TABLE `suspects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `suspects`
+-- Fazendo dump de dados para tabela `suspects`
 --
 
 INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consultor_id`, `id`, `market_id`, `tel`, `email`) VALUES
@@ -7188,7 +7220,7 @@ INSERT INTO `suspects` (`nome`, `data`, `status`, `hora`, `comentario`, `consult
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tarefas`
+-- Estrutura para tabela `tarefas`
 --
 
 CREATE TABLE `tarefas` (
@@ -7203,7 +7235,7 @@ CREATE TABLE `tarefas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `tarefas`
+-- Fazendo dump de dados para tabela `tarefas`
 --
 
 INSERT INTO `tarefas` (`id`, `departamento_contrato_id`, `fim`, `descricao`, `horas`, `status_atividade_id`, `usuario_id`, `data`) VALUES
@@ -7240,12 +7272,14 @@ INSERT INTO `tarefas` (`id`, `departamento_contrato_id`, `fim`, `descricao`, `ho
 (45, 72, NULL, 'AJUSTAR MATERIAL PRODUZIDO', 2, 5, 9, '12/01/2018'),
 (46, 72, NULL, '2ª REUNIÃO PRESENCIAL', 2, 5, 9, '15/01/2018'),
 (47, 68, NULL, 'AJUSTAR MATERIAL PRODUZIDO', 2, 5, 9, '12/01/2018'),
-(48, 68, NULL, '2ª REUNIÃO PRESENCIAL', 2, 5, 9, '15/01/2018');
+(48, 68, NULL, '2ª REUNIÃO PRESENCIAL', 2, 5, 9, '15/01/2018'),
+(49, 72, NULL, 'AJUSTAR MATERIAL PRODUZIDO', 2, 5, 9, '19/01/2018'),
+(50, 68, NULL, 'AJUSTAR MATERIAL PRODUZIDO', 2, 5, 9, '19/01/2018');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuarios`
+-- Estrutura para tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -7263,7 +7297,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `usuarios`
+-- Fazendo dump de dados para tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `profissao_id`, `image`) VALUES
@@ -7276,448 +7310,487 @@ INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `t
 ('$2a$08$MTU5NTQ1OTQ0NDVhMDllZenw.XPXSPsuGgGi2A2rKgqJKIRkruyj2', 'Marcos', 'vertical.partner@projek.com.br', 'masculino', 'BA', '2927408', '(71) 99645-4545', 13, 'Hide', 4, '');
 
 --
--- Indexes for dumped tables
+-- Índices de tabelas apagadas
 --
 
 --
--- Indexes for table `atividades`
+-- Índices de tabela `atividades`
 --
 ALTER TABLE `atividades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorias`
+-- Índices de tabela `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorias_custo`
+-- Índices de tabela `categorias_custo`
 --
 ALTER TABLE `categorias_custo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorias_despesa`
+-- Índices de tabela `categorias_despesa`
 --
 ALTER TABLE `categorias_despesa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorias_recebimento`
+-- Índices de tabela `categorias_recebimento`
 --
 ALTER TABLE `categorias_recebimento`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cidade`
+-- Índices de tabela `cidade`
 --
 ALTER TABLE `cidade`
   ADD PRIMARY KEY (`CT_ID`);
 
 --
--- Indexes for table `consultor_projeto`
+-- Índices de tabela `consultor_projeto`
 --
 ALTER TABLE `consultor_projeto`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contato_cliente`
+-- Índices de tabela `contato_cliente`
 --
 ALTER TABLE `contato_cliente`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contato_fornecedor`
+-- Índices de tabela `contato_fornecedor`
 --
 ALTER TABLE `contato_fornecedor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contratos`
+-- Índices de tabela `contratos`
 --
 ALTER TABLE `contratos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `curriculos`
+-- Índices de tabela `curriculos`
 --
 ALTER TABLE `curriculos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `custos`
+-- Índices de tabela `custos`
 --
 ALTER TABLE `custos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `departamentos`
+-- Índices de tabela `departamentos`
 --
 ALTER TABLE `departamentos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `departamentos_contratos`
+-- Índices de tabela `departamentos_contratos`
 --
 ALTER TABLE `departamentos_contratos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `despesas`
+-- Índices de tabela `despesas`
 --
 ALTER TABLE `despesas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `filiais`
+-- Índices de tabela `filiais`
 --
 ALTER TABLE `filiais`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `fornecedores`
+-- Índices de tabela `fornecedores`
 --
 ALTER TABLE `fornecedores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `historico`
+-- Índices de tabela `historico`
 --
 ALTER TABLE `historico`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `leads`
+-- Índices de tabela `leads`
 --
 ALTER TABLE `leads`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `market`
+-- Índices de tabela `market`
 --
 ALTER TABLE `market`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mensagens`
+-- Índices de tabela `mensagens`
 --
 ALTER TABLE `mensagens`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pagamentos`
+-- Índices de tabela `pagamentos`
 --
 ALTER TABLE `pagamentos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pago`
+-- Índices de tabela `pago`
 --
 ALTER TABLE `pago`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `planejamentos`
+-- Índices de tabela `planejamentos`
 --
 ALTER TABLE `planejamentos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `planejamento_despesas`
+-- Índices de tabela `planejamento_despesas`
 --
 ALTER TABLE `planejamento_despesas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `planejamento_receita`
+-- Índices de tabela `planejamento_receita`
 --
 ALTER TABLE `planejamento_receita`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `porte`
+-- Índices de tabela `porte`
 --
 ALTER TABLE `porte`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `produtos`
+-- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `profissao`
+-- Índices de tabela `profissao`
 --
 ALTER TABLE `profissao`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `prospects`
+-- Índices de tabela `prospects`
 --
 ALTER TABLE `prospects`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `recebimentos`
+-- Índices de tabela `recebimentos`
 --
 ALTER TABLE `recebimentos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `relatorios`
+-- Índices de tabela `relatorios`
 --
 ALTER TABLE `relatorios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `socios`
+-- Índices de tabela `socios`
 --
 ALTER TABLE `socios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `status_atividade`
+-- Índices de tabela `status_atividade`
 --
 ALTER TABLE `status_atividade`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `status_contrato`
+-- Índices de tabela `status_contrato`
 --
 ALTER TABLE `status_contrato`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `status_mensagem`
+-- Índices de tabela `status_mensagem`
 --
 ALTER TABLE `status_mensagem`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `status_prazo`
+-- Índices de tabela `status_prazo`
 --
 ALTER TABLE `status_prazo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `suspects`
+-- Índices de tabela `suspects`
 --
 ALTER TABLE `suspects`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tarefas`
+-- Índices de tabela `tarefas`
 --
 ALTER TABLE `tarefas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usuarios`
+-- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
--- AUTO_INCREMENT for table `atividades`
+-- AUTO_INCREMENT de tabela `atividades`
 --
 ALTER TABLE `atividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
--- AUTO_INCREMENT for table `categorias`
+-- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `categorias_custo`
+-- AUTO_INCREMENT de tabela `categorias_custo`
 --
 ALTER TABLE `categorias_custo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
--- AUTO_INCREMENT for table `categorias_despesa`
+-- AUTO_INCREMENT de tabela `categorias_despesa`
 --
 ALTER TABLE `categorias_despesa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
--- AUTO_INCREMENT for table `categorias_recebimento`
+-- AUTO_INCREMENT de tabela `categorias_recebimento`
 --
 ALTER TABLE `categorias_recebimento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `cidade`
+-- AUTO_INCREMENT de tabela `cidade`
 --
 ALTER TABLE `cidade`
   MODIFY `CT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5611;
+
 --
--- AUTO_INCREMENT for table `consultor_projeto`
+-- AUTO_INCREMENT de tabela `consultor_projeto`
 --
 ALTER TABLE `consultor_projeto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
--- AUTO_INCREMENT for table `contato_cliente`
+-- AUTO_INCREMENT de tabela `contato_cliente`
 --
 ALTER TABLE `contato_cliente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
--- AUTO_INCREMENT for table `contato_fornecedor`
+-- AUTO_INCREMENT de tabela `contato_fornecedor`
 --
 ALTER TABLE `contato_fornecedor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `curriculos`
+-- AUTO_INCREMENT de tabela `curriculos`
 --
 ALTER TABLE `curriculos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- AUTO_INCREMENT for table `custos`
+-- AUTO_INCREMENT de tabela `custos`
 --
 ALTER TABLE `custos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table `departamentos`
+-- AUTO_INCREMENT de tabela `departamentos`
 --
 ALTER TABLE `departamentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
--- AUTO_INCREMENT for table `departamentos_contratos`
+-- AUTO_INCREMENT de tabela `departamentos_contratos`
 --
 ALTER TABLE `departamentos_contratos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+
 --
--- AUTO_INCREMENT for table `despesas`
+-- AUTO_INCREMENT de tabela `despesas`
 --
 ALTER TABLE `despesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
 --
--- AUTO_INCREMENT for table `filiais`
+-- AUTO_INCREMENT de tabela `filiais`
 --
 ALTER TABLE `filiais`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `fornecedores`
+-- AUTO_INCREMENT de tabela `fornecedores`
 --
 ALTER TABLE `fornecedores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+
 --
--- AUTO_INCREMENT for table `historico`
+-- AUTO_INCREMENT de tabela `historico`
 --
 ALTER TABLE `historico`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table `leads`
+-- AUTO_INCREMENT de tabela `leads`
 --
 ALTER TABLE `leads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
--- AUTO_INCREMENT for table `market`
+-- AUTO_INCREMENT de tabela `market`
 --
 ALTER TABLE `market`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
 --
--- AUTO_INCREMENT for table `mensagens`
+-- AUTO_INCREMENT de tabela `mensagens`
 --
 ALTER TABLE `mensagens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `pagamentos`
+-- AUTO_INCREMENT de tabela `pagamentos`
 --
 ALTER TABLE `pagamentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `pago`
+-- AUTO_INCREMENT de tabela `pago`
 --
 ALTER TABLE `pago`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `planejamentos`
+-- AUTO_INCREMENT de tabela `planejamentos`
 --
 ALTER TABLE `planejamentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `planejamento_despesas`
+-- AUTO_INCREMENT de tabela `planejamento_despesas`
 --
 ALTER TABLE `planejamento_despesas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=308;
+
 --
--- AUTO_INCREMENT for table `planejamento_receita`
+-- AUTO_INCREMENT de tabela `planejamento_receita`
 --
 ALTER TABLE `planejamento_receita`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
 --
--- AUTO_INCREMENT for table `porte`
+-- AUTO_INCREMENT de tabela `porte`
 --
 ALTER TABLE `porte`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `produtos`
+-- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
--- AUTO_INCREMENT for table `profissao`
+-- AUTO_INCREMENT de tabela `profissao`
 --
 ALTER TABLE `profissao`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `prospects`
+-- AUTO_INCREMENT de tabela `prospects`
 --
 ALTER TABLE `prospects`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
--- AUTO_INCREMENT for table `recebimentos`
+-- AUTO_INCREMENT de tabela `recebimentos`
 --
 ALTER TABLE `recebimentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
--- AUTO_INCREMENT for table `relatorios`
+-- AUTO_INCREMENT de tabela `relatorios`
 --
 ALTER TABLE `relatorios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
 --
--- AUTO_INCREMENT for table `socios`
+-- AUTO_INCREMENT de tabela `socios`
 --
 ALTER TABLE `socios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
--- AUTO_INCREMENT for table `status_atividade`
+-- AUTO_INCREMENT de tabela `status_atividade`
 --
 ALTER TABLE `status_atividade`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `status_contrato`
+-- AUTO_INCREMENT de tabela `status_contrato`
 --
 ALTER TABLE `status_contrato`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `status_mensagem`
+-- AUTO_INCREMENT de tabela `status_mensagem`
 --
 ALTER TABLE `status_mensagem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `status_prazo`
+-- AUTO_INCREMENT de tabela `status_prazo`
 --
 ALTER TABLE `status_prazo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `suspects`
+-- AUTO_INCREMENT de tabela `suspects`
 --
 ALTER TABLE `suspects`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
--- AUTO_INCREMENT for table `tarefas`
+-- AUTO_INCREMENT de tabela `tarefas`
 --
 ALTER TABLE `tarefas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

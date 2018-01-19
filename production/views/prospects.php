@@ -47,7 +47,7 @@
       <th>Fechamento</th>
       <th>Valor Op.</th>
       <th>Valor Est.</th>				    		     
-      <th class="col-md-2">Ações</th>				     
+      <th style="width: 20%;">Ações</th>				     
     </tr>
   </thead>
   <tfoot>

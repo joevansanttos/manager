@@ -8,7 +8,12 @@
         <div class="left_col scroll-view">
           
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index2.php" class="site_title"><i class="fa fa-rocket"></i><span> Projek Manager</span>
+            <a href="dashboard.php" class="site_title">
+              <div align="center">
+                <i class="fa fa-rocket"></i>
+                <span> Projek Manager</span>
+              </div>
+              
             </a>
           </div>
           <div class="clearfix"></div>

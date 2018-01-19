@@ -48,18 +48,11 @@
       <input type="text" id="descricao" value="<?=$planejamentoReceita->getDescricao()?>" name="descricao" required="required" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
-  <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ano">Ano do Planejamento<span class="required">*</span>
-    </label>
-    <div class="col-md-6 col-sm-6 col-xs-12">
-      <input class="form-control col-md-3 col-sm-3 col-xs-12" value="<?=$planejamentoReceita->getPlanejamento()->getAno()?>" readonly="readonly" type="text" id="ano" data-inputmask="'mask' : '9999'" name="ano" required="required"> 
-    </div>
-  </div>
   <div class="item form-group">
-   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_cliente">Recebido de<span class="required">*</span>
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="market_id">Recebido de<span class="required">*</span>
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
-     <select name="market_id" class="form-control col-md-7 col-xs-12">
+     <select id="market_id" name="market_id" class="form-control col-md-7 col-xs-12">
       <?php
        $contratoDao = new ContratoDao($conexao);
        $contratos = $contratoDao->listaTodosContratos();                           

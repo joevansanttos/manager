@@ -1,0 +1,21 @@
+.tbody { overflow: auto !important; }
+.horizontal {
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+}
+.table {
+    
+}
+td, th {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10pt;
+    word-wrap: break-word;
+    white-space:nowrap;
+}
+
+.dre{
+  color: white;
+  font-weight: bold;
+}

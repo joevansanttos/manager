@@ -50,7 +50,7 @@
       <th>Bairro</th>
       <th>Segmento</th>	
       <th>Porte</th> 
-      <th style="width: 14%;">Ações</th>
+      <th style="width: 16%;">Ações</th>
     </tr>
   </thead>
   <tfoot>

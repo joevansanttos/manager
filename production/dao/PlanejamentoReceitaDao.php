@@ -1,11 +1,28 @@
 <?php
 	require_once "../factory/PlanejamentoReceitaFactory.php";
+	require_once "../dao/PlanejamentoReceitaDao.php";
+
 
 	class PlanejamentoReceitaDao{
+
 		private $conexao;
 
 		function __construct($conexao) {
 			$this->conexao = $conexao;
+		}
+
+		function addReceitas($planejamento){
+			$id = $planejamento->getId();
+			$recebimentos = array();			
+			$resultado = mysqli_query($this->conexao->conecta(), "select * from planejamento_receita where planejamento_id = '{$id}'");
+			while($recebimento_array = mysqli_fetch_assoc($resultado)) {
+				$factory = new PlanejamentoReceitaFactory();
+				$recebimento_id = $recebimento_array['id'];				
+				$recebimento = $factory->cria($recebimento_array);
+				$recebimento->setId($recebimento_id);
+				$planejamento->addReceita($recebimento);
+			}
+			return $planejamento;
 		}
 
 		function lista($id) {
@@ -24,12 +41,15 @@
 		function busca($id) {
 			$query = "select * from planejamento_receita where id = {$id}";
 			$resultado = mysqli_query($this->conexao->conecta(), $query);
-			$pago_buscado = mysqli_fetch_assoc($resultado);
-			$pago_id = $pago_buscado['id'];
+			$planejamento_buscado = mysqli_fetch_assoc($resultado);
+			$planejamento_id = $planejamento_buscado['id'];
 			$factory = new PlanejamentoReceitaFactory();
-			$pago = $factory->cria($pago_buscado);
-			$pago->setId($pago_id);
-			return $pago;
+			$planejamento_receita = $factory->cria($planejamento_buscado);
+			$planejamento_receita->setId($planejamento_id);
+			$planejamentoDao = new PlanejamentoDao($this->conexao);
+			$planejamento = $planejamentoDao->busca($planejamento_buscado['planejamento_id']);
+			$planejamento_receita->setPlanejamento($planejamento);
+			return $planejamento_receita;
 		}		
 		
 		function calculoRecebimentosMes($today) {
@@ -64,7 +84,7 @@
 		}
 
 		function atualiza(PlanejamentoReceita $planejamento) {
-			$query = "update planejamento_receita set market_id = '{$planejamento->getMarket()->getId()}', data = '{$planejamento->getData()}', descricao = '{$planejamento->getDescricao()}', valor = '{$planejamento->getValor()}', categoria_id = '{$planejamento->getCategoria()->getId()}', pagamento_id = '{$planejamento->getPagamento()->getId()}', filial_id = '{$planejamento->getFilial()->getId()}', doc = '{$planejamento->getDoc()}' where id = '{$planejamento->getId()}'";
+			$query = "update planejamento_receita set market_id = '{$planejamento->getMarket()->getId()}', data = '{$planejamento->getData()}', descricao = '{$planejamento->getDescricao()}', valor = '{$planejamento->getValor()}', categoria_id = '{$planejamento->getCategoria()->getId()}', filial_id = '{$planejamento->getFilial()->getId()}', doc = '{$planejamento->getDoc()}' where id = '{$planejamento->getId()}'";
 			if(mysqli_query($this->conexao->conecta(), $query)){
 
 			}else{

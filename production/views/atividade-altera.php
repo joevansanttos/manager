@@ -37,7 +37,7 @@ $atividade = $atividadeDao->buscaAtividade($id);
 
 <form id="form" action="../altera/altera-atividade.php?id=<?=$id?>" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <div class="form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Descrição da Tarefa <span class="required">*</span>
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Título da Tarefa <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
       <input type="text" id="nome" name="descricao" readonly="readonly" value="<?=$atividade->getDescricao()?>" required="required" class="form-control col-md-7 col-xs-12">

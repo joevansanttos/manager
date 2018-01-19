@@ -1,6 +1,6 @@
 <?php
 	require_once "../factory/AtividadeFactory.php";
-	require_once "../mailer/PHPMailerAutoload.php";
+	//require_once "../mailer/PHPMailerAutoload.php";
 	require_once "../dao/UsuarioDao.php";
 
 	class AtividadeDao{
@@ -102,6 +102,7 @@
 			}
 		}
 
+		/*
 		function enviaEmail($params){
 			$usuarioDao = new UsuarioDao($this->conexao);
 			$delegado_id = $params["delegado_id"];
@@ -157,7 +158,8 @@
 			
 
 		}
-
+		
+		*/
 		
 
 		function atualizaStatusPrazo(Atividade $atividade, $status_prazo_id) {

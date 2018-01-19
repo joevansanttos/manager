@@ -46,7 +46,7 @@
       <th>Data</th>
       <th>Hora</th>
       <th>Status</th>
-      <th style="width: 20%;">Ações</th>				     
+      <th style="width: 22%;">Ações</th>				     
     </tr>
   </thead>
   <tfoot>
