@@ -2,17 +2,61 @@
 require_once "conexao.php";
 require_once "../dao/RecebimentoDao.php";
 require_once "../dao/DespesaDao.php"; 
+require_once "../dao/PlanejamentoReceitaDao.php"; 
+require_once "../dao/PlanejamentoDespesaDao.php"; 
 require_once "../dao/CustoDao.php"; 
+
+
 
 if(isset($_POST["start"], $_POST["end"])) {
 
+  $recebimentoDao = new RecebimentoDao($conexao);
+  $recebimentos = $recebimentoDao->listaNovosRecebimentos($_POST['start'], $_POST['end']);
+  $despesaDao = new DespesaDao($conexao);
+  $despesas = $despesaDao->listaNovasDespesas($_POST['start'], $_POST['end']);
+  $valorReceitas = $recebimentoDao->calcula($recebimentos);
+  $valorDespesas = $despesaDao->calcula($despesas);
+  $planejamentoReceitaDao = new PlanejamentoReceitaDao($conexao);
+  $valorPlanReceitas = $planejamentoReceitaDao->calcula($_POST['start'], $_POST['end']);
+  $planejamentoDespesaDao = new PlanejamentoDespesaDao($conexao);
+  $valorPlanDespesa = $planejamentoDespesaDao->calcula($_POST['start'], $_POST['end']);
+
+$output .= '
+<div class="row">
+ <div class="pull-right animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+   <div class="tile-stats">
+     <div class="green count"> '. $valorPlanReceitas .'</div>
+     <h3>Receitas Planejadas</h3>
+   </div>
+ </div>
+ <div class="pull-right animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+   <div class="tile-stats">
+     <div class="red  count">'. $valorPlanDespesa .'</div>
+     <h3>Despesas Planejadas</h3>
+   </div>
+ </div>
+ <div class="pull-right animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+   <div class="tile-stats">
+     <div class="green count"> '. $valorReceitas .'</div>
+     <h3>Receitas</h3>
+   </div>
+ </div>
+ <div class="pull-right animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+   <div class="tile-stats">
+     <div class="red  count">'. $valorDespesas .'</div>
+     <h3>Despesas</h3>
+   </div>
+ </div>
+ </div>'; 
+
 $output .= ' 
+<div id="transacao-panel"  role="tabpanel" data-example-id="togglable-tabs">
   <div class="tabbable-panel">
     <div class="tabbable-line">
       <ul id="myTab" class="nav-tabs-wrapper nav nav-tabs nav-tabs-horizontal" role="tablist">
         <li role="presentation" id="receitas" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Receitas</a>
         </li>
-        <li role="presentation"><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Despesas</a>
+        <li role="presentation id="despesasTab"><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Despesas</a>
         </li>                                     
       </ul>
       <div id="myTabContent" class="tab-content">';
@@ -20,7 +64,7 @@ $output .= '
       $output .= '  
 
         <div role="tabpanel"  class="tab-pane fade active in horizontal" id="tab_content1" aria-labelledby="home-tab">
-          <table  id="recebimento" class="table table-bordered">
+          <table  id="tabela" class="table table-bordered">
             <thead>
               <tr>
                 <th>DATA</th>
@@ -37,8 +81,6 @@ $output .= '
             </thead>
           <tbody>
                     ';
-  $recebimentoDao = new RecebimentoDao($conexao);
-  $recebimentos = $recebimentoDao->listaNovosRecebimentos($_POST['start'], $_POST['end']);
   foreach ($recebimentos as $recebimento){
           $output .= '
             <tr>
@@ -62,10 +104,15 @@ $output .= '
 
       $output .= '
           </tbody>
-        </table>
-        
+        </table> 
+        <br>
+        <div class="text-center" id="button-receita">
+          <a type="button" class="btn btn-primary btn-block"  data-toggle="tooltip" data-placement="top"  class=" btn btn-primary btn-block "  href="recebimento-formulario.php?">
+           NOVA RECEITA</a>
+        </div>       
       </div>'
               ;
+
 
 $output .= ' 
   <div role="tabpanel" class="tab-pane fade horizontal" id="tab_content2" aria-labelledby="profile-tab">
@@ -87,8 +134,6 @@ $output .= '
       <tbody>
             ';  
   
-        $despesaDao = new DespesaDao($conexao);
-        $despesas = $despesaDao->listaNovasDespesas($_POST['start'], $_POST['end']);
         foreach ($despesas as $despesa){
           $output .= '
             <tr>
@@ -113,6 +158,11 @@ $output .= '
   $output .= '
   </tbody>
   </table>
+  <br>
+  <div class="text-center" id="button-receita">
+    <a type="button" class="btn btn-danger btn-block"  data-toggle="tooltip" data-placement="top"  class=" btn btn-primary btn-block "  href="despesa-formulario.php?">
+     NOVA DESPESA</a>
+  </div>   
   </div>
           ';
 
@@ -123,6 +173,7 @@ $output .= '
   </div>
   </div>
   </div>
+  </div> 
   ';
 
 

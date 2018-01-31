@@ -64,6 +64,16 @@
 			}
 		}		
 
+		function calcula($start, $end) {
+			$recebimentos = array();			
+			$resultado = mysqli_query($this->conexao->conecta(), "select * from planejamento_despesas where data between '{$start}' and '{$end}'");
+			$valor = 0;
+			while($recebimento_array = mysqli_fetch_assoc($resultado)) {
+				$valor = $valor + $recebimento_array['valor'];
+			}
+			return $valor;
+		}
+
 }
 	
 

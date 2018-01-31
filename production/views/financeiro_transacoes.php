@@ -2,18 +2,19 @@
 	require_once "cabecalho.php"; 
 	require_once "../dao/RecebimentoDao.php";
   require_once "../dao/DespesaDao.php";
-  $today = date("Y-m-d");
-  $despesaDao = new DespesaDao($conexao);
-  $valorDespesa = $despesaDao->calculoDespesasMes($today);
-  $recebimentoDao = new RecebimentoDao($conexao);
-  $valorRecebimento = $recebimentoDao->calculoRecebimentosMes($today);
 ?>
 
 <link href="../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 <!-- bootstrap-datetimepicker -->
 <link href="../../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+<!-- Datatables -->
+<link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="../css/financeiro_transacoes.css">
+<link rel="stylesheet"  href="../css/financeiro_transacoes.css">
 
 <?php require_once "css.php"; ?> 
 
@@ -43,31 +44,16 @@
 </div>
 <div class="x_content"> 
   <div class="row">
-    <div class="pull-left">
+    <div class="pull-left" style="margin-left: 1.2%;">
       <div id="datepicker">
           <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
           <span></span> <b class="caret"></b>
       </div>
     </div>
-    <div class="pull-right animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <div class="tile-stats">
-        <div class="green count"><?='R$ '.number_format($valorRecebimento, 2, '.', '')?></div>
-        <h3>Receitas do Mês</h3>
-      </div>
-    </div>
-    <div class="pull-right animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <div class="tile-stats">
-        <div class="red  count"><?='R$ '.number_format($valorDespesa, 2, '.', '')?></div>
-        <h3>Despesas do Mês</h3>
-      </div>
-    </div>
   </div>
-  <div id="transacao-panel"  role="tabpanel" data-example-id="togglable-tabs">
+  <br>
+  <div id="transacoes">
   </div> 
-  <a type="button" class="btn btn-labeled btn-primary" data-toggle="tooltip" data-placement="top"  class=" btn btn-primary    btn-block "  href="recebimento-formulario.php?">
-  <span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span> RECEITA</a>
-  <a type="button" class="btn btn-labeled btn-danger" data-toggle="tooltip" data-placement="top"  class=" btn btn-danger  btn-block "  href="despesa-formulario.php?">
-  <span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span> DESPESA</a>
 </div>     
 	
 
@@ -81,7 +67,21 @@
 <script src="../../vendors/moment/min/moment.min.js"></script>
 <script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 <script src="../../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-<script src="../js/financeiro_transacoes.js"></script>
+<script src="../js/financeiro_transacao.js"></script>
+
+<!-- Datatables -->
+<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="../js/datatable.js"></script> 
 
 <script type="text/javascript">
   geraData();

@@ -95,6 +95,14 @@
 		}
 	}
 
+	function calcula($receitas) {
+		$valor = 0;
+		foreach ($receitas as $r) {
+			$valor = $valor + $r->getValor();
+		}
+		return $valor;
+	}
+
 }
 	
 

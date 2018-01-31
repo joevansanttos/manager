@@ -42,7 +42,7 @@
   <thead>
     <tr>
     	<th class="col-md-3">Empresa</th>
-    	<th>Probabilidade</th>
+    	<th>Prob.</th>
       <th>Recebimento</th>
       <th>Fechamento</th>
       <th>Valor Op.</th>
@@ -52,7 +52,7 @@
   </thead>
   <tfoot>
       <th>Empresa</th>
-      <th>Probabilidade</th>
+      <th>Prob</th>
       <th>Recebimento</th>
       <th>Fechamento</th>
       <th>Valor Op.</th>

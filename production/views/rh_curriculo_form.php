@@ -7,7 +7,7 @@ require_once '../dao/ProfissaoDao.php';
 
 <h3>Recursos Humanos</h3>
 
-<?php require "body.php"; ?>
+<?php require_once "body.php"; ?>
 
 <div class="x_title">
   <h2>Adicionar Novo Currículo</h2>
@@ -260,9 +260,7 @@ require_once '../dao/ProfissaoDao.php';
 
   <?php require_once "script.php"; ?>
 
-    <script src="../../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-
-
+  <script src="../../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
   <script src="../../vendors/fastclick/lib/fastclick.js"></script>
   <!-- Parsley -->
   <script src="../../vendors/parsleyjs/dist/parsley.min.js"></script>

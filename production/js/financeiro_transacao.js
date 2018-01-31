@@ -18,7 +18,7 @@ function geraData(){
             end:fim
           },
           success:function(data){
-            $('#transacao-panel').html(data);  
+            $('#transacoes').html(data);  
           }  
         });  
       }  

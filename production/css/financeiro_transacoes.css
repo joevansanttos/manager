@@ -20,9 +20,6 @@
   .tabbable-line > .nav-tabs > li > a > i {
     color: #a6a6a6;
   }
-  .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
-    border-bottom: 4px solid #fbcdcf;
-  }
   .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
     border: 0;
     background: none !important;
@@ -34,8 +31,14 @@
   .tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
     margin-top: 0px;
   }
+
+  .tabbable-line > .nav-tabs > #receitas.active {
+    border-bottom: 4px solid #1ABB9C;
+    position: relative;
+  }
+
   .tabbable-line > .nav-tabs > li.active {
-    border-bottom: 4px solid #27ae60;
+    border-bottom: 4px solid #E74C3C;
     position: relative;
   }
   .tabbable-line > .nav-tabs > li.active > a {
@@ -64,10 +67,7 @@
   .tabbable-line.tabs-below > .nav-tabs > li > a {
     margin-top: 0;
   }
-  .tabbable-line.tabs-below > .nav-tabs > li:hover {
-    border-bottom: 0;
-    border-top: 4px solid #27ae60;
-  }
+  
   .tabbable-line.tabs-below > .nav-tabs > li.active {
     margin-bottom: -2px;
     border-bottom: 0;
@@ -104,3 +104,12 @@
   #datepicker{
     background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;
   }
+
+#button-receita{
+   margin-left: 10
+   text-align: center;
+}
+
+.tile-stats > h3{
+  font-size: 10pt;
+}

@@ -113,6 +113,14 @@
 			}
 		}
 
+		function calcula($despesas) {
+		$valor = 0;
+		foreach ($despesas as $r) {
+			$valor = $valor + $r->getValor();
+		}
+		return $valor;
+	}
+
 
 	}
 
